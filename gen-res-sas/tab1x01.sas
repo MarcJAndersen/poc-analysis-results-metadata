@@ -19,21 +19,33 @@ options linesize=200 nocenter;
 options formchar="|----|+|---+=|-/\<>*";
 options msglevel=i;
 
-/* filename source url "http://phuse-scripts.googlecode.com/svn/trunk/scriptathon2014/data/adsl.xpt" ; */
+filename source url "http://phuse-scripts.googlecode.com/svn/trunk/scriptathon2014/data/adsl.xpt" ; 
 
-filename source "../sample-xpt/adsl.xpt";
+/* filename source "../sample-xpt/adsl.xpt"; */
 libname source xport ;
 
+proc format;
+    value $trt01p(notsorted)
+        "Placebo"="Placebo"
+        "Xanomeline Low Dose"="Xanomeline Low Dose"
+        "Xanomeline High Dose"="Xanomeline High Dose"
+        ;
+run;
+        
 data work.adsl ;
-  set source.adsl ;
+    set source.adsl ;
+    format trt01p $trt01p.;
+    length compfl $1;
+    compfl= ifc(DCREASCD="Completed", "Y", " ");
+    label compfl="Complete Study";
 run;
 
 proc tabulate data=adsl missing;
     ods output table=work.tab_14_1x01;
-    class trt01p; /* trt01p not trt01pn */
-    class ittfl saffl efffl comp24fl disconfl;
-    table ittfl saffl efffl comp24fl disconfl,
-        (trt01p all)*(N*f=f3.0 pctn<ittfl saffl efffl comp24fl disconfl>*f=f3.0);
+    class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
+    class ittfl saffl efffl comp24fl compfl /* disconfl */; 
+    table ittfl saffl efffl comp24fl compfl /* disconfl */, 
+        (trt01p all)*(N*f=f3.0 pctn<ittfl saffl efffl comp24fl compfl /* disconfl*/>*f=f3.0);
 run;
 
 
@@ -49,9 +61,9 @@ proc print data=work.tab_14_1x01 width=min;
 run;
 
 data forexport;
-    length ittfl saffl efffl comp24fl disconfl trt01p $200;
+    length ittfl saffl efffl comp24fl compfl /* disconfl */ trt01p $200;
     set work.tab_14_1x01;
-    keep ittfl saffl efffl comp24fl disconfl;
+    keep ittfl saffl efffl comp24fl compfl /* disconfl */;
     keep trt01p;
     keep procedure factor;
     length procedure factor $50;
@@ -61,7 +73,7 @@ data forexport;
 
     keep measure;
 
-    array adim(*) ittfl saffl efffl comp24fl disconfl trt01pn;
+    array adim(*) ittfl saffl efffl comp24fl compfl /* disconfl */ trt01pn;
 
     do i=1 to dim(adim);
         select;
@@ -107,19 +119,23 @@ run;
 proc contents data=forexport varnum;
 run;
 
-proc export data=forexport file="../sample-cfg/TAB1X01.csv" replace;
+proc export data=forexport file="../res-csv/TAB1X01.csv" replace;
 run;
 
 data skeletonSource1;
-length compType compName codeType nciDomainValue compLabel Comment $512;
+    if 0 then do;
+        set forexport; /* To get the labels  TODO: check if there are name clashes - or implement differently */
+        end;
+        length compType compName codeType nciDomainValue compLabel Comment $512;
+        keep compType compName codeType nciDomainValue compLabel Comment;
     Comment= " ";
-    compType= "dimension"; compName="trt01p";    compLabel="Treatment Arm"; codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="trt01p";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
     /* change compName to label of variable */
-    compType= "dimension"; compName="ittfl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="ittfl";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
     compType= "dimension"; compName="saffl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
     compType= "dimension"; compName="efffl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
     compType= "dimension"; compName="comp24fl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="disconfl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="compfl";  /* disconfl */   compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
 
     compType= "dimension"; compName="procedure"; compLabel="Statistical Procedure"; codeType="DATA"; nciDomainValue= " ";output;
     compType= "dimension"; compName="factor";    compLabel="Type of procedure (quantity, proportion...)"; codeType="DATA"; nciDomainValue= " "; output;
@@ -156,7 +172,7 @@ compName= "dataCubeFileName";
 codeType= " ";
 nciDomainValue= " ";
 compLabel= "DC-TAB1X01";
-Comment= "Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter";
+Comment= "Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)";
 output; 
 
 compType= "metadata";
@@ -253,7 +269,7 @@ data skeletonSource;
     set skeletonSource1 skeletonSource2;
 run;
     
-proc export data=skeletonSource file="../sample-cfg/TAB1X01-Components.csv" replace;
+proc export data=skeletonSource file="../res-csv/TAB1X01-Components.csv" replace;
 run;
 
 

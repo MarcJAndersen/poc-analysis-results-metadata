@@ -21,7 +21,7 @@ library(rrdf)
 library(rrdfqb)
 library(rrdfqbcrnd0)
 library(rrdfqbcrndex)
-library(rrdfqbpresent)
+# library(rrdfqbpresent)
 ```
 
 
@@ -46,15 +46,15 @@ dimensions<- sparql.rdf(store, dimensionsRq)
 attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
 attributes<- sparql.rdf(store, attributesRq)
 
-observationsDescriptionRq<- GetObservationsWithDescriptionSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
-observationsDesc<- as.data.frame(sparql.rdf(store, observationsDescriptionRq ), stringsAsFactors=FALSE)
+# observationsDescriptionRq<- GetObservationsWithDescriptionSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
+# observationsDesc<- as.data.frame(sparql.rdf(store, observationsDescriptionRq ), stringsAsFactors=FALSE)
 
-coldim<- c("crnd-dimension:trt01p" )
-rowdim<- c( "crnd-dimension:disconfl", "crnd-dimension:comp24fl",
-           "crnd-dimension:ittfl",  "crnd-dimension:efffl",
-           )
+# coldim<- c("crnd-dimension:trt01p" )
+# rowdim<- c( "crnd-dimension:disconfl", "crnd-dimension:comp24fl",
+#            "crnd-dimension:ittfl",  "crnd-dimension:efffl",
+#            )
 
-zdim<- c("crnd-dimension:procedure")
+# zdim<- c("crnd-dimension:procedure")
 
 ```
 
@@ -108,9 +108,15 @@ knitr::kable(cube.observations)
 The following query is all to long - and can be made simpler and more readable.
 
 ```{r, eval=TRUE}
-cube.res.rq<-  paste(
- gsub("prefix ds: .+$", "", forsparqlprefix), ## remove the ds: prefix, so the URI is sull
-## forsparqlprefix,
+
+(forsparqlprefix.lines<- unlist(strsplit(forsparqlprefix,"\n")))
+(useit<- grepl("prefix ds:", forsparqlprefix.lines ))
+(forsparqlprefix.no.ds<- paste(forsparqlprefix.lines[!useit],collapse="\n",sep="")) ## remove the ds: prefix, so the URI is sull
+
+
+## 
+
+cube.res.rq<-  paste( forsparqlprefix.no.ds,
 '
 select
  ?ittflVarLabel       ?ittflLevelLabel       ?ittfl
@@ -262,7 +268,7 @@ present.res<- cbind(
     rowlabel=varlabels[varorder],
     cube.res[,c("col1z1", "col1z2", "col2z1", "col2z2", "col3z1", "col3z2")]
 )
-## knitr::kable(present.res)
+knitr::kable(present.res)
  
 ```
 
