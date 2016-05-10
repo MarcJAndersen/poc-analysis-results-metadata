@@ -34,21 +34,30 @@
 @prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/> .
 @prefix dc:    <http://purl.org/dc/elements/1.1/> .
 
+code:compfl-_NONMISS_
+        a                  code:Compfl , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
+        rrdfqbcrnd0:R-selectionfunction
+                "is.na"^^xsd:string ;
+        skos:inScheme      code:compfl ;
+        skos:prefLabel     "_NONMISS_"^^xsd:string ;
+        skos:topConceptOf  code:compfl .
+
 ds:obs50  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "50"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code:trt01p-Placebo ;
-        crnd-measure:measure        "67.441860465"^^xsd:double .
+        crnd-measure:measure        "32.558139535"^^xsd:double .
 
 ds:obs22  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -57,14 +66,20 @@ ds:obs22  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "3.5714285714"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "11.904761905"^^xsd:double .
+
+code:compfl-_ALL_  a       code:Compfl , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en , "Coded values from data source. No reconciliation against another source"@en ;
+        skos:inScheme      code:compfl ;
+        skos:prefLabel     "_ALL_"^^xsd:string ;
+        skos:topConceptOf  code:compfl .
 
 code:trt01p-  a                       code:Trt01p , skos:Concept ;
         rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
@@ -82,14 +97,14 @@ ds:obs63  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
-        crnd-measure:measure        "144"^^xsd:double .
+        crnd-measure:measure        "110"^^xsd:double .
 
 ds:obs35  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -98,14 +113,14 @@ ds:obs35  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "54"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "56"^^xsd:double .
 
 ds:obs07  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -114,7 +129,7 @@ ds:obs07  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-Y ;
@@ -147,7 +162,7 @@ ds:obs48  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -163,7 +178,7 @@ ds:obs01  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-Y ;
@@ -179,14 +194,14 @@ ds:obs42  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "35.714285714"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "33.333333333"^^xsd:double .
 
 ds:obs14  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -195,14 +210,24 @@ ds:obs14  a                         qb:Observation ;
         crnd-attribute:denominator  "saffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-Y ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
         crnd-measure:measure        "100"^^xsd:double .
+
+code:compfl  a                      skos:ConceptScheme ;
+        rdfs:label                  "Codelist scheme: compfl"@en ;
+        rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_COMPFL ;
+        rrdfqbcrnd0:R-columnname    "compfl"^^xsd:string ;
+        rrdfqbcrnd0:codeType        "DATA"^^xsd:string ;
+        skos:hasTopConcept          code:compfl-_NONMISS_ , code:compfl-Y , code:compfl-_ALL_ ;
+        skos:notation               "CL_COMPFL" ;
+        skos:note                   "Specifies the compfl for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel              "Codelist scheme: compfl"@en .
 
 ds:obs55  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -211,14 +236,14 @@ ds:obs55  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code:trt01p-Placebo ;
-        crnd-measure:measure        "28"^^xsd:double .
+        crnd-measure:measure        "58"^^xsd:double .
 
 ds:obs27  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -227,14 +252,14 @@ ds:obs27  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "81"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "74"^^xsd:double .
 
 dccs:unit  a          qb:ComponentSpecification ;
         qb:attribute  crnd-attribute:unit .
@@ -249,7 +274,7 @@ dccs:efffl  a         qb:ComponentSpecification ;
         qb:dimension  crnd-dimension:efffl .
 
 dccs:ittfl  a         qb:ComponentSpecification ;
-        rdfs:label    "ittfl" ;
+        rdfs:label    "Intent-To-Treat Population Flag" ;
         qb:dimension  crnd-dimension:ittfl .
 
 ds:obs21  a                         qb:Observation ;
@@ -259,40 +284,34 @@ ds:obs21  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "3"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "10"^^xsd:double .
+
+dccs:comp24fl  a      qb:ComponentSpecification ;
+        rdfs:label    "comp24fl" ;
+        qb:dimension  crnd-dimension:comp24fl .
 
 ds:obs62  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "62"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
-        crnd-measure:measure        "43.307086614"^^xsd:double .
-
-dccs:comp24fl  a      qb:ComponentSpecification ;
-        rdfs:label    "comp24fl" ;
-        qb:dimension  crnd-dimension:comp24fl .
-
-code:Disconfl  a         rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the disconfl for each observation"@en ;
-        rdfs:label       "Class for code list: disconfl"@en ;
-        rdfs:seeAlso     code:disconfl ;
-        rdfs:subClassOf  skos:Concept .
+        crnd-measure:measure        "56.692913386"^^xsd:double .
 
 ds:obs34  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -301,7 +320,7 @@ ds:obs34  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -321,13 +340,13 @@ ds:obs06  a                         qb:Observation ;
         crnd-attribute:denominator  "ittfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-Y ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
         crnd-measure:measure        "100"^^xsd:double .
 
 code:trt01p-Placebo  a                code:Trt01p , skos:Concept ;
@@ -346,7 +365,7 @@ ds:obs47  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -372,14 +391,14 @@ ds:obs19  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "10"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "3"^^xsd:double .
 
 crnd-dimension:procedure
         a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
@@ -394,14 +413,14 @@ ds:obs41  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "30"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "28"^^xsd:double .
 
 ds:dataset-TAB1X01  a                 qb:DataSet ;
         rdfs:comment                  ""@en ;
@@ -410,8 +429,8 @@ ds:dataset-TAB1X01  a                 qb:DataSet ;
         dct:title                     "Demographics Analysis Results"^^xsd:string ;
         qb:structure                  ds:dsd-TAB1X01 ;
         pav:createdBy                 "username or session name"^^xsd:string , "username or session name"^^xsd:string ;
-        pav:createdOn                 "2016-04-26T16:43:47+02:00"^^xsd:dateTime ;
-        pav:createdWith               "R Version 3.2.3 Platform:x86_64-w64-mingw32 rrdfqbrnd0 package and dependencies"^^xsd:string ;
+        pav:createdOn                 "2016-05-10T21:51:40+02:00"^^xsd:dateTime ;
+        pav:createdWith               "R Version 3.2.3 Platform:x86_64-redhat-linux-gnu rrdfqbrnd0 package and dependencies"^^xsd:string ;
         pav:version                   "0.0.0"^^xsd:string ;
         rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
         dcat:distribution             "DC-TAB1X01-R-V-0-0-0.ttl" ;
@@ -424,13 +443,13 @@ ds:obs13  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-Y ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
         crnd-measure:measure        "84"^^xsd:double .
 
 dccs:factor  a        qb:ComponentSpecification ;
@@ -441,17 +460,17 @@ ds:obs54  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "54"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "29.761904762"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "67.857142857"^^xsd:double .
 
 ds:obs26  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -460,20 +479,14 @@ ds:obs26  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "88.095238095"^^xsd:double .
-
-crnd-dimension:disconfl
-        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
-        rdfs:label   "disconfl" ;
-        rdfs:range   code:Disconfl ;
-        qb:codeList  code:disconfl .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "96.428571429"^^xsd:double .
 
 ds:obs39  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -482,7 +495,7 @@ ds:obs39  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -509,14 +522,14 @@ ds:obs20  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "11.904761905"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "3.5714285714"^^xsd:double .
 
 ds:obs61  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -525,14 +538,14 @@ ds:obs61  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
-        crnd-measure:measure        "110"^^xsd:double .
+        crnd-measure:measure        "144"^^xsd:double .
 
 ds:obs33  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -541,7 +554,7 @@ ds:obs33  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -557,13 +570,13 @@ ds:obs05  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-Y ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
         crnd-measure:measure        "84"^^xsd:double .
 
 code:ittfl-Y  a                       code:Ittfl , skos:Concept ;
@@ -592,7 +605,7 @@ ds:obs46  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -614,7 +627,7 @@ ds:obs18  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -623,11 +636,6 @@ ds:obs18  a                         qb:Observation ;
         crnd-dimension:trt01p       code:trt01p-Placebo ;
         crnd-measure:measure        "8.1395348837"^^xsd:double .
 
-rrdfqbcrnd0:ADSL_DISCONFL
-        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
-        rrdfqbcrnd0:D2RQ-PropertyBridge
-                <http://www.example.org/datasets/vocab/ADSL_DISCONFL> .
-
 ds:obs59  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "59"^^xsd:string ;
@@ -635,14 +643,14 @@ ds:obs59  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "59"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "27"^^xsd:double .
 
 code:comp24fl  a                    skos:ConceptScheme ;
         rdfs:label                  "Codelist scheme: comp24fl"@en ;
@@ -692,6 +700,22 @@ code:efffl  a                       skos:ConceptScheme ;
         skos:note                   "Specifies the efffl for each observation, group of obs. or all categories (_ALL_)label "@en ;
         skos:prefLabel              "Codelist scheme: efffl"@en .
 
+ds:obs40  a                         qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "40"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X01 ;
+        crnd-attribute:denominator  "comp24fl" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Y ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
+        crnd-dimension:efffl        code:efffl-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:ittfl        code:ittfl-_ALL_ ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:saffl        code:saffl-_ALL_ ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "69.76744186"^^xsd:double .
+
 code:ittfl  a                       skos:ConceptScheme ;
         rdfs:label                  "Codelist scheme: ittfl"@en ;
         rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_ITTFL ;
@@ -702,21 +726,9 @@ code:ittfl  a                       skos:ConceptScheme ;
         skos:note                   "Specifies the ittfl for each observation, group of obs. or all categories (_ALL_)label "@en ;
         skos:prefLabel              "Codelist scheme: ittfl"@en .
 
-ds:obs40  a                         qb:Observation ;
-        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
-        rdfs:label                  "40"^^xsd:string ;
-        qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "comp24fl" ;
-        crnd-attribute:unit         "NA"^^xsd:string ;
-        crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
-        crnd-dimension:efffl        code:efffl-_ALL_ ;
-        crnd-dimension:factor       code:factor-proportion ;
-        crnd-dimension:ittfl        code:ittfl-_ALL_ ;
-        crnd-dimension:procedure    code:procedure-percent ;
-        crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Placebo ;
-        crnd-measure:measure        "69.76744186"^^xsd:double .
+dccs:compfl  a        qb:ComponentSpecification ;
+        rdfs:label    "compfl" ;
+        qb:dimension  crnd-dimension:compfl .
 
 ds:obs12  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -725,13 +737,13 @@ ds:obs12  a                         qb:Observation ;
         crnd-attribute:denominator  "saffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-Y ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
         crnd-measure:measure        "100"^^xsd:double .
 
 code:ittfl-_ALL_  a        code:Ittfl , skos:Concept ;
@@ -747,14 +759,14 @@ ds:obs53  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "25"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "57"^^xsd:double .
 
 ds:obs25  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -763,17 +775,17 @@ ds:obs25  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "74"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "81"^^xsd:double .
 
 dccs:trt01p  a        qb:ComponentSpecification ;
-        rdfs:label    "Treatment Arm" ;
+        rdfs:label    "Planned Treatment for Period 01" ;
         qb:dimension  crnd-dimension:trt01p .
 
 code:efffl-_NONMISS_  a    code:Efffl , skos:Concept ;
@@ -791,14 +803,14 @@ ds:obs38  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "66.666666667"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "64.285714286"^^xsd:double .
 
 code:comp24fl-Y  a                    code:Comp24fl , skos:Concept ;
         rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
@@ -813,17 +825,17 @@ ds:obs60  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "60"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "70.238095238"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "32.142857143"^^xsd:double .
 
 ds:obs32  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -832,7 +844,7 @@ ds:obs32  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -862,13 +874,13 @@ ds:obs04  a                         qb:Observation ;
         crnd-attribute:denominator  "ittfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-Y ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
         crnd-measure:measure        "100"^^xsd:double .
 
 code:ittfl-_NONMISS_  a    code:Ittfl , skos:Concept ;
@@ -886,7 +898,7 @@ code:trt01p-_ALL_  a       code:Trt01p , skos:Concept ;
         skos:topConceptOf  code:trt01p .
 
 crnd-dimension:ittfl  a  rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
-        rdfs:label   "ittfl" ;
+        rdfs:label   "Intent-To-Treat Population Flag" ;
         rdfs:range   code:Ittfl ;
         qb:codeList  code:ittfl .
 
@@ -904,7 +916,7 @@ ds:obs45  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -912,6 +924,15 @@ ds:obs45  a                         qb:Observation ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
         crnd-measure:measure        "136"^^xsd:double .
+
+code:compfl-Y  a                      code:Compfl , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Y"^^xsd:string ;
+        skos:inScheme                 code:compfl ;
+        skos:prefLabel                "Y"^^xsd:string ;
+        skos:topConceptOf             code:compfl .
 
 code:procedure-percent
         a                             code:Procedure , skos:Concept ;
@@ -931,7 +952,7 @@ ds:obs17  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -944,17 +965,17 @@ ds:obs58  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "58"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "67.857142857"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "29.761904762"^^xsd:double .
 
 code:saffl-Y  a                       code:Saffl , skos:Concept ;
         rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
@@ -972,30 +993,30 @@ ds:obs11  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-Y ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
         crnd-measure:measure        "84"^^xsd:double .
 
 ds:obs52  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "52"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "32.142857143"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "70.238095238"^^xsd:double .
 
 code:factor-_NONMISS_
         a                  code:Factor , skos:Concept ;
@@ -1025,7 +1046,7 @@ ds:obs24  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1047,14 +1068,14 @@ ds:obs37  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "56"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "54"^^xsd:double .
 
 ds:obs09  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1063,7 +1084,7 @@ ds:obs09  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1106,10 +1127,6 @@ code:trt01p-_NONMISS_
         skos:prefLabel     "_NONMISS_"^^xsd:string ;
         skos:topConceptOf  code:trt01p .
 
-dccs:disconfl  a      qb:ComponentSpecification ;
-        rdfs:label    "disconfl" ;
-        qb:dimension  crnd-dimension:disconfl .
-
 ds:obs31  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "31"^^xsd:string ;
@@ -1117,7 +1134,7 @@ ds:obs31  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1133,20 +1150,19 @@ ds:obs03  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-Y ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
         crnd-measure:measure        "84"^^xsd:double .
 
-code:disconfl-_ALL_  a     code:Disconfl , skos:Concept ;
-        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en , "Coded values from data source. No reconciliation against another source"@en ;
-        skos:inScheme      code:disconfl ;
-        skos:prefLabel     "_ALL_"^^xsd:string ;
-        skos:topConceptOf  code:disconfl .
+rrdfqbcrnd0:ADSL_COMPFL
+        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
+        rrdfqbcrnd0:D2RQ-PropertyBridge
+                <http://www.example.org/datasets/vocab/ADSL_COMPFL> .
 
 ds:obs44  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1155,14 +1171,14 @@ ds:obs44  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "33.333333333"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "35.714285714"^^xsd:double .
 
 ds:obs16  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1171,7 +1187,7 @@ ds:obs16  a                         qb:Observation ;
         crnd-attribute:denominator  "saffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1180,15 +1196,6 @@ ds:obs16  a                         qb:Observation ;
         crnd-dimension:trt01p       code: ;
         crnd-measure:measure        "100"^^xsd:double .
 
-code:disconfl-_NONMISS_
-        a                  code:Disconfl , skos:Concept ;
-        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
-        rrdfqbcrnd0:R-selectionfunction
-                "is.na"^^xsd:string ;
-        skos:inScheme      code:disconfl ;
-        skos:prefLabel     "_NONMISS_"^^xsd:string ;
-        skos:topConceptOf  code:disconfl .
-
 ds:obs57  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "57"^^xsd:string ;
@@ -1196,14 +1203,14 @@ ds:obs57  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "57"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "25"^^xsd:double .
 
 ds:obs29  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1212,7 +1219,7 @@ ds:obs29  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1239,12 +1246,6 @@ crnd-dimension:factor
         rdfs:range   code:Factor ;
         qb:codeList  code:factor .
 
-code:Saffl  a            rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the saffl for each observation"@en ;
-        rdfs:label       "Class for code list: saffl"@en ;
-        rdfs:seeAlso     code:saffl ;
-        rdfs:subClassOf  skos:Concept .
-
 ds:obs10  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "10"^^xsd:string ;
@@ -1252,7 +1253,7 @@ ds:obs10  a                         qb:Observation ;
         crnd-attribute:denominator  "saffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1260,6 +1261,18 @@ ds:obs10  a                         qb:Observation ;
         crnd-dimension:saffl        code:saffl-Y ;
         crnd-dimension:trt01p       code:trt01p-Placebo ;
         crnd-measure:measure        "100"^^xsd:double .
+
+code:Saffl  a            rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the saffl for each observation"@en ;
+        rdfs:label       "Class for code list: saffl"@en ;
+        rdfs:seeAlso     code:saffl ;
+        rdfs:subClassOf  skos:Concept .
+
+code:Compfl  a           rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the compfl for each observation"@en ;
+        rdfs:label       "Class for code list: compfl"@en ;
+        rdfs:seeAlso     code:compfl ;
+        rdfs:subClassOf  skos:Concept .
 
 code:trt01p-Xanomeline_Low_Dose
         a                             code:Trt01p , skos:Concept ;
@@ -1278,14 +1291,14 @@ ds:obs51  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "27"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "59"^^xsd:double .
 
 ds:obs23  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1294,7 +1307,7 @@ ds:obs23  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1323,17 +1336,17 @@ ds:obs64  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "64"^^xsd:string ;
         qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
+        crnd-attribute:denominator  "compfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
+        crnd-dimension:compfl       code:compfl-Y ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
-        crnd-measure:measure        "56.692913386"^^xsd:double .
+        crnd-measure:measure        "43.307086614"^^xsd:double .
 
 ds:obs36  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1342,14 +1355,14 @@ ds:obs36  a                         qb:Observation ;
         crnd-attribute:denominator  "comp24fl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-N ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
-        crnd-measure:measure        "64.285714286"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "66.666666667"^^xsd:double .
 
 ds:obs08  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1358,7 +1371,7 @@ ds:obs08  a                         qb:Observation ;
         crnd-attribute:denominator  "ittfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-Y ;
@@ -1374,14 +1387,14 @@ ds:obs49  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code:trt01p-Placebo ;
-        crnd-measure:measure        "58"^^xsd:double .
+        crnd-measure:measure        "28"^^xsd:double .
 
 crnd-attribute:denominator
         a           rdf:Property , qb:AttributeProperty ;
@@ -1396,6 +1409,9 @@ code:factor-quantity  a               code:Factor , skos:Concept ;
         skos:prefLabel                "quantity"^^xsd:string ;
         skos:topConceptOf             code:factor .
 
+dccs:denominator  a   qb:ComponentSpecification ;
+        qb:attribute  crnd-attribute:denominator .
+
 ds:obs30  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "30"^^xsd:string ;
@@ -1403,7 +1419,7 @@ ds:obs30  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-N ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1411,18 +1427,6 @@ ds:obs30  a                         qb:Observation ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
         crnd-dimension:trt01p       code: ;
         crnd-measure:measure        "7.874015748"^^xsd:double .
-
-dccs:denominator  a   qb:ComponentSpecification ;
-        qb:attribute  crnd-attribute:denominator .
-
-code:disconfl-Y  a                    code:Disconfl , skos:Concept ;
-        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
-        rrdfqbcrnd0:R-selectionoperator
-                "=="^^xsd:string ;
-        rrdfqbcrnd0:R-selectionvalue  "Y"^^xsd:string ;
-        skos:inScheme                 code:disconfl ;
-        skos:prefLabel                "Y"^^xsd:string ;
-        skos:topConceptOf             code:disconfl .
 
 code:factor-_ALL_  a       code:Factor , skos:Concept ;
         rdfs:comment       "NON-CDISC: Represents all codelist categories."@en ;
@@ -1437,7 +1441,7 @@ ds:obs02  a                         qb:Observation ;
         crnd-attribute:denominator  "ittfl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-Y ;
@@ -1453,30 +1457,14 @@ ds:obs43  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-Y ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-count ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "28"^^xsd:double .
-
-ds:obs56  a                         qb:Observation ;
-        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
-        rdfs:label                  "56"^^xsd:string ;
-        qb:dataSet                  ds:dataset-TAB1X01 ;
-        crnd-attribute:denominator  "disconfl" ;
-        crnd-attribute:unit         "NA"^^xsd:string ;
-        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-Y ;
-        crnd-dimension:efffl        code:efffl-_ALL_ ;
-        crnd-dimension:factor       code:factor-proportion ;
-        crnd-dimension:ittfl        code:ittfl-_ALL_ ;
-        crnd-dimension:procedure    code:procedure-percent ;
-        crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Placebo ;
-        crnd-measure:measure        "32.558139535"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "30"^^xsd:double .
 
 ds:obs15  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
@@ -1485,7 +1473,7 @@ ds:obs15  a                         qb:Observation ;
         crnd-attribute:denominator  "" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-_ALL_ ;
         crnd-dimension:factor       code:factor-quantity ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
@@ -1495,7 +1483,7 @@ ds:obs15  a                         qb:Observation ;
         crnd-measure:measure        "254"^^xsd:double .
 
 ds:dsd-TAB1X01  a     qb:DataStructureDefinition ;
-        qb:component  dccs:saffl , dccs:unit , dccs:ittfl , dccs:factor , dccs:measure , dccs:denominator , dccs:efffl , dccs:comp24fl , dccs:procedure , dccs:disconfl , dccs:trt01p .
+        qb:component  dccs:saffl , dccs:unit , dccs:ittfl , dccs:factor , dccs:measure , dccs:denominator , dccs:compfl , dccs:efffl , dccs:comp24fl , dccs:procedure , dccs:trt01p .
 
 code:factor  a                    skos:ConceptScheme ;
         rdfs:label                "Codelist scheme: factor"@en ;
@@ -1511,6 +1499,27 @@ rrdfqbcrnd0:ADSL_EFFFL
         rrdfqbcrnd0:D2RQ-PropertyBridge
                 <http://www.example.org/datasets/vocab/ADSL_EFFFL> .
 
+ds:obs56  a                         qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "56"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X01 ;
+        crnd-attribute:denominator  "compfl" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-Y ;
+        crnd-dimension:efffl        code:efffl-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:ittfl        code:ittfl-_ALL_ ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:saffl        code:saffl-_ALL_ ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "67.441860465"^^xsd:double .
+
+crnd-dimension:saffl  a  rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "saffl" ;
+        rdfs:range   code:Saffl ;
+        qb:codeList  code:saffl .
+
 ds:obs28  a                         qb:Observation ;
         rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
         rdfs:label                  "28"^^xsd:string ;
@@ -1518,29 +1527,20 @@ ds:obs28  a                         qb:Observation ;
         crnd-attribute:denominator  "efffl" ;
         crnd-attribute:unit         "NA"^^xsd:string ;
         crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
-        crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        crnd-dimension:compfl       code:compfl-_ALL_ ;
         crnd-dimension:efffl        code:efffl-Y ;
         crnd-dimension:factor       code:factor-proportion ;
         crnd-dimension:ittfl        code:ittfl-_ALL_ ;
         crnd-dimension:procedure    code:procedure-percent ;
         crnd-dimension:saffl        code:saffl-_ALL_ ;
-        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
-        crnd-measure:measure        "96.428571429"^^xsd:double .
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "88.095238095"^^xsd:double .
 
-crnd-dimension:saffl  a  rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
-        rdfs:label   "saffl" ;
-        rdfs:range   code:Saffl ;
-        qb:codeList  code:saffl .
-
-code:disconfl  a                    skos:ConceptScheme ;
-        rdfs:label                  "Codelist scheme: disconfl"@en ;
-        rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_DISCONFL ;
-        rrdfqbcrnd0:R-columnname    "disconfl"^^xsd:string ;
-        rrdfqbcrnd0:codeType        "DATA"^^xsd:string ;
-        skos:hasTopConcept          code:disconfl-_NONMISS_ , code:disconfl-Y , code:disconfl-_ALL_ ;
-        skos:notation               "CL_DISCONFL" ;
-        skos:note                   "Specifies the disconfl for each observation, group of obs. or all categories (_ALL_)label "@en ;
-        skos:prefLabel              "Codelist scheme: disconfl"@en .
+crnd-dimension:compfl
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "compfl" ;
+        rdfs:range   code:Compfl ;
+        qb:codeList  code:compfl .
 
 rrdfqbcrnd0:ADSL_ITTFL
         rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
@@ -1567,6 +1567,6 @@ code:procedure  a                 skos:ConceptScheme ;
 
 crnd-dimension:trt01p
         a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
-        rdfs:label   "Treatment Arm" ;
+        rdfs:label   "Planned Treatment for Period 01" ;
         rdfs:range   code:Trt01p ;
         qb:codeList  code:trt01p .

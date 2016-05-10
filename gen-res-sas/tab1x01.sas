@@ -19,7 +19,7 @@ options linesize=200 nocenter;
 options formchar="|----|+|---+=|-/\<>*";
 options msglevel=i;
 
-filename source url "http://phuse-scripts.googlecode.com/svn/trunk/scriptathon2014/data/adsl.xpt" ; 
+filename source url "https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adsl.xpt";
 
 /* filename source "../sample-xpt/adsl.xpt"; */
 libname source xport ;

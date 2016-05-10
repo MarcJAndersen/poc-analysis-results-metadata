@@ -12,7 +12,7 @@ attribute,unit,,,Unit of measure,
 attribute,denominator,,,Denominator for a proportion (oskr) subset on which a statistic is based,
 metadata,obsURL,,,https://phuse-scripts.googlecode.com/svn/trunk/scriptathon2014/data/adsl.xpt,obsFileName
 metadata,obsFileName,,,tab1x01.csv,obsFileName
-metadata,dataCubeFileName,,,DC-TAB1X01,Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter
+metadata,dataCubeFileName,,,DC-TAB1X01,Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)
 metadata,cubeVersion,,,0.0.0,Version of cube with format n.n.n
 metadata,createdBy,,,Foo,Person who configures this spreadsheet and runs the creation script to create the cube
 metadata,description,,,Data from adsl1.sas program,Cube description
