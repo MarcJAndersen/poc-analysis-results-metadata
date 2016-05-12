@@ -1,0 +1,8 @@
+*.log
+*.lst
+*.pdf
+*.rtf
+temp-sparqlquery-headerIn.txt
+temp-sparqlquery-headerOut.txt
+temp-sparqlquery.txt
+temp-sparqlquery.xml

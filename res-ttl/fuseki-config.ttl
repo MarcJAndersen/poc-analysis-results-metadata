@@ -3,6 +3,11 @@
 # Linux: Start fuseki using
 # (CFGFILE=${PWD}/fuseki-config.ttl ;cd /opt/apache-jena-fuseki-2.3.0; ./fuseki-server --config=${CFGFILE} ) 
 # Windows
+# Using git shell with Apache Jena Fuseki version 2.0.0 
+#  (CFGFILE=${PWD}/fuseki-config.ttl ;cd /c/opt/apache-jena-fuseki-2.0.0; ./fuseki-server --config=${CFGFILE} )
+# Using Windows CMD
+# (to be added)
+# 
 
 @prefix :        <#> .
 @prefix fuseki:  <http://jena.apache.org/fuseki#> .

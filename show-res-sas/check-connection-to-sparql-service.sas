@@ -10,8 +10,11 @@ options mprint nocenter;
 
 %include "../../SAS-SPARQLwrapper/sparqlquery.sas";
 
+/* %let sparqlendpoint=http://192.168.1.115:3030/arm/query; */
+%let sparqlendpoint=http://localhost:3030/arm/query;
+
 %sparqlquery(
-    endpoint=http://192.168.1.115:3030/arm/query,
+    endpoint=&sparqlendpoint.,
     query=%str(select * where {?s ?p ?o} limit 20 ),
     sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map)
 );

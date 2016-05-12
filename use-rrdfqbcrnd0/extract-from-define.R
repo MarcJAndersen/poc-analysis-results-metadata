@@ -1,7 +1,7 @@
 library(rrdf)
 define.fn<- "../../any-snippet/define-xml-processing/define-as-rdf.xml"
 
-define.xml<- load.rdf(define.fn,format="TURTLE")
+define.xml<- load.rdf(define.fn,format="RDF/XML")
 
 
 prefix.rq<- '
@@ -29,5 +29,5 @@ order by ?OID
 # cat(paste0( prefix.rq, sparql.rq, sep="\n" ))
 sq<- NULL
 sq<- sparql.rdf( define.xml, paste0( prefix.rq, sparql.rq, sep="\n" ) )
-print(sq)
+knitr::kable(sq)
 
