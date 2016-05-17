@@ -3,16 +3,6 @@
 
 ## R-studio Create new project from directory
 
-# install.packages("packrat")
-library(packrat) 
-packrat::init()
-
-install.packages("devtools")
-library(devtools)
-
-install.packages("knitr")
-library(knitr)
-
 ## To avoid conflict with System library and user library
 ## all packages used are install 
 
@@ -45,7 +35,6 @@ library(rrdf)
 
 
 packrat::set_opts(local.repos ="../../rrdfqbcrnd0" )
-
 packrat::install_local("rrdfancillary")
 packrat::install_local("rrdfcdisc")
 packrat::install_local("rrdfqb")
@@ -70,8 +59,6 @@ library("rrdfqbpresent")
 ## packrat::install_github( "MarcJAndersen/rrdfqbcrnd0", subdir="rrdfqbcrndex") 	
 ## packrat::install_github( "MarcJAndersen/rrdfqbcrnd0", subdir="rrdfqbcrndcheck")
 ## packrat::install_github( "MarcJAndersen/rrdfqbcrnd0", subdir="rrdfqbpresent")
-
-packrat::snapshot()
 
 # packrat::bundle()
 # packrat::unbundle("../use-rrdfqbcrnd0/packrat/bundles/use-rrdfqbcrnd0-2016-05-03.tar.gz",".")

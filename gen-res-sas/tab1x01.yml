@@ -1,0 +1,54 @@
+KeyWords: Phuse2016, ARM, Analysis Results and Metadata
+Script: 
+  Desc   : Script description
+  Name   : tab1x01.sas
+  GCR    : 
+  SRV    : 
+  Source : Submission
+  Target : 
+  Title  : Table 14.01
+  Topic  : Proof of concept for Analysis Results and Metadata using CDISC Pilot Study
+  Type   : Table
+  Subtype: Summary
+Package:
+  name : pocarm
+  title: Proof of concept Analysis Results and Metadata
+Language: 
+  name   : SAS
+  version: 0.0.1
+Comments: >
+  Please edit this file.
+  To provide useful information.
+Inputs:
+  datasets: adam.adsl
+  inputfiles:
+  - adsl.xpt
+Outputs:
+  datasets: (none)
+  outputfiles:
+  - ../res-csv/TAB1X01.csv
+  - ../res-csv/TAB1X01-Components.csv
+Authors: 
+  - name   : Jon Doo
+    email  : jon.doo@phuse.com
+    company: PhUSE
+Qualification: 
+  LastQualDate: MM/DD/YYYY 
+  LastQualBy: FirstName LastName
+  Stage: T
+  Document: a link to latest documentation 
+  Note: C - Contributed; D - Development; T - Testing; Q - Qualified
+Stages: 
+  - Date: mm/dd/yyyy
+    Name: Jon1 Doo
+    Stage: C 
+    Docs: a link to qualification documents
+  - Date: mm/dd/yyyy
+    Name: Jon2 Doo
+    Stage: D 
+    Docs: a link to qualification documents
+Rating: 
+  - User: Foo
+    Date: 02/05/2016
+    Association: Phuse
+    Stars: 0
