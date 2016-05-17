@@ -1,0 +1,120 @@
+#
+# fuseki configuration file for use with poc-analysis-results-metadata
+#
+
+# This configuration file is stored as poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
+
+# Linux: Start fuseki using
+# (CFGFILE=${PWD}/fuseki-config.ttl ;cd /opt/apache-jena-fuseki-2.3.0; ./fuseki-server --config=${CFGFILE} ) 
+
+# Windows - start using Windows CMD
+#
+# The following directory structure is assument:
+#
+# poc-analysis-results-metadata
+# apache-jena-fuseki-2.0.0
+# rdf.cdisc.org
+# rrdfqbcrnd0
+#
+# This directory structure is choosen to permit using relative links (thereby
+# avoiding refering to drives in Windows when using java based programs) and setting
+# environment variables.
+# (This may change)
+#
+# To start apache jena fuseki change to directory apache-jena-fuseki-2.0.0 and issue
+# fuseki-server.bat --config=../poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
+
+@prefix :        <#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tdb:     <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     <#pocexample>
+   ) .
+
+# Custom code.
+[] ja:loadClass "com.hp.hpl.jena.tdb.TDB" .
+
+# TDB
+tdb:DatasetTDB  rdfs:subClassOf  ja:RDFDataset .
+tdb:GraphTDB    rdfs:subClassOf  ja:Model .
+
+## ---------------------------------------------------------------
+## Updatable in-memory dataset.
+
+## ---------------------------------------------------------------
+<#pocexample> rdf:type fuseki:Service ;
+    fuseki:name                     "arm" ;    # http://host:port/arm
+    fuseki:serviceQuery             "query" ;    # SPARQL query service
+    fuseki:serviceReadGraphStore    "get" ;      # SPARQL Graph store protocol (read only)
+    fuseki:serviceUpdate               "update" ;
+    fuseki:serviceUpload               "upload" ;
+    fuseki:serviceReadWriteGraphStore  "data" ;     
+    fuseki:dataset                   <#dataset> ;
+    # Configuration
+    .
+    
+
+# Dataset of default graph and one named graph.
+<#dataset> rdf:type ja:RDFDataset ;
+   ja:defaultGraph <#modelDft> ;
+   .
+
+<#modelDft> a ja:MemoryModel ;
+        ja:content [ ja:externalContent
+	<file:../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X01.ttl> ];
+## CDISC stuff
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/resources/w3.org/skos.rdf> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/resources/dublincore.org/dcam.rdf> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/resources/dublincore.org/dcelements.rdf> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/resources/dublincore.org/dcterms.rdf> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/glossary-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/cdash-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/sdtm-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/qs-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/send-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/terminology-2013-06-28/adam-terminology.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/sdtm-1-2.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/all-standards.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/cdash-1-1.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/sdtmig-3-1-3.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/sdtmig-3-1-2.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/adamig-1-0.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/sendig-3-0.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/sdtm-1-3.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/std/adam-2-1.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/schemas/ct-schema.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/schemas/meta-model-schema.owl> ];
+        ja:content [ ja:externalContent
+	<file:../../rdf.cdisc.org/schemas/cdisc-schema.owl> ];
+
+	.
+

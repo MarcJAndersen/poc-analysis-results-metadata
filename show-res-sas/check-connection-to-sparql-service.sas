@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------*\
-** Program : example-localhost-07.sas
+** Program : check-connection-to-sparql-service.sas
 ** Purpose : Basic test of SAS-SPARQLwrapper using a query and local server
 ** Endpoint: localhost    
 ** Notes: SAS must be invoked with unicode support   
@@ -11,6 +11,7 @@ options mprint nocenter;
 %include "../../SAS-SPARQLwrapper/sparqlquery.sas";
 
 /* %let sparqlendpoint=http://192.168.1.115:3030/arm/query; */
+
 %let sparqlendpoint=http://localhost:3030/arm/query;
 
 %sparqlquery(
