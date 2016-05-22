@@ -25,16 +25,18 @@ prefix adamct: <http://rdf.cdisc.org/adam-terminology#>
 prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#>
 prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
 prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
- select ?nciDomain ?cdiscDefinition ?code ?cdiscSynonyms ?nciCode ?nciPreferredTerm ?nciDomainValue
-where {
+
+select ?nciDomain ?cdiscDefinition ?code ?cdiscSynonyms
+       ?nciCode ?nciPreferredTerm ?nciDomainValue
+where {  # Showing all triples unabbreviated
   ?nciDomain mms:inValueDomain        ?nciDomainValue .
   ?nciDomain cts:cdiscDefinition      ?cdiscDefinition .
   ?nciDomain cts:cdiscSubmissionValue ?code .
   ?nciDomain cts:nciCode              ?nciCode .
   ?nciDomain cts:nciPreferredTerm     ?nciPreferredTerm
   OPTIONAL { ?nciDomain cts:cdiscSynonyms        ?cdiscSynonyms . }
-values (?nciDomainValue) {
- (sdtmct:C66731) 
+  values (?nciDomainValue) {
+         (sdtmct:C66731) 
   }
 }
 
