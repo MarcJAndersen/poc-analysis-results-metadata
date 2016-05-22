@@ -27,7 +27,7 @@ prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
 prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
  select ?nciDomain ?cdiscDefinition ?code ?cdiscSynonyms ?nciCode ?nciPreferredTerm ?nciDomainValue
 where {
-  ?nciDomain mms:inValueDomain        ?nciDomainValue ;
+  ?nciDomain mms:inValueDomain        ?nciDomainValue .
   ?nciDomain cts:cdiscDefinition      ?cdiscDefinition .
   ?nciDomain cts:cdiscSubmissionValue ?code .
   ?nciDomain cts:nciCode              ?nciCode .
