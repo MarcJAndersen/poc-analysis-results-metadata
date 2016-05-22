@@ -114,21 +114,22 @@ This should give the following output:
 
 To test Fuseki, open a browser window and goto (http://localhost:3030/).
 The browser should show the main screen for Fuseki.
-![Fuseki Main screen](apache-fuseki-1.PNG).
+
+![Fuseki Main screen](apache-fuseki-1.PNG)
 
 Click on the button "Info", and then on "count triples in all graphs". The browser should then show the total number of triples loaded as specified in the configuration file.
 
-![Fuseki number of triples](apache-fuseki-2.PNG).
+![Fuseki number of triples](apache-fuseki-2.PNG)
 
 In the browser with Fuseki, click on query. In the text box delete any existing text. 
 
 Open the file (sparql-rq/CDISC-code-list-C66731.rq). This SPARQL query returns the codelist for NCI code C66731. Copy the contents of the file to the clipboard. Paste the contents in the query window in the browser.
 
-![Query form after pasting query]( apache-fuseki-3.PNG).
+![Query form after pasting query]( apache-fuseki-3.PNG)
 
 Click on the start triangle (right most in the query window). The results is shown as 4 rows below the query.
 
-![Query result](apache-fuseki-4.PNG).
+![Query result](apache-fuseki-4.PNG)
   
 # Notes
 
