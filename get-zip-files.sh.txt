@@ -1,0 +1,33 @@
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-2.0.0.zip
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-2.0.0.zip.md5
+md5sum.exe apache-jena-fuseki-2.0.0.zip
+cat apache-jena-fuseki-2.0.0.zip.md5
+unzip apache-jena-fuseki-2.0.0
+
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-2.13.0.zip
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-2.13.0.zip.md5
+md5sum http://archive.apache.org/dist/jena/binaries/apache-jena-2.13.0.zip
+cat apache-jena-2.13.0.zip.md5
+unzip apache-jena-2.13.0.zip
+
+wget https://github.com/phuse-org/rdf.cdisc.org/archive/master.zip
+unzip master.zip
+mv master.zip rdf.cdisc.org-master.zip
+mv rdf.cdisc.org-master rdf.cdisc.org
+
+wget https://github.com/MarcJAndersen/rrdfqbcrnd0/archive/master.zip
+unzip master.zip
+mv master.zip  rrdfqbcrnd0-master.zip
+mv rrdfqbcrnd0-master rrdfqbcrnd0
+
+wget https://github.com/MarcJAndersen/poc-analysis-results-metadata/archive/master.zip
+unzip master.zip
+mv master.zip poc-analysis-results-metadata-master.zip
+mv poc-analysis-results-metadata-master poc-analysis-results-metadata
+
+wget https://github.com/MarcJAndersen/SAS-SPARQLwrapper/archive/master.zip
+unzip master.zip
+mv master.zip SAS-SPARQLwrapper-master.zip
+mv SAS-SPARQLwrapper-master SAS-SPARQLwrapper
+
+ls -la
