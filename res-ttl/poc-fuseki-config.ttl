@@ -70,6 +70,8 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
 	<file:../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl> ];
         ja:content [ ja:externalContent
 	<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X01.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../poc-analysis-results-metadata/specs/cdiscpilot-programs.ttl> ];
 ## CDISC stuff
         ja:content [ ja:externalContent
 	<file:../../rdf.cdisc.org/resources/w3.org/skos.rdf> ];

@@ -50,16 +50,17 @@ Apache Jena - version 2.13.0, optional, see below
 
 GitHub packages as zip files
 
-https://github.com/phuse-org/rdf.cdisc.org/archive/master.zip
-https://github.com/MarcJAndersen/rrdfqbcrnd0/archive/master.zip
-https://github.com/MarcJAndersen/poc-analysis-results-metadata/archive/master.zip
-https://github.com/MarcJAndersen/SAS-SPARQLwrapper/archive/master.zip
+    https://github.com/phuse-org/rdf.cdisc.org/archive/master.zip
+    https://github.com/MarcJAndersen/rrdfqbcrnd0/archive/master.zip
+    https://github.com/MarcJAndersen/poc-analysis-results-metadata/archive/master.zip
+    https://github.com/MarcJAndersen/SAS-SPARQLwrapper/archive/master.zip
 
 Github repositories
-https://github.com/phuse-org/rdf.cdisc.org
-https://github.com/MarcJAndersen/rrdfqbcrnd0
-https://github.com/MarcJAndersen/poc-analysis-results-metadata
-https://github.com/MarcJAndersen/SAS-SPARQLwrapper
+
+    https://github.com/phuse-org/rdf.cdisc.org
+    https://github.com/MarcJAndersen/rrdfqbcrnd0
+    https://github.com/MarcJAndersen/poc-analysis-results-metadata
+    https://github.com/MarcJAndersen/SAS-SPARQLwrapper
 
 
 # Installation

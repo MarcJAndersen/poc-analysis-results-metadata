@@ -1,0 +1,2 @@
+java -jar ../../pdfbox/pdfbox-app-2.0.1.jar ExtractText -html "..\..\CDISC-pilot\Updated Pilot Submission Package\900172\m5\53-clin-stud-rep\535-rep-effic-safety-stud\5351-stud-rep-contr\cdiscpilot01\cdiscpilot01.pdf" cdiscpilot.html 
+java -jar ../../pdfbox/pdfbox-app-2.0.1.jar ExtractText "..\..\CDISC-pilot\Updated Pilot Submission Package\900172\m5\53-clin-stud-rep\535-rep-effic-safety-stud\5351-stud-rep-contr\cdiscpilot01\cdiscpilot01.pdf" cdiscpilot.txt 

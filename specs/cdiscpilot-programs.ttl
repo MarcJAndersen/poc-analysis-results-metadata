@@ -1,0 +1,155 @@
+@prefix ds: <http://example.org/sasdataset#> .
+@prefix dsv: <http://example.org/sasdataset-variable#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ 
+
+ds:obs1_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Populations" ;
+   dsv:programname "adsl1.sas" ;
+   dsv:tno "14-1.01" .
+
+ds:obs2_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of End of Study Data" ;
+   dsv:programname "adsl2.sas" ;
+   dsv:tno "14-1.02" .
+
+ds:obs3_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Number of Subjects By Site" ;
+   dsv:programname "adsl4.sas" ;
+   dsv:tno "14-1.03" .
+
+ds:obs4_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Demographic and Baseline Characteristics" ;
+   dsv:programname "adsl3.sas" ;
+   dsv:tno "14-2.01" .
+
+ds:obs5_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.01" .
+
+ds:obs6_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Primary Endpoint Analysis: CIBIC+ - Summary at Week 24 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.02" .
+
+ds:obs7_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Change from Baseline to Week 8 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.03" .
+
+ds:obs8_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "CIBIC+ - Summary at Week 8 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.04" .
+
+ds:obs9_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Change from Baseline to Week 16 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.05" .
+
+ds:obs10_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "CIBIC+ - Summary at Week 16 - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.06" .
+
+ds:obs11_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Change from Baseline to Week 24 - Completers at Wk 24-Observed Cases-Windowed" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.07" .
+
+ds:obs12_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Change from Baseline to Week 24 in Male Subjects - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.08" .
+
+ds:obs13_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Change from Baseline to Week 24 in Female Subjects - LOCF" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.09" .
+
+ds:obs14_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Mean and Mean Change from Baseline over Time" ;
+   dsv:programname "rtf_eff_time.sas" ;
+   dsv:tno "14-3.10" .
+
+ds:obs15_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "ADAS Cog (11) - Repeated Measures Analysis of Change from Baseline to Week 24" ;
+   dsv:programname "rtf_eff_mmrm.sas" ;
+   dsv:tno "14-3.11" .
+
+ds:obs16_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Mean NPI-X Total Score from Week 4 through Week 24 - Windowed" ;
+   dsv:programname "rtf_eff1.sas" ;
+   dsv:tno "14-3.12" .
+
+ds:obs17_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "CIBIC+ - Categorical Analysis - LOCF" ;
+   dsv:programname "rtf_eff_cat.sas" ;
+   dsv:tno "14-3.13" .
+
+ds:obs18_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Planned Exposure to Study Drug, as of End of Study" ;
+   dsv:programname "adsl12.sas" ;
+   dsv:tno "14-4.01" .
+
+ds:obs19_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Incidence of Treatment Emergent Adverse Events by Treatment Group" ;
+   dsv:programname "aetable.sas" ;
+   dsv:tno "14-5.01" .
+
+ds:obs20_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Incidence of Treatment Emergent Serious Adverse Events by Treatment Group" ;
+   dsv:programname "saetable.sas" ;
+   dsv:tno "14-5.02" .
+
+ds:obs21_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary Statistics for Continuous Laboratory Values" ;
+   dsv:programname "rt_lb_cont.sas" ;
+   dsv:tno "14-6.01" .
+
+ds:obs22_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Frequency of Normal and Abnormal (Beyond Normal Range) Laboratory Values During Treatment" ;
+   dsv:programname "rt_labnormfreq.sas" ;
+   dsv:tno "14-6.02" .
+
+ds:obs23_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Frequency of Normal and Abnormal (Clinically Significant Change from Previous Visit) Laboratory Values" ;
+   dsv:programname "rt_labnormfreq.sas" ;
+   dsv:tno "14-6.03" .
+
+ds:obs24_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Shifts of Laboratory Values During Treatment, Categorized Based on Threshold Ranges, by Visit" ;
+   dsv:programname "rt_labshiftweek.sas" ;
+   dsv:tno "14-6.04" .
+
+ds:obs25_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Shifts of Laboratory Values During Treatment, Categorized Based on Threshold Ranges" ;
+   dsv:programname "rt_labshift.sas" ;
+   dsv:tno "14-6.05" .
+
+ds:obs26_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Shifts of Hy's Law Values During Treatment" ;
+   dsv:programname "rt_hyslaw.sas" ;
+   dsv:tno "14-6.06" .
+
+ds:obs27_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Vital Signs at Baseline and End of Treatment" ;
+   dsv:programname "rtvs.sas" ;
+   dsv:tno "14-7.01" .
+
+ds:obs28_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Vital Signs Change from Baseline at End of Treatment" ;
+   dsv:programname "rtvs.sas" ;
+   dsv:tno "14-7.02" .
+
+ds:obs29_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Weight Change from Baseline at End of Treatment" ;
+   dsv:programname "rtvs.sas" ;
+   dsv:tno "14-7.03" .
+
+ds:obs30_work.programsttl rdf:type ds:work.programsttl ;
+   dsv:TableTitle "Summary of Concomitant Medications (Number of Subjects)" ;
+   dsv:programname "Conmeds.sas" ;
+   dsv:tno "14-7.04" .
