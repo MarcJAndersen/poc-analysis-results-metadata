@@ -98,7 +98,7 @@ The following shows the results of testing the setup on Windows 10 with windows 
 
 Change to apache Jena Fuseki directory, and start Fuseki.
 
-    cd/d I:\poc-test\apache-jena-fuseki-2.0.0
+o    cd/d I:\poc-test\apache-jena-fuseki-2.0.0
     fuseki-server.bat --config=../poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
 
 This should give the following output:
@@ -119,6 +119,7 @@ The browser should show the main screen for Fuseki.
 ![Fuseki Main screen](apache-fuseki-1.PNG)
 
 Click on the button "Info", and then on "count triples in all graphs". The browser should then show the total number of triples loaded as specified in the configuration file.
+
 
 ![Fuseki number of triples](apache-fuseki-2.PNG)
 
