@@ -31,7 +31,12 @@ proc format;
         "Xanomeline High Dose"="Xanomeline High Dose"
         ;
 run;
-        
+
+/* To be documented:
+
+    introducing compfl
+
+*/    
 data work.adsl ;
     set source.adsl ;
     format trt01p $trt01p.;
@@ -40,6 +45,12 @@ data work.adsl ;
     label compfl="Complete Study";
 run;
 
+/* To be documented:
+
+    using trt01p and not trt01pn - as using character variables make the code below simpler
+    
+*/    
+    
 proc tabulate data=adsl missing;
     ods output table=work.tab_14_1x01;
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
@@ -73,7 +84,7 @@ data forexport;
 
     keep measure;
 
-    array adim(*) ittfl saffl efffl comp24fl compfl /* disconfl */ trt01pn;
+    array adim(*) ittfl saffl efffl comp24fl compfl /* disconfl */ trt01p;
 
     do i=1 to dim(adim);
         select;
@@ -96,7 +107,7 @@ data forexport;
     if substr(_type_,1,1)="1" then do;
     factor="proportion";
     procedure="percent";
-    /* assuming only one variable as denominator, except the first TRT01PN */
+    /* assuming only one variable as denominator, excluding the first position representing TRT01P  */
     denominator=vname(adim(index(substr(_type_,2),"1"))); 
     measure= pctN_100000;
     output;
@@ -105,7 +116,7 @@ data forexport;
     if substr(_type_,1,1)="0" then do;
     factor="proportion";
     procedure="percent";
-    /* assuming only one variable as denominator, except the first TRT01PN */
+    /* assuming only one variable as denominator, except the first TRT01P */
     denominator=vname(adim(index(substr(_type_,2),"1"))); 
     measure= pctN_000000;
     output;

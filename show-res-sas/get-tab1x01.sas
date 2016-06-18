@@ -21,7 +21,7 @@ options mprint nocenter;
 );
 
 proc print data=tab1x01 width=min;
-    var ittfl col1z1 col1z2 col2z1 col2z2 col3z1 col3z2;
+    var ittfl col1z1 col1z2 col2z1 col2z2 col3z1 col3z2  col4z1 col4z2;
 run;
 
 data tab1x01_pres;
@@ -32,7 +32,7 @@ data tab1x01_pres;
         ifc( efffllevellabel    ="Y",effflVarLabel, " "),    
         ifc( comp24fllevellabel ="Y",comp24flVarLabel, " "), 
         ifc( compfllevellabel   ="Y",compflVarLabel, " ") );
-    format col1z2 col2z2 col3z2 f5.1;
+    format col1z2 col2z2 col3z2 col4z2 f5.1;
 run;
 
 ods html file="tab1x01.html" style=minimal;
@@ -58,6 +58,34 @@ proc report data=tab1x01_pres missing nofs;
     compute col1z2;
     call define(_col_,"URL",col1z2URI);
     endcomp;
+
+    define col2z1URI / noprint;
+    compute col2z1;
+    call define(_col_,"URL",col2z1URI);
+    endcomp;
+    define col2z2URI / noprint;
+    compute col2z2;
+    call define(_col_,"URL",col2z2URI);
+    endcomp;
+
+    define col3z1URI / noprint;
+    compute col3z1;
+    call define(_col_,"URL",col3z1URI);
+    endcomp;
+    define col3z2URI / noprint;
+    compute col3z2;
+    call define(_col_,"URL",col3z2URI);
+    endcomp;
+
+    define col43z1URI / noprint;
+    compute col43z1;
+    call define(_col_,"URL",col4z1URI);
+    endcomp;
+    define col43z2URI / noprint;
+    compute col43z2;
+    call define(_col_,"URL",col4z2URI);
+    endcomp;
+
 run;
 
 ods html close;

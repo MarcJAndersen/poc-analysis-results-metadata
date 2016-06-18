@@ -13,6 +13,7 @@ install.packages("RCurl")
 install.packages("xlsx")
 install.packages("XML")
 
+library(devtools)
 install_github("egonw/rrdf", subdir="rrdflibs") 
 install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE) 
 

@@ -44,6 +44,8 @@ select
  ?col1z1URI ?col1z1  ?col1z2URI ?col1z2
  ?col2z1URI ?col2z1  ?col2z2URI ?col2z2
  ?col3z1URI ?col3z1  ?col3z2URI ?col3z2
+ ?col4z1URI ?col4z1  ?col4z2URI ?col4z2
+ 
 where
 {
 ?col1z1URI  a qb:Observation;
@@ -111,6 +113,28 @@ where
          crnd-dimension:saffl ?saffl    ;
          crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;
          crnd-measure:measure ?col3z2 .
+
+ ?col4z1URI  a qb:Observation;
+         crnd-dimension:comp24fl ?comp24fl    ;
+         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:efffl ?efffl       ;
+         crnd-dimension:factor ?factorZ1      ;
+         crnd-dimension:ittfl ?ittfl       ;
+         crnd-dimension:procedure ?procedureZ1 ;   
+         crnd-dimension:saffl ?saffl    ;
+         crnd-dimension:trt01p code:trt01p-_ALL_ ;
+         crnd-measure:measure ?col4z1 .
+
+ ?col4z2URI  a qb:Observation;
+         crnd-dimension:comp24fl ?comp24fl    ;
+         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:efffl ?efffl       ;
+         crnd-dimension:factor ?factorZ2      ;
+         crnd-dimension:ittfl ?ittfl       ;
+         crnd-dimension:procedure ?procedureZ2 ;   
+         crnd-dimension:saffl ?saffl    ;
+         crnd-dimension:trt01p code:trt01p-_ALL_ ;
+         crnd-measure:measure ?col4z2 .
 
 
 ?comp24fl skos:prefLabel    ?comp24flLevelLabel .
