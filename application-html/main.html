@@ -101,6 +101,8 @@ iframe {
 
 <script>    
 
+var SparqlEndpointQueryStem= 'http://localhost:3030/arm?query=';
+  
 var textToCopy = 'No text copied';
 var htmlToCopy = '<div hiddenContent="Here is the text">No text copied</div>';
 
@@ -172,7 +174,8 @@ ev.preventDefault();
     }
 var data=ev.dataTransfer.getData("Text");
 console.log("Describe : ", data);
-var fctlink= "http://localhost:8890/describe/?url="+encodeURI(data);
+// var fctlink= "http://localhost:8890/describe/?url="+encodeURI(data);
+var fctlink= SparqlEndpointQueryStem+encodeURI("DESCRIBE "+"<"+data+">"); // +"?format="+encodeURIComponent("text/plain");
 console.log(" --> Open: ", fctlink);
 setsrc(fctlink)
 // alert("Drop on 1: "+ data);
@@ -219,7 +222,11 @@ var rqquery= [
 <!-- ].join(" ")	 -->
 <!-- ;  -->
 
-var sparqlURI="http://localhost:8890/sparql?default-graph-uri=&query="+encodeURIComponent(rqquery)+"&format=text%2Fhtml&timeout=0&debug=on";
+
+// var sparqlURI=SparqlEndpointQueryStem+encodeURIComponent(rqquery)+"&format=text%2Fhtml&timeout=0&debug=on";
+var sparqlURI=SparqlEndpointQueryStem+encodeURIComponent(rqquery)+"&format="+encodeURIComponent("text/plain");
+// take code from ActionData.js to process result as json and then write as html table
+// var sparqlURI=SparqlEndpointQueryStem+encodeURIComponent(rqquery)+"&format="+encodeURIComponent("application/sparql-results+xml");
 console.log(" --> Open: ", sparqlURI);
 setsrc(sparqlURI);
 

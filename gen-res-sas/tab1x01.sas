@@ -34,15 +34,25 @@ run;
 
 /* To be documented:
 
-    introducing compfl
-
+    introducing compfl - as there is no completer flag: usee disconfl value "N" for count of completers
+    However, here it is preferred to count number of "Y" - but that may be changed in the SPARQL query.
+    
+    This is worth discussion - example on how the defintions interact, and that it is not apparant from
+    the specification.
+    
 */    
 data work.adsl ;
     set source.adsl ;
     format trt01p $trt01p.;
     length compfl $1;
     compfl= ifc(DCREASCD="Completed", "Y", " ");
-    label compfl="Complete Study";
+
+label ittfl="Intent-To-Treat (ITT)";
+label saffl="Safety";
+label efffl="Efficacy"; 
+label comp24fl="Complete Week 24";
+label compfl="Complete Study";
+label disconfl="Complete Study";
 run;
 
 /* To be documented:
@@ -54,9 +64,9 @@ run;
 proc tabulate data=adsl missing;
     ods output table=work.tab_14_1x01;
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
-    class ittfl saffl efffl comp24fl compfl /* disconfl */; 
-    table ittfl saffl efffl comp24fl compfl /* disconfl */, 
-        (trt01p all)*(N*f=f3.0 pctn<ittfl saffl efffl comp24fl compfl /* disconfl*/>*f=f3.0);
+    class ittfl saffl efffl comp24fl /* compfl */ disconfl; 
+    table ittfl saffl efffl comp24fl /* compfl */ disconfl, 
+        (trt01p all)*(N*f=f3.0 pctn<ittfl saffl efffl comp24fl /* compfl */ disconfl >*f=f3.0);
 run;
 
 
@@ -72,9 +82,9 @@ proc print data=work.tab_14_1x01 width=min;
 run;
 
 data forexport;
-    length ittfl saffl efffl comp24fl compfl /* disconfl */ trt01p $200;
+    length ittfl saffl efffl comp24fl /* compfl */ disconfl trt01p $200;
     set work.tab_14_1x01;
-    keep ittfl saffl efffl comp24fl compfl /* disconfl */;
+    keep ittfl saffl efffl comp24fl /* compfl */ disconfl;
     keep trt01p;
     keep procedure factor;
     length procedure factor $50;
@@ -84,7 +94,7 @@ data forexport;
 
     keep measure;
 
-    array adim(*) ittfl saffl efffl comp24fl compfl /* disconfl */ trt01p;
+    array adim(*) ittfl saffl efffl comp24fl /* compfl */ disconfl trt01p;
 
     do i=1 to dim(adim);
         select;
@@ -139,14 +149,17 @@ data skeletonSource1;
         end;
         length compType compName codeType nciDomainValue compLabel Comment $512;
         keep compType compName codeType nciDomainValue compLabel Comment;
+    
     Comment= " ";
     compType= "dimension"; compName="trt01p";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
     /* change compName to label of variable */
     compType= "dimension"; compName="ittfl";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="saffl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="efffl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="comp24fl";    compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="compfl";  /* disconfl */   compLabel=compName; codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="saffl";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="efffl";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
+    compType= "dimension"; compName="comp24fl";  compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
+    /* The next variable should be  disconfl - see note above */  
+    compType= "dimension"; compName="disconfl";  compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
+/*    compType= "dimension"; compName="compfl";  compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output; */
 
     compType= "dimension"; compName="procedure"; compLabel="Statistical Procedure"; codeType="DATA"; nciDomainValue= " ";output;
     compType= "dimension"; compName="factor";    compLabel="Type of procedure (quantity, proportion...)"; codeType="DATA"; nciDomainValue= " "; output;
@@ -274,6 +287,14 @@ compLabel= "!temporary";
 Comment= " ";
 output; 
 
+compType= "metadata";
+compName= "extension.rrdfqbcrnd0";
+codeType= " ";
+nciDomainValue= " ";
+compLabel= "TRUE";
+Comment= " ";
+output; 
+    
 run;
 
 data skeletonSource;

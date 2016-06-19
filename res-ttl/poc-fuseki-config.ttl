@@ -9,7 +9,10 @@
 
 # Windows - start using Windows CMD
 #
-# The following directory structure is assument:
+# To start apache jena fuseki change to directory apache-jena-fuseki-2.0.0 and issue
+# fuseki-server.bat --config=../poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
+#
+# The following directory structure is assumed:
 #
 # poc-analysis-results-metadata
 # apache-jena-fuseki-2.0.0
@@ -21,8 +24,6 @@
 # environment variables.
 # (This may change)
 #
-# To start apache jena fuseki change to directory apache-jena-fuseki-2.0.0 and issue
-# fuseki-server.bat --config=../poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
 
 @prefix :        <#> .
 @prefix fuseki:  <http://jena.apache.org/fuseki#> .
@@ -66,12 +67,25 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
    .
 
 <#modelDft> a ja:MemoryModel ;
-        ja:content [ ja:externalContent
+
+## RDF data cube vocabulary
+ja:content [ ja:externalContent
 	<file:../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl> ];
+
+## CDISC Pilot01 datasets as RDF in D2RQ format
+        ja:content [ ja:externalContent
+	<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl-map.ttl> ];
+        ja:content [ ja:externalContent
+	<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl.ttl> ];
+
+## CDISC Pilot01 ARM RDF data cube
         ja:content [ ja:externalContent
 	<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X01.ttl> ];
-        ja:content [ ja:externalContent
-	<file:../../poc-analysis-results-metadata/specs/cdiscpilot-programs.ttl> ];
+
+## CDISC Pilot01 poc overview of programs (not made yet)
+#        ja:content [ ja:externalContent
+#	<file:../../poc-analysis-results-metadata/specs/cdiscpilot-programs.ttl> ];
+
 ## CDISC stuff
         ja:content [ ja:externalContent
 	<file:../../rdf.cdisc.org/resources/w3.org/skos.rdf> ];

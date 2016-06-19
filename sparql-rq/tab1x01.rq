@@ -37,7 +37,7 @@ select
  ?safflVarLabel       ?safflLevelLabel       ?saffl
  ?effflVarLabel       ?effflLevelLabel       ?efffl
  ?comp24flVarLabel    ?comp24flLevelLabel    ?comp24fl
- ?compflVarLabel    ?compflLevelLabel    ?compfl
+ ?disconflVarLabel    ?disconflLevelLabel    ?disconfl
  ?procedureZ1VarLabel ?procedureZ1LevelLabel ?procedureZ1  
  ?procedureZ2VarLabel ?procedureZ2LevelLabel ?procedureZ2  
 
@@ -50,7 +50,7 @@ where
 {
 ?col1z1URI  a qb:Observation;
         crnd-dimension:comp24fl ?comp24fl    ;
-        crnd-dimension:compfl ?compfl    ;
+        crnd-dimension:disconfl ?disconfl    ;
         crnd-dimension:efffl ?efffl       ;
         crnd-dimension:factor ?factorZ1      ;
         crnd-dimension:ittfl ?ittfl       ;
@@ -61,7 +61,7 @@ where
 
  ?col1z2URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ2      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -72,7 +72,7 @@ where
 
  ?col2z1URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ1      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -83,7 +83,7 @@ where
 
  ?col2z2URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ2      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -94,7 +94,7 @@ where
 
  ?col3z1URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ1      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -105,7 +105,7 @@ where
 
  ?col3z2URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ2      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -116,7 +116,7 @@ where
 
  ?col4z1URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ1      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -127,7 +127,7 @@ where
 
  ?col4z2URI  a qb:Observation;
          crnd-dimension:comp24fl ?comp24fl    ;
-         crnd-dimension:compfl ?compfl    ;
+         crnd-dimension:disconfl ?disconfl    ;
          crnd-dimension:efffl ?efffl       ;
          crnd-dimension:factor ?factorZ2      ;
          crnd-dimension:ittfl ?ittfl       ;
@@ -138,7 +138,7 @@ where
 
 
 ?comp24fl skos:prefLabel    ?comp24flLevelLabel .
-?compfl skos:prefLabel    ?compflLevelLabel .
+?disconfl skos:prefLabel    ?disconflLevelLabel .
 ?efffl    skos:prefLabel    ?effflLevelLabel .
 ?ittfl    skos:prefLabel    ?ittflLevelLabel .
 ?saffl    skos:prefLabel    ?safflLevelLabel .
@@ -148,8 +148,8 @@ where
 [] qb:codeList [ skos:hasTopConcept ?comp24fl ] ;
    rdfs:label ?comp24flVarLabel .
 
-[] qb:codeList [ skos:hasTopConcept ?compfl ] ;
-   rdfs:label ?compflVarLabel .
+[] qb:codeList [ skos:hasTopConcept ?disconfl ] ;
+   rdfs:label ?disconflVarLabel .
 
 [] qb:codeList [ skos:hasTopConcept ?efffl ] ;
     rdfs:label ?effflVarLabel .
@@ -185,10 +185,10 @@ where
  ?saffl = code:saffl-Y||
  ?efffl = code:efffl-Y ||
  ?comp24fl = code:comp24fl-Y ||
- ?compfl = code:compfl-Y
+ ?disconfl = code:disconfl-N
  )
 }
 order by
-?ittflLevelLabel ?safflLevelLabel ?effflLevelLabel ?comp24flLevelLabel ?compflLevelLabel
+?ittflLevelLabel ?safflLevelLabel ?effflLevelLabel ?comp24flLevelLabel ?disconflLevelLabel
  
 

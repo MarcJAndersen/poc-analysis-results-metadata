@@ -1,10 +1,10 @@
 compType,compName,codeType,nciDomainValue,compLabel,Comment
 dimension,trt01p,DATA,,Planned Treatment for Period 01,
-dimension,ittfl,DATA,,Intent-To-Treat Population Flag,
-dimension,saffl,DATA,,saffl,
-dimension,efffl,DATA,,efffl,
-dimension,comp24fl,DATA,,comp24fl,
-dimension,compfl,DATA,,compfl,
+dimension,ittfl,DATA,,Intent-To-Treat (ITT),
+dimension,saffl,DATA,,Safety,
+dimension,efffl,DATA,,Efficacy,
+dimension,comp24fl,DATA,,Complete Week 24,
+dimension,disconfl,DATA,,Complete Study,
 dimension,procedure,DATA,,Statistical Procedure,
 dimension,factor,DATA,,"Type of procedure (quantity, proportion...)",
 measure,measure,,,Value of the statistical measure,
@@ -24,3 +24,4 @@ metadata,wasDerivedFrom,,,tab1x01.csv,Data source (obsFileName). Set this progra
 metadata,domainName,,,TAB1X01,"The domain name, also part of the spreadsheet tab name"
 metadata,obsFileNameDirec,,,!example,The directory containd the wasDerivedFrom file
 metadata,dataCubeOutDirec,,,!temporary,
+metadata,extension.rrdfqbcrnd0,,,TRUE,
