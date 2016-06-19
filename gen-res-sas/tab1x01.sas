@@ -34,6 +34,8 @@ run;
 
 /* To be documented:
 
+    The data contains disconfl which gives the number discontinuing for value "Y".
+    
     introducing compfl - as there is no completer flag: usee disconfl value "N" for count of completers
     However, here it is preferred to count number of "Y" - but that may be changed in the SPARQL query.
     
@@ -44,14 +46,14 @@ run;
 data work.adsl ;
     set source.adsl ;
     format trt01p $trt01p.;
-    length compfl $1;
-    compfl= ifc(DCREASCD="Completed", "Y", " ");
+/*    length compfl $1; */
+/*    compfl= ifc(DCREASCD="Completed", "Y", " "); */
 
 label ittfl="Intent-To-Treat (ITT)";
 label saffl="Safety";
 label efffl="Efficacy"; 
 label comp24fl="Complete Week 24";
-label compfl="Complete Study";
+/* label compfl="Complete Study"; */
 label disconfl="Complete Study";
 run;
 
@@ -98,7 +100,13 @@ data forexport;
 
     do i=1 to dim(adim);
         select;
-        when (missing(adim(i))) do;
+        when (upcase(vname(adim(i))) = upcase("disconfl") and _type_ in ("100001","000001")
+            and missing(adim(i)) ) do;
+        putlog adim(i)= @;
+        adim(i)="N"; /* recoding missing to N */
+        putlog " changed to " adim(i)=;
+        end;
+        when (missing(adim(i))  ) do;
         adim(i)="_ALL_";
         end;
         otherwise do; 
