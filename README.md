@@ -8,7 +8,7 @@ a project under the Semantic Technology
 the PhUSE Computational Science (CS) working groups
 (http://www.phusewiki.org/wiki/index.php?title=CSS_Working_Groups).
 
-The purpose is to show how tables for the clinical study report are
+The purpose is to show how tables for the clinical study report can be
 generated from analysis results and metadata stored a RDF data cubes.
 The CDISC SDTM/ADaM Pilot Project
 (http://www.cdisc.org/sdtmadam-pilot-project) serves as input for data
@@ -18,6 +18,8 @@ Several tools are used, see below for list of tools/packages.
 Previous versions of Apache Jena and Apache Fuseki versions are choosen as they can be executed with Java 7. Never versions exists, but they require Java 8. 
 
 # Setup
+
+This right now describes a rather convoluted setup.
 
 The recommended setup is to store all tools/packages within one
 directory (see below). This simplifies reference between packages, as
@@ -70,7 +72,7 @@ Github repositories
 All packages/tools are available for download.
 Some of the packages are available from GitHub, and can be either downloaded as zip files or cloned from Github.
 
-The simples approach is to install from zip files.
+The simplest approach is to install from zip files.
 
 Cloning from GitHub gives the advantage of being able to update with one command (`git pull`), and of course all the other benefits of git. 
 
@@ -132,7 +134,43 @@ Open the file (sparql-rq/CDISC-code-list-C66731.rq). This SPARQL query returns t
 Click on the start triangle (right most in the query window). The results is shown as 4 rows below the query.
 
 ![Query result](apache-fuseki-4.PNG)
-  
+
+# Demo
+
+## Demo pre-requisites
+
+Allow-Control-Allow-Origin
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi )
+
+## Setup
+Use google chrome for viewing.
+
+Disable CORS (click on icon at the right, so it is green)
+
+## Start servers
+
+The application use a) a web server to serve the pages (python http.server) and b) a sparql server (apache jena fuseki).
+
+### Windows: how to start the servers 
+
+The windows cmd script starts the servers.
+Open an explorer window
+for the root directory, and click on
+`z-poc-start-servers.cmd`. Alternatively, start
+`z-poc-start-servers.cmd` from a command prompt.
+
+### Linux: how to start the servers
+
+to be added
+
+## Demo start
+
+Open (http://localhost:8000/main.html).
+
+Note: for Google Chrome is may sometimes help clear Chrome Cache.
+
+
 # Notes
 
 Convert this file to html using pandoc (on windows included as of Rstudio):

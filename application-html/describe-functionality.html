@@ -2,13 +2,28 @@
 <html>
  <head>
 </head>
-<body>
-  DEMO: shows the table DC-DEMO<br>
-  Describe: drag an observation to show a facettet view from Virtuoso. Fires off a SPARQL DESCRIBE<br>
-  Dimensions: for an observations shows all the dimensions in the table. Fires off a SPARQL query.<br>
-  Which data: (does not work now: will show the underlying data for the observation)<br>
+ <body>
+   Drag and drop functions: drag and drop observation to 
+  <ul> 
+    <li>Describe: show the result of a SPARQL DESCRIBE query for the observation</li>
+    <li>Dimensions: show all the dimensions in the table querying the data in RDF</li>
+    <li>Data: show the underlying data for the observation</li>
+    <li>Copy: press ctrl-c to get text and link copied</li>
+     </ul>
+<br>
+Contents:
+<ul>    <li>Table 14.1: shows the table 14.1 from CDISC Pilot<br></li> </ul>
+
   <br>
-  Pre-requisites: needs virtuoso to run at localhost:8890/ with the TTL files loaded. See rrdf-sample-rdf-load.sql.
+  Pre-requisites:
+  <ul> 
+    <li>fuseki and webserver serving the pages</li>
+    <li>CORS enabled browser</li>
+     </ul>
+  Suggestions:
+  <ul> 
+    <li>goggle chrome: if old version of files appear - clear file cache</li>
+     </ul>
 </body>
 </html>
     
