@@ -1,0 +1,5 @@
+library(rrdf)
+define.fn<- "../../any-snippet/define-xml-processing/define.ttl"
+
+define.xml<- load.rdf(define.fn)
+

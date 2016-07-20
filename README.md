@@ -15,7 +15,10 @@ The CDISC SDTM/ADaM Pilot Project
 and table specification.
 
 Several tools are used, see below for list of tools/packages.
-Previous versions of Apache Jena and Apache Fuseki versions are choosen as they can be executed with Java 7. Never versions exists, but they require Java 8. 
+
+Previous versions of Apache Jena and Apache Fuseki versions are
+choosen as they can be executed with Java 7. Never versions exists,
+but they require Java 8, which is not always available.
 
 # Setup
 
@@ -31,6 +34,7 @@ Directory structure
     apache-jena-fuseki-2.0.0
     poc-analysis-results-metadata
     rdf.cdisc.org
+	phuse-scripts
     rrdfqbcrnd0
     SAS-SPARQLwrapper
 
@@ -60,6 +64,7 @@ GitHub packages as zip files
 Github repositories
 
     https://github.com/phuse-org/rdf.cdisc.org
+    https://github.com/phuse-org/phuse-scripts
     https://github.com/MarcJAndersen/rrdfqbcrnd0
     https://github.com/MarcJAndersen/poc-analysis-results-metadata
     https://github.com/MarcJAndersen/SAS-SPARQLwrapper
@@ -135,13 +140,19 @@ Click on the start triangle (right most in the query window). The results is sho
 
 ![Query result](apache-fuseki-4.PNG)
 
+# Building RDF datacubes
+
+The directory (./build-scripts) provides scripts for building the RDF datacubes.
+
+Each cube is build by one script. 
+
 # Demo
 
 ## Demo pre-requisites
 
 Allow-Control-Allow-Origin
 
-https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi )
+    (https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 
 ## Setup
 Use google chrome for viewing.
@@ -175,4 +186,4 @@ Note: for Google Chrome is may sometimes help clear Chrome Cache.
 
 Convert this file to html using pandoc (on windows included as of Rstudio):
 
-    pandoc --from=markdown_github readme.md -o readme.html
+    pandoc --from=markdown_github README.md -o README.html

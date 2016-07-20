@@ -1,0 +1,37 @@
+@prefix phsg:  <http://www.example.org/phsg/> .
+
+<http://www.example.org/phsg/fn1/Script>
+        phsg:Desc     "Script description" ;
+        phsg:GCR      <http://www.example.org/phsg/fn1/Script/GCR> ;
+        phsg:Name     "tab1x01.sas" ;
+        phsg:SRV      <http://www.example.org/phsg/fn1/Script/SRV> ;
+        phsg:Source   "Submission" ;
+        phsg:Subtype  "Summary" ;
+        phsg:Target   <http://www.example.org/phsg/fn1/Script/Target> ;
+        phsg:Title    "Table 14.01" ;
+        phsg:Topic    "Proof of concept for Analysis Results and Metadata using CDISC Pilot Study" ;
+        phsg:Type     "Table" .
+
+<http://www.example.org/phsg/fn1/Outputs>
+        phsg:datasets  "(none)" .
+
+<http://www.example.org/phsg/fn1/Inputs>
+        phsg:datasets    "adam.adsl" ;
+        phsg:inputfiles  "adsl.xpt" .
+
+<http://www.example.org/phsg/fn1/Language>
+        phsg:name     "SAS" ;
+        phsg:version  "0.0.1" .
+
+<http://www.example.org/phsg/fn1/Package>
+        phsg:name   "pocarm" ;
+        phsg:title  "Proof of concept Analysis Results and Metadata" .
+
+phsg:fn1  phsg:Comments  "Please edit this file. To provide useful information.\n" ;
+        phsg:Inputs    <http://www.example.org/phsg/fn1/Inputs> ;
+        phsg:KeyWords  "Phuse2016, ARM, Analysis Results and Metadata" ;
+        phsg:Language  <http://www.example.org/phsg/fn1/Language> ;
+        phsg:Outputs   <http://www.example.org/phsg/fn1/Outputs> ;
+        phsg:Package   <http://www.example.org/phsg/fn1/Package> ;
+        phsg:Script    <http://www.example.org/phsg/fn1/Script> ;
+        phsg:filename  "../gen-res-sas/tab1x01.yml" .

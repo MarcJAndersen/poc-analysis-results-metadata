@@ -6,6 +6,8 @@
 ** Status: ok    
 \*------------------------------------------------------------------------*/
 
+options linesize=200;
+
 options mprint nocenter;
 
 proc groovy  ;
@@ -52,16 +54,16 @@ import com.hp.hpl.jena.rdf.model.ModelFactory ;
 // https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/ModelFactory.html
 Model m = ModelFactory.createDefaultModel() ;
 m.read("../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl");
-m.read("../res-ttl/CDISC-pilot-TAB1X01.ttl") ;
+m.read("../res-ttl/CDISC-pilot-TAB1X02.ttl") ;
         
 // https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/QueryFactory.html    
-Query query = QueryFactory.read("../sparql-rq/tab1x01.rq") ;
+Query query = QueryFactory.read("../sparql-rq/tab1x02.rq") ;
 QueryExecution qexec = QueryExecutionFactory.create(query, m) ;
 
 //  https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/ResultSetFormatter.html
 ResultSet rs = qexec.execSelect() ;
 //       ResultSetFormatter.outputAsXML(System.out, rs);
-FileOutputStream os = new FileOutputStream("check-CDISC-pilot-TAB1X01.xml");            
+FileOutputStream os = new FileOutputStream("check-CDISC-pilot-TAB1X02.xml");            
 ResultSetFormatter.outputAsXML(os, rs);
 os.close();
 
@@ -74,51 +76,52 @@ quit;
 
 %sparqlreadxml(
     sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map),
-    sparqlqueryresultxml=check-CDISC-pilot-TAB1X01.xml,
+    sparqlqueryresultxml=check-CDISC-pilot-TAB1X02.xml,
     frsxlemap=SXLEMAP,
-    resultdsn=tab1x01,
+    resultdsn=tab1x02,
     debug=Y
 );
 
 
-proc print data=tab1x01 width=min;
-    var ittfl col1z1 col1z2 col2z1 col2z2 col3z1 col3z2 col4z1 col4z2;
+proc print data=tab1x02 width=min;
+    var comp24flLevelLabel dcreascdLevelLabel col1z1 col1z2 col2z1 col2z2 col3z1 col3z2 col4z1 col4z2;
 run;
 
-
-/* The rest is from get-tab1x01.sas - put in  include file, so the code is shared */
+/* The rest is from get-tab1x02.sas - put in  include file, so the code is shared */
 
 proc format;
     picture pctfmt(round max=6) low-high='0009%)' (prefix="(");
 run;
 
 run;
-data tab1x01_pres;
-    set tab1x01;
-	/* This could be derived in the SPARQL query */
-    rowlabel= catx(" ", ifc( ittfllevellabel    ="Y",ittflVarLabel, " "),    
-        ifc( saffllevellabel    ="Y",safflVarLabel, " "),    
-        ifc( efffllevellabel    ="Y",effflVarLabel, " "),    
-        ifc( comp24fllevellabel ="Y",comp24flVarLabel, " "), 
-        ifc( disconfllevellabel   ="N",disconflVarLabel, " ") );
+data tab1x02_pres;
+    set tab1x02;
+    roworder=ifn(dcreascdLevelLabel="_ALL_",1,2);
+    
+        /* This could be derived in the SPARQL query */
+    length rowgrouplabel $200;
+    rowgrouplabel= ifc( roworder=1, comp24flVarLabel, ifc(roworder=2, dcreascdVarLabel, "**check program**"));
+    
+    length rowlabel $200;
+    rowlabel= ifc( roworder=1, comp24flLevelLabel, ifc(roworder=2, dcreascdLevelLabel, "**check program**"));
 
     format col1z1 col2z1 col3z1 col4z1 f5.0;
     format col1z2 col2z2 col3z2 col4z2 pctfmt.;
 run;
 
-ods html file="tab1x01.html"(title= "Table 14.1.1 from ARM RDF data cube")
+ods html file="tab1x02.html"(title= "Table 14.1.2 from ARM RDF data cube")
     style=minimal;
-* ods pdf file="tab1x01.pdf" style=minimal;
-* ods tagsets.rtf file="tab1x01.rtf";
+* ods pdf file="tab1x02.pdf" style=minimal;
+* ods tagsets.rtf file="tab1x02.rtf";
 
 
 
 
 title;
 
-proc report data=tab1x01_pres missing nofs split="¤";
+proc report data=tab1x02_pres missing nofs split="¤";
     column
-        (" "                    rowlabel)
+        (" "                    roworder rowgrouplabel rowlabel)
         ("Placebo"              col1z1URI col1z1 col1z2URI col1z2)
         ("Xanomeline¤Low Dose"  col2z1URI col2z1 col2z2URI col2z2)
         ("Xanomeline¤High Dose" col3z1URI col3z1 col3z2URI col3z2)
@@ -131,6 +134,15 @@ proc report data=tab1x01_pres missing nofs split="¤";
    change the format. As all values uses the same format, it is not needed for this table.
 
     */
+
+        define roworder / " " order noprint;
+        define rowgrouplabel / " " order noprint;
+        compute before rowgrouplabel;
+        line @1 rowgrouplabel $200.;
+        endcomp;
+        compute after rowgrouplabel;
+        line @1 " ";
+        endcomp;
         
     define rowlabel / " " display width=25 flow;
 

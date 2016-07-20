@@ -2,6 +2,7 @@
 *.lst
 *.pdf
 *.rtf
+*.xml
 temp-sparqlquery-headerIn.txt
 temp-sparqlquery-headerOut.txt
 temp-sparqlquery.txt

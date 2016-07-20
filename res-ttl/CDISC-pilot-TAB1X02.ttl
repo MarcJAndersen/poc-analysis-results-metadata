@@ -1,0 +1,1934 @@
+@prefix dccs:  <http://www.example.org/dc/tab1x02/dccs/> .
+@prefix sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#> .
+@prefix code:  <http://www.example.org/dc/code/> .
+@prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix cdash-1-1: <http://rdf.cdisc.org/std/cdash-1-1#> .
+@prefix sdtm-1-3: <http://rdf.cdisc.org/std/sdtm-1-3#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#> .
+@prefix crnd-attribute: <http://www.example.org/dc/attribute#> .
+@prefix sdtm-1-2: <http://rdf.cdisc.org/std/sdtm-1-2#> .
+@prefix sdtmct: <http://rdf.cdisc.org/sdtm-terminology#> .
+@prefix ds:    <http://www.example.org/dc/tab1x02/ds/> .
+@prefix qb:    <http://purl.org/linked-data/cube#> .
+@prefix mms:   <http://rdf.cdisc.org/mms#> .
+@prefix crnd-dimension: <http://www.example.org/dc/dimension#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix cdashct: <http://rdf.cdisc.org/cdash-terminology#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
+@prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#> .
+@prefix crnd-measure: <http://www.example.org/dc/measure#> .
+@prefix cts:   <http://rdf.cdisc.org/ct/schema#> .
+@prefix pav:   <http://purl.org/pav> .
+@prefix sdtmig-3-1-2: <http://rdf.cdisc.org/std/sdtmig-3-1-2#> .
+@prefix sendig-3-0: <http://rdf.cdisc.org/std/sendig-3-0#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix adamct: <http://rdf.cdisc.org/adam-terminology#> .
+@prefix sendct: <http://rdf.cdisc.org/send-terminology#> .
+@prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+ds:obs064  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "64"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+dccs:trt01p  a        qb:ComponentSpecification ;
+        rdfs:label    "Planned Treatment for Period 01" ;
+        qb:dimension  crnd-dimension:trt01p .
+
+code:trt01p-_ALL_  a       code:Trt01p , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en , "Coded values from data source. No reconciliation against another source"@en ;
+        skos:inScheme      code:trt01p ;
+        skos:prefLabel     "_ALL_"^^xsd:string ;
+        skos:topConceptOf  code:trt01p .
+
+ds:obs043  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "43"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "2"^^xsd:double .
+
+code:procedure  a                 skos:ConceptScheme ;
+        rdfs:label                "Codelist scheme: procedure"@en ;
+        rdfs:seeAlso              code:Procedure ;
+        rrdfqbcrnd0:R-columnname  "procedure"^^xsd:string ;
+        rrdfqbcrnd0:codeType      "DATA"^^xsd:string ;
+        skos:hasTopConcept        code:procedure-percent , code:procedure-count ;
+        skos:notation             "CL_PROCEDURE" ;
+        skos:note                 "Specifies the procedure for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel            "Codelist scheme: procedure"@en .
+
+ds:obs022  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "22"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "10.465116279"^^xsd:double .
+
+ds:obs001  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "1"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "8"^^xsd:double .
+
+ds:obs101  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "101"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "3"^^xsd:double .
+
+ds:obs093  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "93"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "4"^^xsd:double .
+
+code:trt01p-Placebo  a                code:Trt01p , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Placebo"^^xsd:string ;
+        skos:inScheme                 code:trt01p ;
+        skos:prefLabel                "Placebo"^^xsd:string ;
+        skos:topConceptOf             code:trt01p .
+
+ds:obs072  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "72"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs051  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "51"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "54"^^xsd:double .
+
+ds:obs030  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "30"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "46.428571429"^^xsd:double .
+
+ds:obs009  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "9"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "3"^^xsd:double .
+
+code:trt01p-_NONMISS_
+        a                  code:Trt01p , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
+        rrdfqbcrnd0:R-selectionfunction
+                "is.na"^^xsd:string ;
+        skos:inScheme      code:trt01p ;
+        skos:prefLabel     "_NONMISS_"^^xsd:string ;
+        skos:topConceptOf  code:trt01p .
+
+ds:obs109  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "109"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "118"^^xsd:double .
+
+ds:obs080  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "80"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "66.666666667"^^xsd:double .
+
+crnd-attribute:unit  a  rdf:Property , qb:AttributeProperty ;
+        rdfs:label  "Unit of measure" .
+
+ds:obs059  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "59"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:dcreascd-Completed
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Completed"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Completed"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs038  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "38"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1.1904761905"^^xsd:double .
+
+ds:obs017  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "17"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+dccs:procedure  a     qb:ComponentSpecification ;
+        rdfs:label    "Statistical Procedure" ;
+        qb:dimension  crnd-dimension:procedure .
+
+code:Trt01p  a           rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the trt01p for each observation"@en ;
+        rdfs:label       "Class for code list: trt01p"@en ;
+        rdfs:seeAlso     code:trt01p ;
+        rdfs:subClassOf  skos:Concept .
+
+ds:obs088  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "88"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs067  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "67"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs046  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "46"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1.1904761905"^^xsd:double .
+
+ds:obs025  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "25"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "60"^^xsd:double .
+
+ds:obs004  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "4"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:dcreascd-Death  a                code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Death"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Death"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:dataset-TAB1X02  a                 qb:DataSet ;
+        rdfs:comment                  ""@en ;
+        rdfs:label                    "Table 14-1.02 Summary of End of Study Data"@en ;
+        dct:description               "Data from adsl1.sas program"@en ;
+        dct:title                     "Demographics Analysis Results"^^xsd:string ;
+        qb:structure                  ds:dsd-TAB1X02 ;
+        pav:createdBy                 "username or session name"^^xsd:string ;
+        pav:createdOn                 "2016-07-20T19:02:48+02:00"^^xsd:dateTime ;
+        pav:createdWith               "R Version 3.2.5 Platform:x86_64-w64-mingw32 rrdfqbrnd0 package and dependencies"^^xsd:string ;
+        pav:version                   "0.0.0"^^xsd:string ;
+        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
+        dcat:distribution             "DC-TAB1X02-R-V-0-0-0.ttl" ;
+        prov:wasDerivedFrom           "tab1x02.csv"^^xsd:string .
+
+crnd-dimension:dcreascd
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "Reason for Early Termination (prior to Week 24):" ;
+        rdfs:range   code:Dcreascd ;
+        qb:codeList  code:dcreascd .
+
+ds:obs104  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "104"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1.5748031496"^^xsd:double .
+
+ds:obs096  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "96"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0.3937007874"^^xsd:double .
+
+ds:obs075  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "75"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "2"^^xsd:double .
+
+code:factor  a                    skos:ConceptScheme ;
+        rdfs:label                "Codelist scheme: factor"@en ;
+        rdfs:seeAlso              code:Factor ;
+        rrdfqbcrnd0:R-columnname  "factor"^^xsd:string ;
+        rrdfqbcrnd0:codeType      "DATA"^^xsd:string ;
+        skos:hasTopConcept        code:factor-_ALL_ , code:factor-proportion , code:factor-_NONMISS_ , code:factor-quantity ;
+        skos:notation             "CL_FACTOR" ;
+        skos:note                 "Specifies the factor for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel            "Codelist scheme: factor"@en .
+
+ds:obs054  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "54"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "35.714285714"^^xsd:double .
+
+crnd-dimension:factor
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "Type of procedure (quantity, proportion...)" ;
+        rdfs:range   code:Factor ;
+        qb:codeList  code:factor .
+
+ds:obs033  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "33"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:dcreascd-Protocol_violation
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Protocol violation"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Protocol violation"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs012  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "12"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+ds:obs112  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "112"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+crnd-attribute:denominator
+        a           rdf:Property , qb:AttributeProperty ;
+        rdfs:label  "Denominator for a proportion (oskr) subset on which a statistic is based" .
+
+ds:obs083  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "83"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs062  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "62"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "1.1904761905"^^xsd:double .
+
+code:Procedure  a        rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the procedure for each observation"@en ;
+        rdfs:label       "Class for code list: procedure"@en ;
+        rdfs:seeAlso     code:procedure ;
+        rdfs:subClassOf  skos:Concept .
+
+ds:obs041  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "41"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs020  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "20"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+ds:obs091  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "91"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "3"^^xsd:double .
+
+ds:obs070  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "70"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs049  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "49"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "8"^^xsd:double .
+
+ds:obs028  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "28"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs007  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "7"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+dccs:unit  a          qb:ComponentSpecification ;
+        qb:attribute  crnd-attribute:unit .
+
+ds:obs107  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "107"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "136"^^xsd:double .
+
+ds:obs099  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "99"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "3"^^xsd:double .
+
+ds:obs078  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "78"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "9.5238095238"^^xsd:double .
+
+ds:obs057  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "57"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "44"^^xsd:double .
+
+ds:obs036  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "36"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "2.380952381"^^xsd:double .
+
+code:trt01p  a                      skos:ConceptScheme ;
+        rdfs:label                  "Codelist scheme: trt01p"@en ;
+        rdfs:seeAlso                code:Trt01p ;
+        rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_TRT01P ;
+        rrdfqbcrnd0:R-columnname    "trt01p"^^xsd:string ;
+        rrdfqbcrnd0:codeType        "DATA"^^xsd:string ;
+        skos:hasTopConcept          code:trt01p-Xanomeline_High_Dose , code:trt01p-Placebo , code:trt01p-Xanomeline_Low_Dose , code:trt01p-_ALL_ , code:trt01p-_NONMISS_ ;
+        skos:notation               "CL_TRT01P" ;
+        skos:note                   "Specifies the trt01p for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel              "Codelist scheme: trt01p"@en .
+
+ds:obs015  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "15"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+code:procedure-count  a               code:Procedure , skos:Concept ;
+        rdfs:comment                  "Descriptive statistics count"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "count"^^xsd:string ;
+        rrdfqbcrnd0:RdescStatDefFun   "function (x)  {     length(x) }" ;
+        skos:inScheme                 code:procedure ;
+        skos:prefLabel                "count"^^xsd:string ;
+        skos:topConceptOf             code:procedure .
+
+ds:obs086  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "86"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "35.826771654"^^xsd:double .
+
+ds:obs065  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "65"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs044  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "44"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "2.380952381"^^xsd:double .
+
+ds:obs023  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "23"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "26"^^xsd:double .
+
+dccs:denominator  a   qb:ComponentSpecification ;
+        qb:attribute  crnd-attribute:denominator .
+
+ds:obs002  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "2"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "9.3023255814"^^xsd:double .
+
+rrdfqbcrnd0:ADSL_COMP24FL
+        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
+        rrdfqbcrnd0:D2RQ-PropertyBridge
+                <http://www.example.org/datasets/vocab/ADSL_COMP24FL> .
+
+ds:obs102  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "102"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1.1811023622"^^xsd:double .
+
+code:trt01p-Xanomeline_High_Dose
+        a                             code:Trt01p , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Xanomeline High Dose"^^xsd:string ;
+        skos:inScheme                 code:trt01p ;
+        skos:prefLabel                "Xanomeline High Dose"^^xsd:string ;
+        skos:topConceptOf             code:trt01p .
+
+code:Factor  a           rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the factor for each observation"@en ;
+        rdfs:label       "Class for code list: factor"@en ;
+        rdfs:seeAlso     code:factor ;
+        rdfs:subClassOf  skos:Concept .
+
+ds:obs094  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "94"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1.5748031496"^^xsd:double .
+
+ds:obs073  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "73"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+dccs:comp24fl  a      qb:ComponentSpecification ;
+        rdfs:label    "Completion Status:" ;
+        qb:dimension  crnd-dimension:comp24fl .
+
+ds:obs052  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "52"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "64.285714286"^^xsd:double .
+
+ds:obs031  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "31"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs010  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "10"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "3.488372093"^^xsd:double .
+
+ds:obs110  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "110"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "46.456692913"^^xsd:double .
+
+ds:obs081  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "81"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "28"^^xsd:double .
+
+ds:obs060  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "60"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:dcreascd-Lost_to_Follow-up
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Lost to Follow-up"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Lost to Follow-up"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs039  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "39"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs018  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "18"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+code:dcreascd  a                    skos:ConceptScheme ;
+        rdfs:label                  "Codelist scheme: dcreascd"@en ;
+        rdfs:seeAlso                code:Dcreascd ;
+        rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_DCREASCD ;
+        rrdfqbcrnd0:R-columnname    "dcreascd"^^xsd:string ;
+        rrdfqbcrnd0:codeType        "DATA"^^xsd:string ;
+        skos:hasTopConcept          code:dcreascd-Lack_of_Eefficacy , code:dcreascd-Protocol_criteria_not_met , code:dcreascd-Completed , code:dcreascd-_NONMISS_ , code:dcreascd-_ALL_ , code:dcreascd-Adverse_Event , code:dcreascd-Physician_decided_to_withdraw_subject , code:dcreascd-Protocol_violation , code:dcreascd-Sponsor_decision , code:dcreascd-Death , code:dcreascd-Subject_decided_to_withdraw , code:dcreascd-Missing , code:dcreascd-Lost_to_Follow-up ;
+        skos:notation               "CL_DCREASCD" ;
+        skos:note                   "Specifies the dcreascd for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel              "Codelist scheme: dcreascd"@en .
+
+code:dcreascd-_ALL_  a     code:Dcreascd , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en , "Coded values from data source. No reconciliation against another source"@en ;
+        skos:inScheme      code:dcreascd ;
+        skos:prefLabel     "_ALL_"^^xsd:string ;
+        skos:topConceptOf  code:dcreascd .
+
+ds:obs089  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "89"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "2"^^xsd:double .
+
+ds:obs068  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "68"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+crnd-dimension:comp24fl
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "Completion Status:" ;
+        rdfs:range   code:Comp24fl ;
+        qb:codeList  code:comp24fl .
+
+ds:obs047  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "47"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+ds:obs026  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "26"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "69.76744186"^^xsd:double .
+
+ds:obs005  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "5"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+rrdfqbcrnd0:ADSL_TRT01P
+        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
+        rrdfqbcrnd0:D2RQ-PropertyBridge
+                <http://www.example.org/datasets/vocab/ADSL_TRT01P> .
+
+code:dcreascd-Missing
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Missing"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Missing"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs105  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "105"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "25"^^xsd:double .
+
+code:factor-_ALL_  a       code:Factor , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en ;
+        skos:inScheme      code:factor ;
+        skos:prefLabel     "_ALL_"^^xsd:string ;
+        skos:topConceptOf  code:factor .
+
+code:dcreascd-_NONMISS_
+        a                  code:Dcreascd , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
+        rrdfqbcrnd0:R-selectionfunction
+                "is.na"^^xsd:string ;
+        skos:inScheme      code:dcreascd ;
+        skos:prefLabel     "_NONMISS_"^^xsd:string ;
+        skos:topConceptOf  code:dcreascd .
+
+ds:obs097  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "97"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs076  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "76"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "2.380952381"^^xsd:double .
+
+ds:obs055  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "55"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:dsd-TAB1X02  a     qb:DataStructureDefinition ;
+        qb:component  dccs:measure , dccs:denominator , dccs:unit , dccs:factor , dccs:procedure , dccs:dcreascd , dccs:trt01p , dccs:comp24fl .
+
+ds:obs034  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "34"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs013  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "13"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+rrdfqbcrnd0:ADSL_DCREASCD
+        rrdfqbcrnd0:D2RQ-DataSetName  "ADSL"^^xsd:string ;
+        rrdfqbcrnd0:D2RQ-PropertyBridge
+                <http://www.example.org/datasets/vocab/ADSL_DCREASCD> .
+
+code:dcreascd-Lack_of_Eefficacy
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Lack of Eefficacy"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Lack of Eefficacy"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs084  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "84"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+crnd-measure:measure  a  rdf:Property , qb:MeasureProperty ;
+        rdfs:label  "Value of the statistical measure" .
+
+ds:obs063  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "63"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:Comp24fl  a         rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the comp24fl for each observation"@en ;
+        rdfs:label       "Class for code list: comp24fl"@en ;
+        rdfs:seeAlso     code:comp24fl ;
+        rdfs:subClassOf  skos:Concept .
+
+ds:obs042  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "42"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+dccs:dcreascd  a      qb:ComponentSpecification ;
+        rdfs:label    "Reason for Early Termination (prior to Week 24):" ;
+        qb:dimension  crnd-dimension:dcreascd .
+
+code:dcreascd-Adverse_Event
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Adverse Event"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Adverse Event"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs021  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "21"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "9"^^xsd:double .
+
+code:factor-quantity  a               code:Factor , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "quantity"^^xsd:string ;
+        skos:inScheme                 code:factor ;
+        skos:prefLabel                "quantity"^^xsd:string ;
+        skos:topConceptOf             code:factor .
+
+crnd-dimension:procedure
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "Statistical Procedure" ;
+        rdfs:range   code:Procedure ;
+        qb:codeList  code:procedure .
+
+ds:obs100  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "100"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1.1811023622"^^xsd:double .
+
+ds:obs092  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "92"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1.1811023622"^^xsd:double .
+
+code:comp24fl-Completed_Week_24
+        a                             code:Comp24fl , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Completed Week 24"^^xsd:string ;
+        skos:inScheme                 code:comp24fl ;
+        skos:prefLabel                "Completed Week 24"^^xsd:string ;
+        skos:topConceptOf             code:comp24fl .
+
+ds:obs071  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "71"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs050  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "50"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "9.5238095238"^^xsd:double .
+
+code:factor-_NONMISS_
+        a                  code:Factor , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
+        rrdfqbcrnd0:R-selectionfunction
+                "is.na"^^xsd:string ;
+        skos:inScheme      code:factor ;
+        skos:prefLabel     "_NONMISS_"^^xsd:string ;
+        skos:topConceptOf  code:factor .
+
+ds:obs029  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "29"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "39"^^xsd:double .
+
+ds:obs008  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "8"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+ds:obs108  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "108"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "53.543307087"^^xsd:double .
+
+ds:obs079  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "79"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "56"^^xsd:double .
+
+ds:obs058  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "58"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "52.380952381"^^xsd:double .
+
+ds:obs037  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "37"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+ds:obs016  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "16"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Physician_decided_to_withdraw_subject ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+code:dcreascd-Sponsor_decision
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Sponsor decision"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Sponsor decision"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+dccs:measure  a     qb:ComponentSpecification ;
+        rdfs:label  "Value of the statistical measure" ;
+        qb:measure  crnd-measure:measure .
+
+ds:obs087  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "87"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs066  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "66"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lack_of_Eefficacy ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs045  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "45"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+code:dcreascd-Protocol_criteria_not_met
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Protocol criteria not met"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Protocol criteria not met"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs024  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "24"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "30.23255814"^^xsd:double .
+
+ds:obs003  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "3"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:factor-proportion
+        a                             code:Factor , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "proportion"^^xsd:string ;
+        skos:inScheme                 code:factor ;
+        skos:prefLabel                "proportion"^^xsd:string ;
+        skos:topConceptOf             code:factor .
+
+ds:obs103  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "103"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "4"^^xsd:double .
+
+ds:obs095  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "95"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+ds:obs074  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "74"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_violation ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "1.1904761905"^^xsd:double .
+
+ds:obs053  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "53"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "30"^^xsd:double .
+
+ds:obs032  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "32"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Completed ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:Dcreascd  a         rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the dcreascd for each observation"@en ;
+        rdfs:label       "Class for code list: dcreascd"@en ;
+        rdfs:seeAlso     code:dcreascd ;
+        rdfs:subClassOf  skos:Concept .
+
+ds:obs011  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "11"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+ds:obs111  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "111"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:comp24fl  a                    skos:ConceptScheme ;
+        rdfs:label                  "Codelist scheme: comp24fl"@en ;
+        rdfs:seeAlso                code:Comp24fl ;
+        rrdfqbcrnd0:DataSetRefD2RQ  rrdfqbcrnd0:ADSL_COMP24FL ;
+        rrdfqbcrnd0:R-columnname    "comp24fl"^^xsd:string ;
+        rrdfqbcrnd0:codeType        "DATA"^^xsd:string ;
+        skos:hasTopConcept          code:comp24fl-Early_Termination__prior_to_Week_24_ , code:comp24fl-Completed_Week_24 , code:comp24fl-_NONMISS_ , code:comp24fl-_ALL_ ;
+        skos:notation               "CL_COMP24FL" ;
+        skos:note                   "Specifies the comp24fl for each observation, group of obs. or all categories (_ALL_)label "@en ;
+        skos:prefLabel              "Codelist scheme: comp24fl"@en .
+
+dccs:factor  a        qb:ComponentSpecification ;
+        rdfs:label    "Type of procedure (quantity, proportion...)" ;
+        qb:dimension  crnd-dimension:factor .
+
+ds:obs082  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "82"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Completed_Week_24 ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "33.333333333"^^xsd:double .
+
+ds:obs061  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "61"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+ds:obs040  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "40"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Lost_to_Follow-up ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs019  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "19"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1"^^xsd:double .
+
+code:dcreascd-Subject_decided_to_withdraw
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Subject decided to withdraw"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Subject decided to withdraw"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+code:comp24fl-Early_Termination__prior_to_Week_24_
+        a                             code:Comp24fl , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Early Termination (prior to Week 24)"^^xsd:string ;
+        skos:inScheme                 code:comp24fl ;
+        skos:prefLabel                "Early Termination (prior to Week 24)"^^xsd:string ;
+        skos:topConceptOf             code:comp24fl .
+
+crnd-dimension:trt01p
+        a            rdf:Property , qb:CodedProperty , qb:DimensionProperty ;
+        rdfs:label   "Planned Treatment for Period 01" ;
+        rdfs:range   code:Trt01p ;
+        qb:codeList  code:trt01p .
+
+ds:obs090  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "90"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0.7874015748"^^xsd:double .
+
+ds:obs069  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "69"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:trt01p-Xanomeline_Low_Dose
+        a                             code:Trt01p , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Xanomeline Low Dose"^^xsd:string ;
+        skos:inScheme                 code:trt01p ;
+        skos:prefLabel                "Xanomeline Low Dose"^^xsd:string ;
+        skos:topConceptOf             code:trt01p .
+
+code:comp24fl-_NONMISS_
+        a                  code:Comp24fl , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents the non-missing codelist categories. Does not include missing values."@en ;
+        rrdfqbcrnd0:R-selectionfunction
+                "is.na"^^xsd:string ;
+        skos:inScheme      code:comp24fl ;
+        skos:prefLabel     "_NONMISS_"^^xsd:string ;
+        skos:topConceptOf  code:comp24fl .
+
+ds:obs048  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "48"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Sponsor_decision ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "1.1904761905"^^xsd:double .
+
+ds:obs027  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "27"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs006  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "6"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Death ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "1.1627906977"^^xsd:double .
+
+code:comp24fl-_ALL_  a     code:Comp24fl , skos:Concept ;
+        rdfs:comment       "NON-CDISC: Represents all codelist categories."@en , "Coded values from data source. No reconciliation against another source"@en ;
+        skos:inScheme      code:comp24fl ;
+        skos:prefLabel     "_ALL_"^^xsd:string ;
+        skos:topConceptOf  code:comp24fl .
+
+ds:obs106  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "106"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "9.842519685"^^xsd:double .
+
+code:procedure-percent
+        a                             code:Procedure , skos:Concept ;
+        rdfs:comment                  "Descriptive statistics percent"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "percent"^^xsd:string ;
+        rrdfqbcrnd0:RdescStatDefFun   "function (x)  {     -1 }" ;
+        skos:inScheme                 code:procedure ;
+        skos:prefLabel                "percent"^^xsd:string ;
+        skos:topConceptOf             code:procedure .
+
+ds:obs098  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "98"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs077  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "77"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Subject_decided_to_withdraw ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_Low_Dose ;
+        crnd-measure:measure        "8"^^xsd:double .
+
+ds:obs056  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "56"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        crnd-dimension:dcreascd     code:dcreascd-_ALL_ ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+ds:obs035  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "35"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Protocol_criteria_not_met ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-Xanomeline_High_Dose ;
+        crnd-measure:measure        "2"^^xsd:double .
+
+ds:obs014  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "14"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "trt01p" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Missing ;
+        crnd-dimension:factor       code:factor-proportion ;
+        crnd-dimension:procedure    code:procedure-percent ;
+        crnd-dimension:trt01p       code:trt01p-Placebo ;
+        crnd-measure:measure        "0"^^xsd:double .
+
+code:dcreascd-Physician_decided_to_withdraw_subject
+        a                             code:Dcreascd , skos:Concept ;
+        rdfs:comment                  "Coded values from data source. No reconciliation against another source"@en ;
+        rrdfqbcrnd0:R-selectionoperator
+                "=="^^xsd:string ;
+        rrdfqbcrnd0:R-selectionvalue  "Physician decided to withdraw subject"^^xsd:string ;
+        skos:inScheme                 code:dcreascd ;
+        skos:prefLabel                "Physician decided to withdraw subject"^^xsd:string ;
+        skos:topConceptOf             code:dcreascd .
+
+ds:obs085  a                        qb:Observation ;
+        rdfs:comment                "Statistic for number of records/Statistics for factor with the dimensions XX"@en ;
+        rdfs:label                  "85"^^xsd:string ;
+        qb:dataSet                  ds:dataset-TAB1X02 ;
+        crnd-attribute:denominator  "" ;
+        crnd-attribute:unit         "NA"^^xsd:string ;
+        crnd-dimension:comp24fl     code:comp24fl-Early_Termination__prior_to_Week_24_ ;
+        crnd-dimension:dcreascd     code:dcreascd-Adverse_Event ;
+        crnd-dimension:factor       code:factor-quantity ;
+        crnd-dimension:procedure    code:procedure-count ;
+        crnd-dimension:trt01p       code:trt01p-_ALL_ ;
+        crnd-measure:measure        "91"^^xsd:double .
