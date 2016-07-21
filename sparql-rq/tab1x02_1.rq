@@ -1,0 +1,245 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix dcat: <http://www.w3.org/ns/dcat#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix pav: <http://purl.org/pav>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix dct: <http://purl.org/dc/terms/>
+prefix mms: <http://rdf.cdisc.org/mms#>
+prefix cts: <http://rdf.cdisc.org/ct/schema#>
+prefix cdiscs: <http://rdf.cdisc.org/std/schema#>
+prefix cdash-1-1: <http://rdf.cdisc.org/std/cdash-1-1#>
+prefix cdashct: <http://rdf.cdisc.org/cdash-terminology#>
+prefix sdtmct: <http://rdf.cdisc.org/sdtm-terminology#>
+prefix sdtm-1-2: <http://rdf.cdisc.org/std/sdtm-1-2#>
+prefix sdtm-1-3: <http://rdf.cdisc.org/std/sdtm-1-3#>
+prefix sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#>
+prefix sdtmig-3-1-2: <http://rdf.cdisc.org/std/sdtmig-3-1-2#>
+prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#>
+prefix sendct: <http://rdf.cdisc.org/send-terminology#>
+prefix sendig-3-0: <http://rdf.cdisc.org/std/sendig-3-0#>
+prefix adamct: <http://rdf.cdisc.org/adam-terminology#>
+prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#>
+prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
+prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
+prefix qb: <http://purl.org/linked-data/cube#>
+prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
+prefix code: <http://www.example.org/dc/code/>
+prefix dccs: <http://www.example.org/dc/tab1x01/dccs/>
+prefix crnd-dimension: <http://www.example.org/dc/dimension#>
+prefix crnd-attribute: <http://www.example.org/dc/attribute#>
+prefix crnd-measure: <http://www.example.org/dc/measure#> 
+select
+ ?comp24flVarLabel    ?comp24flLevelLabel    ?comp24fl
+ ?etflVarLabel        ?etflLevelLabel        ?etfl
+ ?aedisflVarLabel       ?aedisflLevelLabel       ?aedisfl
+ ?dthdisflVarLabel       ?dthdisflLevelLabel       ?dthdisfl
+ ?stsdisflVarLabel       ?stsdisflLevelLabel       ?stsdisfl
+ ?ltfdisflVarLabel    ?ltfdisflLevelLabel    ?ltfdisfl
+ ?pdndisflVarLabel    ?pdndisflLevelLabel    ?pdndisfl
+ ?lefdisflVarLabel    ?lefdisflLevelLabel    ?lefdisfl
+ ?pviodisflVarLabel    ?pviodisflLevelLabel    ?pviodisfl
+ ?wbsdisflVarLabel    ?wbsdisflLevelLabel    ?wbsdisfl
+ ?procedureZ1VarLabel ?procedureZ1LevelLabel ?procedureZ1  
+ ?procedureZ2VarLabel ?procedureZ2LevelLabel ?procedureZ2  
+
+ ?col1z1URI ?col1z1  ?col1z2URI ?col1z2
+ ?col2z1URI ?col2z1  ?col2z2URI ?col2z2
+ ?col3z1URI ?col3z1  ?col3z2URI ?col3z2
+#  ?col4z1URI ?col4z1  ?col4z2URI ?col4z2
+where
+{
+?col1z1URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl            ;
+        crnd-dimension:ltfdisfl ?ltfdisfl    ;
+        crnd-dimension:pdndisfl ?pdndisfl    ;
+        crnd-dimension:stsdisfl ?stsdisfl       ;
+        crnd-dimension:factor ?factorZ1      ;
+        crnd-dimension:aedisfl ?aedisfl       ;
+        crnd-dimension:lefdisfl ?lefdisfl     ;
+        crnd-dimension:pviodisfl ?pviodisfl     ;
+        crnd-dimension:procedure ?procedureZ1 ;   
+        crnd-dimension:dthdisfl ?dthdisfl    ;
+        crnd-dimension:wbsdisfl ?wbsdisfl     ;
+        crnd-dimension:comp24fl ?comp24fl     ;
+        crnd-dimension:trt01p code:trt01p-Placebo ;
+        crnd-measure:measure ?col1z1 .
+
+ ?col1z2URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl       ;
+         crnd-dimension:ltfdisfl ?ltfdisfl    ;
+         crnd-dimension:pdndisfl ?pdndisfl    ;
+         crnd-dimension:stsdisfl ?stsdisfl       ;
+         crnd-dimension:factor ?factorZ2      ;
+         crnd-dimension:aedisfl ?aedisfl       ;
+        crnd-dimension:pviodisfl ?pviodisfl     ;
+         crnd-dimension:procedure ?procedureZ2 ;   
+         crnd-dimension:dthdisfl ?dthdisfl    ;
+         crnd-dimension:lefdisfl ?lefdisfl     ;
+         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+        crnd-dimension:comp24fl ?comp24fl     ;
+         crnd-dimension:trt01p code:trt01p-Placebo ;
+         crnd-measure:measure ?col1z2 .
+
+ ?col2z1URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl            ;
+         crnd-dimension:ltfdisfl ?ltfdisfl    ;
+         crnd-dimension:stsdisfl ?stsdisfl       ;
+         crnd-dimension:factor ?factorZ1      ;
+         crnd-dimension:aedisfl ?aedisfl       ;
+         crnd-dimension:pviodisfl ?pviodisfl     ;
+         crnd-dimension:procedure ?procedureZ1 ;   
+         crnd-dimension:dthdisfl ?dthdisfl    ;
+         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+        crnd-dimension:comp24fl ?comp24fl     ;
+         crnd-dimension:trt01p code:trt01p-Xanomeline_Low_Dose ;
+         crnd-measure:measure ?col2z1 .
+
+ ?col2z2URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl         ;
+         crnd-dimension:ltfdisfl ?ltfdisfl    ;
+         crnd-dimension:stsdisfl ?stsdisfl       ;
+         crnd-dimension:factor ?factorZ2      ;
+         crnd-dimension:aedisfl ?aedisfl       ;
+         crnd-dimension:procedure ?procedureZ2 ;   
+         crnd-dimension:dthdisfl ?dthdisfl    ;
+         crnd-dimension:pviodisfl ?pviodisfl     ;
+         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+         crnd-dimension:comp24fl ?comp24fl     ;
+         crnd-dimension:trt01p code:trt01p-Xanomeline_Low_Dose ;
+         crnd-measure:measure ?col2z2 .
+
+ ?col3z1URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl      ;
+         crnd-dimension:pdndisfl ?pdndisfl    ;
+         crnd-dimension:stsdisfl ?stsdisfl       ;
+         crnd-dimension:lefdisfl ?lefdisfl     ;   
+         crnd-dimension:factor ?factorZ1      ;
+         crnd-dimension:aedisfl ?aedisfl       ;
+         crnd-dimension:procedure ?procedureZ1 ;   
+         crnd-dimension:pviodisfl ?pviodisfl     ;
+         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+         crnd-dimension:comp24fl ?comp24fl     ;
+         crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;
+         crnd-measure:measure ?col3z1 .
+
+ ?col3z2URI  a qb:Observation;
+        crnd-dimension:etfl ?etfl       ;
+         crnd-dimension:pdndisfl ?pdndisfl    ;
+         crnd-dimension:stsdisfl ?stsdisfl       ;
+         crnd-dimension:factor ?factorZ2      ;
+         crnd-dimension:aedisfl ?aedisfl       ;
+         crnd-dimension:lefdisfl ?lefdisfl     ;  
+         crnd-dimension:pviodisfl ?pviodisfl     ; 
+         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+         crnd-dimension:procedure ?procedureZ2 ;   
+        crnd-dimension:comp24fl ?comp24fl     ;
+         crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;
+         crnd-measure:measure ?col3z2 .
+
+ # ?col4z1URI  a qb:Observation;
+ #        crnd-dimension:etfl ?etfl      ;
+ #         crnd-dimension:pdndisfl ?pdndisfl    ;
+ #         crnd-dimension:stsdisfl ?stsdisfl       ;
+ #         crnd-dimension:lefdisfl ?lefdisfl     ;   
+ #         crnd-dimension:factor ?factorZ1      ;
+ #         crnd-dimension:aedisfl ?aedisfl       ;
+ #         crnd-dimension:procedure ?procedureZ1 ;   
+ #         crnd-dimension:pviodisfl ?pviodisfl     ;
+ #         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+ #         crnd-dimension:comp24fl ?comp24fl     ;
+ #         crnd-dimension:trt01p code:trt01p-_ALL_ ;
+ #         crnd-measure:measure ?col4z1 .
+
+ # ?col4z2URI  a qb:Observation;
+ #        crnd-dimension:etfl ?etfl       ;
+ #         crnd-dimension:pdndisfl ?pdndisfl    ;
+ #         crnd-dimension:stsdisfl ?stsdisfl       ;
+ #         crnd-dimension:factor ?factorZ2      ;
+ #         crnd-dimension:aedisfl ?aedisfl       ;
+ #         crnd-dimension:lefdisfl ?lefdisfl     ;  
+ #         crnd-dimension:pviodisfl ?pviodisfl     ; 
+ #         crnd-dimension:wbsdisfl ?wbsdisfl     ;
+ #         crnd-dimension:procedure ?procedureZ2 ;   
+ #        crnd-dimension:comp24fl ?comp24fl     ;
+ #         crnd-dimension:trt01p code:trt01p-_ALL_ ;
+ #         crnd-measure:measure ?col4z2 .
+
+?etfl skos:prefLabel    ?etflLevelLabel .
+?ltfdisfl skos:prefLabel    ?ltfdisflLevelLabel .
+?pdndisfl skos:prefLabel    ?pdndisflLevelLabel .
+?stsdisfl    skos:prefLabel    ?stsdisflLevelLabel .
+?aedisfl    skos:prefLabel    ?aedisflLevelLabel .
+?dthdisfl    skos:prefLabel    ?dthdisflLevelLabel .
+?pviodisfl    skos:prefLabel    ?pviodisflLevelLabel .
+?lefdisfl skos:prefLabel    ?lefdisflLevelLabel .  
+?wbsdisfl skos:prefLabel    ?wbsdisflLevelLabel . 
+?comp24fl skos:prefLabel    ?comp24flLevelLabel . 
+?procedureZ1 skos:prefLabel ?procedureZ1LevelLabel .
+?procedureZ2 skos:prefLabel ?procedureZ2LevelLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?etfl ] ;
+   rdfs:label ?etflVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?ltfdisfl ] ;
+   rdfs:label ?ltfdisflVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?pdndisfl ] ;
+   rdfs:label ?pdndisflVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?stsdisfl ] ;
+    rdfs:label ?stsdisflVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?aedisfl ] ;
+   rdfs:label ?aedisflVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?dthdisfl ] ;
+   rdfs:label ?dthdisflVarLabel .
+
+  [] qb:codeList [ skos:hasTopConcept ?lefdisfl];
+   rdfs:label ?lefdisflVarLabel .
+
+  [] qb:codeList [ skos:hasTopConcept ?comp24fl];
+   rdfs:label ?comp24flVarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?procedureZ1 ] ;
+   rdfs:label ?procedureZ1VarLabel .
+
+[] qb:codeList [ skos:hasTopConcept ?procedureZ2 ] ;
+   rdfs:label ?procedureZ2VarLabel .
+
+
+{ select * where { values(?factorZ1 ?procedureZ1 ?factorZ2 ?procedureZ2) {
+(code:factor-quantity code:procedure-count code:factor-proportion code:procedure-percent)
+} } }
+
+ ## Trick to get string version of URI - which is not changed into prefix:suffix
+ ## BIND( str(?col1z1URIx) as ?col1z1URI )
+ ## BIND( str(?col2z1URIx) as ?col2z1URI )
+ ## BIND( str(?col3z1URIx) as ?col3z1URI )
+
+ ## BIND( str(?col1z2URIx) as ?col1z2URI )
+ ## BIND( str(?col2z2URIx) as ?col2z2URI )
+ ## BIND( str(?col3z2URIx) as ?col3z2URI )
+
+ filter (
+ ?etfl = code:etfl-Y ||
+ ?aedisfl = code:aedisfl-Y ||
+ ?dthdisfl = code:dthdisfl-Y||
+ ?stsdisfl = code:stsdisfl-Y ||
+ ?ltfdisfl = code:ltfdisfl-Y ||
+ ?pdndisfl = code:pdndisfl-Y ||
+ ?lefdisfl = code:lefdisfl-Y ||
+ ?pviodisfl = code:pviodisfl-Y ||
+ ?wbsdisfl = code:wbsdisfl-Y ||
+ ?comp24fl = code:comp24fl-Y
+       
+ )
+}
+order by
+?aedisflLevelLabel ?dthdisflLevelLabel ?stsdisflLevelLabel ?ltfdisflLevelLabel ?pdndisflLevelLabel ?etflLevelLabel
+ 
+

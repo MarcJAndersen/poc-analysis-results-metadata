@@ -84,6 +84,9 @@
     ja:content [ ja:externalContent
 <file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X02.ttl> ];
 
+    ja:content [ ja:externalContent
+<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X02_1.ttl> ];
+
 
 ## CDISC Pilot01 poc overview of programs (not made yet)
 #        ja:content [ ja:externalContent
