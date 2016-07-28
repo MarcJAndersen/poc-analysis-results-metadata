@@ -42,7 +42,24 @@ Directory structure
 
 The tools/packages are shown below (including the present projects).
 
+### Java runtime (for Apache Jena)
+
+Note SAS provides a private java runtime, which may be used.
+For windows use:
+
+    path C:\Program Files\SASHome\SASPrivateJavaRuntimeEnvironment\9.4\jre\bin;C:\Program Files\SASHome\SASPrivateJavaRuntimeEnvironment\9.4\bin 
+
+### Web Server (for the application - not needed for generating RDF data cubes)
+
+The current setup uses python 3 with the modulse -m http.server
+
+The use of a java based webserver is investigated, e.g. tomcat or jetty.
+
+### Apache Jena
+
 Apache Jena - see (https://jena.apache.org/download/), download at (http://archive.apache.org/dist/jena/binaries/)
+
+### Apache Jena Fuseki
 
 Apache Jena Fuseki - version 2.0.0, see below
 
@@ -53,6 +70,8 @@ Apache Jena - version 2.13.0, optional, see below
 
 * Zip (http://archive.apache.org/dist/jena/binaries/apache-jena-2.13.0.zip)
 * MD5 (http://archive.apache.org/dist/jena/binaries/apache-jena-2.13.0.zip.md5)
+
+### GitHub
 
 GitHub packages as zip files
 

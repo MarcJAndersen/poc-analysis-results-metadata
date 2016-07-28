@@ -1,5 +1,5 @@
 --
-title: "Create TAB1X02 as RDF data cube"
+title: "Create TAB1X02_1 as RDF data cube"
 author: "mja@statgroup.dk"
 date: "`r Sys.Date()`"
 output:
@@ -13,56 +13,24 @@ output:
     variant: markdown_github
 ---
 
+# Introduction
+This script creates RDF data cubes from .csv files.
 
 # Setup
 
-This script creates RDF data cubes from .csv files.
-
-```{r}
-library(rrdfancillary)
-library(rrdfcdisc)
-library(rrdfqb)
-library(rrdfqbcrnd0)
-```
-
 All files are stored in the directory
 ```{r}
+targetName<- "TAB1X02_1"
+(targetName)
 targetDir<- "../res-ttl"
 (targetDir)
+targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
+(targetFile)
+targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
+(targetObsrqFile)
 ```
 
-# Load CSV files
-
-```{r, eval=TRUE}
-tab1x02ObsDataCsvFn<- file.path("../res-csv", "TAB1X02.csv")
-tab1x02ObsData <- read.csv(tab1x02ObsDataCsvFn,stringsAsFactors=FALSE)
-
-tab1x02MetaDataCsvFn<- file.path("../res-csv", "TAB1X02-Components.csv")
-tab1x02MetaData <- read.csv(tab1x02MetaDataCsvFn,stringsAsFactors=FALSE)
+```{r, child='include-ttl.Rmd'}
 ```
 
-# Create cube
-
-```{r, eval=TRUE}
-tab1x02.cube.fn<- BuildCubeFromDataFrames(tab1x02MetaData, tab1x02ObsData )
-cat("TAB1X02 cube stored as ", normalizePath(tab1x02.cube.fn), "\n")
-```
-# Copy cube to destination directory
-
-```{r, eval=TRUE}
-targetFile<- file.path(targetDir,"CDISC-pilot-TAB1X02.ttl")
-
-if (file.copy( tab1x02.cube.fn, targetFile, overwrite=TRUE)) {
-   cat("RDF data cube copied to ", normalizePath(targetFile), "\n")
- }
-
-```
-
-
-
-
-# Session information
-```{r, echo=TRUE}
-sessionInfo()
-```
 

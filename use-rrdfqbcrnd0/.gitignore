@@ -1,1 +1,4 @@
+*.md
 packrat/lib*/
+packrat/src
+#*

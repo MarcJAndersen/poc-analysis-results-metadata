@@ -1,0 +1,119 @@
+# Loading libraries
+
+```{r}
+library(rrdfancillary)
+library(rrdfcdisc)
+library(rrdfqb)
+library(rrdfqbcrnd0)
+```
+
+
+# Load CSV files
+
+```{r, eval=TRUE}
+ObsDataCsvFn<- file.path("../res-csv", paste( targetName, ".csv", sep=""))
+ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
+
+MetaDataCsvFn<- file.path("../res-csv", paste( targetName, "-Components.csv", sep=""))
+MetaData <- read.csv(MetaDataCsvFn,stringsAsFactors=FALSE)
+```
+
+# Create cube
+
+```{r, eval=TRUE}
+cube.fn<- BuildCubeFromDataFrames(MetaData, ObsData )
+cat(targetName, " ", "cube stored as ", normalizePath(cube.fn), "\n")
+```
+# Copy cube to destination directory
+
+```{r, eval=TRUE}
+
+if (file.copy( cube.fn, targetFile, overwrite=TRUE)) {
+   cat("RDF data cube copied to ", normalizePath(targetFile), "\n")
+ }
+
+```
+# Get SPARQL query for observations
+
+This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
+
+```{r, eval=TRUE}
+checkCube <- new.rdf()  # Initialize
+temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
+summarize.rdf(checkCube)
+```
+
+## Get the values in the cube
+First set values for accessing the cube.
+```{r, echo=TRUE}
+dsdName<- GetDsdNameFromCube( checkCube )
+domainName<- GetDomainNameFromCube( checkCube )
+forsparqlprefix<- GetForSparqlPrefix( domainName )
+```
+
+## Get cube components
+
+The cube components are shown in the next output.
+```{r, echo=TRUE}
+componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
+components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
+components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
+knitr::kable(components[,c("vn", "label")])
+```
+
+The codelists are shown in the next output.
+```{r, echo=TRUE}
+codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
+codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
+codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$p)
+codelists$clc<- gsub("code:","",codelists$cl)
+knitr::kable(codelists[,c("vn", "clc", "prefLabel")])
+```
+
+
+The dimensions are shown in the next output.
+```{r, echo=TRUE}
+dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
+dimensions<- sparql.rdf(checkCube, dimensionsRq)
+knitr::kable(dimensions)
+```
+
+Then the attributes as shown in the next output.
+```{r, echo=TRUE}
+attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
+attributes<- sparql.rdf(checkCube, attributesRq)
+knitr::kable(attributes)
+```
+
+## Get observations
+And finally the SPARQL query for observations, showing only the first 10 observations.
+```{r, echo=TRUE}
+observationsRq<- GetObservationsSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
+cat(observationsRq)
+cat(observationsRq, file=targetObsrqFile)
+observations<- as.data.frame(sparql.rdf(checkCube, observationsRq ), stringsAsFactors=FALSE)
+knitr::kable(observations[ 1:10 ,
+   c(paste0(sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", dimensions), "value"),sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", attributes), "measure")])
+
+```
+
+## Get observations with labels
+
+The SPARQL query for observations with labels for variables, showing only the first 10 observations.
+```{r, echo=TRUE}
+observationsDescriptionRq<- GetObservationsWithDescriptionSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
+cat(observationsDescriptionRq)
+observationsDesc<- as.data.frame(sparql.rdf(checkCube, observationsDescriptionRq ), stringsAsFactors=FALSE)
+knitr::kable(observationsDesc[ 1:10 ,
+     c(paste0(rep(sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", dimensions),each=3),
+       c("label", "value", "IRI")),
+       sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", attributes), "measure", "measureIRI"
+       )]
+       )
+
+```
+
+# Session information
+```{r, echo=TRUE}
+sessionInfo()
+```
