@@ -35,6 +35,10 @@ library(rrdf)
 ## packrat::extlib("XML")
 
 
+## If installation fails - then verify
+## - all packages neccessary for the local packages are installed
+## - after upgrading R, some packages may need to be installed
+##
 packrat::set_opts(local.repos ="../../rrdfqbcrnd0" )
 packrat::install_local("rrdfancillary")
 packrat::install_local("rrdfcdisc")

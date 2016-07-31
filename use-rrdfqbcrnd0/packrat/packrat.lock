@@ -1,6 +1,6 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.7.1
-RVersion: 3.2.5
+RVersion: 3.3.1
 Repos: CRAN=https://cran.rstudio.com/,
     CRANextra=http://www.stats.ox.ac.uk/pub/RWin
 
@@ -90,7 +90,7 @@ Package: knitr
 Source: CRAN
 Version: 1.13
 Hash: 8d686cbee88c93b735281a22b2ca59dd
-Requires: digest, evaluate, formatR, highr, markdown, stringr, yaml
+Requires: digest, formatR, highr, yaml, markdown, stringr, evaluate
 
 Package: magrittr
 Source: CRAN
@@ -133,7 +133,7 @@ Package: rmarkdown
 Source: CRAN
 Version: 0.9.6
 Hash: c60250bb3dd9107d6d3ecf626e86d8a6
-Requires: caTools, htmltools, knitr, yaml
+Requires: yaml, caTools, htmltools, knitr
 
 Package: rrdf
 Source: github
@@ -147,15 +147,15 @@ GithubSha1: 24c2250ae2ca26f813c747320a2ddf5d5b2be282
 
 Package: rrdfancillary
 Source: source
-Version: 0.2.4
-Hash: cabf14e368e753601731e5799d8dd1a2
+Version: 0.2.5
+Hash: 9612232daa1c6ab1e6d989f6854c28c1
 Requires: rJava, rrdf
 SourcePath: ../../rrdfqbcrnd0/rrdfancillary
 
 Package: rrdfcdisc
 Source: source
-Version: 0.2.4
-Hash: 5a9884122912a835af4860faeade04a8
+Version: 0.2.5
+Hash: 4d9efd9f45dcb92a0c45466a00a90ab7
 Requires: rrdfancillary, RCurl, devtools, rrdf
 SourcePath: ../../rrdfqbcrnd0/rrdfcdisc
 
@@ -171,25 +171,40 @@ GithubSha1: 24c2250ae2ca26f813c747320a2ddf5d5b2be282
 
 Package: rrdfqb
 Source: source
-Version: 0.2.4
-Hash: 30122c3000cffb514589bed7b75ecf81
+Version: 0.2.5
+Hash: 77331fbf29cce7d1eb537df197b69997
 Requires: rrdfancillary, RCurl, rJava, rrdf, xlsx
 SourcePath: ../../rrdfqbcrnd0/rrdfqb
 
 Package: rrdfqbcrnd0
 Source: source
-Version: 0.2.4
-Hash: b6964132c840ec54de54517e206ab1b7
+Version: 0.2.5
+Hash: cde40d6a8af82c87a23adef17a6fde1d
 Requires: rrdfancillary, rrdfcdisc, rrdfqb, RCurl, rJava, rrdf, xlsx
 SourcePath: ../../rrdfqbcrnd0/rrdfqbcrnd0
 
+Package: rrdfqbcrndcheck
+Source: source
+Version: 0.2.5
+Hash: 092bfa26ee850249505e992e72f23402
+Requires: rrdfqbcrnd0, rrdfqbcrndex, RCurl, rJava, rrdf, xlsx
+SourcePath: ../../rrdfqbcrnd0/rrdfqbcrndcheck
+
 Package: rrdfqbcrndex
 Source: source
-Version: 0.2.4
-Hash: 5ab47a1476359edf4f0079833c068f92
+Version: 0.2.5
+Hash: ff4308efca583766226ecdbb74db3dfc
 Requires: rrdfancillary, rrdfcdisc, rrdfqb, rrdfqbcrnd0, RCurl, rJava,
     rrdf, xlsx
 SourcePath: ../../rrdfqbcrnd0/rrdfqbcrndex
+
+Package: rrdfqbpresent
+Source: source
+Version: 0.2.5
+Hash: 39d3bddb00e9188568910158ad87d9cd
+Requires: rrdfancillary, rrdfcdisc, rrdfqb, rrdfqbcrnd0, rrdfqbcrndex,
+    RCurl, rJava, rrdf, xlsx
+SourcePath: ../../rrdfqbcrnd0/rrdfqbpresent
 
 Package: rstudioapi
 Source: CRAN
