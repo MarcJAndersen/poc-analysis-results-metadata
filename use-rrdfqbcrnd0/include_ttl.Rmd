@@ -28,11 +28,9 @@ cat(targetName, " ", "cube stored as ", normalizePath(cube.fn), "\n")
 # Copy cube to destination directory
 
 ```{r, eval=TRUE}
-
 if (file.copy( cube.fn, targetFile, overwrite=TRUE)) {
    cat("RDF data cube copied to ", normalizePath(targetFile), "\n")
  }
-
 ```
 # Get SPARQL query for observations
 

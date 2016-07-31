@@ -35,28 +35,101 @@ targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-obser
 
 ```{r}
 
-z1prop<- c(
+z12prop<- matrix(c(
+"code:procedure-min", "code:none",
+"code:procedure-max", "code:none",
+"code:procedure-median", "code:none",
+"code:procedure-mean", "code:none",
+"code:procedure-stddev", "code:none",
+"code:procedure-n ", "code:procedure-percent",
+"code:procedure-count", "code:none"
+    ), ncol=2,byrow=TRUE)
+str(z12prop)
+z12prop
+
+rowdimensions<-c(
+"crnd-dimension:agegr1"   ,
+"crnd-dimension:race"     ,
+"crnd-dimension:sex"      ,
+"crnd-dimension:durdsgr1" ,
+"crnd-dimension:bmiblgr1" ,
+"crnd-dimension:ittfl"    ,
+"crnd-dimension:procedure",
+"crnd-dimension:factor"
     )
-z2prop<-
-cube.observations.rq<-  paste( forsparqlprefix,
-    "select * where {",
-    "?s a qb:Observation  ;", 
-    paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
-    paste0( "    ", dimensions, " ", sub("crnd-dimension:", "?", dimensions ), ";", collapse="\n"),
-    paste0( "    ", attributes, " ", sub("crnd-attribute:", "?", attributes ), ";", collapse="\n"),
-    "    crnd-measure:measure ?measure .      ",
-    paste0( "optional{ ", sub("crnd-dimension:", "?", dimensions), " ",
-           "skos:prefLabel",
-           " ",
-           sub("crnd-dimension:", "?", dimensions ), "value" ,
-           " . ", "}", collapse="\n" 
-           ),
-    "} ",
-    "order by ?s",
-    "\n",
-    sep="\n", collapse="\n"
-   )
-cube.observations.rq
+
+coldimension<- c("crnd-dimension:trt01p"   )
+
+contvarstat<-
+c("factor-age",
+"factor-mmsetot", 
+"factor-durdis",  
+"factor-educlvl", 
+"factor-heightbl",
+"factor-weightbl",
+"factor-bmibl"
+)
+    
+contvarstatprocedure<-
+c("code:procedure-percent",
+"code:procedure-count"
+)
+    
+catvardimensions1<-
+    c(
+"crnd-dimension:agegr1"   ,
+"crnd-dimension:race"     ,
+"crnd-dimension:sex"      ,
+"crnd-dimension:durdsgr1" ,
+"crnd-dimension:bmiblgr1" ,
+"crnd-dimension:ittfl"    
+        )
+
+
+cube.rowdimscont.rq<-
+    paste( forsparqlprefix,
+          paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?factor) {",
+          paste0( "     ", "(", "code:", contvarstat, ")", collapse="\n"),
+          "}",
+          "} ",
+          "order by ?s",
+          "\n",
+          sep="\n", collapse="\n"
+          )
+cat(cube.rowdims.rq)
+
+observationsRowDims<- as.data.frame(sparql.rdf(checkCube, cube.rowdims.rq ), stringsAsFactors=FALSE)
+knitr::kable(observationsRowDims)
+
+cube.rowdimscat.rq<-
+    paste( forsparqlprefix,
+          paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", catvardimensions1, " ", sub("crnd-dimension:", "?", catvardimensions1 ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?procedure) {",
+          paste0( "     ", "(", contvarstatprocedure, ")", collapse="\n"),
+          "}",
+          "} ",
+          "order by ?s",
+          "\n",
+          sep="\n", collapse="\n"
+          )
+cat(cube.rowdimscat.rq)
+
+observationsRowDimsCat<- as.data.frame(sparql.rdf(checkCube, cube.rowdimscat.rq ), stringsAsFactors=FALSE)
+knitr::kable(observationsRowDimsCat)
+
+## make select unition combining observationsRowDims observationsRowDimsCat
+
 ```
 
 

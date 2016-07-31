@@ -58,17 +58,20 @@ data _null_;
         putlog "Message: " sysmsgtxt=;
         abort cancel;
         end;
-    length classvarlist classvarlistc classvarlistn resultvarlist $32000;
+    length classvarlist classvarlistc classvarlistn classvarlistcCONV classvarlistnCONV resultvarlist renamevarlist $32000;
     classvarlist=" ";
     classvarlistc=" ";
     classvarlistn=" ";
     array cltype(0:1) classvarlistn classvarlistc;
+    array cltypeCONV(0:1) classvarlistnCONV classvarlistcCONV;
     resultvarlist=" ";
     classvarfromposm1= varnum(tableid, "_Run_");
     classvartoposp1= varnum(tableid, "_type_");
     do i=classvarfromposm1+1 to classvartoposp1-1;
         classvarlist=catx(" ", classvarlist, varname(tableid,i));
         cltype(vartype(tableid,i)="C")=catx(" ", cltype(vartype(tableid,i)="C"), varname(tableid,i));
+        cltypeCONV(vartype(tableid,i)="C")=catx(" ", cltypeCONV(vartype(tableid,i)="C"), cats(varname(tableid,i),"CONV"));
+        renamevarlist= catx(" ", renamevarlist,cats(varname(tableid,i),"CONV","=",lowcase(varname(tableid,i))));
         end;
     resultfromposm1= varnum(tableid, "_TABLE_");
     resulttopos= attrn(tableid,'nvars');
@@ -76,7 +79,7 @@ data _null_;
         resultvarlist=catx(" ", resultvarlist, varname(tableid,i));
         end;
     rc=close(tableid);
-    array vput(*) classvarlist classvarlistc classvarlistn resultvarlist;
+    array vput(*) classvarlist classvarlistc classvarlistn classvarlistcCONV classvarlistnCONV resultvarlist renamevarlist;
     do i=1 to dim(vput);
         call symputx( vname(vput(i)), vput(i));
         end;
@@ -144,11 +147,24 @@ data observations;
     keep denominatorpattern;
     length procedure factor denominator $64;
     keep procedure factor denominator;
+    length &classvarlistcCONV. &classvarlistnCONV. dummynCONV $200.; /* should have individual lengths */
+    keep &classvarlistcCONV. &classvarlistnCONV. procedureCONV factorCONV denominatorCONV &classvarlistnCONV.;
+    array cCONV(*)  &classvarlistcCONV. procedureCONV factorCONV denominatorCONV &classvarlistnCONV. dummynCONV;
+    do i=1 to dim(cCONV);
+        cCONV(i)=" ";
+        end;
+    
+    /* Instead of arrays - should use getvarn and thereby travers variables */
     array resdimc(*) &classvarlistc. procedure factor denominator;
+    array resdimcCONV(*) &classvarlistcCONV. procedureCONV factorCONV denominatorCONV;
+    dummyn=.;
+    drop dummyn;
+    array resdimn(*) &classvarlistn. dummyn;
+    array resdimnCONV(*) &classvarlistnCONV. dummynCONV;
+
     label procedure="Method for descriptive statistic";
     label factor="Names of variable for descriptive statistics";
     label denominator="Denominator for statistics";
-*    array resdimn(*) &classvarlistn. ;
 
     length mn $32;
 
@@ -202,6 +218,10 @@ data observations;
             measure=results(i);
             end;
         end;
+
+    procedureCONV=procedure;
+    factorCONV=factor;
+    denominatorCONV=denominator;
     
     putlog mn= procedure= factor= denominator= _type_= denominatorpattern= measure=; 
 
@@ -211,7 +231,6 @@ data observations;
  /* one approach could be to use vname(results(i)) to determine what to do and also have a flag for std being included */
      
         if not missing(measure) then do;
-            output;
             
             do j=1 to dim(resdimc); /* do not need to do it again for &classvarlistc. variables */
                 name=lowcase(vname(resdimc(j)));
@@ -240,10 +259,13 @@ data observations;
                         end;
                     end;
                 rc=cval.ref();
+                putlog j= resdimc(j)= codedvalue= @ ;
+                resdimcCONV(j)= codedvalue; /* Not ideal - should write to new variable in array resdimcc,
+                    and then rename resdimcc to resdimc names and drop resdimc names for export */
+                putlog "--> " resdimcCONV(j)= ;
                 end;
             
-%MACRO DoNot;
-            do j=1 to dim(resdimn);
+            do j=1 to dim(resdimn)-1;
                 name=lowcase(vname(resdimn(j)));
                 datatype= "numeric";  /* using numeric in the SAS sense */
                 nameorder= j;
@@ -268,10 +290,13 @@ data observations;
                             end;
                         end;
                     rc=cval.ref();
+                    resdimnCONV(j)= codedvalue; /* Not ideal */
                     end;
                 end;
-        %MEND;
-            end;
+
+            output;
+
+    end;
 
         end;
         
@@ -288,7 +313,7 @@ proc print data=codes;
 run;
 */
 
-data forexport;
+data forexport1;
     set observations;    
 /*
     keep colno rowno cellpartno;
@@ -303,8 +328,17 @@ data forexport;
     denominator=lowcase(denominator); */
 
     drop _TYPE_ denominatorpattern;
+    drop &classvarlistc. procedure factor denominator &classvarlistn.;
+
+    rename &renamevarlist. procedureCONV=procedure factorCONV=factor denominatorCONV=denominator;
+
+    /* Instead of renaming - have a seperate step doing the recoding from the original values */
 run;    
 
+data forexport;
+    retain &classvarlist.;
+    set forexport1;
+run;
 
 proc print data=forexport width=min;
 run;
@@ -317,7 +351,7 @@ run;
 
 data skeletonSource1;
     if 0 then do;
-        set forexport; /* To get the labels  TODO: check if there are name clashes - or implement differently */
+        set observations; /* To get the labels  TODO: check if there are name clashes - or implement differently */
         end;
         
     length compType compName codeType nciDomainValue compLabel Comment $512;
