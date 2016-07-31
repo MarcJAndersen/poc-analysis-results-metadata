@@ -5,6 +5,7 @@ library(rrdfancillary)
 library(rrdfcdisc)
 library(rrdfqb)
 library(rrdfqbcrnd0)
+library(knitr)
 ```
 
 
@@ -65,9 +66,9 @@ The codelists are shown in the next output.
 ```{r, echo=TRUE}
 codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
 codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
-codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$p)
+codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
 codelists$clc<- gsub("code:","",codelists$cl)
-knitr::kable(codelists[,c("vn", "clc", "prefLabel")])
+knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
 ```
 
 
