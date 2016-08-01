@@ -55,6 +55,24 @@ The current setup uses python 3 with the modulse -m http.server
 
 The use of a java based webserver is investigated, e.g. tomcat or jetty.
 
+#### Using tomcat
+
+This is the very first attempt - and is most likely not the best approach.
+
+install tomcat from (http://tomcat.apache.org/download-80.cgi).
+Unpack to same level as the other packages.
+
+Create directory for the application TT05 and copy the contents to that directory;
+
+    mkdir apache-tomcat-8.5.4\webapps\TT05
+    copy poc-analysis-results-metadata\application-html\ apache-tomcat-8.5.4\webapps\TT05
+
+Start tomcat:
+
+     set JAVA_HOME=c:\Program Files\Java\jre1.8.0_101
+     cd apache-tomcat-8.5.4\bin
+     startup.bat
+	 
 ### Apache Jena
 
 Apache Jena - see (https://jena.apache.org/download/), download at (http://archive.apache.org/dist/jena/binaries/)
