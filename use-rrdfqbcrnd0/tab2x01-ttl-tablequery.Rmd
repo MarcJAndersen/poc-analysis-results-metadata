@@ -1,5 +1,5 @@
 --
-title: "Create TAB1X02_1 as RDF data cube"
+title: "Create TAB1X02 as RDF data cube"
 author: "mja@statgroup.dk"
 date: "`r Sys.Date()`"
 output:
@@ -59,7 +59,11 @@ rowdimensions<-c(
     )
 
 coldimension<- c("crnd-dimension:trt01p"   )
-
+colvalues<- c( "code:trt01p-Placebo",
+"code:trt01p-Xanomeline_High_Dose",
+"code:trt01p-Xanomeline_Low_Dose",
+"code:trt01p-_ALL_")               
+              
 contvarstat<-
 c("factor-age",
 "factor-mmsetot", 
@@ -85,10 +89,10 @@ catvardimensions1<-
 "crnd-dimension:ittfl"    
         )
 
-
-cube.rowdimscont.rq<-
+cube.rowdimsStat.rq<-
     paste( forsparqlprefix,
           paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "{select * where {",
           "?s a qb:Observation  ;", 
           paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
           paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
@@ -96,20 +100,10 @@ cube.rowdimscont.rq<-
           "    crnd-dimension:factor ?factor .      ",
           "     values (?factor) {",
           paste0( "     ", "(", "code:", contvarstat, ")", collapse="\n"),
-          "}",
+          "}}",
           "} ",
-          "order by ?s",
-          "\n",
-          sep="\n", collapse="\n"
-          )
-cat(cube.rowdims.rq)
-
-observationsRowDims<- as.data.frame(sparql.rdf(checkCube, cube.rowdims.rq ), stringsAsFactors=FALSE)
-knitr::kable(observationsRowDims)
-
-cube.rowdimscat.rq<-
-    paste( forsparqlprefix,
-          paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "union",
+          "{select * where {",
           "?s a qb:Observation  ;", 
           paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
           paste0( "    ", catvardimensions1, " ", sub("crnd-dimension:", "?", catvardimensions1 ), ";", collapse="\n"),
@@ -117,18 +111,118 @@ cube.rowdimscat.rq<-
           "    crnd-dimension:factor ?factor .      ",
           "     values (?procedure) {",
           paste0( "     ", "(", contvarstatprocedure, ")", collapse="\n"),
-          "}",
+          "}}",
+          "}",          
           "} ",
-          "order by ?s",
           "\n",
           sep="\n", collapse="\n"
           )
-cat(cube.rowdimscat.rq)
+cat(cube.rowdimsStat.rq)
 
-observationsRowDimsCat<- as.data.frame(sparql.rdf(checkCube, cube.rowdimscat.rq ), stringsAsFactors=FALSE)
-knitr::kable(observationsRowDimsCat)
+observationsRowDims<- as.data.frame(sparql.rdf(checkCube, cube.rowdimsStat.rq ), stringsAsFactors=FALSE)
+knitr::kable(observationsRowDims)
 
-## make select unition combining observationsRowDims observationsRowDimsCat
+
+cube.rowdimsStat.rq<-
+    paste( forsparqlprefix,
+          paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "{select * where {",
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?factor) {",
+          paste0( "     ", "(", "code:", contvarstat, ")", collapse="\n"),
+          "}}",
+          "} ",
+          "union",
+          "{select * where {",
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", catvardimensions1, " ", sub("crnd-dimension:", "?", catvardimensions1 ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?procedure) {",
+          paste0( "     ", "(", contvarstatprocedure, ")", collapse="\n"),
+          "}}",
+          "}",          
+          "} ",
+          "\n",
+          sep="\n", collapse="\n"
+          )
+cat(cube.rowdimsStat.rq)
+
+observationsRowDims<- as.data.frame(sparql.rdf(checkCube, cube.rowdimsStat.rq ), stringsAsFactors=FALSE)
+knitr::kable(observationsRowDims)
+
+## ================================================================
+
+cube.rowdimscol1obs.rq<-
+    paste( forsparqlprefix,
+          "select * where {",
+
+
+          "{",
+          paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
+          "{select * where {",
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?factor) {",
+          paste0( "     ", "(", "code:", contvarstat, ")", collapse="\n"),
+          "}}",
+          "} ",
+          "union",
+          "{select * where {",
+          "?s a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", catvardimensions1, " ", sub("crnd-dimension:", "?", catvardimensions1 ), ";", collapse="\n"),
+          "    crnd-dimension:procedure ?procedure ; ",
+          "    crnd-dimension:factor ?factor .      ",
+          "     values (?procedure) {",
+          paste0( "     ", "(", contvarstatprocedure, ")", collapse="\n"),
+          "}}",
+          "}",          
+          "} ",
+          "} ",
+
+          "values (?z1prop ?z2prop) {",
+paste( "(", z12prop[,1], z12prop[,2], ")", sep=" ", collapse="\n"),
+          "} ",
+
+          paste0(
+          "optional{ ?s", seq(length(colvalues)), "z1", " a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+          "    crnd-dimension:factor ?factor ;      ",
+          "    ", coldimension, " ", colvalues, " ;",
+          "    crnd-measure:measure ?col", seq(length(colvalues)), "z1", " ;  ",
+              "  crnd-dimension:procedure ?z1prop . }", collapse="\n"
+              ),
+
+          paste0(
+          "optional{ ?s", seq(length(colvalues)), "z2", " a qb:Observation  ;", 
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+          "    crnd-dimension:factor ?factor ;      ",
+          "    ", coldimension, " ", colvalues, " ;",
+          "    crnd-measure:measure ?col", seq(length(colvalues)), "z2", " ;  ",
+              "  crnd-dimension:procedure ?z2prop . }", collapse="\n"
+              ),
+                    
+          "} ",
+          "\n",
+          sep="\n", collapse="\n"
+          )
+cat(cube.rowdimscol1obs.rq)
+
+observationscol1obs<- as.data.frame(sparql.rdf(checkCube, cube.rowdimscol1obs.rq ), stringsAsFactors=FALSE)
+knitr::kable(observationscol1obs)
+
+
 
 ```
 

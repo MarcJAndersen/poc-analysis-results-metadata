@@ -37,27 +37,27 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
 select * where {
 ?s a qb:Observation  ;
     qb:dataSet ds:dataset-TAB2X01 ;
-    crnd-dimension:procedure ?procedure;
-    crnd-dimension:trt01p ?trt01p;
-    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:factor ?factor;
-    crnd-dimension:race ?race;
-    crnd-dimension:sex ?sex;
-    crnd-dimension:durdsgr1 ?durdsgr1;
-    crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;
-    crnd-attribute:unit ?unit;
+    crnd-dimension:factor ?factor;
+    crnd-dimension:sex ?sex;
+    crnd-dimension:bmiblgr1 ?bmiblgr1;
+    crnd-dimension:durdsgr1 ?durdsgr1;
+    crnd-dimension:trt01p ?trt01p;
+    crnd-dimension:procedure ?procedure;
+    crnd-dimension:agegr1 ?agegr1;
+    crnd-dimension:race ?race;
     crnd-attribute:denominator ?denominator;
+    crnd-attribute:unit ?unit;
     crnd-measure:measure ?measure .      
-optional{ ?procedure skos:prefLabel ?procedurevalue . }
-optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
-optional{ ?agegr1 skos:prefLabel ?agegr1value . }
-optional{ ?factor skos:prefLabel ?factorvalue . }
-optional{ ?race skos:prefLabel ?racevalue . }
-optional{ ?sex skos:prefLabel ?sexvalue . }
-optional{ ?durdsgr1 skos:prefLabel ?durdsgr1value . }
-optional{ ?bmiblgr1 skos:prefLabel ?bmiblgr1value . }
 optional{ ?ittfl skos:prefLabel ?ittflvalue . }
+optional{ ?factor skos:prefLabel ?factorvalue . }
+optional{ ?sex skos:prefLabel ?sexvalue . }
+optional{ ?bmiblgr1 skos:prefLabel ?bmiblgr1value . }
+optional{ ?durdsgr1 skos:prefLabel ?durdsgr1value . }
+optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
+optional{ ?procedure skos:prefLabel ?procedurevalue . }
+optional{ ?agegr1 skos:prefLabel ?agegr1value . }
+optional{ ?race skos:prefLabel ?racevalue . }
 } 
 order by ?s
 
