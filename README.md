@@ -44,7 +44,10 @@ The tools/packages are shown below (including the present projects).
 
 ### Java runtime (for Apache Jena)
 
-Note SAS provides a private java runtime, which may be used.
+Note SAS provides a private java runtime, which may be used - though
+not recommended.  The path belows shows one possible location for a
+default SAS 9.4 installation on windows 10.
+
 For windows use:
 
     path C:\Program Files\SASHome\SASPrivateJavaRuntimeEnvironment\9.4\jre\bin;C:\Program Files\SASHome\SASPrivateJavaRuntimeEnvironment\9.4\bin 

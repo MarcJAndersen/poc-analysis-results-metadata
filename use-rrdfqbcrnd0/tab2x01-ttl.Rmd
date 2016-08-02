@@ -1,5 +1,5 @@
 --
-title: "Create TAB1X02_1 as RDF data cube"
+title: "Create TAB1X02 as RDF data cube"
 author: "mja@statgroup.dk"
 date: "`r Sys.Date()`"
 output:
@@ -21,16 +21,93 @@ This script creates RDF data cubes from .csv files.
 All files are stored in the directory
 ```{r}
 targetName<- "TAB2X01"
-(targetName)
+print(targetName)
 targetDir<- "../res-ttl"
-(targetDir)
+print(targetDir)
 targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
-(targetFile)
+print(targetFile)
 targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
-(targetObsrqFile)
+print(targetObsrqFile)
+target2DrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".rq", sep=""))
+print(target2DrqFile)
 ```
 
 ```{r, child='include_ttl.Rmd'}
+```
+
+```{r}
+
+rowdimensions<-c(
+"crnd-dimension:agegr1"   ,
+"crnd-dimension:race"     ,
+"crnd-dimension:sex"      ,
+"crnd-dimension:durdsgr1" ,
+"crnd-dimension:bmiblgr1" ,
+"crnd-dimension:ittfl"    
+    )
+
+statdimensions<- c(
+    "crnd-dimension:procedure",
+    "crnd-dimension:factor"
+    )
+
+coldimension<- c("crnd-dimension:trt01p"   )
+colvalues<- c( "code:trt01p-Placebo",
+"code:trt01p-Xanomeline_High_Dose",
+"code:trt01p-Xanomeline_Low_Dose",
+"code:trt01p-_ALL_")               
+
+colz1.rq<- NULL
+colz1.rq<-     paste( forsparqlprefix,
+"select * where {",
+paste0( ## for each of column values
+"# column ", seq(length(colvalues)), "\n",
+"?col", seq(length(colvalues)), "URI", " a qb:Observation  ;",
+paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
+" ",
+"    ", coldimension, " ", colvalues, " ;",    
+" ",                     
+"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1",
+                     ".", " ",
+    collapse="\n"),
+"
+{ select  ?procedurez1 where {
+   code:procedure skos:hasTopConcept ?procedurez1 .
+   filter ( ?procedurez1 != code:procedure-percent )
+   } }
+",
+## paste0( ## for each of column values
+## "optional{",
+## "# column ", seq(length(colvalues)), "\n",
+## "?col", seq(length(colvalues)), "URI", " a qb:Observation  ;",
+## paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+## paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+## paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z2", ";", collapse="\n"),
+## " ",
+## "    ", coldimension, " ", colvalues, " ;",    
+## " ",                     
+## "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2",
+##           ".", " ",
+##           "} . ",
+##     collapse="\n"),
+## "
+## { select  ?procedurez2 where {
+##    code:procedure skos:hasTopConcept ?procedurez2 .
+##    filter ( ?procedurez2 = code:procedure-percent )
+##    } }
+## ",
+"}"
+)
+cat(colz1.rq,file=target2DFile)
+ll<- strsplit(colz1.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+
+colz1obs<- NULL
+colz1obs<- as.data.frame(sparql.rdf(checkCube, colz1.rq ), stringsAsFactors=FALSE)
+knitr::kable(colz1obs)
+
 ```
 
 

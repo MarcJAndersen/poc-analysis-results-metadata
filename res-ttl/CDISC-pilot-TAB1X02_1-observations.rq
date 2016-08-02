@@ -28,36 +28,50 @@ prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
 prefix qb: <http://purl.org/linked-data/cube#>
 prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
 prefix code: <http://www.example.org/dc/code/>
-prefix dccs: <http://www.example.org/dc/tab2x01/dccs/>
-prefix ds: <http://www.example.org/dc/tab2x01/ds/>
+prefix dccs: <http://www.example.org/dc/tab1x02_1/dccs/>
+prefix ds: <http://www.example.org/dc/tab1x02_1/ds/>
 prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
 
 select * where {
 ?s a qb:Observation  ;
-    qb:dataSet ds:dataset-TAB2X01 ;
-    crnd-dimension:procedure ?procedure;
-    crnd-dimension:trt01p ?trt01p;
-    crnd-dimension:agegr1 ?agegr1;
+    qb:dataSet ds:dataset-TAB1X02_1 ;
     crnd-dimension:factor ?factor;
-    crnd-dimension:race ?race;
-    crnd-dimension:sex ?sex;
-    crnd-dimension:durdsgr1 ?durdsgr1;
-    crnd-dimension:bmiblgr1 ?bmiblgr1;
+    crnd-dimension:trt01p ?trt01p;
+    crnd-dimension:wbsdisfl ?wbsdisfl;
+    crnd-dimension:pviodisfl ?pviodisfl;
+    crnd-dimension:procedure ?procedure;
+    crnd-dimension:compfl ?compfl;
     crnd-dimension:ittfl ?ittfl;
-    crnd-attribute:unit ?unit;
+    crnd-dimension:ltfdisfl ?ltfdisfl;
+    crnd-dimension:comp24fl ?comp24fl;
+    crnd-dimension:dthdisfl ?dthdisfl;
+    crnd-dimension:pdndisfl ?pdndisfl;
+    crnd-dimension:saffl ?saffl;
+    crnd-dimension:etfl ?etfl;
+    crnd-dimension:lefdisfl ?lefdisfl;
+    crnd-dimension:aedisfl ?aedisfl;
+    crnd-dimension:stsdisfl ?stsdisfl;
     crnd-attribute:denominator ?denominator;
+    crnd-attribute:unit ?unit;
     crnd-measure:measure ?measure .      
-optional{ ?procedure skos:prefLabel ?procedurevalue . }
-optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
-optional{ ?agegr1 skos:prefLabel ?agegr1value . }
 optional{ ?factor skos:prefLabel ?factorvalue . }
-optional{ ?race skos:prefLabel ?racevalue . }
-optional{ ?sex skos:prefLabel ?sexvalue . }
-optional{ ?durdsgr1 skos:prefLabel ?durdsgr1value . }
-optional{ ?bmiblgr1 skos:prefLabel ?bmiblgr1value . }
+optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
+optional{ ?wbsdisfl skos:prefLabel ?wbsdisflvalue . }
+optional{ ?pviodisfl skos:prefLabel ?pviodisflvalue . }
+optional{ ?procedure skos:prefLabel ?procedurevalue . }
+optional{ ?compfl skos:prefLabel ?compflvalue . }
 optional{ ?ittfl skos:prefLabel ?ittflvalue . }
+optional{ ?ltfdisfl skos:prefLabel ?ltfdisflvalue . }
+optional{ ?comp24fl skos:prefLabel ?comp24flvalue . }
+optional{ ?dthdisfl skos:prefLabel ?dthdisflvalue . }
+optional{ ?pdndisfl skos:prefLabel ?pdndisflvalue . }
+optional{ ?saffl skos:prefLabel ?safflvalue . }
+optional{ ?etfl skos:prefLabel ?etflvalue . }
+optional{ ?lefdisfl skos:prefLabel ?lefdisflvalue . }
+optional{ ?aedisfl skos:prefLabel ?aedisflvalue . }
+optional{ ?stsdisfl skos:prefLabel ?stsdisflvalue . }
 } 
 order by ?s
 

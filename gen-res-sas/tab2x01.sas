@@ -190,7 +190,7 @@ proc tabulate data=adsl missing;
         BMIBL*(n*f=f3.0 /*nmiss*/ mean stddev median min max)
         BMIBLGR1*(n*f=f3.0 pctn<BMIBLGR1>*f=f3.0)
         ,
-        trt01p;
+        trt01p all;
 run;
 
 %let tabulateOutputDs=work.tab_14_2x01;

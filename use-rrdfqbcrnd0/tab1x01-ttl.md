@@ -1,7 +1,7 @@
 ---
 title: "Create TAB1X01 as RDF data cube"
 author: "mja@statgroup.dk"
-date: "2016-07-20"
+date: "2016-08-02"
 output:
   html_document:
     toc: true
@@ -127,7 +127,7 @@ cat("TAB1X01 cube stored as ", normalizePath(tab1x01.cube.fn), "\n")
 ```
 
 ```
-## TAB1X01 cube stored as  C:\Users\ma\AppData\Local\Temp\RtmpW0WWex\DC-TAB1X01-R-V-0-0-0.ttl
+## TAB1X01 cube stored as  C:\Users\ma\AppData\Local\Temp\RtmpiWLQNW\DC-TAB1X01-R-V-0-0-0.ttl
 ```
 # Copy cube to destination directory
 
@@ -141,7 +141,7 @@ if (file.copy( tab1x01.cube.fn, targetFile, overwrite=TRUE)) {
 ```
 
 ```
-## RDF data cube copied to  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X01.ttl
+## RDF data cube copied to  H:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X01.ttl
 ```
 
 

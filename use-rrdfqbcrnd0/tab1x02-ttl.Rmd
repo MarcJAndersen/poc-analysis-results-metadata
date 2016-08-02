@@ -20,7 +20,7 @@ This script creates RDF data cubes from .csv files.
 
 All files are stored in the directory
 ```{r}
-targetName<- "TAB1X02_1"
+targetName<- "TAB1X02"
 (targetName)
 targetDir<- "../res-ttl"
 (targetDir)
@@ -30,7 +30,7 @@ targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-obser
 (targetObsrqFile)
 ```
 
-```{r, child='include-ttl.Rmd'}
+```{r, child='include_ttl.Rmd'}
 ```
 
 

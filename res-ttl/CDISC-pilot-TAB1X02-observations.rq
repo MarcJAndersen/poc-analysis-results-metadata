@@ -28,36 +28,28 @@ prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
 prefix qb: <http://purl.org/linked-data/cube#>
 prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
 prefix code: <http://www.example.org/dc/code/>
-prefix dccs: <http://www.example.org/dc/tab2x01/dccs/>
-prefix ds: <http://www.example.org/dc/tab2x01/ds/>
+prefix dccs: <http://www.example.org/dc/tab1x02/dccs/>
+prefix ds: <http://www.example.org/dc/tab1x02/ds/>
 prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
 
 select * where {
 ?s a qb:Observation  ;
-    qb:dataSet ds:dataset-TAB2X01 ;
+    qb:dataSet ds:dataset-TAB1X02 ;
+    crnd-dimension:factor ?factor;
+    crnd-dimension:dcreascd ?dcreascd;
+    crnd-dimension:comp24fl ?comp24fl;
     crnd-dimension:procedure ?procedure;
     crnd-dimension:trt01p ?trt01p;
-    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:factor ?factor;
-    crnd-dimension:race ?race;
-    crnd-dimension:sex ?sex;
-    crnd-dimension:durdsgr1 ?durdsgr1;
-    crnd-dimension:bmiblgr1 ?bmiblgr1;
-    crnd-dimension:ittfl ?ittfl;
-    crnd-attribute:unit ?unit;
     crnd-attribute:denominator ?denominator;
+    crnd-attribute:unit ?unit;
     crnd-measure:measure ?measure .      
+optional{ ?factor skos:prefLabel ?factorvalue . }
+optional{ ?dcreascd skos:prefLabel ?dcreascdvalue . }
+optional{ ?comp24fl skos:prefLabel ?comp24flvalue . }
 optional{ ?procedure skos:prefLabel ?procedurevalue . }
 optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
-optional{ ?agegr1 skos:prefLabel ?agegr1value . }
-optional{ ?factor skos:prefLabel ?factorvalue . }
-optional{ ?race skos:prefLabel ?racevalue . }
-optional{ ?sex skos:prefLabel ?sexvalue . }
-optional{ ?durdsgr1 skos:prefLabel ?durdsgr1value . }
-optional{ ?bmiblgr1 skos:prefLabel ?bmiblgr1value . }
-optional{ ?ittfl skos:prefLabel ?ittflvalue . }
 } 
 order by ?s
 

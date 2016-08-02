@@ -24,6 +24,7 @@ set targetfilecsv1=..\res-csv\TAB1X01-Components.csv
 if exist %targetfilecsv1% del %targetfilecsv1%
 set targetfilecsv2=..\res-csv\TAB1X01.csv
 if exist %targetfilecsv2% del %targetfilecsv2%
+echo %sascmd% tab1x01.sas
 %sascmd% tab1x01.sas
 if %ERRORLEVEL% gtr 1 goto :stop
 popd

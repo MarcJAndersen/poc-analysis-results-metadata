@@ -1,7 +1,7 @@
 --
-title: "Create TAB1X02 as RDF data cube"
+title: "Create TAB1X02_1 as RDF data cube"
 author: "mja@statgroup.dk"
-date: "2016-07-20"
+date: "2016-08-02"
 output:
   html_document:
     toc: true
@@ -13,10 +13,51 @@ output:
     variant: markdown_github
 ---
 
+# Introduction
+This script creates RDF data cubes from .csv files.
 
 # Setup
 
-This script creates RDF data cubes from .csv files.
+All files are stored in the directory
+
+```r
+targetName<- "TAB1X02"
+(targetName)
+```
+
+```
+## [1] "TAB1X02"
+```
+
+```r
+targetDir<- "../res-ttl"
+(targetDir)
+```
+
+```
+## [1] "../res-ttl"
+```
+
+```r
+targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
+(targetFile)
+```
+
+```
+## [1] "../res-ttl/CDISC-pilot-TAB1X02.ttl"
+```
+
+```r
+targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
+(targetObsrqFile)
+```
+
+```
+## [1] "../res-ttl/CDISC-pilot-TAB1X02-observations.rq"
+```
+
+
+# Loading libraries
 
 
 ```r
@@ -80,35 +121,26 @@ library(rrdfqb)
 
 ```r
 library(rrdfqbcrnd0)
+library(knitr)
 ```
 
-All files are stored in the directory
-
-```r
-targetDir<- "../res-ttl"
-(targetDir)
-```
-
-```
-## [1] "../res-ttl"
-```
 
 # Load CSV files
 
 
 ```r
-tab1x02ObsDataCsvFn<- file.path("../res-csv", "TAB1X02.csv")
-tab1x02ObsData <- read.csv(tab1x02ObsDataCsvFn,stringsAsFactors=FALSE)
+ObsDataCsvFn<- file.path("../res-csv", paste( targetName, ".csv", sep=""))
+ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
 
-tab1x02MetaDataCsvFn<- file.path("../res-csv", "TAB1X02-Components.csv")
-tab1x02MetaData <- read.csv(tab1x02MetaDataCsvFn,stringsAsFactors=FALSE)
+MetaDataCsvFn<- file.path("../res-csv", paste( targetName, "-Components.csv", sep=""))
+MetaData <- read.csv(MetaDataCsvFn,stringsAsFactors=FALSE)
 ```
 
 # Create cube
 
 
 ```r
-tab1x02.cube.fn<- BuildCubeFromDataFrames(tab1x02MetaData, tab1x02ObsData )
+cube.fn<- BuildCubeFromDataFrames(MetaData, ObsData )
 ```
 
 ```
@@ -120,29 +152,332 @@ tab1x02.cube.fn<- BuildCubeFromDataFrames(tab1x02MetaData, tab1x02ObsData )
 ```
 
 ```r
-cat("TAB1X02 cube stored as ", normalizePath(tab1x02.cube.fn), "\n")
+cat(targetName, " ", "cube stored as ", normalizePath(cube.fn), "\n")
 ```
 
 ```
-## TAB1X02 cube stored as  C:\Users\ma\AppData\Local\Temp\Rtmp8ooVff\DC-TAB1X02-R-V-0-0-0.ttl
+## TAB1X02   cube stored as  C:\Users\ma\AppData\Local\Temp\RtmpEtJwri\DC-TAB1X02-R-V-0-0-0.ttl
 ```
 # Copy cube to destination directory
 
 
 ```r
-targetFile<- file.path(targetDir,"CDISC-pilot-TAB1X02.ttl")
-
-if (file.copy( tab1x02.cube.fn, targetFile, overwrite=TRUE)) {
+if (file.copy( cube.fn, targetFile, overwrite=TRUE)) {
    cat("RDF data cube copied to ", normalizePath(targetFile), "\n")
  }
 ```
 
 ```
-## RDF data cube copied to  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X02.ttl
+## RDF data cube copied to  H:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X02.ttl
+```
+# Get SPARQL query for observations
+
+This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
+
+
+```r
+checkCube <- new.rdf()  # Initialize
+temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
+summarize.rdf(checkCube)
+```
+
+```
+## [1] "Number of triples: 1804"
+```
+
+## Get the values in the cube
+First set values for accessing the cube.
+
+```r
+dsdName<- GetDsdNameFromCube( checkCube )
+domainName<- GetDomainNameFromCube( checkCube )
+forsparqlprefix<- GetForSparqlPrefix( domainName )
+```
+
+## Get cube components
+
+The cube components are shown in the next output.
+
+```r
+componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
+components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
+components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
+knitr::kable(components[,c("vn", "label")])
 ```
 
 
 
+|vn        |label                                            |
+|:---------|:------------------------------------------------|
+|comp24fl  |Completion Status:                               |
+|dcreascd  |Reason for Early Termination (prior to Week 24): |
+|factor    |Type of procedure (quantity, proportion...)      |
+|procedure |Statistical Procedure                            |
+|trt01p    |Planned Treatment for Period 01                  |
+
+The codelists are shown in the next output.
+
+```r
+codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
+codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
+codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
+codelists$clc<- gsub("code:","",codelists$cl)
+knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
+```
+
+
+
+|vn        |clc                                            |clprefLabel                           |
+|:---------|:----------------------------------------------|:-------------------------------------|
+|comp24fl  |comp24fl-Completed_Week_24                     |Completed Week 24                     |
+|comp24fl  |comp24fl-Early_Termination__prior_to_Week_24_  |Early Termination (prior to Week 24)  |
+|comp24fl  |comp24fl-_ALL_                                 |_ALL_                                 |
+|comp24fl  |comp24fl-_NONMISS_                             |_NONMISS_                             |
+|dcreascd  |dcreascd-Adverse_Event                         |Adverse Event                         |
+|dcreascd  |dcreascd-Completed                             |Completed                             |
+|dcreascd  |dcreascd-Death                                 |Death                                 |
+|dcreascd  |dcreascd-Lack_of_Eefficacy                     |Lack of Eefficacy                     |
+|dcreascd  |dcreascd-Lost_to_Follow-up                     |Lost to Follow-up                     |
+|dcreascd  |dcreascd-Missing                               |Missing                               |
+|dcreascd  |dcreascd-Physician_decided_to_withdraw_subject |Physician decided to withdraw subject |
+|dcreascd  |dcreascd-Protocol_criteria_not_met             |Protocol criteria not met             |
+|dcreascd  |dcreascd-Protocol_violation                    |Protocol violation                    |
+|dcreascd  |dcreascd-Sponsor_decision                      |Sponsor decision                      |
+|dcreascd  |dcreascd-Subject_decided_to_withdraw           |Subject decided to withdraw           |
+|dcreascd  |dcreascd-_ALL_                                 |_ALL_                                 |
+|dcreascd  |dcreascd-_NONMISS_                             |_NONMISS_                             |
+|factor    |factor-_ALL_                                   |_ALL_                                 |
+|factor    |factor-_NONMISS_                               |_NONMISS_                             |
+|factor    |factor-proportion                              |proportion                            |
+|factor    |factor-quantity                                |quantity                              |
+|procedure |procedure-count                                |count                                 |
+|procedure |procedure-percent                              |percent                               |
+|trt01p    |trt01p-Placebo                                 |Placebo                               |
+|trt01p    |trt01p-Xanomeline_High_Dose                    |Xanomeline High Dose                  |
+|trt01p    |trt01p-Xanomeline_Low_Dose                     |Xanomeline Low Dose                   |
+|trt01p    |trt01p-_ALL_                                   |_ALL_                                 |
+|trt01p    |trt01p-_NONMISS_                               |_NONMISS_                             |
+
+
+The dimensions are shown in the next output.
+
+```r
+dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
+dimensions<- sparql.rdf(checkCube, dimensionsRq)
+knitr::kable(dimensions)
+```
+
+
+
+|p                        |
+|:------------------------|
+|crnd-dimension:factor    |
+|crnd-dimension:dcreascd  |
+|crnd-dimension:comp24fl  |
+|crnd-dimension:procedure |
+|crnd-dimension:trt01p    |
+
+Then the attributes as shown in the next output.
+
+```r
+attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
+attributes<- sparql.rdf(checkCube, attributesRq)
+knitr::kable(attributes)
+```
+
+
+
+|p                          |
+|:--------------------------|
+|crnd-attribute:denominator |
+|crnd-attribute:unit        |
+
+## Get observations
+And finally the SPARQL query for observations, showing only the first 10 observations.
+
+```r
+observationsRq<- GetObservationsSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
+cat(observationsRq)
+```
+
+```
+## prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+## prefix skos: <http://www.w3.org/2004/02/skos/core#>
+## prefix prov: <http://www.w3.org/ns/prov#>
+## prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+## prefix dcat: <http://www.w3.org/ns/dcat#>
+## prefix owl: <http://www.w3.org/2002/07/owl#>
+## prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+## prefix pav: <http://purl.org/pav>
+## prefix dc: <http://purl.org/dc/elements/1.1/>
+## prefix dct: <http://purl.org/dc/terms/>
+## prefix mms: <http://rdf.cdisc.org/mms#>
+## prefix cts: <http://rdf.cdisc.org/ct/schema#>
+## prefix cdiscs: <http://rdf.cdisc.org/std/schema#>
+## prefix cdash-1-1: <http://rdf.cdisc.org/std/cdash-1-1#>
+## prefix cdashct: <http://rdf.cdisc.org/cdash-terminology#>
+## prefix sdtmct: <http://rdf.cdisc.org/sdtm-terminology#>
+## prefix sdtm-1-2: <http://rdf.cdisc.org/std/sdtm-1-2#>
+## prefix sdtm-1-3: <http://rdf.cdisc.org/std/sdtm-1-3#>
+## prefix sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#>
+## prefix sdtmig-3-1-2: <http://rdf.cdisc.org/std/sdtmig-3-1-2#>
+## prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#>
+## prefix sendct: <http://rdf.cdisc.org/send-terminology#>
+## prefix sendig-3-0: <http://rdf.cdisc.org/std/sendig-3-0#>
+## prefix adamct: <http://rdf.cdisc.org/adam-terminology#>
+## prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#>
+## prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
+## prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
+## prefix qb: <http://purl.org/linked-data/cube#>
+## prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
+## prefix code: <http://www.example.org/dc/code/>
+## prefix dccs: <http://www.example.org/dc/tab1x02/dccs/>
+## prefix ds: <http://www.example.org/dc/tab1x02/ds/>
+## prefix crnd-dimension: <http://www.example.org/dc/dimension#>
+## prefix crnd-attribute: <http://www.example.org/dc/attribute#>
+## prefix crnd-measure: <http://www.example.org/dc/measure#>
+## 
+## select * where {
+## ?s a qb:Observation  ;
+##     qb:dataSet ds:dataset-TAB1X02 ;
+##     crnd-dimension:factor ?factor;
+##     crnd-dimension:dcreascd ?dcreascd;
+##     crnd-dimension:comp24fl ?comp24fl;
+##     crnd-dimension:procedure ?procedure;
+##     crnd-dimension:trt01p ?trt01p;
+##     crnd-attribute:denominator ?denominator;
+##     crnd-attribute:unit ?unit;
+##     crnd-measure:measure ?measure .      
+## optional{ ?factor skos:prefLabel ?factorvalue . }
+## optional{ ?dcreascd skos:prefLabel ?dcreascdvalue . }
+## optional{ ?comp24fl skos:prefLabel ?comp24flvalue . }
+## optional{ ?procedure skos:prefLabel ?procedurevalue . }
+## optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
+## } 
+## order by ?s
+```
+
+```r
+cat(observationsRq, file=targetObsrqFile)
+observations<- as.data.frame(sparql.rdf(checkCube, observationsRq ), stringsAsFactors=FALSE)
+knitr::kable(observations[ 1:10 ,
+   c(paste0(sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", dimensions), "value"),sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", attributes), "measure")])
+```
+
+
+
+|factorvalue |dcreascdvalue             |comp24flvalue                        |procedurevalue |trt01pvalue |denominator |unit |measure      |
+|:-----------|:-------------------------|:------------------------------------|:--------------|:-----------|:-----------|:----|:------------|
+|quantity    |Adverse Event             |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |8            |
+|proportion  |Adverse Event             |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |9.3023255814 |
+|quantity    |Completed                 |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |0            |
+|proportion  |Completed                 |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |0            |
+|quantity    |Death                     |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |1            |
+|proportion  |Death                     |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
+|quantity    |Protocol criteria not met |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |1            |
+|proportion  |Protocol criteria not met |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
+|quantity    |Lack of Eefficacy         |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |3            |
+|proportion  |Lack of Eefficacy         |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |3.488372093  |
+
+## Get observations with labels
+
+The SPARQL query for observations with labels for variables, showing only the first 10 observations.
+
+```r
+observationsDescriptionRq<- GetObservationsWithDescriptionSparqlQuery( forsparqlprefix, domainName, dimensions, attributes )
+cat(observationsDescriptionRq)
+```
+
+```
+## prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+## prefix skos: <http://www.w3.org/2004/02/skos/core#>
+## prefix prov: <http://www.w3.org/ns/prov#>
+## prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+## prefix dcat: <http://www.w3.org/ns/dcat#>
+## prefix owl: <http://www.w3.org/2002/07/owl#>
+## prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+## prefix pav: <http://purl.org/pav>
+## prefix dc: <http://purl.org/dc/elements/1.1/>
+## prefix dct: <http://purl.org/dc/terms/>
+## prefix mms: <http://rdf.cdisc.org/mms#>
+## prefix cts: <http://rdf.cdisc.org/ct/schema#>
+## prefix cdiscs: <http://rdf.cdisc.org/std/schema#>
+## prefix cdash-1-1: <http://rdf.cdisc.org/std/cdash-1-1#>
+## prefix cdashct: <http://rdf.cdisc.org/cdash-terminology#>
+## prefix sdtmct: <http://rdf.cdisc.org/sdtm-terminology#>
+## prefix sdtm-1-2: <http://rdf.cdisc.org/std/sdtm-1-2#>
+## prefix sdtm-1-3: <http://rdf.cdisc.org/std/sdtm-1-3#>
+## prefix sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#>
+## prefix sdtmig-3-1-2: <http://rdf.cdisc.org/std/sdtmig-3-1-2#>
+## prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#>
+## prefix sendct: <http://rdf.cdisc.org/send-terminology#>
+## prefix sendig-3-0: <http://rdf.cdisc.org/std/sendig-3-0#>
+## prefix adamct: <http://rdf.cdisc.org/adam-terminology#>
+## prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#>
+## prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
+## prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
+## prefix qb: <http://purl.org/linked-data/cube#>
+## prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
+## prefix code: <http://www.example.org/dc/code/>
+## prefix dccs: <http://www.example.org/dc/tab1x02/dccs/>
+## prefix ds: <http://www.example.org/dc/tab1x02/ds/>
+## prefix crnd-dimension: <http://www.example.org/dc/dimension#>
+## prefix crnd-attribute: <http://www.example.org/dc/attribute#>
+## prefix crnd-measure: <http://www.example.org/dc/measure#>
+##  select * where { 
+##  ?s a qb:Observation  ; 
+##  qb:dataSet ds:dataset-TAB1X02  ; 
+##  crnd-dimension:factor ?factor;
+## crnd-dimension:dcreascd ?dcreascd;
+## crnd-dimension:comp24fl ?comp24fl;
+## crnd-dimension:procedure ?procedure;
+## crnd-dimension:trt01p ?trt01p; 
+##  crnd-attribute:denominator ?denominator;
+## crnd-attribute:unit ?unit; 
+##  crnd-measure:measure      ?measure .      
+##  optional{ ?factor skos:prefLabel ?factorvalue . }
+## optional{ ?dcreascd skos:prefLabel ?dcreascdvalue . }
+## optional{ ?comp24fl skos:prefLabel ?comp24flvalue . }
+## optional{ ?procedure skos:prefLabel ?procedurevalue . }
+## optional{ ?trt01p skos:prefLabel ?trt01pvalue . } 
+##  optional{ crnd-dimension:factor rdfs:label ?factorlabel . }
+## optional{ crnd-dimension:dcreascd rdfs:label ?dcreascdlabel . }
+## optional{ crnd-dimension:comp24fl rdfs:label ?comp24fllabel . }
+## optional{ crnd-dimension:procedure rdfs:label ?procedurelabel . }
+## optional{ crnd-dimension:trt01p rdfs:label ?trt01plabel . } 
+##  BIND( IRI(crnd-dimension:factor) as ?factorIRI)
+## BIND( IRI(crnd-dimension:dcreascd) as ?dcreascdIRI)
+## BIND( IRI(crnd-dimension:comp24fl) as ?comp24flIRI)
+## BIND( IRI(crnd-dimension:procedure) as ?procedureIRI)
+## BIND( IRI(crnd-dimension:trt01p) as ?trt01pIRI) 
+##  BIND( IRI( ?s ) AS ?measureIRI) 
+##  }
+```
+
+```r
+observationsDesc<- as.data.frame(sparql.rdf(checkCube, observationsDescriptionRq ), stringsAsFactors=FALSE)
+knitr::kable(observationsDesc[ 1:10 ,
+     c(paste0(rep(sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", dimensions),each=3),
+       c("label", "value", "IRI")),
+       sub("crnd-dimension:|crnd-attribute:|crnd-measure:", "", attributes), "measure", "measureIRI"
+       )]
+       )
+```
+
+
+
+|factorlabel                                 |factorvalue |factorIRI             |dcreascdlabel                                    |dcreascdvalue             |dcreascdIRI             |comp24fllabel      |comp24flvalue                        |comp24flIRI             |procedurelabel        |procedurevalue |procedureIRI             |trt01plabel                     |trt01pvalue          |trt01pIRI             |denominator |unit |measure      |measureIRI |
+|:-------------------------------------------|:-----------|:---------------------|:------------------------------------------------|:-------------------------|:-----------------------|:------------------|:------------------------------------|:-----------------------|:---------------------|:--------------|:------------------------|:-------------------------------|:--------------------|:---------------------|:-----------|:----|:------------|:----------|
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Death                     |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs034  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol criteria not met |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |0            |ds:obs063  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lost to Follow-up         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |            |NA   |0            |ds:obs039  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation        |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |1.1811023622 |ds:obs102  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_                     |crnd-dimension:dcreascd |Completion Status: |_ALL_                                |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs084  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Missing                   |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |0            |ds:obs013  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |3            |ds:obs009  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation        |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |1            |ds:obs073  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |1.1904761905 |ds:obs038  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_                     |crnd-dimension:dcreascd |Completion Status: |_ALL_                                |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs112  |
 
 # Session information
 
@@ -172,7 +507,8 @@ sessionInfo()
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] packrat_0.4.7-1 digest_0.6.9    withr_1.0.1     formatR_1.4    
-##  [5] magrittr_1.5    evaluate_0.9    stringi_1.1.1   tools_3.2.5    
-##  [9] stringr_1.0.0   memoise_1.0.0
+##  [5] magrittr_1.5    evaluate_0.9    highr_0.6       stringi_1.1.1  
+##  [9] tools_3.2.5     stringr_1.0.0   memoise_1.0.0
 ```
+
 

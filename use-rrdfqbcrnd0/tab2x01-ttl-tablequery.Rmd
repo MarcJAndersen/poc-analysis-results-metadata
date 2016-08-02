@@ -53,9 +53,12 @@ rowdimensions<-c(
 "crnd-dimension:sex"      ,
 "crnd-dimension:durdsgr1" ,
 "crnd-dimension:bmiblgr1" ,
-"crnd-dimension:ittfl"    ,
-"crnd-dimension:procedure",
-"crnd-dimension:factor"
+"crnd-dimension:ittfl"    
+    )
+
+statdimensions<- c(
+    "crnd-dimension:procedure",
+    "crnd-dimension:factor"
     )
 
 coldimension<- c("crnd-dimension:trt01p"   )
@@ -161,8 +164,6 @@ knitr::kable(observationsRowDims)
 cube.rowdimscol1obs.rq<-
     paste( forsparqlprefix,
           "select * where {",
-
-
           "{",
           paste0( "select distinct ", paste0(sub("crnd-dimension:", "?", rowdimensions ), collapse=" "), " where {", collapse="\n"),
           "{select * where {",
@@ -188,11 +189,9 @@ cube.rowdimscol1obs.rq<-
           "}",          
           "} ",
           "} ",
-
           "values (?z1prop ?z2prop) {",
 paste( "(", z12prop[,1], z12prop[,2], ")", sep=" ", collapse="\n"),
           "} ",
-
           paste0(
           "optional{ ?s", seq(length(colvalues)), "z1", " a qb:Observation  ;", 
           paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
@@ -202,7 +201,6 @@ paste( "(", z12prop[,1], z12prop[,2], ")", sep=" ", collapse="\n"),
           "    crnd-measure:measure ?col", seq(length(colvalues)), "z1", " ;  ",
               "  crnd-dimension:procedure ?z1prop . }", collapse="\n"
               ),
-
           paste0(
           "optional{ ?s", seq(length(colvalues)), "z2", " a qb:Observation  ;", 
           paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
@@ -211,8 +209,7 @@ paste( "(", z12prop[,1], z12prop[,2], ")", sep=" ", collapse="\n"),
           "    ", coldimension, " ", colvalues, " ;",
           "    crnd-measure:measure ?col", seq(length(colvalues)), "z2", " ;  ",
               "  crnd-dimension:procedure ?z2prop . }", collapse="\n"
-              ),
-                    
+              ),   
           "} ",
           "\n",
           sep="\n", collapse="\n"
@@ -222,7 +219,67 @@ cat(cube.rowdimscol1obs.rq)
 observationscol1obs<- as.data.frame(sparql.rdf(checkCube, cube.rowdimscol1obs.rq ), stringsAsFactors=FALSE)
 knitr::kable(observationscol1obs)
 
+rq<- paste0(readLines(con="../sparql-rq/tab1x02_1-2D-manual.rq"),collapse="\n")
+cat(rq)
+ob<- as.data.frame(sparql.rdf(checkCube, rq ), stringsAsFactors=FALSE)
+knitr::kable(ob)
 
+```
+
+Next attempt.
+
+
+```{r}
+colz1.rq<- NULL
+colz1.rq<-     paste( forsparqlprefix,
+"select * where {",
+paste0( ## for each of column values
+"# column ", seq(length(colvalues)), "\n",
+"?col", seq(length(colvalues)), "URI", " a qb:Observation  ;",
+paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
+" ",
+"    ", coldimension, " ", colvalues, " ;",    
+" ",                     
+"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1",
+                     ".", " ",
+    collapse="\n"),
+"
+{ select  ?procedurez1 where {
+   code:procedure skos:hasTopConcept ?procedurez1 .
+   filter ( ?procedurez1 != code:procedure-percent )
+   } }
+",
+## paste0( ## for each of column values
+## "optional{",
+## "# column ", seq(length(colvalues)), "\n",
+## "?col", seq(length(colvalues)), "URI", " a qb:Observation  ;",
+## paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+## paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+## paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z2", ";", collapse="\n"),
+## " ",
+## "    ", coldimension, " ", colvalues, " ;",    
+## " ",                     
+## "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2",
+##           ".", " ",
+##           "} . ",
+##     collapse="\n"),
+## "
+## { select  ?procedurez2 where {
+##    code:procedure skos:hasTopConcept ?procedurez2 .
+##    filter ( ?procedurez2 = code:procedure-percent )
+##    } }
+## ",
+"}"
+)
+# cat(colz1.rq)
+ll<- strsplit(colz1.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+
+colz1obs<- NULL
+colz1obs<- as.data.frame(sparql.rdf(checkCube, colz1.rq ), stringsAsFactors=FALSE)
+knitr::kable(colz1obs)
 
 ```
 

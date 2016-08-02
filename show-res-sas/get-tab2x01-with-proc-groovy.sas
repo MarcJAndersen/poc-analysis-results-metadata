@@ -10,16 +10,8 @@ options linesize=200;
 
 options mprint nocenter;
 
-/* !!! TODO !!!
-make macro variables for the changing everything to absolute paths
-
-in the proc groovy use forward slash - and not backward slash
-
-*/
-
 proc groovy  ;
 %let jenalib=%str(../../apache-jena-2.13.0/lib);  
-%let jenalib=%str(H:\projects-s114h\GitHub\apache-jena-2.13.0/lib);  
 add classpath="&jenalib./commons-codec-1.6.jar";
 add classpath="&jenalib./commons-csv-1.0.jar";
 add classpath="&jenalib./commons-lang3-3.3.2.jar";
@@ -61,17 +53,17 @@ import com.hp.hpl.jena.rdf.model.ModelFactory ;
 
 // https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/ModelFactory.html
 Model m = ModelFactory.createDefaultModel() ;
-m.read("H:/projects-s114h/GitHub/rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl");
-m.read("H:/projects-s114h/GitHub/poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X02.ttl") ;
+m.read("../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl");
+m.read("../res-ttl/CDISC-pilot-TAB2X01.ttl") ;
         
 // https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/QueryFactory.html    
-Query query = QueryFactory.read("H:/projects-s114h/GitHub/poc-analysis-results-metadata/sparql-rq/tab1x02.rq") ;
+Query query = QueryFactory.read("../sparql-rq/tab2x01.rq") ;
 QueryExecution qexec = QueryExecutionFactory.create(query, m) ;
 
 //  https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/ResultSetFormatter.html
 ResultSet rs = qexec.execSelect() ;
 //       ResultSetFormatter.outputAsXML(System.out, rs);
-FileOutputStream os = new FileOutputStream("H:/projects-s114h/GitHub/poc-analysis-results-metadata/check-CDISC-pilot-TAB1X02.xml");            
+FileOutputStream os = new FileOutputStream("check-CDISC-pilot-TAB2X01.xml");            
 ResultSetFormatter.outputAsXML(os, rs);
 os.close();
 
@@ -84,26 +76,26 @@ quit;
 
 %sparqlreadxml(
     sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map),
-    sparqlqueryresultxml=check-CDISC-pilot-TAB1X02.xml,
+    sparqlqueryresultxml=check-CDISC-pilot-TAB2X01.xml,
     frsxlemap=SXLEMAP,
-    resultdsn=tab1x02,
+    resultdsn=tab2x01,
     debug=Y
 );
 
 
-proc print data=tab1x02 width=min;
+proc print data=tab2x01 width=min;
     var comp24flLevelLabel dcreascdLevelLabel col1z1 col1z2 col2z1 col2z2 col3z1 col3z2 col4z1 col4z2;
 run;
 
-/* The rest is from get-tab1x02.sas - put in  include file, so the code is shared */
+/* The rest is from get-tab2x01.sas - put in  include file, so the code is shared */
 
 proc format;
     picture pctfmt(round max=6) low-high='0009%)' (prefix="(");
 run;
 
 run;
-data tab1x02_pres;
-    set tab1x02;
+data tab2x01_pres;
+    set tab2x01;
     roworder=ifn(dcreascdLevelLabel="_ALL_",1,2);
     
         /* This could be derived in the SPARQL query */
@@ -117,17 +109,17 @@ data tab1x02_pres;
     format col1z2 col2z2 col3z2 col4z2 pctfmt.;
 run;
 
-ods html file="tab1x02.html"(title= "Table 14.1.2 from ARM RDF data cube")
+ods html file="tab2x01.html"(title= "Table 14.1.2 from ARM RDF data cube")
     style=minimal;
-* ods pdf file="tab1x02.pdf" style=minimal;
-* ods tagsets.rtf file="tab1x02.rtf";
+* ods pdf file="tab2x01.pdf" style=minimal;
+* ods tagsets.rtf file="tab2x01.rtf";
 
 
 
 
 title;
 
-proc report data=tab1x02_pres missing nofs split="¤";
+proc report data=tab2x01_pres missing nofs split="¤";
     column
         (" "                    roworder rowgrouplabel rowlabel)
         ("Placebo"              col1z1URI col1z1 col1z2URI col1z2)

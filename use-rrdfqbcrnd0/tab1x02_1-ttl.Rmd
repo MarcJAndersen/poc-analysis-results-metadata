@@ -30,7 +30,7 @@ targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-obser
 (targetObsrqFile)
 ```
 
-```{r, child='include_tabulate_to_qb.sas'}
+```{r, child='include_ttl.Rmd'}
 ```
 
 

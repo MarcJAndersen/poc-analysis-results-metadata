@@ -32,6 +32,7 @@ set targetfilecsv1=..\res-csv\TAB1X02.csv
 if exist %targetfilecsv1% del %targetfilecsv1%
 set targetfilecsv2=..\res-csv\TAB1X02-Components.csv
 if exist %targetfilecsv2% del %targetfilecsv2%
+echo %sascmd% tab1x02.sas
 %sascmd% tab1x02.sas
 if %ERRORLEVEL% gtr 1 goto :stop
 popd
@@ -49,6 +50,7 @@ set prgsasgenhtml=get-tab1x02-with-proc-groovy.sas
 set targetfilehtml=..\show-res-sas\tab1x02.html
 if exist %targetfilehtml% del %targetfilehtml%
 if not exist %prgsasgenhtml% goto :prgsasgenhtmlfilenotfound
+echo %sascmd% %prgsasgenhtml%
 %sascmd% %prgsasgenhtml%
 if %ERRORLEVEL% gtr 1 goto :stop
 popd
