@@ -23,12 +23,13 @@ All files are stored in the directory
 targetName<- "TAB2X01"
 print(targetName)
 targetDir<- "../res-ttl"
+rqtargetDir<- "../sparql-rq"
 print(targetDir)
 targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
 print(targetFile)
 targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
 print(targetObsrqFile)
-target2DrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".rq", sep=""))
+target2DrqFile<- file.path(rqtargetDir, paste( tolower(targetName), ".rq", sep=""))
 print(target2DrqFile)
 ```
 
@@ -62,7 +63,7 @@ colz1.rq<-     paste( forsparqlprefix,
 "select * where {",
 paste0( ## for each of column values
 "# column ", seq(length(colvalues)), "\n",
-"?col", seq(length(colvalues)), "URI", " a qb:Observation  ;",
+"?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;",
 paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
 paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
 paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
@@ -100,7 +101,7 @@ paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions)
 ## ",
 "}"
 )
-cat(colz1.rq,file=target2DFile)
+cat(colz1.rq,file=target2DrqFile)
 ll<- strsplit(colz1.rq,split="\n")
 cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
 

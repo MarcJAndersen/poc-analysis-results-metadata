@@ -1,113 +1,113 @@
 trt01p,comp24fl,DCREASCD,procedure,factor,unit,denominator,measure
-Placebo,Early Termination (prior to Week 24),Adverse Event,count,quantity,,,8
-Placebo,Early Termination (prior to Week 24),Adverse Event,percent,proportion,,trt01p,9.3023255814
-Placebo,Early Termination (prior to Week 24),Completed,count,quantity,,,0
-Placebo,Early Termination (prior to Week 24),Completed,percent,proportion,,trt01p,0
-Placebo,Early Termination (prior to Week 24),Death,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Death,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Protocol criteria not met,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Protocol criteria not met,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Lack of Eefficacy,count,quantity,,,3
-Placebo,Early Termination (prior to Week 24),Lack of Eefficacy,percent,proportion,,trt01p,3.488372093
-Placebo,Early Termination (prior to Week 24),Lost to Follow-up,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Lost to Follow-up,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Missing,count,quantity,,,0
-Placebo,Early Termination (prior to Week 24),Missing,percent,proportion,,trt01p,0
-Placebo,Early Termination (prior to Week 24),Physician decided to withdraw subject,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Physician decided to withdraw subject,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Protocol violation,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Protocol violation,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Sponsor decision,count,quantity,,,1
-Placebo,Early Termination (prior to Week 24),Sponsor decision,percent,proportion,,trt01p,1.1627906977
-Placebo,Early Termination (prior to Week 24),Subject decided to withdraw,count,quantity,,,9
-Placebo,Early Termination (prior to Week 24),Subject decided to withdraw,percent,proportion,,trt01p,10.465116279
-Placebo,Early Termination (prior to Week 24),_ALL_,count,quantity,,,26
-Placebo,Early Termination (prior to Week 24),_ALL_,percent,proportion,,trt01p,30.23255814
-Placebo,Completed Week 24,_ALL_,count,quantity,,,60
-Placebo,Completed Week 24,_ALL_,percent,proportion,,trt01p,69.76744186
-Placebo,_ALL_,_ALL_,count,quantity,,,0
-Placebo,_ALL_,_ALL_,percent,proportion,,trt01p,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Adverse Event,count,quantity,,,39
-Xanomeline High Dose,Early Termination (prior to Week 24),Adverse Event,percent,proportion,,trt01p,46.428571429
-Xanomeline High Dose,Early Termination (prior to Week 24),Completed,count,quantity,,,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Completed,percent,proportion,,trt01p,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Death,count,quantity,,,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Death,percent,proportion,,trt01p,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Protocol criteria not met,count,quantity,,,2
-Xanomeline High Dose,Early Termination (prior to Week 24),Protocol criteria not met,percent,proportion,,trt01p,2.380952381
-Xanomeline High Dose,Early Termination (prior to Week 24),Lack of Eefficacy,count,quantity,,,1
-Xanomeline High Dose,Early Termination (prior to Week 24),Lack of Eefficacy,percent,proportion,,trt01p,1.1904761905
-Xanomeline High Dose,Early Termination (prior to Week 24),Lost to Follow-up,count,quantity,,,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Lost to Follow-up,percent,proportion,,trt01p,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Missing,count,quantity,,,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Missing,percent,proportion,,trt01p,0
-Xanomeline High Dose,Early Termination (prior to Week 24),Physician decided to withdraw subject,count,quantity,,,2
-Xanomeline High Dose,Early Termination (prior to Week 24),Physician decided to withdraw subject,percent,proportion,,trt01p,2.380952381
-Xanomeline High Dose,Early Termination (prior to Week 24),Protocol violation,count,quantity,,,1
-Xanomeline High Dose,Early Termination (prior to Week 24),Protocol violation,percent,proportion,,trt01p,1.1904761905
-Xanomeline High Dose,Early Termination (prior to Week 24),Sponsor decision,count,quantity,,,1
-Xanomeline High Dose,Early Termination (prior to Week 24),Sponsor decision,percent,proportion,,trt01p,1.1904761905
-Xanomeline High Dose,Early Termination (prior to Week 24),Subject decided to withdraw,count,quantity,,,8
-Xanomeline High Dose,Early Termination (prior to Week 24),Subject decided to withdraw,percent,proportion,,trt01p,9.5238095238
-Xanomeline High Dose,Early Termination (prior to Week 24),_ALL_,count,quantity,,,54
-Xanomeline High Dose,Early Termination (prior to Week 24),_ALL_,percent,proportion,,trt01p,64.285714286
-Xanomeline High Dose,Completed Week 24,_ALL_,count,quantity,,,30
-Xanomeline High Dose,Completed Week 24,_ALL_,percent,proportion,,trt01p,35.714285714
-Xanomeline High Dose,_ALL_,_ALL_,count,quantity,,,0
-Xanomeline High Dose,_ALL_,_ALL_,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Adverse Event,count,quantity,,,44
-Xanomeline Low Dose,Early Termination (prior to Week 24),Adverse Event,percent,proportion,,trt01p,52.380952381
-Xanomeline Low Dose,Early Termination (prior to Week 24),Completed,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Completed,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Death,count,quantity,,,1
-Xanomeline Low Dose,Early Termination (prior to Week 24),Death,percent,proportion,,trt01p,1.1904761905
-Xanomeline Low Dose,Early Termination (prior to Week 24),Protocol criteria not met,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Protocol criteria not met,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Lack of Eefficacy,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Lack of Eefficacy,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Lost to Follow-up,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Lost to Follow-up,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Missing,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Missing,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Physician decided to withdraw subject,count,quantity,,,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Physician decided to withdraw subject,percent,proportion,,trt01p,0
-Xanomeline Low Dose,Early Termination (prior to Week 24),Protocol violation,count,quantity,,,1
-Xanomeline Low Dose,Early Termination (prior to Week 24),Protocol violation,percent,proportion,,trt01p,1.1904761905
-Xanomeline Low Dose,Early Termination (prior to Week 24),Sponsor decision,count,quantity,,,2
-Xanomeline Low Dose,Early Termination (prior to Week 24),Sponsor decision,percent,proportion,,trt01p,2.380952381
-Xanomeline Low Dose,Early Termination (prior to Week 24),Subject decided to withdraw,count,quantity,,,8
-Xanomeline Low Dose,Early Termination (prior to Week 24),Subject decided to withdraw,percent,proportion,,trt01p,9.5238095238
-Xanomeline Low Dose,Early Termination (prior to Week 24),_ALL_,count,quantity,,,56
-Xanomeline Low Dose,Early Termination (prior to Week 24),_ALL_,percent,proportion,,trt01p,66.666666667
-Xanomeline Low Dose,Completed Week 24,_ALL_,count,quantity,,,28
-Xanomeline Low Dose,Completed Week 24,_ALL_,percent,proportion,,trt01p,33.333333333
-Xanomeline Low Dose,_ALL_,_ALL_,count,quantity,,,0
-Xanomeline Low Dose,_ALL_,_ALL_,percent,proportion,,trt01p,0
-_ALL_,Early Termination (prior to Week 24),Adverse Event,count,quantity,,,91
-_ALL_,Early Termination (prior to Week 24),Adverse Event,percent,proportion,,trt01p,35.826771654
-_ALL_,Early Termination (prior to Week 24),Completed,count,quantity,,,0
-_ALL_,Early Termination (prior to Week 24),Completed,percent,proportion,,trt01p,0
-_ALL_,Early Termination (prior to Week 24),Death,count,quantity,,,2
-_ALL_,Early Termination (prior to Week 24),Death,percent,proportion,,trt01p,0.7874015748
-_ALL_,Early Termination (prior to Week 24),Protocol criteria not met,count,quantity,,,3
-_ALL_,Early Termination (prior to Week 24),Protocol criteria not met,percent,proportion,,trt01p,1.1811023622
-_ALL_,Early Termination (prior to Week 24),Lack of Eefficacy,count,quantity,,,4
-_ALL_,Early Termination (prior to Week 24),Lack of Eefficacy,percent,proportion,,trt01p,1.5748031496
-_ALL_,Early Termination (prior to Week 24),Lost to Follow-up,count,quantity,,,1
-_ALL_,Early Termination (prior to Week 24),Lost to Follow-up,percent,proportion,,trt01p,0.3937007874
-_ALL_,Early Termination (prior to Week 24),Missing,count,quantity,,,0
-_ALL_,Early Termination (prior to Week 24),Missing,percent,proportion,,trt01p,0
-_ALL_,Early Termination (prior to Week 24),Physician decided to withdraw subject,count,quantity,,,3
-_ALL_,Early Termination (prior to Week 24),Physician decided to withdraw subject,percent,proportion,,trt01p,1.1811023622
-_ALL_,Early Termination (prior to Week 24),Protocol violation,count,quantity,,,3
-_ALL_,Early Termination (prior to Week 24),Protocol violation,percent,proportion,,trt01p,1.1811023622
-_ALL_,Early Termination (prior to Week 24),Sponsor decision,count,quantity,,,4
-_ALL_,Early Termination (prior to Week 24),Sponsor decision,percent,proportion,,trt01p,1.5748031496
-_ALL_,Early Termination (prior to Week 24),Subject decided to withdraw,count,quantity,,,25
-_ALL_,Early Termination (prior to Week 24),Subject decided to withdraw,percent,proportion,,trt01p,9.842519685
-_ALL_,Early Termination (prior to Week 24),_ALL_,count,quantity,,,136
-_ALL_,Early Termination (prior to Week 24),_ALL_,percent,proportion,,trt01p,53.543307087
-_ALL_,Completed Week 24,_ALL_,count,quantity,,,118
-_ALL_,Completed Week 24,_ALL_,percent,proportion,,trt01p,46.456692913
-_ALL_,_ALL_,_ALL_,count,quantity,,,0
-_ALL_,_ALL_,_ALL_,percent,proportion,,trt01p,0
+Placebo,N,Adverse Event,count,quantity,,,8
+Placebo,N,Adverse Event,percent,proportion,,trt01p,9.3023255814
+Placebo,N,Completed,count,quantity,,,0
+Placebo,N,Completed,percent,proportion,,trt01p,0
+Placebo,N,Death,count,quantity,,,1
+Placebo,N,Death,percent,proportion,,trt01p,1.1627906977
+Placebo,N,I/E Not Met,count,quantity,,,1
+Placebo,N,I/E Not Met,percent,proportion,,trt01p,1.1627906977
+Placebo,N,Lack of Eefficacy,count,quantity,,,3
+Placebo,N,Lack of Eefficacy,percent,proportion,,trt01p,3.488372093
+Placebo,N,Lost to Follow-up,count,quantity,,,1
+Placebo,N,Lost to Follow-up,percent,proportion,,trt01p,1.1627906977
+Placebo,N,Missing,count,quantity,,,0
+Placebo,N,Missing,percent,proportion,,trt01p,0
+Placebo,N,Physician decision,count,quantity,,,1
+Placebo,N,Physician decision,percent,proportion,,trt01p,1.1627906977
+Placebo,N,Protocol violation,count,quantity,,,1
+Placebo,N,Protocol violation,percent,proportion,,trt01p,1.1627906977
+Placebo,N,Sponsor decision,count,quantity,,,1
+Placebo,N,Sponsor decision,percent,proportion,,trt01p,1.1627906977
+Placebo,N,Withdrew Consent,count,quantity,,,9
+Placebo,N,Withdrew Consent,percent,proportion,,trt01p,10.465116279
+Placebo,N,_ALL_,count,quantity,,,26
+Placebo,N,_ALL_,percent,proportion,,trt01p,30.23255814
+Placebo,Y,_ALL_,count,quantity,,,60
+Placebo,Y,_ALL_,percent,proportion,,trt01p,69.76744186
+Placebo,_,_ALL_,count,quantity,,,0
+Placebo,_,_ALL_,percent,proportion,,trt01p,0
+Xanomeline High Dose,N,Adverse Event,count,quantity,,,39
+Xanomeline High Dose,N,Adverse Event,percent,proportion,,trt01p,46.428571429
+Xanomeline High Dose,N,Completed,count,quantity,,,0
+Xanomeline High Dose,N,Completed,percent,proportion,,trt01p,0
+Xanomeline High Dose,N,Death,count,quantity,,,0
+Xanomeline High Dose,N,Death,percent,proportion,,trt01p,0
+Xanomeline High Dose,N,I/E Not Met,count,quantity,,,2
+Xanomeline High Dose,N,I/E Not Met,percent,proportion,,trt01p,2.380952381
+Xanomeline High Dose,N,Lack of Eefficacy,count,quantity,,,1
+Xanomeline High Dose,N,Lack of Eefficacy,percent,proportion,,trt01p,1.1904761905
+Xanomeline High Dose,N,Lost to Follow-up,count,quantity,,,0
+Xanomeline High Dose,N,Lost to Follow-up,percent,proportion,,trt01p,0
+Xanomeline High Dose,N,Missing,count,quantity,,,0
+Xanomeline High Dose,N,Missing,percent,proportion,,trt01p,0
+Xanomeline High Dose,N,Physician decision,count,quantity,,,2
+Xanomeline High Dose,N,Physician decision,percent,proportion,,trt01p,2.380952381
+Xanomeline High Dose,N,Protocol violation,count,quantity,,,1
+Xanomeline High Dose,N,Protocol violation,percent,proportion,,trt01p,1.1904761905
+Xanomeline High Dose,N,Sponsor decision,count,quantity,,,1
+Xanomeline High Dose,N,Sponsor decision,percent,proportion,,trt01p,1.1904761905
+Xanomeline High Dose,N,Withdrew Consent,count,quantity,,,8
+Xanomeline High Dose,N,Withdrew Consent,percent,proportion,,trt01p,9.5238095238
+Xanomeline High Dose,N,_ALL_,count,quantity,,,54
+Xanomeline High Dose,N,_ALL_,percent,proportion,,trt01p,64.285714286
+Xanomeline High Dose,Y,_ALL_,count,quantity,,,30
+Xanomeline High Dose,Y,_ALL_,percent,proportion,,trt01p,35.714285714
+Xanomeline High Dose,_,_ALL_,count,quantity,,,0
+Xanomeline High Dose,_,_ALL_,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Adverse Event,count,quantity,,,44
+Xanomeline Low Dose,N,Adverse Event,percent,proportion,,trt01p,52.380952381
+Xanomeline Low Dose,N,Completed,count,quantity,,,0
+Xanomeline Low Dose,N,Completed,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Death,count,quantity,,,1
+Xanomeline Low Dose,N,Death,percent,proportion,,trt01p,1.1904761905
+Xanomeline Low Dose,N,I/E Not Met,count,quantity,,,0
+Xanomeline Low Dose,N,I/E Not Met,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Lack of Eefficacy,count,quantity,,,0
+Xanomeline Low Dose,N,Lack of Eefficacy,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Lost to Follow-up,count,quantity,,,0
+Xanomeline Low Dose,N,Lost to Follow-up,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Missing,count,quantity,,,0
+Xanomeline Low Dose,N,Missing,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Physician decision,count,quantity,,,0
+Xanomeline Low Dose,N,Physician decision,percent,proportion,,trt01p,0
+Xanomeline Low Dose,N,Protocol violation,count,quantity,,,1
+Xanomeline Low Dose,N,Protocol violation,percent,proportion,,trt01p,1.1904761905
+Xanomeline Low Dose,N,Sponsor decision,count,quantity,,,2
+Xanomeline Low Dose,N,Sponsor decision,percent,proportion,,trt01p,2.380952381
+Xanomeline Low Dose,N,Withdrew Consent,count,quantity,,,8
+Xanomeline Low Dose,N,Withdrew Consent,percent,proportion,,trt01p,9.5238095238
+Xanomeline Low Dose,N,_ALL_,count,quantity,,,56
+Xanomeline Low Dose,N,_ALL_,percent,proportion,,trt01p,66.666666667
+Xanomeline Low Dose,Y,_ALL_,count,quantity,,,28
+Xanomeline Low Dose,Y,_ALL_,percent,proportion,,trt01p,33.333333333
+Xanomeline Low Dose,_,_ALL_,count,quantity,,,0
+Xanomeline Low Dose,_,_ALL_,percent,proportion,,trt01p,0
+_ALL_,N,Adverse Event,count,quantity,,,91
+_ALL_,N,Adverse Event,percent,proportion,,trt01p,35.826771654
+_ALL_,N,Completed,count,quantity,,,0
+_ALL_,N,Completed,percent,proportion,,trt01p,0
+_ALL_,N,Death,count,quantity,,,2
+_ALL_,N,Death,percent,proportion,,trt01p,0.7874015748
+_ALL_,N,I/E Not Met,count,quantity,,,3
+_ALL_,N,I/E Not Met,percent,proportion,,trt01p,1.1811023622
+_ALL_,N,Lack of Eefficacy,count,quantity,,,4
+_ALL_,N,Lack of Eefficacy,percent,proportion,,trt01p,1.5748031496
+_ALL_,N,Lost to Follow-up,count,quantity,,,1
+_ALL_,N,Lost to Follow-up,percent,proportion,,trt01p,0.3937007874
+_ALL_,N,Missing,count,quantity,,,0
+_ALL_,N,Missing,percent,proportion,,trt01p,0
+_ALL_,N,Physician decision,count,quantity,,,3
+_ALL_,N,Physician decision,percent,proportion,,trt01p,1.1811023622
+_ALL_,N,Protocol violation,count,quantity,,,3
+_ALL_,N,Protocol violation,percent,proportion,,trt01p,1.1811023622
+_ALL_,N,Sponsor decision,count,quantity,,,4
+_ALL_,N,Sponsor decision,percent,proportion,,trt01p,1.5748031496
+_ALL_,N,Withdrew Consent,count,quantity,,,25
+_ALL_,N,Withdrew Consent,percent,proportion,,trt01p,9.842519685
+_ALL_,N,_ALL_,count,quantity,,,136
+_ALL_,N,_ALL_,percent,proportion,,trt01p,53.543307087
+_ALL_,Y,_ALL_,count,quantity,,,118
+_ALL_,Y,_ALL_,percent,proportion,,trt01p,46.456692913
+_ALL_,_,_ALL_,count,quantity,,,0
+_ALL_,_,_ALL_,percent,proportion,,trt01p,0

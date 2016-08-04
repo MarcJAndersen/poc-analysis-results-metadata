@@ -84,7 +84,13 @@ quit;
 
 
 proc print data=tab2x01 width=min;
-    var comp24flLevelLabel dcreascdLevelLabel col1z1 col1z2 col2z1 col2z2 col3z1 col3z2 col4z1 col4z2;
+var 
+col1z1URI col1z1 /* col1z2URI col1z2 */
+col2z1URI col2z1 /* col2z2URI col2z2 */
+col3z1URI col3z1 /* col3z2URI col3z2 */
+col4z1URI col4z1 /* col4z2URI col4z2 */
+;
+
 run;
 
 /* The rest is from get-tab2x01.sas - put in  include file, so the code is shared */
@@ -96,17 +102,15 @@ run;
 run;
 data tab2x01_pres;
     set tab2x01;
-    roworder=ifn(dcreascdLevelLabel="_ALL_",1,2);
-    
-        /* This could be derived in the SPARQL query */
-    length rowgrouplabel $200;
-    rowgrouplabel= ifc( roworder=1, comp24flVarLabel, ifc(roworder=2, dcreascdVarLabel, "**check program**"));
-    
-    length rowlabel $200;
-    rowlabel= ifc( roworder=1, comp24flLevelLabel, ifc(roworder=2, dcreascdLevelLabel, "**check program**"));
 
+    /* derive order and variable names from the dataset */
+    colRES1order=1;
+    colRES1label="Variable name";
+    colRES2order=1;
+    colRES2label="Category level/Statistic";
+    
     format col1z1 col2z1 col3z1 col4z1 f5.0;
-    format col1z2 col2z2 col3z2 col4z2 pctfmt.;
+/*    format col1z2 col2z2 col3z2 col4z2 pctfmt.; */
 run;
 
 ods html file="tab2x01.html"(title= "Table 14.1.2 from ARM RDF data cube")
@@ -121,11 +125,11 @@ title;
 
 proc report data=tab2x01_pres missing nofs split="¤";
     column
-        (" "                    roworder rowgrouplabel rowlabel)
-        ("Placebo"              col1z1URI col1z1 col1z2URI col1z2)
-        ("Xanomeline¤Low Dose"  col2z1URI col2z1 col2z2URI col2z2)
-        ("Xanomeline¤High Dose" col3z1URI col3z1 col3z2URI col3z2)
-        ("Total"                col4z1URI col4z1 col4z2URI col4z2)
+        (" " colRES1order colRES1label colRES2order colRES2label  )
+        ("Placebo"              col1z1URI col1z1 /* col1z2URI col1z2 */)
+        ("Xanomeline¤Low Dose"  col2z1URI col2z1 /* col2z2URI col2z2 */)
+        ("Xanomeline¤High Dose" col3z1URI col3z1 /* col3z2URI col3z2 */)
+        ("Total"                col4z1URI col4z1 /* col4z2URI col4z2 */)
         ;
 
 /* Width statement only applies for listing output.
@@ -135,6 +139,7 @@ proc report data=tab2x01_pres missing nofs split="¤";
 
     */
 
+/*
         define roworder / " " order noprint;
         define rowgrouplabel / " " order noprint;
         compute before rowgrouplabel;
@@ -143,9 +148,14 @@ proc report data=tab2x01_pres missing nofs split="¤";
         compute after rowgrouplabel;
         line @1 " ";
         endcomp;
-        
+       
     define rowlabel / " " display width=25 flow;
-
+    */
+    define colRES1order /noprint order;
+    define colRES1label / order display;
+    define  colRES2order / noprint order;
+   define  colRES2label/ order display;
+    
 /* Replace code below with macro call, for main column 1 to 4, sub column 1 to 2 */    
 
     define col1z1URI / noprint;
@@ -154,38 +164,44 @@ proc report data=tab2x01_pres missing nofs split="¤";
     call define(_col_,"URL",col1z1URI);
     endcomp;
 
+/*
     define col1z2URI / noprint;
     define col1z2 / " " width=6 flow display;
     compute col1z2;
     call define(_col_,"format", "pctfmt.");
     call define(_col_,"URL",col1z2URI);
     endcomp;
-
+    */
+    
     define col2z1 / " " width=6 flow display;
     define col2z1URI / noprint;
     compute col2z1;
     call define(_col_,"URL",col2z1URI);
     endcomp;
 
+/*
     define col2z2URI / noprint;
     define col2z2 / " " width=6 flow display;
     compute col2z2;
     call define(_col_,"format", "pctfmt.");
     call define(_col_,"URL",col2z2URI);
     endcomp;
-
+    */
+    
     define col3z1URI / noprint;
     define col3z1 / " " width=6 flow display;
     compute col3z1;
     call define(_col_,"URL",col3z1URI);
     endcomp;
 
+/*
     define col3z2URI / noprint;
     define col3z2 / " " width=6 flow display;
     compute col3z2;
     call define(_col_,"format", "pctfmt.");
     call define(_col_,"URL",col3z2URI);
     endcomp;
+    */
 
     define col4z1URI / noprint;
     define col4z1 / " " width=6 flow display;
@@ -193,12 +209,14 @@ proc report data=tab2x01_pres missing nofs split="¤";
     call define(_col_,"URL",col4z1URI);
     endcomp;
 
+/*
     define col4z2URI / noprint;
     define col4z2 / " " width=6 flow display;
     compute col4z2;
     call define(_col_,"format", "pctfmt.");
     call define(_col_,"URL",col4z2URI);
     endcomp;
+    */
 
 run;
 

@@ -7,7 +7,7 @@ function ActionData(ev) {
     console.log("URIobs: ", URIobs);
 //    var endpoint = "http://localhost:8890/sparql";
 
-    var endpoint='http://127.0.0.1:3030/arm'; /* http://stackoverflow.com/questions/28547288/no-access-control-allow-origin-header-is-present-on-the-requested-resource-err */
+    var endpoint='http://localhost:3030/arm'; /* http://stackoverflow.com/questions/28547288/no-access-control-allow-origin-header-is-present-on-the-requested-resource-err */
     
     // in the cube also ?D2RQPropertyBridge on the ?dimvalue - eg also on the individual codelist value
     // This would make the identification of D2RQ-PropertyBridge for factor much simpler ...

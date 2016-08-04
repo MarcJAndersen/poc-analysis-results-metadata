@@ -1,7 +1,7 @@
 --
 title: "Create TAB1X02_1 as RDF data cube"
 author: "mja@statgroup.dk"
-date: "2016-08-02"
+date: "2016-08-04"
 output:
   html_document:
     toc: true
@@ -156,7 +156,7 @@ cat(targetName, " ", "cube stored as ", normalizePath(cube.fn), "\n")
 ```
 
 ```
-## TAB1X02   cube stored as  C:\Users\ma\AppData\Local\Temp\RtmpEtJwri\DC-TAB1X02-R-V-0-0-0.ttl
+## TAB1X02   cube stored as  C:\Users\ma\AppData\Local\Temp\Rtmp4YqDjI\DC-TAB1X02-R-V-0-0-0.ttl
 ```
 # Copy cube to destination directory
 
@@ -182,7 +182,7 @@ summarize.rdf(checkCube)
 ```
 
 ```
-## [1] "Number of triples: 1804"
+## [1] "Number of triples: 1812"
 ```
 
 ## Get the values in the cube
@@ -227,36 +227,37 @@ knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
 
 
 
-|vn        |clc                                            |clprefLabel                           |
-|:---------|:----------------------------------------------|:-------------------------------------|
-|comp24fl  |comp24fl-Completed_Week_24                     |Completed Week 24                     |
-|comp24fl  |comp24fl-Early_Termination__prior_to_Week_24_  |Early Termination (prior to Week 24)  |
-|comp24fl  |comp24fl-_ALL_                                 |_ALL_                                 |
-|comp24fl  |comp24fl-_NONMISS_                             |_NONMISS_                             |
-|dcreascd  |dcreascd-Adverse_Event                         |Adverse Event                         |
-|dcreascd  |dcreascd-Completed                             |Completed                             |
-|dcreascd  |dcreascd-Death                                 |Death                                 |
-|dcreascd  |dcreascd-Lack_of_Eefficacy                     |Lack of Eefficacy                     |
-|dcreascd  |dcreascd-Lost_to_Follow-up                     |Lost to Follow-up                     |
-|dcreascd  |dcreascd-Missing                               |Missing                               |
-|dcreascd  |dcreascd-Physician_decided_to_withdraw_subject |Physician decided to withdraw subject |
-|dcreascd  |dcreascd-Protocol_criteria_not_met             |Protocol criteria not met             |
-|dcreascd  |dcreascd-Protocol_violation                    |Protocol violation                    |
-|dcreascd  |dcreascd-Sponsor_decision                      |Sponsor decision                      |
-|dcreascd  |dcreascd-Subject_decided_to_withdraw           |Subject decided to withdraw           |
-|dcreascd  |dcreascd-_ALL_                                 |_ALL_                                 |
-|dcreascd  |dcreascd-_NONMISS_                             |_NONMISS_                             |
-|factor    |factor-_ALL_                                   |_ALL_                                 |
-|factor    |factor-_NONMISS_                               |_NONMISS_                             |
-|factor    |factor-proportion                              |proportion                            |
-|factor    |factor-quantity                                |quantity                              |
-|procedure |procedure-count                                |count                                 |
-|procedure |procedure-percent                              |percent                               |
-|trt01p    |trt01p-Placebo                                 |Placebo                               |
-|trt01p    |trt01p-Xanomeline_High_Dose                    |Xanomeline High Dose                  |
-|trt01p    |trt01p-Xanomeline_Low_Dose                     |Xanomeline Low Dose                   |
-|trt01p    |trt01p-_ALL_                                   |_ALL_                                 |
-|trt01p    |trt01p-_NONMISS_                               |_NONMISS_                             |
+|vn        |clc                         |clprefLabel          |
+|:---------|:---------------------------|:--------------------|
+|comp24fl  |comp24fl-N                  |N                    |
+|comp24fl  |comp24fl-Y                  |Y                    |
+|comp24fl  |comp24fl-_                  |_                    |
+|comp24fl  |comp24fl-_ALL_              |_ALL_                |
+|comp24fl  |comp24fl-_NONMISS_          |_NONMISS_            |
+|dcreascd  |dcreascd-Adverse_Event      |Adverse Event        |
+|dcreascd  |dcreascd-Completed          |Completed            |
+|dcreascd  |dcreascd-Death              |Death                |
+|dcreascd  |dcreascd-I/E_Not_Met        |I/E Not Met          |
+|dcreascd  |dcreascd-Lack_of_Eefficacy  |Lack of Eefficacy    |
+|dcreascd  |dcreascd-Lost_to_Follow-up  |Lost to Follow-up    |
+|dcreascd  |dcreascd-Missing            |Missing              |
+|dcreascd  |dcreascd-Physician_decision |Physician decision   |
+|dcreascd  |dcreascd-Protocol_violation |Protocol violation   |
+|dcreascd  |dcreascd-Sponsor_decision   |Sponsor decision     |
+|dcreascd  |dcreascd-Withdrew_Consent   |Withdrew Consent     |
+|dcreascd  |dcreascd-_ALL_              |_ALL_                |
+|dcreascd  |dcreascd-_NONMISS_          |_NONMISS_            |
+|factor    |factor-_ALL_                |_ALL_                |
+|factor    |factor-_NONMISS_            |_NONMISS_            |
+|factor    |factor-proportion           |proportion           |
+|factor    |factor-quantity             |quantity             |
+|procedure |procedure-count             |count                |
+|procedure |procedure-percent           |percent              |
+|trt01p    |trt01p-Placebo              |Placebo              |
+|trt01p    |trt01p-Xanomeline_High_Dose |Xanomeline High Dose |
+|trt01p    |trt01p-Xanomeline_Low_Dose  |Xanomeline Low Dose  |
+|trt01p    |trt01p-_ALL_                |_ALL_                |
+|trt01p    |trt01p-_NONMISS_            |_NONMISS_            |
 
 
 The dimensions are shown in the next output.
@@ -366,18 +367,18 @@ knitr::kable(observations[ 1:10 ,
 
 
 
-|factorvalue |dcreascdvalue             |comp24flvalue                        |procedurevalue |trt01pvalue |denominator |unit |measure      |
-|:-----------|:-------------------------|:------------------------------------|:--------------|:-----------|:-----------|:----|:------------|
-|quantity    |Adverse Event             |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |8            |
-|proportion  |Adverse Event             |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |9.3023255814 |
-|quantity    |Completed                 |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |0            |
-|proportion  |Completed                 |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |0            |
-|quantity    |Death                     |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |1            |
-|proportion  |Death                     |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
-|quantity    |Protocol criteria not met |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |1            |
-|proportion  |Protocol criteria not met |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
-|quantity    |Lack of Eefficacy         |Early Termination (prior to Week 24) |count          |Placebo     |            |NA   |3            |
-|proportion  |Lack of Eefficacy         |Early Termination (prior to Week 24) |percent        |Placebo     |trt01p      |NA   |3.488372093  |
+|factorvalue |dcreascdvalue     |comp24flvalue |procedurevalue |trt01pvalue |denominator |unit |measure      |
+|:-----------|:-----------------|:-------------|:--------------|:-----------|:-----------|:----|:------------|
+|quantity    |Adverse Event     |N             |count          |Placebo     |            |NA   |8            |
+|proportion  |Adverse Event     |N             |percent        |Placebo     |trt01p      |NA   |9.3023255814 |
+|quantity    |Completed         |N             |count          |Placebo     |            |NA   |0            |
+|proportion  |Completed         |N             |percent        |Placebo     |trt01p      |NA   |0            |
+|quantity    |Death             |N             |count          |Placebo     |            |NA   |1            |
+|proportion  |Death             |N             |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
+|quantity    |I/E Not Met       |N             |count          |Placebo     |            |NA   |1            |
+|proportion  |I/E Not Met       |N             |percent        |Placebo     |trt01p      |NA   |1.1627906977 |
+|quantity    |Lack of Eefficacy |N             |count          |Placebo     |            |NA   |3            |
+|proportion  |Lack of Eefficacy |N             |percent        |Placebo     |trt01p      |NA   |3.488372093  |
 
 ## Get observations with labels
 
@@ -466,18 +467,18 @@ knitr::kable(observationsDesc[ 1:10 ,
 
 
 
-|factorlabel                                 |factorvalue |factorIRI             |dcreascdlabel                                    |dcreascdvalue             |dcreascdIRI             |comp24fllabel      |comp24flvalue                        |comp24flIRI             |procedurelabel        |procedurevalue |procedureIRI             |trt01plabel                     |trt01pvalue          |trt01pIRI             |denominator |unit |measure      |measureIRI |
-|:-------------------------------------------|:-----------|:---------------------|:------------------------------------------------|:-------------------------|:-----------------------|:------------------|:------------------------------------|:-----------------------|:---------------------|:--------------|:------------------------|:-------------------------------|:--------------------|:---------------------|:-----------|:----|:------------|:----------|
-|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Death                     |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs034  |
-|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol criteria not met |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |0            |ds:obs063  |
-|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lost to Follow-up         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |            |NA   |0            |ds:obs039  |
-|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation        |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |1.1811023622 |ds:obs102  |
-|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_                     |crnd-dimension:dcreascd |Completion Status: |_ALL_                                |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs084  |
-|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Missing                   |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |0            |ds:obs013  |
-|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |3            |ds:obs009  |
-|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation        |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |1            |ds:obs073  |
-|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy         |crnd-dimension:dcreascd |Completion Status: |Early Termination (prior to Week 24) |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |1.1904761905 |ds:obs038  |
-|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_                     |crnd-dimension:dcreascd |Completion Status: |_ALL_                                |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs112  |
+|factorlabel                                 |factorvalue |factorIRI             |dcreascdlabel                                    |dcreascdvalue      |dcreascdIRI             |comp24fllabel      |comp24flvalue |comp24flIRI             |procedurelabel        |procedurevalue |procedureIRI             |trt01plabel                     |trt01pvalue          |trt01pIRI             |denominator |unit |measure      |measureIRI |
+|:-------------------------------------------|:-----------|:---------------------|:------------------------------------------------|:------------------|:-----------------------|:------------------|:-------------|:-----------------------|:---------------------|:--------------|:------------------------|:-------------------------------|:--------------------|:---------------------|:-----------|:----|:------------|:----------|
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Death              |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs034  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |I/E Not Met        |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |0            |ds:obs063  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lost to Follow-up  |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |            |NA   |0            |ds:obs039  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |1.1811023622 |ds:obs102  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_              |crnd-dimension:dcreascd |Completion Status: |_             |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs084  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Missing            |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |0            |ds:obs013  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy  |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Placebo              |crnd-dimension:trt01p |            |NA   |3            |ds:obs009  |
+|Type of procedure (quantity, proportion...) |quantity    |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Protocol violation |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |count          |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline Low Dose  |crnd-dimension:trt01p |            |NA   |1            |ds:obs073  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |Lack of Eefficacy  |crnd-dimension:dcreascd |Completion Status: |N             |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |Xanomeline High Dose |crnd-dimension:trt01p |trt01p      |NA   |1.1904761905 |ds:obs038  |
+|Type of procedure (quantity, proportion...) |proportion  |crnd-dimension:factor |Reason for Early Termination (prior to Week 24): |_ALL_              |crnd-dimension:dcreascd |Completion Status: |_             |crnd-dimension:comp24fl |Statistical Procedure |percent        |crnd-dimension:procedure |Planned Treatment for Period 01 |_ALL_                |crnd-dimension:trt01p |trt01p      |NA   |0            |ds:obs112  |
 
 # Session information
 

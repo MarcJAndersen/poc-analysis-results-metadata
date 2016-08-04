@@ -26,36 +26,55 @@ set Rcmd=%Rcmdstem% --verbose
 
 : goto :alldone
 
+REM Program
+set prgsasbuild=tab1x02.sas
+REM Outputs
+set targetfilecsv1=..\res-csv\TAB1X02.csv
+set targetfilecsv2=..\res-csv\TAB1X02-Components.csv
+
+REM Program
+set Rmdbuildttl=tab1x02-ttl.Rmd
+REM outputs
+set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X02.ttl
+
+REM Program
+set prgsasgenhtml=get-tab1x02-with-proc-groovy.sas
+REM Outputs
+set targetfilehtml=..\show-res-sas\tab1x02.html
+set DirApplicationHTML=..\application-html
+
 :build-gen-res
 pushd ..\gen-res-sas
-set targetfilecsv1=..\res-csv\TAB1X02.csv
 if exist %targetfilecsv1% del %targetfilecsv1%
-set targetfilecsv2=..\res-csv\TAB1X02-Components.csv
 if exist %targetfilecsv2% del %targetfilecsv2%
-echo %sascmd% tab1x02.sas
-%sascmd% tab1x02.sas
+echo %sascmd% %prgsasbuild%
+%sascmd% %prgsasbuild%
 if %ERRORLEVEL% gtr 1 goto :stop
 popd
 
 :build-res-ttl
 pushd ..\use-rrdfqbcrnd0
-set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X02.ttl
 if exist %targetfilettl% del %targetfilettl%
-%Rcmd% -e "library(knitr); knit('tab1x02-ttl.Rmd')" 
+%Rcmd% -e "library(knitr); knit('%Rmdbuildttl%')" 
 popd
 
 :build-show-res
 pushd ..\show-res-sas
-set prgsasgenhtml=get-tab1x02-with-proc-groovy.sas
-set targetfilehtml=..\show-res-sas\tab1x02.html
 if exist %targetfilehtml% del %targetfilehtml%
 if not exist %prgsasgenhtml% goto :prgsasgenhtmlfilenotfound
 echo %sascmd% %prgsasgenhtml%
 %sascmd% %prgsasgenhtml%
 if %ERRORLEVEL% gtr 1 goto :stop
+if not exist %targetfilehtml% goto :no-show-res
+REM only copy if the directory is set
+if [%DirApplicationHTML%] NEQ [] copy %targetfilehtml% %DirApplicationHTML%
 popd
 
 goto :alldone
+
+:no-show-res
+echo Expected file not found - %targetfilehtml%
+goto :eof
 
 :prgsasgenhtmlfilenotfound
 echo File %prgsasgenhtml% not found

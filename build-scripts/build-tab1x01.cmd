@@ -16,6 +16,7 @@ REM dir /s/b %ProgramFiles%\Rscript.exe
 set Rcmdstem="C:\Program Files\R\R-3.2.5\bin\Rscript.exe"
 set Rcmd=%Rcmdstem% --verbose
 
+
 : goto :alldone
 
 :build-gen-res
@@ -42,9 +43,15 @@ set targetfilehtml=..\show-res-sas\tab1x01.html
 if exist %targetfilehtml% del %targetfilehtml%
 %sascmd% get-tab1x01-with-proc-groovy.sas
 if %ERRORLEVEL% gtr 1 goto :stop
+if not exist %targetfilehtml% goto :no-show-res
+copy %targetfilehtml% ..\application-html
 popd
 
 goto :alldone
+
+:no-show-res
+echo Expected file not found - %targetfilehtml%
+goto :eof
 
 :stop
 echo Got errorlevel %errorlevel%

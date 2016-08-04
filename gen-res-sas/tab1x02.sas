@@ -45,12 +45,22 @@ proc format;
         "Xanomeline High Dose"="Xanomeline High Dose"
         ;
 
+/* * this is for presentation; 
     value $comp24fl(notsorted)
 "Y"="Completed Week 24"
 "N"="Early Termination (prior to Week 24)"
 " "="Missing"
 ;        
-    value $dcreascd(notsorted)
+    */
+
+    value $comp24fl(notsorted)  /* to force sorting in proc tabulate output MJA 2016-08-04  */
+"Y"="Y"
+"N"="N"
+" "=" "
+;        
+        
+/* * this is for presentation; 
+ value $dcreascd(notsorted)
 "Adverse Event" ="Adverse Event"
 "Death" ="Death"
 "Lack of Efficacy" ="Lack of Eefficacy"
@@ -62,6 +72,21 @@ proc format;
 "Sponsor Decision" ="Sponsor decision"
 "Missing" = "Missing"
 ;
+ */
+
+ value $dcreascd(notsorted)  /* to force sorting in proc tabulate output MJA 2016-08-04  */
+"Adverse Event" ="Adverse Event"
+"Death" ="Death"
+"Lack of Efficacy" ="Lack of Eefficacy"
+"Lost to Follow-up" ="Lost to Follow-up"
+"Withdrew Consent" ="Withdrew Consent"
+"Physician Decision" ="Physician decision"
+"I/E Not Met" ="I/E Not Met"
+"Protocol Violation" ="Protocol violation"
+"Sponsor Decision" ="Sponsor decision"
+"Missing" = "Missing"
+;
+
 run;
         
 data work.adsl ;
@@ -78,6 +103,7 @@ data work.adsl ;
     AEFL= ifc(dcreascd="Adverse Event","Y","N");
 run;
 
+%MACRO FindPvalues;
 title "Ignore this: this is only for obtaining p-values - they are not used for the rdf data cube";
 proc freq data=adsl;
   table COMP24FL*TRT01P/chisq fisher exact;
@@ -111,6 +137,8 @@ title "Ignore this: trying proc tabulate";
 run;
 title;
 
+%MEND;
+
 /* In proc tabulate colpctn provides the percentage relative to the overall number.
    This is not handled in the rrdf package. The approach below provides the
    desired results.
@@ -136,7 +164,8 @@ run;
 
 data work.tab_14_1x02;
     set work.tab_14_1x02_tabu;
-    if missing(dcreascd) or vvalue(comp24fl)="Early Termination (prior to Week 24)";
+/*    if missing(dcreascd) or vvalue(comp24fl)="Early Termination (prior to Week 24)"; */
+    if missing(dcreascd) or comp24fl="N"; 
 
     if  missing(N) and n(PctN_100, PctN_000)>0 then do;
         N=0;    

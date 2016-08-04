@@ -95,7 +95,7 @@ iframe {
 <link rel="stylesheet" href="jquery-ui.css">
   <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
-<script src="sparqlQueryJson.js"></script>
+<!-- <script src="sparqlQueryJson.js"></script> -->
 
 <script src="ActionData.js"></script>
 
@@ -282,7 +282,7 @@ hiddenInput.on('input', function(e) {
 
     // There is a bug (sometimes) with Safari and the input area can't be updated during
     // the input event, so we update the input area after the event is done being processed
-    if (isSafari) {
+if (isSafari) {
         hiddenInput.focus();
         setTimeout(focusHiddenArea, 0);
     } else {
@@ -332,8 +332,9 @@ $('#tabs').css('width','1200px');
 <span  class="droptarget" id="ActionDimensions" ondrop="ActionDimensions(event)" ondragover="allowDrop(event)">Dimensions</span><br>
 <span  class="droptarget" id="ActionData" ondrop="ActionData(event)" ondragover="allowDrop(event)">Data</span><br>
 <span  class="droptarget" id="ActionCopyClipboard" ondrop="ActionCopyClipboard(event)" ondragover="allowDrop(event)">Copy</span><br>
-<span  class="actionbox" id="showTAB1" onclick="setsrc('tab1x01.html')">Table 14.1.1</span><br>
-<span  class="actionbox" id="showTAB2" onclick="setsrc('tab1x02.html')">Table 14.1.2</span><br>
+<span  class="actionbox" id="showTAB1X1" onclick="setsrc('tab1x01.html')">Table 14.1.1</span><br>
+<span  class="actionbox" id="showTAB1X2" onclick="setsrc('tab1x02.html')">Table 14.1.2</span><br>
+<span  class="actionbox" id="showTAB2X1" onclick="setsrc('tab2x01.html')">Table 14.2.1</span><br>
   <!-- for copy to clipboard - looks like the class is not picked up by chrome, so using style statement -->
 <input id="hidden-input" class="hidden" value="" type="text" size="1" style="width: 1px; height: 1px; display: block; font-size: 1px; z-index: -1; background-color:#eeeeee; color:#eeeeee; overflow: hidden;border: none; padding: 0; resize: none; outline: none; -webkit-user-select: text; user-select: text;">
 
@@ -365,7 +366,7 @@ $('#tabs').css('width','1200px');
 </section>
 
 <footer>
-21 june 2016
+04 august 2016
 </footer>
 
 

@@ -71,7 +71,7 @@ QueryExecution qexec = QueryExecutionFactory.create(query, m) ;
 //  https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/ResultSetFormatter.html
 ResultSet rs = qexec.execSelect() ;
 //       ResultSetFormatter.outputAsXML(System.out, rs);
-FileOutputStream os = new FileOutputStream("H:/projects-s114h/GitHub/poc-analysis-results-metadata/check-CDISC-pilot-TAB1X02.xml");            
+FileOutputStream os = new FileOutputStream("H:/projects-s114h/GitHub/poc-analysis-results-metadata/show-res-sas/check-CDISC-pilot-TAB1X02.xml");            
 ResultSetFormatter.outputAsXML(os, rs);
 os.close();
 
