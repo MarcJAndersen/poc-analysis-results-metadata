@@ -58,10 +58,12 @@ colvalues<- c( "code:trt01p-Placebo",
 "code:trt01p-Xanomeline_Low_Dose",
 "code:trt01p-_ALL_")               
 
+statdimensionsz1z2<- c(paste0(statdimensions,"z1"), paste0( statdimensions, "z2"))
+statdimensionsz1z2<- c(paste0(statdimensions,"z1"))
 colz1.rq<- NULL
 colz1.rq<-     paste( forsparqlprefix,
 "select * where {",
-paste0( ## for each of column values
+                     paste0( ## for each of column values
 "?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;",
 paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
 paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
@@ -78,11 +80,27 @@ paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ),
 "      crnd-dimension:procedure code:procedure-percent; \n",
 "    crnd-dimension:factor code:factor-proportion;  \n",
 "    ", coldimension, " ", colvalues, " ;",    
+# "    crnd-dimension:procedure ?procedurez2 ; \n",
+# "    crnd-dimension:factor ?factorz2 ;  \n",
 " ",                     
 "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2", " . \n",
- "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",
+    "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",   
 "}", " .",
-    collapse="\n"),
+                         collapse="\n"),
+"optional {",                     
+paste0("",
+sub("crnd-dimension:", "?", rowdimensions), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", rowdimensions), "value", ".", collapse="\n"),                     
+paste0(  rowdimensions , " ",
+           "rdfs:label", " ", sub("crnd-dimension:", "?", rowdimensions), "label" ,
+           " . ", 
+           collapse="\n"),
+## paste0(" ",
+## sub("crnd-dimension:", "?", statdimensionsz1z2), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", statdimensionsz1z2), "value", ".", collapse="\n"),                     
+## paste0( sub("crnd-dimension:", "?", statdimensionsz1z2) , " ",
+##            "rdfs:label", " ", sub("crnd-dimension:", "?", statdimensionsz1z2), "label" ,
+##            " . ", 
+##        collapse="\n"),
+                     "}",
 "
 { select  ?procedurez1 where {
    code:procedure skos:hasTopConcept ?procedurez1 .

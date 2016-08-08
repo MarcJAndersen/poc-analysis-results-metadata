@@ -92,7 +92,17 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:ittfl ?ittfl;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-dimension:trt01p code:trt01p-_ALL_ ;     crnd-measure:measure ?col4z2 . 
-?col4z1URI crnd-dimension:procedure code:procedure-count .} . 
+?col4z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?agegr1 skos:prefLabel ?agegr1value.
+?race skos:prefLabel ?racevalue.
+?sex skos:prefLabel ?sexvalue.
+?durdsgr1 skos:prefLabel ?durdsgr1value.
+?bmiblgr1 skos:prefLabel ?bmiblgr1value.
+?ittfl skos:prefLabel ?ittflvalue. crnd-dimension:agegr1 rdfs:label ?agegr1label . 
+crnd-dimension:race rdfs:label ?racelabel . 
+crnd-dimension:sex rdfs:label ?sexlabel . 
+crnd-dimension:durdsgr1 rdfs:label ?durdsgr1label . 
+crnd-dimension:bmiblgr1 rdfs:label ?bmiblgr1label . 
+crnd-dimension:ittfl rdfs:label ?ittfllabel .  } 
 { select  ?procedurez1 where {
    code:procedure skos:hasTopConcept ?procedurez1 .
    filter ( ?procedurez1 != code:procedure-percent )

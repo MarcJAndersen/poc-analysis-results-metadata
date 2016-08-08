@@ -113,10 +113,10 @@ data tab2x01_pres;
     colRES2order=1;
     colRES2label="Category level/Statistic";
 
-    colRES1label=catx(" ", agegr1, race, sex, durdsgr1, bmiblgr1 );
+    colRES1label=catx(" ", agegr1label, racelabel, sexlabel, durdsgr1label, bmiblgr1label );
 
     if procedurez1="http://www.example.org/dc/code/procedure-count" then do;
-        colRES2label=catx(" ", agegr1, race, sex, durdsgr1, bmiblgr1 );
+        colRES2label=catx(" ", agegr1value, racevalue, sexvalue, durdsgr1value, bmiblgr1value );
         end;
     else do;
         colRES2label=procedurez1;

@@ -14,7 +14,6 @@ library(knitr)
 ```{r, eval=TRUE}
 ObsDataCsvFn<- file.path("../res-csv", paste( targetName, ".csv", sep=""))
 ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
-
 MetaDataCsvFn<- file.path("../res-csv", paste( targetName, "-Components.csv", sep=""))
 MetaData <- read.csv(MetaDataCsvFn,stringsAsFactors=FALSE)
 ```
@@ -40,45 +39,26 @@ This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
 checkCube <- new.rdf()  # Initialize
 temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
 summarize.rdf(checkCube)
-```
-
 ## Get the values in the cube
-First set values for accessing the cube.
-```{r, echo=TRUE}
 dsdName<- GetDsdNameFromCube( checkCube )
 domainName<- GetDomainNameFromCube( checkCube )
 forsparqlprefix<- GetForSparqlPrefix( domainName )
-```
-
 ## Get cube components
-
-The cube components are shown in the next output.
-```{r, echo=TRUE}
 componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
 components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
 components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
 knitr::kable(components[,c("vn", "label")])
-```
-
-The codelists are shown in the next output.
-```{r, echo=TRUE}
+## Get code lists
 codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
 codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
 codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
 codelists$clc<- gsub("code:","",codelists$cl)
 knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
-```
-
-
-The dimensions are shown in the next output.
-```{r, echo=TRUE}
+## Get dimensions
 dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
 dimensions<- sparql.rdf(checkCube, dimensionsRq)
 knitr::kable(dimensions)
-```
-
-Then the attributes as shown in the next output.
-```{r, echo=TRUE}
+## Get attributes
 attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
 attributes<- sparql.rdf(checkCube, attributesRq)
 knitr::kable(attributes)
