@@ -10,81 +10,32 @@ options linesize=200;
 
 options mprint nocenter;
 
-proc groovy  ;
-%let jenalib=%str(../../apache-jena-2.13.0/lib);  
-add classpath="&jenalib./commons-codec-1.6.jar";
-add classpath="&jenalib./commons-csv-1.0.jar";
-add classpath="&jenalib./commons-lang3-3.3.2.jar";
-add classpath="&jenalib./httpclient-4.2.6.jar";
-add classpath="&jenalib./httpclient-cache-4.2.6.jar";
-add classpath="&jenalib./httpcore-4.2.5.jar";
-add classpath="&jenalib./jackson-annotations-2.3.0.jar";
-add classpath="&jenalib./jackson-core-2.3.3.jar";
-add classpath="&jenalib./jackson-databind-2.3.3.jar";
-add classpath="&jenalib./jcl-over-slf4j-1.7.6.jar";
-add classpath="&jenalib./jena-arq-2.13.0.jar";
-add classpath="&jenalib./jena-core-2.13.0.jar";
-add classpath="&jenalib./jena-iri-1.1.2.jar";
-add classpath="&jenalib./jena-tdb-1.1.2.jar";
-add classpath="&jenalib./jsonld-java-0.5.1.jar";
-add classpath="&jenalib./libthrift-0.9.2.jar";
-add classpath="&jenalib./log4j-1.2.17.jar";
-add classpath="&jenalib./slf4j-api-1.7.6.jar";
-add classpath="&jenalib./slf4j-log4j12-1.7.6.jar";
-add classpath="&jenalib./xercesImpl-2.11.0.jar";
-add classpath="&jenalib./xml-apis-1.4.01.jar";
+libname this ".";
 
-submit;
-import java.io.FileOutputStream;
+/*
+%include "include-jena-groovy.sas";
 
-import com.hp.hpl.jena.query.ARQ ;
-import com.hp.hpl.jena.query.Query ;
-import com.hp.hpl.jena.query.QueryExecution ;
-import com.hp.hpl.jena.query.QueryExecutionFactory ;
-import com.hp.hpl.jena.query.QueryFactory ;
-import com.hp.hpl.jena.query.ResultSet ;
-import com.hp.hpl.jena.query.ResultSetFormatter ;
+data this.tab2x01;
+    set tab2x01;
+run;
 
-import org.apache.jena.riot.RDFDataMgr ;
-import org.apache.jena.riot.RDFLanguages ;
-import com.hp.hpl.jena.rdf.model.Model ;
-import com.hp.hpl.jena.rdf.model.ModelFactory ;
-/* Apache Jena see https://jena.apache.org/tutorials/rdf_api.html */
 
-// https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/ModelFactory.html
-Model m = ModelFactory.createDefaultModel() ;
-m.read("../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl");
-m.read("../res-ttl/CDISC-pilot-TAB2X01.ttl") ;
-        
-// https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/QueryFactory.html    
-Query query = QueryFactory.read("../sparql-rq/tab2x01.rq") ;
-QueryExecution qexec = QueryExecutionFactory.create(query, m) ;
+proc contents data=this.tab2x01 varnum;
+run;
+*/
 
-//  https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/ResultSetFormatter.html
-ResultSet rs = qexec.execSelect() ;
-//       ResultSetFormatter.outputAsXML(System.out, rs);
-FileOutputStream os = new FileOutputStream("check-CDISC-pilot-TAB2X01.xml");            
-ResultSetFormatter.outputAsXML(os, rs);
-os.close();
-
-System.out.println("Done");
-
-endsubmit;
-quit;
-
-%include "../../SAS-SPARQLwrapper/sparqlreadxml.sas";
-
-%sparqlreadxml(
-    sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map),
-    sparqlqueryresultxml=check-CDISC-pilot-TAB2X01.xml,
-    frsxlemap=SXLEMAP,
-    resultdsn=tab2x01,
-    debug=Y
-);
-
+data tab2x01;
+    set this.tab2x01;
+run;
 
 proc print data=tab2x01 width=min;
 var 
+    agegr1label agegr1value
+    racelabel racevalue
+    sexlabel sexvalue
+    durdsgr1label durdsgr1value
+    bmiblgr1label bmiblgr1value
+    procedurez1 factorz1
 col1z1URI col1z1 /* col1z2URI col1z2 */
 col2z1URI col2z1 /* col2z2URI col2z2 */
 col3z1URI col3z1 /* col3z2URI col3z2 */
@@ -100,6 +51,31 @@ proc format;
         low-high='0009%)' (prefix="(")
         . = " "
         ;
+
+    invalue col1order
+        "age"=1
+"agegr1"=2
+"sex"=3
+"race"=4
+"mmsetot"=5
+"durdis"=6
+"durdsgr1"=7
+"educlvl"=8
+"weightbl"=9
+"heightbl"=10
+"bmibl"=111
+"bmiblgr1"=11
+        ;
+
+    invalue col2order
+"n"=1
+"mean"=2
+"stddev"=3
+"median"=4
+"min"=5
+"max"=6
+        ;
+    
 run;
 
 run;
@@ -107,22 +83,48 @@ data tab2x01_pres;
     set tab2x01;
 
     length colRES1label colRES2label $1200;
+
     /* derive order and variable names from the dataset */
-    colRES1order=1;
-    colRES1label="Variable name";
-    colRES2order=1;
-    colRES2label="Category level/Statistic";
+    colRES1order=0;
+    colRES1label=" "; /* Variable name */
+    colRES2order=0;
+    colRES2label=" "; /*Category level/Statistic */
 
-    colRES1label=catx(" ", agegr1label, racelabel, sexlabel, durdsgr1label, bmiblgr1label );
-
-    if procedurez1="http://www.example.org/dc/code/procedure-count" then do;
-        colRES2label=catx(" ", agegr1value, racevalue, sexvalue, durdsgr1value, bmiblgr1value );
-        end;
-    else do;
-        colRES2label=procedurez1;
-        end;
+/*
+        colRES1order+1;
+    colRES2order+1;
+    */
     
-    format col1z1 col2z1 col3z1 col4z1 f5.0;
+    array alabel(*) agegr1label racelabel sexlabel durdsgr1label bmiblgr1label;
+    array avalue(*) agegr1value racevalue sexvalue durdsgr1value bmiblgr1value;
+
+    length for_var $32;
+
+            /* should use denominator col1z2denominator - but denominator should be the same for all columns */
+
+    select;
+        when (scan(procedurez1,-1,"/")="procedure-count" ) do;
+        do i=1 to dim(alabel);
+            if avalue(i) ne "_ALL_" then do;
+            for_var= col1z2denominator;
+            colRES1label=catx(" /?/ ", colRES1label, alabel(i) );
+            colRES2label=catx(" /?/ ", colRES2label, avalue(i) );
+            colRES2order=1;
+        end;
+        end;
+        end;
+        otherwise do;
+          for_var= scan(factorz1,-1,"-");
+          colRES1label= scan(factorz1,-1,"-"); /* change to label for factor */
+          colRES2label= scan(procedurez1,-1,"-"); /* change to label for procedure */
+          colRES2order= input( scan(procedurez1,-1,"-"), col2order. );
+       end;
+
+
+    end;
+
+colRES1order= input( for_var, col1order. );
+    format col1z1 col2z1 col3z1 col4z1 best6.;
     format col1z2 col2z2 col3z2 col4z2 pctfmt.; 
 run;
 
@@ -135,6 +137,19 @@ ods html file="tab2x01.html"(title= "Table 14.1.2 from ARM RDF data cube")
 
 
 title;
+
+proc sort data=tab2x01_pres;
+    by
+    factorz1        
+    procedurez1 
+    agegr1label agegr1value
+    racelabel racevalue
+    sexlabel sexvalue
+    durdsgr1label durdsgr1value
+    bmiblgr1label bmiblgr1value
+;
+run;
+
 
 proc report data=tab2x01_pres missing nofs split="¤";
     column

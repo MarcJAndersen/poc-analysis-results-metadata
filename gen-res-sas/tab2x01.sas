@@ -20,6 +20,9 @@ Analysis Variable(s)  :
             <adamref:AnalysisVariable ItemOID="ADSL.RACE"/>
             <adamref:AnalysisVariable ItemOID="ADSL.DURDSGR1"/>
             <adamref:AnalysisVariable ItemOID="ADSL.BMIBLGR1"/>
+
+TODO(XX): use ethnic - not race !!
+
 Reason                : pre-specified in protocol
 Data References (incl. Selection Criteria): ADSL
 Documentation         : 

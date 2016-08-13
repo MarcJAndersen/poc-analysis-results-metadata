@@ -79,6 +79,7 @@ paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", col
 paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
 "      crnd-dimension:procedure code:procedure-percent; \n",
 "    crnd-dimension:factor code:factor-proportion;  \n",
+"    crnd-attribute:denominator ",  "?col", seq(length(colvalues)), "z2denominator; \n", 
 "    ", coldimension, " ", colvalues, " ;",    
 # "    crnd-dimension:procedure ?procedurez2 ; \n",
 # "    crnd-dimension:factor ?factorz2 ;  \n",

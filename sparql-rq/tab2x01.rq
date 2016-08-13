@@ -46,6 +46,7 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col1z2denominator; 
     crnd-dimension:trt01p code:trt01p-Placebo ;     crnd-measure:measure ?col1z2 . 
 ?col1z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col2z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
@@ -61,6 +62,7 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col2z2denominator; 
     crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;     crnd-measure:measure ?col2z2 . 
 ?col2z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col3z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
@@ -76,6 +78,7 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col3z2denominator; 
     crnd-dimension:trt01p code:trt01p-Xanomeline_Low_Dose ;     crnd-measure:measure ?col3z2 . 
 ?col3z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col4z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
@@ -91,6 +94,7 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col4z2denominator; 
     crnd-dimension:trt01p code:trt01p-_ALL_ ;     crnd-measure:measure ?col4z2 . 
 ?col4z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?agegr1 skos:prefLabel ?agegr1value.
 ?race skos:prefLabel ?racevalue.
