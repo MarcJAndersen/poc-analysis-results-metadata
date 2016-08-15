@@ -39,23 +39,8 @@ print(target2DrqFile)
 ```{r}
 
 rowdimensions<-c(
-"crnd-dimension:s701_701",
-"crnd-dimension:s702_900",
-"crnd-dimension:s703_703",
-"crnd-dimension:s704_704",
-"crnd-dimension:s705_705",
-"crnd-dimension:s706_900",
-"crnd-dimension:s707_900",
-"crnd-dimension:s708_708",
-"crnd-dimension:s709_709",
-"crnd-dimension:s710_710",
-"crnd-dimension:s711_900",
-"crnd-dimension:s713_713",
-"crnd-dimension:s714_900",
-"crnd-dimension:s715_900",
-"crnd-dimension:s716_716",
-"crnd-dimension:s717_900",
-"crnd-dimension:s718_718"
+        "crnd-dimension:sitegr1",
+        "crnd-dimension:siteid" 
     )
 
 statdimensions<- c(
@@ -63,69 +48,78 @@ statdimensions<- c(
     "crnd-dimension:factor"
     )
 
-coldimension<- c("crnd-dimension:trtftype"   )
-colvalues<- c(
-"code:trtftype-Placebo_CMPFL", 
-"code:trtftype-Placebo_ITTFL", 
-"code:trtftype-Xanomeline_Low_Dose_CMPFL", 
-"code:trtftype-_NONMISS_", 
-"code:trtftype-Total_EFFFL", 
-"code:trtftype-Xanomeline_High_Dose_ITTFL", 
-"code:trtftype-_ALL_", 
-"code:trtftype-Total_CMPFL", 
-"code:trtftype-Xanomeline_Low_Dose_EFFFL", 
-"code:trtftype-Xanomeline_High_Dose_CMPFL", 
-"code:trtftype-Xanomeline_Low_Dose_ITTFL", 
-"code:trtftype-Xanomeline_High_Dose_EFFFL", 
-"code:trtftype-Total_ITTFL", 
-"code:trtftype-Placebo_EFFFL"
-    )               
+coldimensions<- c(
+"crnd-dimension:trt01p",    
+"crnd-dimension:ittfl",   
+"crnd-dimension:efffl",   
+"crnd-dimension:comp24fl"
+    )
 
-statdimensionsz1z2<- c(paste0(statdimensions,"z1"), paste0( statdimensions, "z2"))
-statdimensionsz1z2<- c(paste0(statdimensions,"z1"))
+
+coldimval.rq<-
+    paste( forsparqlprefix,
+          "select distinct ", paste0( sub("crnd-dimension:", "?", coldimensions ), collapse=" ")," where {",
+          "?s", " a ", "qb:Observation  ;",
+          paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+          paste0( "    ", coldimensions, " ", sub("crnd-dimension:", "?", coldimensions ), ";", collapse="\n"),
+          "}",
+          "order by ", paste0( sub("crnd-dimension:", "?", coldimensions ), collapse=" ")
+)
+ll<- strsplit(coldimval.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+
+coldimval<- NULL
+coldimval<- as.data.frame(sparql.rdf(checkCube, coldimval.rq ), stringsAsFactors=FALSE)
+knitr::kable(coldimval)
+
+colstack<- paste("zz",seq(nrow(coldimval)),sep="")
+
+cc<-cbind(coldimensions,t(coldimval[1,]))
+cat(paste( cc[,1],cc[,2], sep=" ", collapse="; \n")," ;\n")
+
+```
+
+```{r}
+vv<-expand.grid(colstack)
+
 colz1.rq<- NULL
-colz1.rq<-     paste( forsparqlprefix,
-"select * where {",
-                     paste0( ## for each of column values
-"?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;",
-paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
-paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
-paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
-" ",
-"    ", coldimension, " ", colvalues, " ;",    
-" ",                     
-"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1",
-                     ".", " ",
-"optional{",
-"?col", seq(length(colvalues)), "z2URI", " a qb:Observation  ;",
-paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
-paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
-"      crnd-dimension:procedure code:procedure-percent; \n",
-"    crnd-dimension:factor code:factor-proportion;  \n",
-"    crnd-attribute:denominator ",  "?col", seq(length(colvalues)), "z2denominator; \n", 
-"    ", coldimension, " ", colvalues, " ;",    
-# "    crnd-dimension:procedure ?procedurez2 ; \n",
-# "    crnd-dimension:factor ?factorz2 ;  \n",
-" ",                     
-"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2", " . \n",
-    "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",   
-"}", " .",
-                         collapse="\n"),
-"optional {",                     
-paste0("",
-sub("crnd-dimension:", "?", rowdimensions), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", rowdimensions), "value", ".", collapse="\n"),                     
-paste0(  rowdimensions , " ",
-           "rdfs:label", " ", sub("crnd-dimension:", "?", rowdimensions), "label" ,
-           " . ", 
-           collapse="\n"),
-## paste0(" ",
-## sub("crnd-dimension:", "?", statdimensionsz1z2), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", statdimensionsz1z2), "value", ".", collapse="\n"),                     
-## paste0( sub("crnd-dimension:", "?", statdimensionsz1z2) , " ",
-##            "rdfs:label", " ", sub("crnd-dimension:", "?", statdimensionsz1z2), "label" ,
-##            " . ", 
-##        collapse="\n"),
-                     "}",
-"
+colz1.rq<-
+    paste( forsparqlprefix,
+          "select * where {",
+          paste0( ## for each of column values
+              "?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;",
+              paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+              paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+              paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
+              " ",
+              "    ", coldimension, " ", colvalues, " ;",    
+              " ",                     
+              "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1",
+              ".", " ",
+              "optional{",
+              "?col", seq(length(colvalues)), "z2URI", " a qb:Observation  ;",
+              paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+              paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
+              "      crnd-dimension:procedure code:procedure-percent; \n",
+              "    crnd-dimension:factor code:factor-proportion;  \n",
+              "    crnd-attribute:denominator ",  "?col", seq(length(colvalues)), "z2denominator; \n", 
+              "    ", coldimension, " ", colvalues, " ;",    
+              ## "    crnd-dimension:procedure ?procedurez2 ; \n",
+              ## "    crnd-dimension:factor ?factorz2 ;  \n",
+              " ",                     
+              "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2", " . \n",
+              "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",   
+              "}", " .",
+              collapse="\n"),
+          "optional {",                     
+          paste0("",
+                 sub("crnd-dimension:", "?", rowdimensions), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", rowdimensions), "value", ".", collapse="\n"),                     
+          paste0(  rowdimensions , " ",
+                 "rdfs:label", " ", sub("crnd-dimension:", "?", rowdimensions), "label" ,
+                 " . ", 
+                 collapse="\n"),
+          "}",
+          "
 { select  ?procedurez1 where {
    code:procedure skos:hasTopConcept ?procedurez1 .
    filter ( ?procedurez1 != code:procedure-percent )

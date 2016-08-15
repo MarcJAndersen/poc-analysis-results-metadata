@@ -52,7 +52,7 @@ run;
 %let tabulateOutputDs=work.&tablename.;
 
 proc tabulate data=adsl missing;
-    ods output table=&tabulateOutputDs.;
+    ods output table=&tabulateOutputDs.X;
     class siteid sitegr1;
     class ITTFL EFFFL COMP24FL;
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
@@ -60,6 +60,12 @@ proc tabulate data=adsl missing;
         sitegr1*siteid, (trt01p all)*(ITTFL EFFFL COMP24FL)*(n*f=f3.0)
         ;
 run;
+
+data &tabulateOutputDs.;
+    set &tabulateOutputDs.X;
+    where ITTFL ne "N" and  EFFFL ne "N" and COMP24FL ne "N";
+run;
+
 
 %include "include_tabulate_to_csv.sas" /source;
 

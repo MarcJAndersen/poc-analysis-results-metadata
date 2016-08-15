@@ -13,8 +13,10 @@ library(knitr)
 
 ```{r, eval=TRUE}
 ObsDataCsvFn<- file.path("../res-csv", paste( targetName, ".csv", sep=""))
+cat("Observations CSV file ", normalizePath(ObsDataCsvFn), "\n")
 ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
 MetaDataCsvFn<- file.path("../res-csv", paste( targetName, "-Components.csv", sep=""))
+cat("MetaData CSV file ", normalizePath(MetaDataCsvFn), "\n")
 MetaData <- read.csv(MetaDataCsvFn,stringsAsFactors=FALSE)
 ```
 
@@ -31,6 +33,7 @@ if (file.copy( cube.fn, targetFile, overwrite=TRUE)) {
    cat("RDF data cube copied to ", normalizePath(targetFile), "\n")
  }
 ```
+
 # Get SPARQL query for observations
 
 This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
@@ -38,6 +41,7 @@ This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
 ```{r, eval=TRUE}
 checkCube <- new.rdf()  # Initialize
 temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
+cat("Reading RDF Data Cube from file ", normalizePath(targetFile), "\n")
 summarize.rdf(checkCube)
 ## Get the values in the cube
 dsdName<- GetDsdNameFromCube( checkCube )

@@ -27,14 +27,14 @@ set Rcmd=%Rcmdstem% --verbose
 : goto :alldone
 
 REM Program
-set prgsasbuild=tab1x031.sas
+set prgsasbuild=tab1x03.sas
 REM Outputs
 set targetfilecsv1=..\res-csv\TAB1X03.csv
 set targetfilecsv2=..\res-csv\TAB1X03-Components.csv
 
 
 REM Program
-set Rmdbuildttl=tab1x03.Rmd
+set Rmdbuildttl=tab1x03-ttl.Rmd
 REM outputs
 set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X03.ttl
 

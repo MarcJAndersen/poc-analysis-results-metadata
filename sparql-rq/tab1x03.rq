@@ -33,573 +33,92 @@ prefix ds: <http://www.example.org/dc/tab1x03/ds/>
 prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
- select * where { ?col1z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_CMPFL ;     crnd-measure:measure ?col1z1. optional{?col1z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+ select * where { ?col1z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_CMPFL ;     crnd-measure:measure ?col1z1. optional{?col1z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col1z2denominator; 
     crnd-dimension:trtftype code:trtftype-Placebo_CMPFL ;     crnd-measure:measure ?col1z2 . 
 ?col1z1URI crnd-dimension:procedure code:procedure-count .} .
-?col2z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_ITTFL ;     crnd-measure:measure ?col2z1. optional{?col2z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col2z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_ITTFL ;     crnd-measure:measure ?col2z1. optional{?col2z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col2z2denominator; 
     crnd-dimension:trtftype code:trtftype-Placebo_ITTFL ;     crnd-measure:measure ?col2z2 . 
 ?col2z1URI crnd-dimension:procedure code:procedure-count .} .
-?col3z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_CMPFL ;     crnd-measure:measure ?col3z1. optional{?col3z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col3z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_CMPFL ;     crnd-measure:measure ?col3z1. optional{?col3z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col3z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_CMPFL ;     crnd-measure:measure ?col3z2 . 
 ?col3z1URI crnd-dimension:procedure code:procedure-count .} .
-?col4z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-_NONMISS_ ;     crnd-measure:measure ?col4z1. optional{?col4z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col4z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-_NONMISS_ ;     crnd-measure:measure ?col4z1. optional{?col4z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col4z2denominator; 
     crnd-dimension:trtftype code:trtftype-_NONMISS_ ;     crnd-measure:measure ?col4z2 . 
 ?col4z1URI crnd-dimension:procedure code:procedure-count .} .
-?col5z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_EFFFL ;     crnd-measure:measure ?col5z1. optional{?col5z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col5z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_EFFFL ;     crnd-measure:measure ?col5z1. optional{?col5z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col5z2denominator; 
     crnd-dimension:trtftype code:trtftype-Total_EFFFL ;     crnd-measure:measure ?col5z2 . 
 ?col5z1URI crnd-dimension:procedure code:procedure-count .} .
-?col6z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_ITTFL ;     crnd-measure:measure ?col6z1. optional{?col6z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col6z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_ITTFL ;     crnd-measure:measure ?col6z1. optional{?col6z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col6z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_ITTFL ;     crnd-measure:measure ?col6z2 . 
 ?col6z1URI crnd-dimension:procedure code:procedure-count .} .
-?col7z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-_ALL_ ;     crnd-measure:measure ?col7z1. optional{?col7z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col7z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-_ALL_ ;     crnd-measure:measure ?col7z1. optional{?col7z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col7z2denominator; 
     crnd-dimension:trtftype code:trtftype-_ALL_ ;     crnd-measure:measure ?col7z2 . 
 ?col7z1URI crnd-dimension:procedure code:procedure-count .} .
-?col8z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_CMPFL ;     crnd-measure:measure ?col8z1. optional{?col8z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col8z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_CMPFL ;     crnd-measure:measure ?col8z1. optional{?col8z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col8z2denominator; 
     crnd-dimension:trtftype code:trtftype-Total_CMPFL ;     crnd-measure:measure ?col8z2 . 
 ?col8z1URI crnd-dimension:procedure code:procedure-count .} .
-?col9z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_EFFFL ;     crnd-measure:measure ?col9z1. optional{?col9z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col9z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_EFFFL ;     crnd-measure:measure ?col9z1. optional{?col9z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col9z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_EFFFL ;     crnd-measure:measure ?col9z2 . 
 ?col9z1URI crnd-dimension:procedure code:procedure-count .} .
-?col10z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_CMPFL ;     crnd-measure:measure ?col10z1. optional{?col10z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col10z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_CMPFL ;     crnd-measure:measure ?col10z1. optional{?col10z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col10z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_CMPFL ;     crnd-measure:measure ?col10z2 . 
 ?col10z1URI crnd-dimension:procedure code:procedure-count .} .
-?col11z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_ITTFL ;     crnd-measure:measure ?col11z1. optional{?col11z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col11z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_ITTFL ;     crnd-measure:measure ?col11z1. optional{?col11z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col11z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_Low_Dose_ITTFL ;     crnd-measure:measure ?col11z2 . 
 ?col11z1URI crnd-dimension:procedure code:procedure-count .} .
-?col12z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_EFFFL ;     crnd-measure:measure ?col12z1. optional{?col12z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col12z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_EFFFL ;     crnd-measure:measure ?col12z1. optional{?col12z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col12z2denominator; 
     crnd-dimension:trtftype code:trtftype-Xanomeline_High_Dose_EFFFL ;     crnd-measure:measure ?col12z2 . 
 ?col12z1URI crnd-dimension:procedure code:procedure-count .} .
-?col13z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_ITTFL ;     crnd-measure:measure ?col13z1. optional{?col13z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col13z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Total_ITTFL ;     crnd-measure:measure ?col13z1. optional{?col13z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col13z2denominator; 
     crnd-dimension:trtftype code:trtftype-Total_ITTFL ;     crnd-measure:measure ?col13z2 . 
 ?col13z1URI crnd-dimension:procedure code:procedure-count .} .
-?col14z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;    crnd-dimension:procedure ?procedurez1;
-    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_EFFFL ;     crnd-measure:measure ?col14z1. optional{?col14z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:s701_701 ?s701_701;
-    crnd-dimension:s702_900 ?s702_900;
-    crnd-dimension:s703_703 ?s703_703;
-    crnd-dimension:s704_704 ?s704_704;
-    crnd-dimension:s705_705 ?s705_705;
-    crnd-dimension:s706_900 ?s706_900;
-    crnd-dimension:s707_900 ?s707_900;
-    crnd-dimension:s708_708 ?s708_708;
-    crnd-dimension:s709_709 ?s709_709;
-    crnd-dimension:s710_710 ?s710_710;
-    crnd-dimension:s711_900 ?s711_900;
-    crnd-dimension:s713_713 ?s713_713;
-    crnd-dimension:s714_900 ?s714_900;
-    crnd-dimension:s715_900 ?s715_900;
-    crnd-dimension:s716_716 ?s716_716;
-    crnd-dimension:s717_900 ?s717_900;
-    crnd-dimension:s718_718 ?s718_718;      crnd-dimension:procedure code:procedure-percent; 
+?col14z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtftype code:trtftype-Placebo_EFFFL ;     crnd-measure:measure ?col14z1. optional{?col14z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB1X03 ;    crnd-dimension:XX ?XX;      crnd-dimension:procedure code:procedure-percent; 
     crnd-dimension:factor code:factor-proportion;  
     crnd-attribute:denominator ?col14z2denominator; 
     crnd-dimension:trtftype code:trtftype-Placebo_EFFFL ;     crnd-measure:measure ?col14z2 . 
-?col14z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?s701_701 skos:prefLabel ?s701_701value.
-?s702_900 skos:prefLabel ?s702_900value.
-?s703_703 skos:prefLabel ?s703_703value.
-?s704_704 skos:prefLabel ?s704_704value.
-?s705_705 skos:prefLabel ?s705_705value.
-?s706_900 skos:prefLabel ?s706_900value.
-?s707_900 skos:prefLabel ?s707_900value.
-?s708_708 skos:prefLabel ?s708_708value.
-?s709_709 skos:prefLabel ?s709_709value.
-?s710_710 skos:prefLabel ?s710_710value.
-?s711_900 skos:prefLabel ?s711_900value.
-?s713_713 skos:prefLabel ?s713_713value.
-?s714_900 skos:prefLabel ?s714_900value.
-?s715_900 skos:prefLabel ?s715_900value.
-?s716_716 skos:prefLabel ?s716_716value.
-?s717_900 skos:prefLabel ?s717_900value.
-?s718_718 skos:prefLabel ?s718_718value. crnd-dimension:s701_701 rdfs:label ?s701_701label . 
-crnd-dimension:s702_900 rdfs:label ?s702_900label . 
-crnd-dimension:s703_703 rdfs:label ?s703_703label . 
-crnd-dimension:s704_704 rdfs:label ?s704_704label . 
-crnd-dimension:s705_705 rdfs:label ?s705_705label . 
-crnd-dimension:s706_900 rdfs:label ?s706_900label . 
-crnd-dimension:s707_900 rdfs:label ?s707_900label . 
-crnd-dimension:s708_708 rdfs:label ?s708_708label . 
-crnd-dimension:s709_709 rdfs:label ?s709_709label . 
-crnd-dimension:s710_710 rdfs:label ?s710_710label . 
-crnd-dimension:s711_900 rdfs:label ?s711_900label . 
-crnd-dimension:s713_713 rdfs:label ?s713_713label . 
-crnd-dimension:s714_900 rdfs:label ?s714_900label . 
-crnd-dimension:s715_900 rdfs:label ?s715_900label . 
-crnd-dimension:s716_716 rdfs:label ?s716_716label . 
-crnd-dimension:s717_900 rdfs:label ?s717_900label . 
-crnd-dimension:s718_718 rdfs:label ?s718_718label .  } 
+?col14z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?XX skos:prefLabel ?XXvalue. crnd-dimension:XX rdfs:label ?XXlabel .  } 
 { select  ?procedurez1 where {
    code:procedure skos:hasTopConcept ?procedurez1 .
    filter ( ?procedurez1 != code:procedure-percent )
    } }
  }
-limit 1

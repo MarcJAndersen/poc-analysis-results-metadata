@@ -169,7 +169,7 @@ run;
 proc contents data=forexport varnum;
 run;
 
-proc export data=forexport file="..\res-csv\TAB1X03.csv" replace;
+proc export data=forexport file="..\res-csv\TAB1X031.csv" replace;
 run;
 
 data skeletonSource1;
@@ -210,7 +210,7 @@ compType= "metadata";
 compName= "obsFileName";
 codeType= " ";
 nciDomainValue= " ";
-compLabel= "tab1x03.csv";
+compLabel= "tab1x031.csv";
 Comment= "obsFileName";
 output; 
 
@@ -218,7 +218,7 @@ compType= "metadata";
 compName= "dataCubeFileName";
 codeType= " ";
 nciDomainValue= " ";
-compLabel= "DC-TAB1X03";
+compLabel= "DC-TAB1X031";
 Comment= "Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)";
 output; 
 
@@ -282,7 +282,7 @@ compType= "metadata";
 compName= "wasDerivedFrom";
 codeType= " ";
 nciDomainValue= " ";
-compLabel= "tab1x03.csv";
+compLabel= "tab1x031.csv";
 Comment= "Data source (obsFileName). Set this programmtically based on name of input file!";
 output; 
 
@@ -290,7 +290,7 @@ compType= "metadata";
 compName= "domainName";
 codeType= " ";
 nciDomainValue= " ";
-compLabel= "TAB1X03";
+compLabel= "TAB1X031";
 Comment= "The domain name, also part of the spreadsheet tab name";
 output; 
 
@@ -316,7 +316,7 @@ data skeletonSource;
     set skeletonSource1 skeletonSource2;
 run;
     
-proc export data=skeletonSource file="..\res-csv\TAB1X03-Components.csv" replace;
+proc export data=skeletonSource file="..\res-csv\TAB1X031-Components.csv" replace;
 run;
 
 

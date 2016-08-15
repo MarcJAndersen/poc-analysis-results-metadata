@@ -29,19 +29,19 @@ set Rcmd=%Rcmdstem% --verbose
 REM Program
 set prgsasbuild=tab1x031.sas
 REM Outputs
-set targetfilecsv1=..\res-csv\TAB1X03.csv
-set targetfilecsv2=..\res-csv\TAB1X03-Components.csv
+set targetfilecsv1=..\res-csv\TAB1X031.csv
+set targetfilecsv2=..\res-csv\TAB1X031-Components.csv
 
 
 REM Program
 set Rmdbuildttl=PhUSE-2016-cube-from-csv_14_1_03.Rmd
 REM outputs
-set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X03.ttl
+set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X031.ttl
 
 REM Program
-set prgsasgenhtml=get-tab1x03-with-proc-groovy.sas
+set prgsasgenhtml=get-tab1x031-with-proc-groovy.sas
 REM Outputs
-set targetfilehtml=..\show-res-sas\tab1x03.html
+set targetfilehtml=..\show-res-sas\tab1x031.html
 set DirApplicationHTML=..\application-html
 
 :build-gen-res
