@@ -87,21 +87,10 @@ proc format;
        'STD'=-108
        ;
 
-   value $sexfmt
-       'N' = 'n[a]'
-       'F' = 'F'
-       'M' = 'M';
-
    value $sexfmto
        'N' = 1
        'F' = 2
        'M' = 3;
-   
-   value $agegrfmt
-       'N'     = 'n[a]'
-       '<65'   = '<65'
-       '65-80' = '65-80'
-       '>80'   = '>80';
    
    value $agegrfmto
        'N'     = 1
@@ -109,22 +98,11 @@ proc format;
        '65-80' = 3
        '>80'   = 4;
    
-   value $racefmt
-       'N' = 'n[a]'
-       'WHITE' = 'White'
-       'BLACK OR AFRICAN AMERICAN' = 'Black or African American'
-       'AMERICAN INDIAN OR ALASKA NATIVE' = 'American Indian or Alaska Native';
-   
    value $racefmto
        'N' = 1
        'WHITE' = 2
        'BLACK OR AFRICAN AMERICAN' = 3
        'AMERICAN INDIAN OR ALASKA NATIVE' = 4;
-   
-   value $ethfmt
-       'N' = 'n[a]'
-       'NOT HISPANIC OR LATINO' = 'Not Hispanic or Latino'
-       'HISPANIC OR LATINO' = 'Hispanic or Latino';
    
    value $ethfmto
        'N' = 1
@@ -137,11 +115,6 @@ proc format;
        81="1"
        ;
    
-   value trt01an
-       0="Placebo"
-       54="Xanomeline Low Dose"
-       81="Xanomeline High Dose"
-       ;
 
    value $orderfmt
        "sex"="$sexfmto."
@@ -161,18 +134,17 @@ data work.adsl ;
 run;
 
 
+%let tabulateOutputDs=work.tab_14_2x01;
+%let orderfmt=$orderfmt;
+
 proc tabulate data=adsl missing;
-    ods output table=work.tab_14_2x01;
+    ods output table=&tabulateOutputDs.;
     where ittfl = 'Y';
     class ittfl;
     class sex;
-    format sex $sexfmt.;
     class agegr1;
-    format agegr1 $agegrfmt.;
-    class race;
-    format race $racefmt.;
+/*    class race; */
     class ethnic;
-    format ethnic $ethfmt.;
     var age;
     var weightbl mmsetot durdis educlvl weightbl heightbl bmibl;
     class durdsgr1 bmiblgr1;
@@ -180,9 +152,12 @@ proc tabulate data=adsl missing;
     table
         ittfl,
         age*(n*f=f3.0 /*nmiss*/ mean stddev median min max)
-        (/*all*/ agegr1)*(n*f=f3.0 pctn</*all*/ agegr1>*f=f3.0) /* TODO: the all can not be shown as it is duplicated; should use nonmiss_agegr1 * (n*f=f3.0 agegr1*f=f3.0 to get total for non missing values */
+        (/*all*/ agegr1)*(n*f=f3.0 pctn</*all*/ agegr1>*f=f3.0) /* TODO: the all can not be shown as it is duplicated;
+           should use:
+               nonmiss_agegr1 * (n*f=f3.0 agegr1*f=f3.0) to get total for non missing values
+               */
         (/*all*/ sex)*(n*f=f3.0 pctn</*all*/ sex>*f=f3.0)
-        (/*all*/ race)*(n*f=f3.0 pctn</*all*/ race>*f=f3.0)
+        (/*all*/ ethnic)*(n*f=f3.0 pctn</*all*/ ethnic>*f=f3.0)
         /* TODO nmiss is not handled in rrdfqbcrnd0 */
         MMSETOT*(n*f=f3.0 /*nmiss*/ mean stddev median min max)
         DURDIS*(n*f=f3.0 /*nmiss*/ mean stddev median min max)
@@ -196,7 +171,6 @@ proc tabulate data=adsl missing;
         trt01p all;
 run;
 
-%let tabulateOutputDs=work.tab_14_2x01;
 
 %include "include_tabulate_to_csv.sas" /source;
 

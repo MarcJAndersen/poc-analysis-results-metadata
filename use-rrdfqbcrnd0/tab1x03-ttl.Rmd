@@ -1,5 +1,5 @@
 --
-title: "Create TAB1X02 as RDF data cube"
+title: "Create TAB1X03 as RDF data cube"
 author: "mja@statgroup.dk"
 date: "`r Sys.Date()`"
 output:
@@ -20,7 +20,7 @@ This script creates RDF data cubes from .csv files.
 
 All files are stored in the directory
 ```{r}
-targetName<- "TAB2X01"
+targetName<- "TAB1X03"
 print(targetName)
 targetDir<- "../res-ttl"
 rqtargetDir<- "../sparql-rq"
@@ -39,12 +39,23 @@ print(target2DrqFile)
 ```{r}
 
 rowdimensions<-c(
-"crnd-dimension:agegr1"   ,
-"crnd-dimension:ethnic"     ,
-"crnd-dimension:sex"      ,
-"crnd-dimension:durdsgr1" ,
-"crnd-dimension:bmiblgr1" ,
-"crnd-dimension:ittfl"    
+"crnd-dimension:s701_701",
+"crnd-dimension:s702_900",
+"crnd-dimension:s703_703",
+"crnd-dimension:s704_704",
+"crnd-dimension:s705_705",
+"crnd-dimension:s706_900",
+"crnd-dimension:s707_900",
+"crnd-dimension:s708_708",
+"crnd-dimension:s709_709",
+"crnd-dimension:s710_710",
+"crnd-dimension:s711_900",
+"crnd-dimension:s713_713",
+"crnd-dimension:s714_900",
+"crnd-dimension:s715_900",
+"crnd-dimension:s716_716",
+"crnd-dimension:s717_900",
+"crnd-dimension:s718_718"
     )
 
 statdimensions<- c(
@@ -52,11 +63,23 @@ statdimensions<- c(
     "crnd-dimension:factor"
     )
 
-coldimension<- c("crnd-dimension:trt01p"   )
-colvalues<- c( "code:trt01p-Placebo",
-"code:trt01p-Xanomeline_High_Dose",
-"code:trt01p-Xanomeline_Low_Dose",
-"code:trt01p-_ALL_")               
+coldimension<- c("crnd-dimension:trtftype"   )
+colvalues<- c(
+"code:trtftype-Placebo_CMPFL", 
+"code:trtftype-Placebo_ITTFL", 
+"code:trtftype-Xanomeline_Low_Dose_CMPFL", 
+"code:trtftype-_NONMISS_", 
+"code:trtftype-Total_EFFFL", 
+"code:trtftype-Xanomeline_High_Dose_ITTFL", 
+"code:trtftype-_ALL_", 
+"code:trtftype-Total_CMPFL", 
+"code:trtftype-Xanomeline_Low_Dose_EFFFL", 
+"code:trtftype-Xanomeline_High_Dose_CMPFL", 
+"code:trtftype-Xanomeline_Low_Dose_ITTFL", 
+"code:trtftype-Xanomeline_High_Dose_EFFFL", 
+"code:trtftype-Total_ITTFL", 
+"code:trtftype-Placebo_EFFFL"
+    )               
 
 statdimensionsz1z2<- c(paste0(statdimensions,"z1"), paste0( statdimensions, "z2"))
 statdimensionsz1z2<- c(paste0(statdimensions,"z1"))

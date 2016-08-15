@@ -34,13 +34,13 @@ prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
  select * where { ?col1z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;    crnd-dimension:procedure ?procedurez1;
     crnd-dimension:factor ?factorz1;     crnd-dimension:trt01p code:trt01p-Placebo ;     crnd-measure:measure ?col1z1. optional{?col1z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
@@ -50,13 +50,13 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:trt01p code:trt01p-Placebo ;     crnd-measure:measure ?col1z2 . 
 ?col1z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col2z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;    crnd-dimension:procedure ?procedurez1;
     crnd-dimension:factor ?factorz1;     crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;     crnd-measure:measure ?col2z1. optional{?col2z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
@@ -66,13 +66,13 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:trt01p code:trt01p-Xanomeline_High_Dose ;     crnd-measure:measure ?col2z2 . 
 ?col2z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col3z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;    crnd-dimension:procedure ?procedurez1;
     crnd-dimension:factor ?factorz1;     crnd-dimension:trt01p code:trt01p-Xanomeline_Low_Dose ;     crnd-measure:measure ?col3z1. optional{?col3z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
@@ -82,13 +82,13 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-dimension:trt01p code:trt01p-Xanomeline_Low_Dose ;     crnd-measure:measure ?col3z2 . 
 ?col3z1URI crnd-dimension:procedure code:procedure-count .} .
 ?col4z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
     crnd-dimension:ittfl ?ittfl;    crnd-dimension:procedure ?procedurez1;
     crnd-dimension:factor ?factorz1;     crnd-dimension:trt01p code:trt01p-_ALL_ ;     crnd-measure:measure ?col4z1. optional{?col4z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB2X01 ;    crnd-dimension:agegr1 ?agegr1;
-    crnd-dimension:race ?race;
+    crnd-dimension:ethnic ?ethnic;
     crnd-dimension:sex ?sex;
     crnd-dimension:durdsgr1 ?durdsgr1;
     crnd-dimension:bmiblgr1 ?bmiblgr1;
@@ -97,12 +97,12 @@ prefix crnd-measure: <http://www.example.org/dc/measure#>
     crnd-attribute:denominator ?col4z2denominator; 
     crnd-dimension:trt01p code:trt01p-_ALL_ ;     crnd-measure:measure ?col4z2 . 
 ?col4z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?agegr1 skos:prefLabel ?agegr1value.
-?race skos:prefLabel ?racevalue.
+?ethnic skos:prefLabel ?ethnicvalue.
 ?sex skos:prefLabel ?sexvalue.
 ?durdsgr1 skos:prefLabel ?durdsgr1value.
 ?bmiblgr1 skos:prefLabel ?bmiblgr1value.
 ?ittfl skos:prefLabel ?ittflvalue. crnd-dimension:agegr1 rdfs:label ?agegr1label . 
-crnd-dimension:race rdfs:label ?racelabel . 
+crnd-dimension:ethnic rdfs:label ?ethniclabel . 
 crnd-dimension:sex rdfs:label ?sexlabel . 
 crnd-dimension:durdsgr1 rdfs:label ?durdsgr1label . 
 crnd-dimension:bmiblgr1 rdfs:label ?bmiblgr1label . 

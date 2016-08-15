@@ -34,7 +34,7 @@ set targetfilecsv2=..\res-csv\TAB1X03-Components.csv
 
 
 REM Program
-set Rmdbuildttl=tab1x03.Rmd
+set Rmdbuildttl=PhUSE-2016-cube-from-csv_14_1_03.Rmd
 REM outputs
 set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X03.ttl
 

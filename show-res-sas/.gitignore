@@ -3,6 +3,8 @@
 *.pdf
 *.rtf
 *.xml
+*.sas7bdat
+*.html
 temp-sparqlquery-headerIn.txt
 temp-sparqlquery-headerOut.txt
 temp-sparqlquery.txt

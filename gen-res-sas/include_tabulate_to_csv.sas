@@ -20,7 +20,7 @@
 %MEND;
 
 %SetGlMacroVar(tabulateOutputDs,work.demo_tabulate);
-%SetGlMacroVar(orderfmt,$orderfmt. );
+%SetGlMacroVar(orderfmt,  );
 
 proc contents data=&tabulateOutputDs. varnum;
 run;
@@ -75,7 +75,7 @@ data _null_;
         end;
     resultfromposm1= varnum(tableid, "_TABLE_");
     resulttopos= attrn(tableid,'nvars');
-    do i=resultfromposm1+1 to resulttopos-1;
+    do i=resultfromposm1+1 to resulttopos /* -1 */;
         resultvarlist=catx(" ", resultvarlist, varname(tableid,i));
         end;
     rc=close(tableid);

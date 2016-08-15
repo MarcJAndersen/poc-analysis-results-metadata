@@ -2,7 +2,7 @@ compType,compName,codeType,nciDomainValue,compLabel,Comment
 dimension,ittfl,DATA,,Intent-To-Treat Population Flag,
 dimension,sex,DATA,,Sex,
 dimension,agegr1,DATA,,Pooled Age Group 1,
-dimension,race,DATA,,Race,
+dimension,ethnic,DATA,,Ethnicity,
 dimension,durdsgr1,DATA,,Pooled Disease Duration Group 1,
 dimension,bmiblgr1,DATA,,Pooled Baseline BMI Group 1,
 dimension,trt01p,DATA,,Planned Treatment for Period 01,

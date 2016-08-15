@@ -28,36 +28,58 @@ prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
 prefix qb: <http://purl.org/linked-data/cube#>
 prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
 prefix code: <http://www.example.org/dc/code/>
-prefix dccs: <http://www.example.org/dc/tab2x01/dccs/>
-prefix ds: <http://www.example.org/dc/tab2x01/ds/>
+prefix dccs: <http://www.example.org/dc/tab1x03/dccs/>
+prefix ds: <http://www.example.org/dc/tab1x03/ds/>
 prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
 
 select * where {
 ?s a qb:Observation  ;
-    qb:dataSet ds:dataset-TAB2X01 ;
+    qb:dataSet ds:dataset-TAB1X03 ;
+    crnd-dimension:s705_705 ?s705_705;
+    crnd-dimension:s702_900 ?s702_900;
+    crnd-dimension:s703_703 ?s703_703;
+    crnd-dimension:s709_709 ?s709_709;
+    crnd-dimension:s714_900 ?s714_900;
+    crnd-dimension:s704_704 ?s704_704;
+    crnd-dimension:s715_900 ?s715_900;
     crnd-dimension:procedure ?procedure;
-    crnd-dimension:trt01p ?trt01p;
-    crnd-dimension:agegr1 ?agegr1;
+    crnd-dimension:s718_718 ?s718_718;
+    crnd-dimension:s707_900 ?s707_900;
+    crnd-dimension:s717_900 ?s717_900;
+    crnd-dimension:s706_900 ?s706_900;
+    crnd-dimension:s701_701 ?s701_701;
+    crnd-dimension:s710_710 ?s710_710;
+    crnd-dimension:s713_713 ?s713_713;
     crnd-dimension:factor ?factor;
-    crnd-dimension:sex ?sex;
-    crnd-dimension:durdsgr1 ?durdsgr1;
-    crnd-dimension:ethnic ?ethnic;
-    crnd-dimension:bmiblgr1 ?bmiblgr1;
-    crnd-dimension:ittfl ?ittfl;
+    crnd-dimension:s716_716 ?s716_716;
+    crnd-dimension:trtftype ?trtftype;
+    crnd-dimension:s708_708 ?s708_708;
+    crnd-dimension:s711_900 ?s711_900;
     crnd-attribute:unit ?unit;
     crnd-attribute:denominator ?denominator;
     crnd-measure:measure ?measure .      
+optional{ ?s705_705 skos:prefLabel ?s705_705value . }
+optional{ ?s702_900 skos:prefLabel ?s702_900value . }
+optional{ ?s703_703 skos:prefLabel ?s703_703value . }
+optional{ ?s709_709 skos:prefLabel ?s709_709value . }
+optional{ ?s714_900 skos:prefLabel ?s714_900value . }
+optional{ ?s704_704 skos:prefLabel ?s704_704value . }
+optional{ ?s715_900 skos:prefLabel ?s715_900value . }
 optional{ ?procedure skos:prefLabel ?procedurevalue . }
-optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
-optional{ ?agegr1 skos:prefLabel ?agegr1value . }
+optional{ ?s718_718 skos:prefLabel ?s718_718value . }
+optional{ ?s707_900 skos:prefLabel ?s707_900value . }
+optional{ ?s717_900 skos:prefLabel ?s717_900value . }
+optional{ ?s706_900 skos:prefLabel ?s706_900value . }
+optional{ ?s701_701 skos:prefLabel ?s701_701value . }
+optional{ ?s710_710 skos:prefLabel ?s710_710value . }
+optional{ ?s713_713 skos:prefLabel ?s713_713value . }
 optional{ ?factor skos:prefLabel ?factorvalue . }
-optional{ ?sex skos:prefLabel ?sexvalue . }
-optional{ ?durdsgr1 skos:prefLabel ?durdsgr1value . }
-optional{ ?ethnic skos:prefLabel ?ethnicvalue . }
-optional{ ?bmiblgr1 skos:prefLabel ?bmiblgr1value . }
-optional{ ?ittfl skos:prefLabel ?ittflvalue . }
+optional{ ?s716_716 skos:prefLabel ?s716_716value . }
+optional{ ?trtftype skos:prefLabel ?trtftypevalue . }
+optional{ ?s708_708 skos:prefLabel ?s708_708value . }
+optional{ ?s711_900 skos:prefLabel ?s711_900value . }
 } 
 order by ?s
 

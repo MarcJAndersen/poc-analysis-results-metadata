@@ -23,7 +23,7 @@ add classpath="&jenalib./slf4j-log4j12-1.7.6.jar";
 add classpath="&jenalib./xercesImpl-2.11.0.jar";
 add classpath="&jenalib./xml-apis-1.4.01.jar";
 
-submit;
+submit "&cubettlfile." "&rqfile." "&outxmlfile.";
 import java.io.FileOutputStream;
 
 import com.hp.hpl.jena.query.ARQ ;
@@ -43,16 +43,16 @@ import com.hp.hpl.jena.rdf.model.ModelFactory ;
 // https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/ModelFactory.html
 Model m = ModelFactory.createDefaultModel() ;
 m.read("../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl");
-m.read("../res-ttl/CDISC-pilot-TAB2X01.ttl") ;
+m.read(args[0]) ;
         
 // https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/QueryFactory.html    
-Query query = QueryFactory.read("../sparql-rq/tab2x01.rq") ;
+Query query = QueryFactory.read(args[1]) ;
 QueryExecution qexec = QueryExecutionFactory.create(query, m) ;
 
 //  https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/query/ResultSetFormatter.html
 ResultSet rs = qexec.execSelect() ;
 //       ResultSetFormatter.outputAsXML(System.out, rs);
-FileOutputStream os = new FileOutputStream("check-CDISC-pilot-TAB2X01.xml");            
+FileOutputStream os = new FileOutputStream(args[2]);            
 ResultSetFormatter.outputAsXML(os, rs);
 os.close();
 
@@ -65,8 +65,8 @@ quit;
 
 %sparqlreadxml(
     sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map),
-    sparqlqueryresultxml=check-CDISC-pilot-TAB2X01.xml,
+    sparqlqueryresultxml=&outxmlfile.,
     frsxlemap=SXLEMAP,
-    resultdsn=tab2x01,
+    resultdsn=&cubestemname.,
     debug=Y
 );

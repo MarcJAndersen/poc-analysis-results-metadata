@@ -1,0 +1,27 @@
+compType,compName,codeType,nciDomainValue,compLabel,Comment
+dimension,siteid,DATA,,Study Site Identifier,
+dimension,sitegr1,DATA,,Pooled Site Group 1,
+dimension,ittfl,DATA,,Intent-To-Treat Population Flag,
+dimension,efffl,DATA,,Efficacy Population Flag,
+dimension,comp24fl,DATA,,Completers of Week 24 Population Flag,
+dimension,trt01p,DATA,,Planned Treatment for Period 01,
+dimension,procedure,DATA,,Statistical Procedure,
+dimension,factor,DATA,,"Type of procedure (quantity, proportion...)",
+attribute,unit,,,Unit of measure,
+attribute,denominator,,,Denominator for a proportion (oskr) subset on which a statistic is based,
+measure,measure,,,Value of the statistical measure,
+metadata,obsURL,,,https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adsl.xpt,obsFileName
+metadata,obsFileName,,,tab1x03.csv,obsFileName
+metadata,dataCubeFileName,,,DC-TAB1X03,Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)
+metadata,cubeVersion,,,0.0.0,Version of cube with format n.n.n
+metadata,createdBy,,,Foo,Person who configures this spreadsheet and runs the creation script to create the cube
+metadata,description,,,Data from tab1x03.sas program,Cube description
+metadata,providedBy,,,PhUSE Results Metadata Working Group,
+metadata,comment,,,,Table 14-1.03 Summary of Number of Subjects by Site
+metadata,title,,,Summary of Number of Subjects by Site,Table 14-1.03 Summary of Number of Subjects by Site
+metadata,label,,,Table 14-1.03 Summary of Number of Subjects by Site,
+metadata,wasDerivedFrom,,,tab1x03.csv,Data source (obsFileName). Set this programmtically based on name of input file!
+metadata,domainName,,,TAB1X03,"The domain name, also part of the spreadsheet tab name"
+metadata,obsFileNameDirec,,,!example,The directory containd the wasDerivedFrom file
+metadata,dataCubeOutDirec,,,!temporary,
+metadata,extension.rrdfqbcrnd0,,,TRUE,

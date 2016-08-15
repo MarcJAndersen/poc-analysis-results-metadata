@@ -12,7 +12,12 @@ options mprint nocenter;
 
 libname this ".";
 
-/*
+%let cubestemname=tab2x01;
+%let cubettlfile=../res-ttl/CDISC-pilot-%upcase(&cubestemname).ttl;
+%let rqfile=../sparql-rq/&cubestemname..rq;
+%let outxmlfile=check-CDISC-pilot-%upcase(&cubestemname).xml;
+%let tabletitle=%str(Table 14.2.1 from ARM RDF data cube);
+
 %include "include-jena-groovy.sas";
 
 data this.tab2x01;
@@ -22,7 +27,6 @@ run;
 
 proc contents data=this.tab2x01 varnum;
 run;
-*/
 
 data tab2x01;
     set this.tab2x01;
@@ -31,7 +35,7 @@ run;
 proc print data=tab2x01 width=min;
 var 
     agegr1label agegr1value
-    racelabel racevalue
+    ethniclabel ethnicvalue
     sexlabel sexvalue
     durdsgr1label durdsgr1value
     bmiblgr1label bmiblgr1value
@@ -56,7 +60,7 @@ proc format;
         "age"=1
 "agegr1"=2
 "sex"=3
-"race"=4
+"ethnic"=4
 "mmsetot"=5
 "durdis"=6
 "durdsgr1"=7
@@ -78,7 +82,38 @@ proc format;
     
 run;
 
-run;
+/*
+
+   value $sexfmt
+       'N' = 'n[a]'
+       'F' = 'F'
+       'M' = 'M';
+
+   value $agegrfmt
+       'N'     = 'n[a]'
+       '<65'   = '<65'
+       '65-80' = '65-80'
+       '>80'   = '>80';
+   
+   value $racefmt
+       'N' = 'n[a]'
+       'WHITE' = 'White'
+       'BLACK OR AFRICAN AMERICAN' = 'Black or African American'
+       'AMERICAN INDIAN OR ALASKA NATIVE' = 'American Indian or Alaska Native';
+   
+   value $ethfmt
+       'N' = 'n[a]'
+       'NOT HISPANIC OR LATINO' = 'Not Hispanic or Latino'
+       'HISPANIC OR LATINO' = 'Hispanic or Latino';
+   
+   value trt01an
+       0="Placebo"
+       54="Xanomeline Low Dose"
+       81="Xanomeline High Dose"
+       ;
+
+   */
+
 data tab2x01_pres;
     set tab2x01;
 
@@ -95,8 +130,8 @@ data tab2x01_pres;
     colRES2order+1;
     */
     
-    array alabel(*) agegr1label racelabel sexlabel durdsgr1label bmiblgr1label;
-    array avalue(*) agegr1value racevalue sexvalue durdsgr1value bmiblgr1value;
+    array alabel(*) agegr1label ethniclabel sexlabel durdsgr1label bmiblgr1label;
+    array avalue(*) agegr1value ethnicvalue sexvalue durdsgr1value bmiblgr1value;
 
     length for_var $32;
 
@@ -143,7 +178,7 @@ proc sort data=tab2x01_pres;
     factorz1        
     procedurez1 
     agegr1label agegr1value
-    racelabel racevalue
+    ethniclabel ethnicvalue
     sexlabel sexvalue
     durdsgr1label durdsgr1value
     bmiblgr1label bmiblgr1value
