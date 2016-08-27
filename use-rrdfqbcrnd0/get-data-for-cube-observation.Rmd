@@ -1,0 +1,459 @@
+--
+title: "Get data for RDF data cube observation"
+author: "mja@statgroup.dk"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    theme: united
+  pdf_document:
+    toc: true
+    highlight: zenburn
+  md_document:
+    variant: markdown_github
+---
+
+# Introduction
+Here I show how to get the data for for a statistics in a RDF data cube observation.
+
+# Loading libraries
+
+```{r}
+library(rrdfancillary)
+library(rrdfcdisc)
+library(rrdfqb)
+library(rrdfqbcrnd0)
+library(knitr)
+```
+
+# Setup
+
+All files are stored in the directory
+```{r}
+targetName<- "TAB2X01"
+print(targetName)
+targetDir<- "../res-ttl"
+rqtargetDir<- "../sparql-rq"
+print(targetDir)
+targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
+print(targetFile)
+targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
+print(targetObsrqFile)
+target2DrqFile<- file.path(rqtargetDir, paste( tolower(targetName), ".rq", sep=""))
+print(target2DrqFile)
+```
+
+```{r}
+checkCube <- new.rdf()  # Initialize
+temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
+cat("Reading RDF Data Cube from file ", normalizePath(targetFile), "\n")
+summarize.rdf(checkCube)
+```
+
+Load the underlying data, see `rrdfqbcrnd0/rrdfqbcrndex/inst/data-raw/create-ADSL-ttl.Rmd`.
+
+```{r}
+dataFilemap<- system.file("extdata/sample-rdf", "adsl-map.ttl", package="rrdfqbcrndex")
+dataFilemap
+cat("Reading data set map in D2RQ format from file ", normalizePath(targetFile), "\n")
+temp<- load.rdf(dataFilemap, format="TURTLE", appendTo= checkCube)
+dataFile<- system.file("extdata/sample-rdf", "adsl.ttl", package="rrdfqbcrndex")
+dataFile
+cat("Reading data set in D2RQ format from file ", normalizePath(targetFile), "\n")
+temp<- load.rdf(dataFile, format="TURTLE", appendTo= checkCube)
+summarize.rdf(checkCube)
+
+```
+
+Get data for one record, just to show it works.
+
+```{r}
+d2rqbaseURL<- "http://www.example.org/datasets/"
+d2rqvocab<- paste0(d2rqbaseURL, "vocab", "/", sep="")
+
+s<- paste0("<", d2rqbaseURL,c("ADSL/01-718-1254"), ">")
+records.rq<-paste("select * ",
+           "where { ?s ?p ?o.",
+           " values(?s) {",
+           paste("(",s,")", collapse="\n"),
+           "}",
+           "}", sep="\n", collapse="\n" )
+cat(records.rq,"\n")
+records.res<- data.frame(sparql.rdf(checkCube, records.rq),stringsAsFactors=FALSE)
+str(records.res)
+records.res$pclean<- gsub(paste0(d2rqbaseURL,"vocab/ADSL_"), "", records.res$p)
+knitr::kable(head(records.res[,c("s", "p","o")]))
+```
+
+```{r}
+
+## Get the values in the cube
+dsdName<- GetDsdNameFromCube( checkCube )
+domainName<- GetDomainNameFromCube( checkCube )
+forsparqlprefix<- GetForSparqlPrefix( domainName )
+## Get cube components
+componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
+components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
+components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
+knitr::kable(components[,c("vn", "label")])
+## Get code lists
+codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
+codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
+codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
+codelists$clc<- gsub("code:","",codelists$cl)
+knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
+## Get dimensions
+dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
+dimensions<- sparql.rdf(checkCube, dimensionsRq)
+knitr::kable(dimensions)
+## Get attributes
+attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
+attributes<- sparql.rdf(checkCube, attributesRq)
+knitr::kable(attributes)
+```
+The result provides for each observation the data values that must match.
+
+## Create the SPARQL query
+
+### Step 1: for an observation find the values that must match
+
+```{r}
+qobs<- "ds:obs223"
+
+
+dobs.dimensions.values.rq<- paste(
+    "select * where {",
+"
+   ?obs ?dim ?codevalue .
+   ?dim a qb:DimensionProperty .
+   ?codelist skos:hasTopConcept ?codevalue .
+   ?codelist rrdfqbcrnd0:DataSetRefD2RQ ?vnop . 
+   ?codelist rrdfqbcrnd0:R-columnname ?vn . 
+   ?codelist rrdfqbcrnd0:codeType     ?vct .         
+   ?codevalue skos:prefLabel ?clprefLabel . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionvalue ?Rselectionvalue .   
+",
+"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+   "}"
+)                                  
+dobs.rq<-     paste( forsparqlprefix, dobs.dimensions.values.rq )
+ll<- strsplit(dobs.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobsobs<- NULL
+dobsobs<- as.data.frame(sparql.rdf(checkCube, dobs.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobsobs)
+
+```
+
+For subsequent use, the query is changed to only select the variables need for getting the data.
+
+```{r}
+dobs1.dimensions.values.rq<- paste(
+    "select ?vnop ?Rselectionvalue",
+    " (replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ) as ?d2rqname)\n",
+    paste0(" ( concat(", "'", d2rqvocab, "'", ", ", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' )) as ?d2rqIRI)\n"),
+    "where {",
+"
+   ?obs ?dim ?codevalue .
+   ?dim a qb:DimensionProperty .
+   ?codelist skos:hasTopConcept ?codevalue .
+   ?codelist rrdfqbcrnd0:DataSetRefD2RQ ?vnop . 
+   ?codelist rrdfqbcrnd0:R-columnname ?vn . 
+   ?codelist rrdfqbcrnd0:codeType     ?vct .         
+   ?codevalue skos:prefLabel ?clprefLabel . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionvalue ?Rselectionvalue .   
+",
+"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+   "}"
+)                                  
+dobs1.rq<-     paste( forsparqlprefix, dobs1.dimensions.values.rq )
+ll<- strsplit(dobs1.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs1obs<- NULL
+dobs1obs<- as.data.frame(sparql.rdf(checkCube, dobs1.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs1obs)
+
+```
+
+For subsequent use, the query is changed to only select the variables need for getting the data.
+
+ 
+
+```{r}
+dobs1.dimensions.values.rq<- paste(
+    "select ",
+    paste0(" ( iri(concat(", "'", d2rqvocab, "'", ", ", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)\n"),
+    "?matchvalue\n",
+    "where {",
+"
+   ?obs ?dim ?codevalue .
+   ?dim a qb:DimensionProperty .
+   ?codelist skos:hasTopConcept ?codevalue .
+   ?codelist rrdfqbcrnd0:DataSetRefD2RQ ?vnop . 
+   ?codelist rrdfqbcrnd0:R-columnname ?vn . 
+   ?codelist rrdfqbcrnd0:codeType     ?vct .         
+   ?codevalue skos:prefLabel ?clprefLabel . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
+",
+"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+   "}"
+)                                  
+dobs1.rq<-     paste( forsparqlprefix, dobs1.dimensions.values.rq )
+ll<- strsplit(dobs1.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs1obs<- NULL
+dobs1obs<- as.data.frame(sparql.rdf(checkCube, dobs1.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs1obs)
+
+```
+
+
+### Step 2 
+
+
+Next step is to retrieve the data, using the values hardcoded.
+The next query shows the matching records in the usual rows and columns format, with the columns represeting the unique key for the record, defined by D2RQ, and the two columns in question `TRT01P` and `ITTFL`.
+
+```{r}
+
+records.rq-paste("select * ",
+           "where {
+?s d2rqvocab:ADSL_TRT01P ?TRT01P .
+?s d2rqvocab:ADSL_ITTFL ?ITTFL .
+?s d2rqvocab:ADSL_TRT01P 'Xanomeline High Dose' ;
+   d2rqvocab:ADSL_ITTFL  'Y' .
+",
+"}",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobsds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      records.rq )
+ll<- strsplit(dobsds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobsobs<- NULL
+dobsobs<- as.data.frame(sparql.rdf(checkCube, dobsds.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobsobs)
+
+```
+
+Another representation is showing the the variables one in each row.
+
+```{r}
+
+obs.triples.rq<-paste("select * ",
+           "where {
+?s ?variable ?value .
+values (?variable) {
+(d2rqvocab:ADSL_TRT01P)
+(d2rqvocab:ADSL_ITTFL)
+}
+",
+"}",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobs.triples1.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      obs.triples1.rq )
+ll<- strsplit(dobs.triples1.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples1.obs<- NULL
+dobs.triples1.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples1.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(head(dobs.triples1.obs,10))
+
+```
+
+Next step is adding the matching value and reporting if its equal with 0 and 1.
+Note the BIND is after the values statement.
+
+```{r}
+
+obs.triples2.rq<-paste("select * ",
+           "where {
+?s ?variable ?value .
+values (?variable ?matchvalue) {
+(d2rqvocab:ADSL_TRT01P 'Xanomeline High Dose')
+(d2rqvocab:ADSL_ITTFL 'Y' )
+}
+BIND(IF(?value=?matchvalue,1,0) AS ?isequal)
+",
+"}",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobs.triples2.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      obs.triples2.rq )
+ll<- strsplit(dobs.triples2.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples2.obs<- NULL
+dobs.triples2.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples2.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(head(dobs.triples2.obs,10))
+
+```
+
+Using SPARQL aggregate query grouping by `?s` provides the number of not-matching values.
+Now, the desired records `?s` are those where there is 0 not-equal variables.
+
+```{r}
+
+obs.triples3.rq<-paste("SELECT ?s (SUM(?notequal) as ?nnotqual) ",
+           "where {
+?s ?variable ?value .
+values (?variable ?matchvalue) {
+(d2rqvocab:ADSL_TRT01P 'Xanomeline High Dose')
+(d2rqvocab:ADSL_ITTFL 'Y' )
+}
+BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)
+",
+"}",
+"group by ?s",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobs.triples3.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      obs.triples3.rq )
+ll<- strsplit(dobs.triples3.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples3.obs<- NULL
+dobs.triples3.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples3.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(head(dobs.triples3.obs))
+
+```
+
+Then to get the desired records, identified by `?s`, the SPARQL HAVING term is used.
+
+```{r}
+
+obs.triples4.rq<-paste("SELECT ?s ",
+           "where {
+?s ?variable ?value .
+values (?variable ?matchvalue) {
+(d2rqvocab:ADSL_TRT01P 'Xanomeline High Dose')
+(d2rqvocab:ADSL_ITTFL 'Y' )
+}
+BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)
+",
+"}",
+"group by ?s",
+"having(SUM(?notequal)=0)",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobs.triples4.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      obs.triples4.rq )
+ll<- strsplit(dobs.triples4.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples4.obs<- NULL
+dobs.triples4.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples4.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(head(dobs.triples4.obs))
+
+```
+
+The query above can then be used as a subquery in the full querqy.
+
+```{r}
+
+records2.rq<-paste("select * ",
+           "where {
+?s d2rqvocab:ADSL_TRT01P ?TRT01P .
+?s d2rqvocab:ADSL_ITTFL ?ITTFL .
+",
+"{",
+obs.triples4.rq,
+"}",
+"}",
+"order by ?s",
+sep="\n", collapse="\n" )
+
+dobs2ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
+                      records2.rq )
+ll<- strsplit(dobs2ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs2obs<- NULL
+dobs2obs<- as.data.frame(sparql.rdf(checkCube, dobs2ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs2obs)
+
+```
+
+The values part of the query above can be replaced by a subquery.
+
+```{r}
+
+
+obs.triples5.rq<-paste(
+paste(
+    "select ",
+    paste0(" ( iri(concat(", "'", d2rqvocab, "'", ", ", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)\n"),
+    "?matchvalue\n",
+    "where {",
+"
+   ?obs ?dim ?codevalue .
+   ?dim a qb:DimensionProperty .
+   ?codelist skos:hasTopConcept ?codevalue .
+   ?codelist rrdfqbcrnd0:DataSetRefD2RQ ?vnop . 
+   ?codelist rrdfqbcrnd0:R-columnname ?vn . 
+   ?codelist rrdfqbcrnd0:codeType     ?vct .         
+   ?codevalue skos:prefLabel ?clprefLabel . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
+",
+"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"}"
+),
+sep="\n", collapse="\n" )
+dobs.triples5.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", "\n", collapse=""),
+                      obs.triples5.rq )
+ll<- strsplit(dobs.triples5.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples5.obs<- NULL
+dobs.triples5.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples5.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(head(dobs.triples5.obs))
+
+obs.triples6.rq<-paste(
+    "SELECT ?s",
+           "where {
+?s ?variable ?value 
+",
+"{",
+paste(
+    "select ",
+    paste0(" ( iri(concat(", "'", d2rqvocab, "'", ", ", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)\n"),
+    "?matchvalue\n",
+    "where {",
+"
+   ?obs ?dim ?codevalue .
+   ?dim a qb:DimensionProperty .
+   ?codelist skos:hasTopConcept ?codevalue .
+   ?codelist rrdfqbcrnd0:DataSetRefD2RQ ?vnop . 
+   ?codelist rrdfqbcrnd0:R-columnname ?vn . 
+   ?codelist rrdfqbcrnd0:codeType     ?vct .         
+   ?codevalue skos:prefLabel ?clprefLabel . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
+",
+"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"}"
+),
+"}",
+"BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)",
+"}",
+"group by ?s",
+"having(SUM(?notequal)=0)",
+"order by ?s",
+sep="\n", collapse="\n" )
+dobs.triples6.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", "\n", collapse=""),
+                      obs.triples6.rq )
+ll<- strsplit(dobs.triples6.ds.rq,split="\n")
+cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+dobs.triples6.obs<- NULL
+dobs.triples6.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs.triples6.obs)
+
+
+```
