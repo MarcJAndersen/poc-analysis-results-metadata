@@ -75,7 +75,27 @@ Start tomcat:
      set JAVA_HOME=c:\Program Files\Java\jre1.8.0_101
      cd apache-tomcat-8.5.4\bin
      startup.bat
-	 
+
+#### Tomcat on Linux
+
+The approach below is tested on Fedora 24.
+
+Install tomcat
+
+     dnf install tomcat
+
+
+Copy application files from default tomcat webapps directory.
+
+     webappdir=/usr/share/tomcat/webapps/TT05
+     cd application-html
+	 # as root, or other with write access to the tomcat webapps directory
+     mkdir ${webappdir}
+     chgrp -R tomcat ${webappdir}
+     chown -R tomcat 
+     cp -rv . ${webappdir}
+
+
 ### Apache Jena
 
 Apache Jena - see (https://jena.apache.org/download/), download at (http://archive.apache.org/dist/jena/binaries/)
