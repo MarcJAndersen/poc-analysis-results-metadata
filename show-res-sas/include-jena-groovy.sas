@@ -1,4 +1,9 @@
+%put cubettlfile="&cubettlfile.";
+%put rqfile.="&rqfile.";
+%put outxmlfile="&outxmlfile.";
+%put;
 
+    
 proc groovy  ;
 %let jenalib=%str(../../apache-jena-2.13.0/lib);  
 add classpath="&jenalib./commons-codec-1.6.jar";

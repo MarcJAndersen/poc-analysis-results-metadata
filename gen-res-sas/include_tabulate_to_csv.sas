@@ -82,6 +82,7 @@ data _null_;
     array vput(*) classvarlist classvarlistc classvarlistn classvarlistcCONV classvarlistnCONV resultvarlist renamevarlist;
     do i=1 to dim(vput);
         call symputx( vname(vput(i)), vput(i));
+        putlog vput(i)=;
         end;
 call symputx( "nclassvarlistc", countw(classvarlistc));
 call symputx( "nclassvarlistn", countw(classvarlistn));
@@ -267,6 +268,7 @@ data observations;
             
             do j=1 to dim(resdimn)-1;
                 name=lowcase(vname(resdimn(j)));
+                putlog resdimn(j)= "$$";
                 datatype= "numeric";  /* using numeric in the SAS sense */
                 nameorder= j;
                 if missing(resdimn(j)) then do;
@@ -290,7 +292,8 @@ data observations;
                             end;
                         end;
                     rc=cval.ref();
-                    resdimnCONV(j)= codedvalue; /* Not ideal */
+                    resdimnCONV(j)= codedvaluen; /* Not ideal */
+                    putlog "--> " resdimnCONV(j)= ;
                     end;
                 end;
 

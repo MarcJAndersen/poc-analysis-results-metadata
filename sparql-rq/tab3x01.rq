@@ -1,0 +1,82 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix prov: <http://www.w3.org/ns/prov#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix dcat: <http://www.w3.org/ns/dcat#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix pav: <http://purl.org/pav>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix dct: <http://purl.org/dc/terms/>
+prefix mms: <http://rdf.cdisc.org/mms#>
+prefix cts: <http://rdf.cdisc.org/ct/schema#>
+prefix cdiscs: <http://rdf.cdisc.org/std/schema#>
+prefix cdash-1-1: <http://rdf.cdisc.org/std/cdash-1-1#>
+prefix cdashct: <http://rdf.cdisc.org/cdash-terminology#>
+prefix sdtmct: <http://rdf.cdisc.org/sdtm-terminology#>
+prefix sdtm-1-2: <http://rdf.cdisc.org/std/sdtm-1-2#>
+prefix sdtm-1-3: <http://rdf.cdisc.org/std/sdtm-1-3#>
+prefix sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#>
+prefix sdtmig-3-1-2: <http://rdf.cdisc.org/std/sdtmig-3-1-2#>
+prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#>
+prefix sendct: <http://rdf.cdisc.org/send-terminology#>
+prefix sendig-3-0: <http://rdf.cdisc.org/std/sendig-3-0#>
+prefix adamct: <http://rdf.cdisc.org/adam-terminology#>
+prefix adam-2-1: <http://rdf.cdisc.org/std/adam-2-1#>
+prefix adamig-1-0: <http://rdf.cdisc.org/std/adamig-1-0#>
+prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
+prefix qb: <http://purl.org/linked-data/cube#>
+prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
+prefix code: <http://www.example.org/dc/code/>
+prefix dccs: <http://www.example.org/dc/tab3x01/dccs/>
+prefix ds: <http://www.example.org/dc/tab3x01/ds/>
+prefix crnd-dimension: <http://www.example.org/dc/dimension#>
+prefix crnd-attribute: <http://www.example.org/dc/attribute#>
+prefix crnd-measure: <http://www.example.org/dc/measure#>
+ select * where { ?col1z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtpn code:trtpn-0 ;     crnd-measure:measure ?col1z1. optional{?col1z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;      crnd-dimension:procedure code:procedure-percent; 
+    crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col1z2denominator; 
+    crnd-dimension:trtpn code:trtpn-0 ;     crnd-measure:measure ?col1z2 . 
+?col1z1URI crnd-dimension:procedure code:procedure-count .} .
+?col2z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtpn code:trtpn-54 ;     crnd-measure:measure ?col2z1. optional{?col2z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;      crnd-dimension:procedure code:procedure-percent; 
+    crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col2z2denominator; 
+    crnd-dimension:trtpn code:trtpn-54 ;     crnd-measure:measure ?col2z2 . 
+?col2z1URI crnd-dimension:procedure code:procedure-count .} .
+?col3z1URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;    crnd-dimension:procedure ?procedurez1;
+    crnd-dimension:factor ?factorz1;     crnd-dimension:trtpn code:trtpn-81 ;     crnd-measure:measure ?col3z1. optional{?col3z2URI a qb:Observation  ;    qb:dataSet ds:dataset-TAB3X01 ;    crnd-dimension:efffl ?efffl;
+    crnd-dimension:anl01fl ?anl01fl;
+    crnd-dimension:avisit ?avisit;
+    crnd-dimension:paramcd ?paramcd;      crnd-dimension:procedure code:procedure-percent; 
+    crnd-dimension:factor code:factor-proportion;  
+    crnd-attribute:denominator ?col3z2denominator; 
+    crnd-dimension:trtpn code:trtpn-81 ;     crnd-measure:measure ?col3z2 . 
+?col3z1URI crnd-dimension:procedure code:procedure-count .} . optional { ?efffl skos:prefLabel ?effflvalue.
+?anl01fl skos:prefLabel ?anl01flvalue.
+?avisit skos:prefLabel ?avisitvalue.
+?paramcd skos:prefLabel ?paramcdvalue. crnd-dimension:efffl rdfs:label ?efffllabel . 
+crnd-dimension:anl01fl rdfs:label ?anl01fllabel . 
+crnd-dimension:avisit rdfs:label ?avisitlabel . 
+crnd-dimension:paramcd rdfs:label ?paramcdlabel .  } 
+{ select  ?procedurez1 where {
+   code:procedure skos:hasTopConcept ?procedurez1 .
+   filter ( ?procedurez1 != code:procedure-percent )
+   } }
+ }
