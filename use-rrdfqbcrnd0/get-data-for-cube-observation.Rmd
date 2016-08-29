@@ -6,15 +6,17 @@ output:
   html_document:
     toc: true
     theme: united
+    highlight: pygments
   pdf_document:
     toc: true
-    highlight: zenburn
+    highlight: pygments
   md_document:
     variant: markdown_github
 ---
 
 # Introduction
-Here I show how to get the data for for a statistics in a RDF data cube observation.
+
+Here I show how to get the data for for an observation in a RDF data cube.
 
 # Setup
 
@@ -37,12 +39,33 @@ knitr. The advantage of this approach is that all formatting is
 handled by external packages. To make the highlight output work in
 markdown two blanks has to be added at the end of line according to
 markdown syntax. The function stores the sparql statements in a temporary file, which then is processed by `knitr::read_chunk`.
-The pdf generation with `rmarkdown::render` did not handle backslash-n (newline), so to avoid writing it I define the  as a constant `const.newline`
+
+The pdf generation with `rmarkdown::render` did not handle backslash-n
+(newline), so to avoid writing it I define the as a constant
+`const.newline`. However, it does not work right now, as the generated
+latex code depends on `highlight.sty`, which is only generated when
+highlight is invoked with
+
+    highlight  -S n3 ADSL-records-SELECT-query.rq --out-format=latex --inline-css
+
+The colouring macros is defined and included in the text with option -I, but only when the -f is not given
+
+    highlight  -S n3 ADSL-records-SELECT-query.rq --out-format=latex
+
+The -f option is needed to get fragment.
+
+So more work is needed to get the PDF to work.
+
+It works for HTML
 
 ```{r helperfunction}
 mdwrite<- function( sparqlStatements, refname ) {
-fn<- file.path(tempdir(), paste0( refname, ".rq" ) )
-cat( paste0("## @knitr ", refname), gsub("\\n", "  \n", sparqlStatements), sep="  \n", file=fn)
+## fn<- file.path(tempdir(), refname )
+fn<- file.path(".", refname )
+    cat( paste0(
+             "## @knitr ", refname),
+        gsub("\\n", "  \n", sparqlStatements), sep="  \n", file=fn
+        )
 knitr::read_chunk( fn, from=c(1))
 invisible(fn)
 }
@@ -59,9 +82,14 @@ mdwrite( dimensionsRq, "DEMOdimensions" )
 The chunk is then shown using
 
 ```
-    {r DEMOdimensions, results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
+    {r DEMOdimensions, results='asis', engine='highlight', engine.opts='--syntax=n3 --inline-css'}
        
 ```
+
+This works for html.
+
+Here is the code for highlight with Latex for generating PDF - not working `{r ADSL-records-SELECT-query.rq, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css --out-format=latex -I'}`.
+
 
 # Setup
 
@@ -77,7 +105,6 @@ Second, I define the location for the `ADSL` data as turtle transformed using R2
 
 ```{r}
 dataFilemap<- system.file("extdata/sample-rdf", "adsl-map.ttl", package="rrdfqbcrndex")
-
 
 ```
 
@@ -105,28 +132,38 @@ d2rqvocab<- paste0(d2rqbaseURL, "vocab", "/", sep="")
 
 s<- paste0("<", d2rqbaseURL,c("ADSL/01-718-1254"), ">")
 data.records.rq<-paste(
-    "select * ",
+    "prefix vocab: <http://www.example.org/datasets/vocab/>",
+    "prefix ADSL: <http://www.example.org/datasets/ADSL/>",
+    "construct { ?s ?p ?o. }",
     "where { ?s ?p ?o.",
     " values(?s) {",
     paste("(",s,")", collapse=const.newline),
     "}",
     "}", sep=const.newline, collapse=const.newline )
-mdwrite( data.records.rq, "ADSL-records-SELECT-query.rq" )
-records.res<- data.frame(sparql.rdf(storeCube, data.records.rq),stringsAsFactors=FALSE)
+mdwrite( data.records.rq, "ADSL-records-CONSTRUCT.rq" )
+obs.data<- construct.rdf(storeCube, data.records.rq)
+save.rdf( obs.data, "ADSL-records-observation.ttl", format="TURTLE" )
+mdwrite( readLines("ADSL-records-observation.ttl", warn = FALSE), "xADSL-records-observation.ttl" )
 
 ```
 
-The SPARQL query is
+The SPARQL construct query is
 
-```{r ADSL-records-SELECT-query.rq, results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
-```    
+```{r ADSL-records-CONSTRUCT.rq, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css'}
 
-The result is
+```
+   
+   
+The result is xx
 
-```{r results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
-cat(paste(apply(records.res,1,FUN=paste0, collapse=" "),collapse=const.newline),const.newline)
-```    
+```{r xADSL-records-observation.ttl, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css'}
 
+```
+
+   
+
+
+Then some setup functions for the cube.
 
 ```{r}
 
@@ -494,5 +531,9 @@ knitr::kable(dobs.triples6.obs)
 
 Here is how to make the PDF file
 ```{r, eval=FALSE}
-rmarkdown::render('get-data-for-cube-observation.Rmd', c("html_document", "pdf_document"), clean=TRUE)
+## rmarkdown::render('get-data-for-cube-observation.Rmd', c("pdf_document"), clean=FALSE)
+rmarkdown::render('get-data-for-cube-observation.Rmd', c("html_document"), clean=TRUE)
+
 ```
+
+
