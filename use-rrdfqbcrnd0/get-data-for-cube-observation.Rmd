@@ -16,7 +16,9 @@ output:
 # Introduction
 Here I show how to get the data for for a statistics in a RDF data cube observation.
 
-# Loading libraries
+# Setup
+
+## Loading libraries
 
 ```{r}
 library(rrdfancillary)
@@ -24,91 +26,132 @@ library(rrdfcdisc)
 library(rrdfqb)
 library(rrdfqbcrnd0)
 library(knitr)
+
+```
+
+## Internals
+
+The display of SPARQL script in markdown is done by first creating a
+chunk, and then using the chunk with the highlight engine in
+knitr. The advantage of this approach is that all formatting is
+handled by external packages. To make the highlight output work in
+markdown two blanks has to be added at the end of line according to
+markdown syntax. The function stores the sparql statements in a temporary file, which then is processed by `knitr::read_chunk`.
+The pdf generation with `rmarkdown::render` did not handle backslash-n (newline), so to avoid writing it I define the  as a constant `const.newline`
+
+```{r helperfunction}
+mdwrite<- function( sparqlStatements, refname ) {
+fn<- file.path(tempdir(), paste0( refname, ".rq" ) )
+cat( paste0("## @knitr ", refname), gsub("\\n", "  \n", sparqlStatements), sep="  \n", file=fn)
+knitr::read_chunk( fn, from=c(1))
+invisible(fn)
+}
+
+const.newline<- "\n"
+```
+
+Here is an example of the R code to make the chunk:
+```{r, eval=FALSE}
+mdwrite( dimensionsRq, "DEMOdimensions" )
+
+```
+
+The chunk is then shown using
+
+```
+    {r DEMOdimensions, results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
+       
 ```
 
 # Setup
 
-All files are stored in the directory
+First, I define the location for the RDF data cube
 ```{r}
-targetName<- "TAB2X01"
-print(targetName)
-targetDir<- "../res-ttl"
-rqtargetDir<- "../sparql-rq"
-print(targetDir)
-targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
-print(targetFile)
-targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
-print(targetObsrqFile)
-target2DrqFile<- file.path(rqtargetDir, paste( tolower(targetName), ".rq", sep=""))
-print(target2DrqFile)
+rdf.data.cube.Name<- "TAB2X01"
+rdf.data.cube.Dir<- "../res-ttl"
+rdf.data.cube.File<- file.path(rdf.data.cube.Dir, paste("CDISC-pilot-", rdf.data.cube.Name, ".ttl", sep=""))
+
 ```
 
-```{r}
-checkCube <- new.rdf()  # Initialize
-temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
-cat("Reading RDF Data Cube from file ", normalizePath(targetFile), "\n")
-summarize.rdf(checkCube)
-```
-
-Load the underlying data, see `rrdfqbcrnd0/rrdfqbcrndex/inst/data-raw/create-ADSL-ttl.Rmd`.
+Second, I define the location for the `ADSL` data as turtle transformed using R2DQ (see `rrdfqbcrnd0/rrdfqbcrndex/inst/data-raw/create-ADSL-ttl.Rmd`).
 
 ```{r}
 dataFilemap<- system.file("extdata/sample-rdf", "adsl-map.ttl", package="rrdfqbcrndex")
-dataFilemap
-cat("Reading data set map in D2RQ format from file ", normalizePath(targetFile), "\n")
-temp<- load.rdf(dataFilemap, format="TURTLE", appendTo= checkCube)
-dataFile<- system.file("extdata/sample-rdf", "adsl.ttl", package="rrdfqbcrndex")
-dataFile
-cat("Reading data set in D2RQ format from file ", normalizePath(targetFile), "\n")
-temp<- load.rdf(dataFile, format="TURTLE", appendTo= checkCube)
-summarize.rdf(checkCube)
+
 
 ```
 
-Get data for one record, just to show it works.
+The final step is to load the turtle files into a RDF store, here named `storeCube`.
+
+```{r}
+storeCube <- new.rdf(ontology=FALSE)  
+temp<- load.rdf(rdf.data.cube.File, format="TURTLE", appendTo= storeCube)
+cat("Reading RDF Data Cube from file ", normalizePath(rdf.data.cube.File), const.newline)
+summarize.rdf(storeCube)
+cat("Reading data set D2RQ map from file ", normalizePath(dataFilemap), const.newline)
+temp<- load.rdf(dataFilemap, format="TURTLE", appendTo= storeCube)
+dataFile<- system.file("extdata/sample-rdf", "adsl.ttl", package="rrdfqbcrndex")
+cat("Reading data set in D2RQ format from file ", normalizePath(dataFile), const.newline)
+temp<- load.rdf(dataFile, format="TURTLE", appendTo= storeCube)
+summarize.rdf(storeCube)
+
+```
+
+Now, just to see if it works, I will get the data for one record. The key URI for a record is composed by the name of the dataset `ADSL` and the `usubjid` value `01-718-1254`.
 
 ```{r}
 d2rqbaseURL<- "http://www.example.org/datasets/"
 d2rqvocab<- paste0(d2rqbaseURL, "vocab", "/", sep="")
 
 s<- paste0("<", d2rqbaseURL,c("ADSL/01-718-1254"), ">")
-records.rq<-paste("select * ",
-           "where { ?s ?p ?o.",
-           " values(?s) {",
-           paste("(",s,")", collapse="\n"),
-           "}",
-           "}", sep="\n", collapse="\n" )
-cat(records.rq,"\n")
-records.res<- data.frame(sparql.rdf(checkCube, records.rq),stringsAsFactors=FALSE)
-str(records.res)
-records.res$pclean<- gsub(paste0(d2rqbaseURL,"vocab/ADSL_"), "", records.res$p)
-knitr::kable(head(records.res[,c("s", "p","o")]))
+data.records.rq<-paste(
+    "select * ",
+    "where { ?s ?p ?o.",
+    " values(?s) {",
+    paste("(",s,")", collapse=const.newline),
+    "}",
+    "}", sep=const.newline, collapse=const.newline )
+mdwrite( data.records.rq, "ADSL-records-SELECT-query.rq" )
+records.res<- data.frame(sparql.rdf(storeCube, data.records.rq),stringsAsFactors=FALSE)
+
 ```
+
+The SPARQL query is
+
+```{r ADSL-records-SELECT-query.rq, results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
+```    
+
+The result is
+
+```{r results='asis', engine='highlight', engine.opts='-S n3 --inline-css'}
+cat(paste(apply(records.res,1,FUN=paste0, collapse=" "),collapse=const.newline),const.newline)
+```    
+
 
 ```{r}
 
 ## Get the values in the cube
-dsdName<- GetDsdNameFromCube( checkCube )
-domainName<- GetDomainNameFromCube( checkCube )
+dsdName<- GetDsdNameFromCube( storeCube )
+domainName<- GetDomainNameFromCube( storeCube )
 forsparqlprefix<- GetForSparqlPrefix( domainName )
 ## Get cube components
 componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
-components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
+components<- as.data.frame(sparql.rdf(storeCube, componentsRq), stringsAsFactors=FALSE)
 components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
 knitr::kable(components[,c("vn", "label")])
 ## Get code lists
 codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
-codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
+codelists<- as.data.frame(sparql.rdf(storeCube, codelistsRq), stringsAsFactors=FALSE)
 codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
 codelists$clc<- gsub("code:","",codelists$cl)
 knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
 ## Get dimensions
 dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
-dimensions<- sparql.rdf(checkCube, dimensionsRq)
+dimensions<- sparql.rdf(storeCube, dimensionsRq)
 knitr::kable(dimensions)
 ## Get attributes
 attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
-attributes<- sparql.rdf(checkCube, attributesRq)
+attributes<- sparql.rdf(storeCube, attributesRq)
 knitr::kable(attributes)
 ```
 The result provides for each observation the data values that must match.
@@ -134,14 +177,13 @@ dobs.dimensions.values.rq<- paste(
    ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?Rselectionvalue .   
 ",
-"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
    "}"
 )                                  
 dobs.rq<-     paste( forsparqlprefix, dobs.dimensions.values.rq )
-ll<- strsplit(dobs.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+# xx
 dobsobs<- NULL
-dobsobs<- as.data.frame(sparql.rdf(checkCube, dobs.rq ), stringsAsFactors=FALSE)
+dobsobs<- as.data.frame(sparql.rdf(storeCube, dobs.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobsobs)
 
 ```
@@ -165,14 +207,13 @@ dobs1.dimensions.values.rq<- paste(
    ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?Rselectionvalue .   
 ",
-"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
    "}"
 )                                  
 dobs1.rq<-     paste( forsparqlprefix, dobs1.dimensions.values.rq )
-ll<- strsplit(dobs1.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs1obs<- NULL
-dobs1obs<- as.data.frame(sparql.rdf(checkCube, dobs1.rq ), stringsAsFactors=FALSE)
+dobs1obs<- as.data.frame(sparql.rdf(storeCube, dobs1.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobs1obs)
 
 ```
@@ -198,14 +239,13 @@ dobs1.dimensions.values.rq<- paste(
    ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
 ",
-"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
    "}"
 )                                  
 dobs1.rq<-     paste( forsparqlprefix, dobs1.dimensions.values.rq )
-ll<- strsplit(dobs1.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs1obs<- NULL
-dobs1obs<- as.data.frame(sparql.rdf(checkCube, dobs1.rq ), stringsAsFactors=FALSE)
+dobs1obs<- as.data.frame(sparql.rdf(storeCube, dobs1.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobs1obs)
 
 ```
@@ -219,7 +259,7 @@ The next query shows the matching records in the usual rows and columns format, 
 
 ```{r}
 
-records.rq-paste("select * ",
+records.rq<- paste("select * ",
            "where {
 ?s d2rqvocab:ADSL_TRT01P ?TRT01P .
 ?s d2rqvocab:ADSL_ITTFL ?ITTFL .
@@ -228,14 +268,13 @@ records.rq-paste("select * ",
 ",
 "}",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobsds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       records.rq )
-ll<- strsplit(dobsds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobsobs<- NULL
-dobsobs<- as.data.frame(sparql.rdf(checkCube, dobsds.rq ), stringsAsFactors=FALSE)
+dobsobs<- as.data.frame(sparql.rdf(storeCube, dobsds.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobsobs)
 
 ```
@@ -244,7 +283,7 @@ Another representation is showing the the variables one in each row.
 
 ```{r}
 
-obs.triples.rq<-paste("select * ",
+obs.triples1.rq<-paste("select * ",
            "where {
 ?s ?variable ?value .
 values (?variable) {
@@ -254,14 +293,13 @@ values (?variable) {
 ",
 "}",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples1.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       obs.triples1.rq )
-ll<- strsplit(dobs.triples1.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples1.obs<- NULL
-dobs.triples1.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples1.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples1.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples1.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(head(dobs.triples1.obs,10))
 
 ```
@@ -282,14 +320,13 @@ BIND(IF(?value=?matchvalue,1,0) AS ?isequal)
 ",
 "}",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples2.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       obs.triples2.rq )
-ll<- strsplit(dobs.triples2.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples2.obs<- NULL
-dobs.triples2.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples2.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples2.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples2.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(head(dobs.triples2.obs,10))
 
 ```
@@ -311,14 +348,13 @@ BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)
 "}",
 "group by ?s",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples3.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       obs.triples3.rq )
-ll<- strsplit(dobs.triples3.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples3.obs<- NULL
-dobs.triples3.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples3.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples3.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples3.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(head(dobs.triples3.obs))
 
 ```
@@ -340,14 +376,13 @@ BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)
 "group by ?s",
 "having(SUM(?notequal)=0)",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples4.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       obs.triples4.rq )
-ll<- strsplit(dobs.triples4.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples4.obs<- NULL
-dobs.triples4.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples4.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples4.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples4.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(head(dobs.triples4.obs))
 
 ```
@@ -366,15 +401,14 @@ obs.triples4.rq,
 "}",
 "}",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 
 dobs2ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", collapse=""),
                       records2.rq )
-ll<- strsplit(dobs2ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs2obs<- NULL
-dobs2obs<- as.data.frame(sparql.rdf(checkCube, dobs2ds.rq ), stringsAsFactors=FALSE)
+dobs2obs<- as.data.frame(sparql.rdf(storeCube, dobs2ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobs2obs)
 
 ```
@@ -401,17 +435,16 @@ paste(
    ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
 ",
-"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
 "}"
 ),
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples5.ds.rq<-     paste( forsparqlprefix,
-                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", "\n", collapse=""),
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", const.newline, collapse=""),
                       obs.triples5.rq )
-ll<- strsplit(dobs.triples5.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples5.obs<- NULL
-dobs.triples5.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples5.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples5.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples5.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(head(dobs.triples5.obs))
 
 obs.triples6.rq<-paste(
@@ -436,7 +469,7 @@ paste(
    ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
 ",
-"values (?obs) {", paste0("(", qobs, ")",collapse="\n"), "}",
+"values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
 "}"
 ),
 "}",
@@ -445,15 +478,21 @@ paste(
 "group by ?s",
 "having(SUM(?notequal)=0)",
 "order by ?s",
-sep="\n", collapse="\n" )
+sep=const.newline, collapse=const.newline )
 dobs.triples6.ds.rq<-     paste( forsparqlprefix,
-                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", "\n", collapse=""),
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", const.newline, collapse=""),
                       obs.triples6.rq )
-ll<- strsplit(dobs.triples6.ds.rq,split="\n")
-cat(paste(seq(length(unlist(ll))),unlist(ll),collapse="\n"),"\n")
+## xx
 dobs.triples6.obs<- NULL
-dobs.triples6.obs<- as.data.frame(sparql.rdf(checkCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
+dobs.triples6.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobs.triples6.obs)
 
 
+```
+
+# Final stuff
+
+Here is how to make the PDF file
+```{r, eval=FALSE}
+rmarkdown::render('get-data-for-cube-observation.Rmd', c("html_document", "pdf_document"), clean=TRUE)
 ```

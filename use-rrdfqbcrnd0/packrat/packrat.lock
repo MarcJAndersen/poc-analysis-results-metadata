@@ -20,6 +20,11 @@ Source: CRAN
 Version: 0.12.5
 Hash: 625a95cb4ef523a77ad02e140b715db6
 
+Package: base64enc
+Source: CRAN
+Version: 0.1-3
+Hash: c590d29e555926af053055e23ee79efb
+
 Package: bitops
 Source: CRAN
 Version: 1.0-6
@@ -90,7 +95,7 @@ Package: knitr
 Source: CRAN
 Version: 1.13
 Hash: 8d686cbee88c93b735281a22b2ca59dd
-Requires: digest, formatR, highr, yaml, markdown, stringr, evaluate
+Requires: digest, evaluate, formatR, highr, markdown, stringr, yaml
 
 Package: magrittr
 Source: CRAN
@@ -131,9 +136,10 @@ Hash: 3e8627a2a5bd45c9bad6112acfc231d9
 
 Package: rmarkdown
 Source: CRAN
-Version: 0.9.6
-Hash: c60250bb3dd9107d6d3ecf626e86d8a6
-Requires: yaml, caTools, htmltools, knitr
+Version: 1.0
+Hash: 7c60cd30594b34874a6a7e729f0a6fad
+Requires: base64enc, caTools, evaluate, htmltools, jsonlite, knitr,
+    yaml
 
 Package: rrdf
 Source: github
