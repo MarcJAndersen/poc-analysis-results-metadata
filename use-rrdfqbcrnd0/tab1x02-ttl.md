@@ -1,7 +1,7 @@
 --
 title: "Create TAB1X02_1 as RDF data cube"
 author: "mja@statgroup.dk"
-date: "2016-08-04"
+date: "2016-09-03"
 output:
   html_document:
     toc: true
@@ -124,15 +124,57 @@ library(rrdfqbcrnd0)
 library(knitr)
 ```
 
+# Show parameters
+
+
+
+```r
+param.df<- data.frame(filepathname=apply(array(c(targetName, targetDir, targetFile, targetObsrqFile, target2DrqFile)),1,normalizePath,mustWork = FALSE) )
+```
+
+```
+## Error in array(c(targetName, targetDir, targetFile, targetObsrqFile, target2DrqFile)): objekt 'target2DrqFile' blev ikke fundet
+```
+
+```r
+rownames(param.df)<-c("Target file name", "Target diretory", "Target File", "Observation query file", "Row-column query file")
+```
+
+```
+## Error in rownames(param.df) <- c("Target file name", "Target diretory", : objekt 'param.df' blev ikke fundet
+```
+
+```r
+knitr::kable(param.df)
+```
+
+```
+## Error in inherits(x, "list"): objekt 'param.df' blev ikke fundet
+```
 
 # Load CSV files
 
 
 ```r
 ObsDataCsvFn<- file.path("../res-csv", paste( targetName, ".csv", sep=""))
-ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
+cat("Observations CSV file ", normalizePath(ObsDataCsvFn), "\n")
+```
 
+```
+## Observations CSV file  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-csv\TAB1X02.csv
+```
+
+```r
+ObsData <- read.csv(ObsDataCsvFn,stringsAsFactors=FALSE)
 MetaDataCsvFn<- file.path("../res-csv", paste( targetName, "-Components.csv", sep=""))
+cat("MetaData CSV file ", normalizePath(MetaDataCsvFn), "\n")
+```
+
+```
+## MetaData CSV file  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-csv\TAB1X02-Components.csv
+```
+
+```r
 MetaData <- read.csv(MetaDataCsvFn,stringsAsFactors=FALSE)
 ```
 
@@ -156,7 +198,7 @@ cat(targetName, " ", "cube stored as ", normalizePath(cube.fn), "\n")
 ```
 
 ```
-## TAB1X02   cube stored as  C:\Users\ma\AppData\Local\Temp\Rtmp4YqDjI\DC-TAB1X02-R-V-0-0-0.ttl
+## TAB1X02   cube stored as  C:\Users\ma\AppData\Local\Temp\Rtmp8OBxBf\DC-TAB1X02-R-V-0-0-0.ttl
 ```
 # Copy cube to destination directory
 
@@ -168,8 +210,9 @@ if (file.copy( cube.fn, targetFile, overwrite=TRUE)) {
 ```
 
 ```
-## RDF data cube copied to  H:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X02.ttl
+## RDF data cube copied to  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X02.ttl
 ```
+
 # Get SPARQL query for observations
 
 This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
@@ -178,6 +221,14 @@ This is lifted from the example rrdfqbcrndex/vignettes/cube-from-workbook.Rmd.
 ```r
 checkCube <- new.rdf()  # Initialize
 temp<- load.rdf(targetFile, format="TURTLE", appendTo= checkCube)
+cat("Reading RDF Data Cube from file ", normalizePath(targetFile), "\n")
+```
+
+```
+## Reading RDF Data Cube from file  h:\projects-s114h\GitHub\poc-analysis-results-metadata\res-ttl\CDISC-pilot-TAB1X02.ttl
+```
+
+```r
 summarize.rdf(checkCube)
 ```
 
@@ -185,20 +236,12 @@ summarize.rdf(checkCube)
 ## [1] "Number of triples: 1812"
 ```
 
-## Get the values in the cube
-First set values for accessing the cube.
-
 ```r
+## Get the values in the cube
 dsdName<- GetDsdNameFromCube( checkCube )
 domainName<- GetDomainNameFromCube( checkCube )
 forsparqlprefix<- GetForSparqlPrefix( domainName )
-```
-
 ## Get cube components
-
-The cube components are shown in the next output.
-
-```r
 componentsRq<- GetComponentSparqlQuery( forsparqlprefix, dsdName )
 components<- as.data.frame(sparql.rdf(checkCube, componentsRq), stringsAsFactors=FALSE)
 components$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",components$p)
@@ -215,9 +258,8 @@ knitr::kable(components[,c("vn", "label")])
 |procedure |Statistical Procedure                            |
 |trt01p    |Planned Treatment for Period 01                  |
 
-The codelists are shown in the next output.
-
 ```r
+## Get code lists
 codelistsRq<- GetCodeListSparqlQuery( forsparqlprefix, dsdName )
 codelists<- as.data.frame(sparql.rdf(checkCube, codelistsRq), stringsAsFactors=FALSE)
 codelists$vn<- gsub("crnd-dimension:|crnd-attribute:|crnd-measure:","",codelists$dimension)
@@ -259,10 +301,8 @@ knitr::kable(codelists[,c("vn", "clc", "clprefLabel")])
 |trt01p    |trt01p-_ALL_                |_ALL_                |
 |trt01p    |trt01p-_NONMISS_            |_NONMISS_            |
 
-
-The dimensions are shown in the next output.
-
 ```r
+## Get dimensions
 dimensionsRq <- GetDimensionsSparqlQuery( forsparqlprefix )
 dimensions<- sparql.rdf(checkCube, dimensionsRq)
 knitr::kable(dimensions)
@@ -278,9 +318,8 @@ knitr::kable(dimensions)
 |crnd-dimension:procedure |
 |crnd-dimension:trt01p    |
 
-Then the attributes as shown in the next output.
-
 ```r
+## Get attributes
 attributesRq<- GetAttributesSparqlQuery( forsparqlprefix )
 attributes<- sparql.rdf(checkCube, attributesRq)
 knitr::kable(attributes)
@@ -489,7 +528,7 @@ sessionInfo()
 ```
 ## R version 3.2.5 (2016-04-14)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 10586)
+## Running under: Windows 10 x64 (build 14393)
 ## 
 ## locale:
 ## [1] LC_COLLATE=Danish_Denmark.1252  LC_CTYPE=Danish_Denmark.1252   

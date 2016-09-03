@@ -1,4 +1,4 @@
-SITEID,SITEGR1,ITTFL,EFFFL,COMP24FL,TRT01P,procedure,factor,denominator,measure,unit
+siteid,sitegr1,ittfl,efffl,comp24fl,trt01p,procedure,factor,denominator,measure,unit
 701,701,Y,_ALL_,_ALL_,Placebo,count,quantify,_ALL_,14,
 701,701,Y,_ALL_,_ALL_,Xanomeline Low Dose,count,quantify,_ALL_,13,
 701,701,Y,_ALL_,_ALL_,Xanomeline High Dose,count,quantify,_ALL_,14,

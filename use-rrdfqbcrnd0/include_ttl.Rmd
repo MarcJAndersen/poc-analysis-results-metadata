@@ -8,6 +8,14 @@ library(rrdfqbcrnd0)
 library(knitr)
 ```
 
+# Show parameters
+
+
+```{r, eval=TRUE}
+param.df<- data.frame(filepathname=apply(array(c(targetName, targetDir, targetFile, targetObsrqFile, target2DrqFile)),1,normalizePath,mustWork = FALSE) )
+rownames(param.df)<-c("Target file name", "Target diretory", "Target File", "Observation query file", "Row-column query file")
+knitr::kable(param.df)
+```
 
 # Load CSV files
 

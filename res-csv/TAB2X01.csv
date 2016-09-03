@@ -1,4 +1,4 @@
-ITTFL,SEX,AGEGR1,ETHNIC,DURDSGR1,BMIBLGR1,TRT01P,procedure,factor,denominator,measure,unit
+ittfl,sex,agegr1,ethnic,durdsgr1,bmiblgr1,trt01p,procedure,factor,denominator,measure,unit
 Y,_ALL_,_ALL_,_ALL_,_ALL_,_ALL_,Placebo,n,age,_ALL_,86,
 Y,_ALL_,_ALL_,_ALL_,_ALL_,_ALL_,Xanomeline Low Dose,n,age,_ALL_,84,
 Y,_ALL_,_ALL_,_ALL_,_ALL_,_ALL_,Xanomeline High Dose,n,age,_ALL_,84,

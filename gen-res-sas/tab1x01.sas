@@ -16,6 +16,7 @@ run;
 
 
 options linesize=200 nocenter;
+options pagesize=100;
 options formchar="|----|+|---+=|-/\<>*";
 options msglevel=i;
 

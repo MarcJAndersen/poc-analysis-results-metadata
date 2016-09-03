@@ -1,5 +1,5 @@
 ---
-title: "Create TAB3X01 as RDF data cube"
+title: "Create TAB5X01 as RDF data cube"
 author: "mja@statgroup.dk"
 date: "`r Sys.Date()`"
 output:
@@ -20,58 +20,69 @@ This script creates RDF data cubes from .csv files.
 
 All files are stored in the directory
 ```{r}
-targetName<- "TAB3X01"
-print(targetName)
+targetName<- "TAB5X01"
 targetDir<- "../res-ttl"
 rqtargetDir<- "../sparql-rq"
-print(targetDir)
 targetFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, ".ttl", sep=""))
-print(targetFile)
 targetObsrqFile<- file.path(targetDir, paste("CDISC-pilot-", targetName, "-observations", ".rq", sep=""))
-print(targetObsrqFile)
 target2DrqFile<- file.path(rqtargetDir, paste( tolower(targetName), ".rq", sep=""))
-print(target2DrqFile)
 ```
+
+The rest of the generation is made by the script `include_ttl.Rmd`.
 
 ```{r, child='include_ttl.Rmd'}
 ```
 
+The next piece can be made more generic and expressed shorter.
+
+The structure of the rectangular dataset is given from the column dimensions.
+The row dimension is the the remaining dimensions excluding the two dimensions representings statistics.
+So the row dimensions can be derived from the cube structure. This also makes sense as the
+column dimension is the same for more tables than the row dimensions.
+
+The levels for the columns can also be determined from the datacube, including the renaming of columns.
+
 ```{r}
 
+rowdimensions<- NULL
 rowdimensions<-c(
-"crnd-dimension:efffl",
-"crnd-dimension:anl01fl",
-"crnd-dimension:avisit",
-"crnd-dimension:paramcd"
+"crnd-dimension:saffl",
+"crnd-dimension:trtemfl",
+"crnd-dimension:aesoc",
+"crnd-dimension:aedecod"
     )
 
+statdimensions<- NULL
 statdimensions<- c(
     "crnd-dimension:procedure",
     "crnd-dimension:factor"
     )
 
-coldimension<- c("crnd-dimension:trtpn" )
-colvalues<- c( "code:trtpn-0",
-"code:trtpn-54",
-"code:trtpn-81"
+coldimension<- NULL
+coldimension<- c("crnd-dimension:trta" )
+
+colvalues<- NULL
+colvalues<- c( "code:trta-Placebo",
+"code:trta-Xanomeline_Low_Dose",
+"code:trta-Xanomeline_High_Dose"
 )               
 
+statdimensionsz1z2<- NULL
 statdimensionsz1z2<- c(paste0(statdimensions,"z1"), paste0( statdimensions, "z2"))
 statdimensionsz1z2<- c(paste0(statdimensions,"z1"))
 colz1.rq<- NULL
 colz1.rq<-     paste( forsparqlprefix,
 "select * where {",
                      paste0( ## for each of column values
-"?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;",
-paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
+"?col", seq(length(colvalues)), "z1URI", " a qb:Observation  ;", "\n",
+paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", "\n", collapse="\n"),
 paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
 paste0( "    ", statdimensions, " ", sub("crnd-dimension:", "?", statdimensions), "z1", ";", collapse="\n"),
 " ",
 "    ", coldimension, " ", colvalues, " ;",    
-" ",                     
-"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1",
-                     ".", " ",
-"optional{",
+" ", "\n",                     
+"    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z1", " .", "\n",
+"optional{", "\n",
 "?col", seq(length(colvalues)), "z2URI", " a qb:Observation  ;",
 paste0( "    ", "qb:dataSet",  " ", "ds:", "dataset", "-", domainName, " ;", collapse="\n"),
 paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ), ";", collapse="\n"),
@@ -83,10 +94,10 @@ paste0( "    ", rowdimensions, " ", sub("crnd-dimension:", "?", rowdimensions ),
 # "    crnd-dimension:factor ?factorz2 ;  \n",
 " ",                     
 "    crnd-measure:measure ",  "?col", seq(length(colvalues)), "z2", " . \n",
-    "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",   
+    "?col", seq(length(colvalues)), "z1URI", " ", "crnd-dimension:procedure", " ", "code:procedure-count", " .",    "\n",
 "}", " .",
                          collapse="\n"),
-"optional {",                     
+"optional {", "\n",                     
 paste0("",
 sub("crnd-dimension:", "?", rowdimensions), " ", "skos:prefLabel", " ", sub("crnd-dimension:", "?", rowdimensions), "value", ".", collapse="\n"),                     
 paste0(  rowdimensions , " ",
@@ -99,7 +110,7 @@ paste0(  rowdimensions , " ",
 ##            "rdfs:label", " ", sub("crnd-dimension:", "?", statdimensionsz1z2), "label" ,
 ##            " . ", 
 ##        collapse="\n"),
-                     "}",
+ "\n",   "}",
 "
 { select  ?procedurez1 where {
    code:procedure skos:hasTopConcept ?procedurez1 .

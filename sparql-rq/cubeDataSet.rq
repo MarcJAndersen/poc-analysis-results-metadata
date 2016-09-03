@@ -1,0 +1,4 @@
+# Which RDF data cubes exists
+prefix qb: <http://purl.org/linked-data/cube#>
+select distinct ?cubeDataSet where { ?s qb:dataSet ?cubeDataSet  }
+order by ?cubeDataSet

@@ -1,10 +1,12 @@
-SETLOCAL ENABLEDELAYEDEXPANSION
+@SETLOCAL ENABLEDELAYEDEXPANSION
+@ECHO OFF
 REM Get path for the script
 Set ScriptInvocation=%0
 Set ScriptName=%~n0
 Set ScriptFullPath=%~f0
 Set ScriptPath=%~p0
 cd/d %ScriptPath%
+
 
 REM Locate SAS using
 REM ftype SAS.Application
@@ -22,32 +24,50 @@ REM dir /s/b %ProgramFiles%\Rscript.exe
 set Rcmdstem="C:\Program Files\R\R-3.2.5\bin\Rscript.exe"
 set Rcmd=%Rcmdstem% --verbose
 
+: goto :alldone
+
+REM Program
+set prgsasbuild=tab5x01.sas
+REM Outputs
+set targetfilecsv1=..\res-csv\TAB5X01.csv
+set targetfilecsv2=..\res-csv\TAB5X01-Components.csv
+
+REM Program
+set Rmdbuildttl=tab5x01-ttl.Rmd
+REM outputs
+set targetfilettl=..\res-ttl\CDISC-pilot-TAB5X01.ttl
+
+REM Program
+set prgsasgenhtml=get-tab5x01-with-proc-groovy.sas
+REM Outputs
+set targetfilehtml=..\show-res-sas\tab5x01.html
+set DirApplicationHTML=..\application-html
+
 :build-gen-res
 pushd ..\gen-res-sas
-set targetfilecsv1=..\res-csv\TAB1X01-Components.csv
 if exist %targetfilecsv1% del %targetfilecsv1%
-set targetfilecsv2=..\res-csv\TAB1X01.csv
 if exist %targetfilecsv2% del %targetfilecsv2%
-echo %sascmd% tab1x01.sas
-%sascmd% tab1x01.sas
+echo %sascmd% %prgsasbuild%
+%sascmd% %prgsasbuild%
 if %ERRORLEVEL% gtr 1 goto :stop
 popd
 
 :build-res-ttl
 pushd ..\use-rrdfqbcrnd0
-set targetfilettl=..\res-ttl\CDISC-pilot-TAB1X01.ttl
 if exist %targetfilettl% del %targetfilettl%
-%Rcmd% -e "library(knitr); knit('tab1x01-ttl.Rmd')" 
+%Rcmd% -e "library(knitr); knit('%Rmdbuildttl%')" 
 popd
 
 :build-show-res
 pushd ..\show-res-sas
-set targetfilehtml=..\show-res-sas\tab1x01.html
 if exist %targetfilehtml% del %targetfilehtml%
-%sascmd% get-tab1x01-with-proc-groovy.sas
+if not exist %prgsasgenhtml% goto :prgsasgenhtmlfilenotfound
+echo %sascmd% %prgsasgenhtml%
+%sascmd% %prgsasgenhtml%
 if %ERRORLEVEL% gtr 1 goto :stop
 if not exist %targetfilehtml% goto :no-show-res
-copy %targetfilehtml% ..\application-html
+REM only copy if the directory is set
+if [%DirApplicationHTML%] NEQ [] copy %targetfilehtml% %DirApplicationHTML%
 popd
 
 goto :alldone
@@ -56,10 +76,15 @@ goto :alldone
 echo Expected file not found - %targetfilehtml%
 goto :eof
 
+:prgsasgenhtmlfilenotfound
+echo File %prgsasgenhtml% not found
+echo Script can not continue
+goto :eof
+
 :stop
 echo Got errorlevel %errorlevel%
 popd
 goto :eof
 
 :alldone
-dir %targetfilecsv1% %targetfilecsv2% %targetfilettl% %targetfilehtml%
+dir /s/b %targetfilecsv1% %targetfilecsv2% %targetfilettl% %targetfilehtml%

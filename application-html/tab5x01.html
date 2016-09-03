@@ -1,0 +1,1387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="Generator" content="SAS Software Version 9.4, see www.sas.com">
+<meta http-equiv="Content-type" content="text/html; charset=windows-1252">
+<title>Table 14.5.1 from ARM RDF data cube</title>
+<style type="text/css">
+<!--
+.batch
+{
+  border: 1px solid #000000;
+  border-collapse: separate;
+  border-spacing: 1px;
+  font-family: 'courier new';
+}
+.bycontentfolder
+{
+  margin-left: 6pt;
+}
+.bylinecontainer
+{
+  width: 100%;
+}
+.contentfolder
+{
+  margin-left: 6pt;
+}
+.contentitem
+{
+  margin-left: 6pt;
+}
+.contents
+{
+}
+.folderaction
+{
+  margin-left: 6pt;
+}
+.graph
+{
+  border: 1px solid #000000;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+.indexaction
+{
+  margin-left: 6pt;
+}
+.indexitem
+{
+  margin-left: 6pt;
+}
+.list
+{
+  list-style-type: disc;
+}
+.list10
+{
+  list-style-type: square;
+}
+.list2
+{
+  list-style-type: circle;
+}
+.list3
+{
+  list-style-type: square;
+}
+.list4
+{
+  list-style-type: square;
+}
+.list5
+{
+  list-style-type: square;
+}
+.list6
+{
+  list-style-type: square;
+}
+.list7
+{
+  list-style-type: square;
+}
+.list8
+{
+  list-style-type: square;
+}
+.list9
+{
+  list-style-type: square;
+}
+.listitem
+{
+  list-style-type: disc;
+}
+.listitem10
+{
+  list-style-type: square;
+}
+.listitem2
+{
+  list-style-type: circle;
+}
+.listitem3
+{
+  list-style-type: square;
+}
+.listitem4
+{
+  list-style-type: square;
+}
+.listitem5
+{
+  list-style-type: square;
+}
+.listitem6
+{
+  list-style-type: square;
+}
+.listitem7
+{
+  list-style-type: square;
+}
+.listitem8
+{
+  list-style-type: square;
+}
+.listitem9
+{
+  list-style-type: square;
+}
+.output
+{
+  border: 1px solid #000000;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+.pages
+{
+}
+.pagesitem
+{
+  margin-left: 6pt;
+}
+.systitleandfootercontainer
+{
+  width: 100%;
+}
+.table
+{
+  border: 1px solid #000000;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+.top_stacked_value
+{
+  padding-bottom: 1px;
+  border: 0;
+}
+.middle_stacked_value
+{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 0;
+}
+.bottom_stacked_value
+{
+  padding-top: 1px;
+  border: 0;
+}
+.titleandnotecontainer
+{
+  width: 100%;
+}
+.l {text-align: left }
+.c {text-align: center }
+.r {text-align: right }
+.d {text-align: right }
+.j {text-align: justify }
+.t {vertical-align: top }
+.m {vertical-align: middle }
+.b {vertical-align: bottom }
+TD, TH {vertical-align: top }
+.stacked_cell{padding: 0 }
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- 
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</script>
+
+</head>
+<body onload="startup()" onunload="shutdown()" class="body">
+
+<script language="javascript" type="text/javascript">
+<!-- 
+var _info = navigator.userAgent
+var _ie = (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+var _ie64 = _info.indexOf("x64") > 0
+
+//-->
+</script>
+
+<div class="branch">
+<a name="IDX"></a>
+<div>
+<div align="left">
+<table class="table" cellspacing="1" cellpadding="7" rules="all" frame="box" border="1" summary="Procedure Report: Detailed and/or summarized report">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c header" colspan="2" scope="colgroup">&nbsp;</th>
+<th class="c header" scope="col">Placebo</th>
+<th class="c header" scope="col">Xanomeline<br/>Low Dose</th>
+<th class="c header" scope="col">Xanomeline<br/>High Dose</th>
+</tr>
+<tr>
+<th class="c header" scope="col">colRES1label</th>
+<th class="c header" scope="col">colRES2label</th>
+<th class="c header" colspan="3" scope="colgroup">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="l data">_ALL_</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs710">   281</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs714">   412</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs712">   433</a>
+</td>
+</tr>
+<tr>
+<td class="l data">_ALL_</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs709">    65</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs713">    77</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs711">    76</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs715">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs719">    13</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs717">    15</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs716">    26</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs720">    30</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs718">    30</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">ATRIAL FIBRILLATION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs001">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs005">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs003">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">ATRIAL FIBRILLATION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs002">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs006">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs004">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">MYOCARDIAL INFARCTION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs031">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs035">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs033">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">MYOCARDIAL INFARCTION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs032">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs036">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs034">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">SINUS BRADYCARDIA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs041">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs045">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs043">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">SINUS BRADYCARDIA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs042">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs046">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs044">    12</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">SUPRAVENTRICULAR EXTRASYSTOLES / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs047">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs051">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs049">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">CARDIAC DISORDERS</td>
+<td class="l data">SUPRAVENTRICULAR EXTRASYSTOLES / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs048">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs052">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs050">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">EAR AND LABYRINTH DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs725">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs729">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs727">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">EAR AND LABYRINTH DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs726">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs730">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs728">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">EYE DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs731">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs735">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs733">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">EYE DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs732">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs736">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs734">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs737">    17</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs741">    14</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs739">    20</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs738">    26</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs742">    22</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs740">    36</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">ABDOMINAL PAIN / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs093">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs097">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs095">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">ABDOMINAL PAIN / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs094">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs098">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs096">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">DIARRHOEA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs101">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs105">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs103">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">DIARRHOEA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs102">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs106">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs104">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">NAUSEA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs123">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs127">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs125">     6</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">NAUSEA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs124">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs128">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs126">    13</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">VOMITING / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs135">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs139">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs137">     7</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GASTROINTESTINAL DISORDERS</td>
+<td class="l data">VOMITING / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs136">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs140">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs138">     9</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs743">    21</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs747">    47</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs745">    40</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs744">    46</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs748">   118</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs746">   124</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE DERMATITIS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs143">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs147">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs145">     7</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE DERMATITIS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs144">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs148">    15</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs146">    12</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE ERYTHEMA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs155">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs159">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs157">    15</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE ERYTHEMA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs156">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs160">    20</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs158">    23</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE IRRITATION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs164">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs168">    18</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs166">    16</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE IRRITATION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs163">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs167">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs165">     9</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE PRURITUS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs173">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs177">    22</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs175">    22</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE PRURITUS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs174">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs178">    32</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs176">    35</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE VESICLES / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs191">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs195">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs193">     6</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">APPLICATION SITE VESICLES / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs192">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs196">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs194">     6</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">CHILLS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs207">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs211">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs209">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">CHILLS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs208">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs212">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs210">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">FATIGUE / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs213">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs217">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs215">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">FATIGUE / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs214">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs218">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs216">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">OEDEMA PERIPHERAL / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs231">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs235">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs233">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">GENERAL DISORDERS AND ADMINISTRA</td>
+<td class="l data">OEDEMA PERIPHERAL / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs232">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs236">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs234">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs753">    16</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs757">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs755">    13</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs754">    35</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs758">    16</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs756">    20</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">INFLUENZA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs273">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs277">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs275">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">INFLUENZA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs274">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs278">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs276">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">NASOPHARYNGITIS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs283">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs287">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs285">     6</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">NASOPHARYNGITIS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs284">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs288">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs286">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">UPPER RESPIRATORY TRACT INFECTIO / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs293">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs297">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs295">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INFECTIONS AND INFESTATIONS</td>
+<td class="l data">UPPER RESPIRATORY TRACT INFECTIO / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs294">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs298">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs296">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs759">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs763">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs761">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs760">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs764">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs762">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">CONTUSION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs307">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs311">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs309">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">CONTUSION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs308">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs312">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs310">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">EXCORIATION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs313">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs317">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs315">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">EXCORIATION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs314">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs318">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs316">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">FALL / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs322">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs326">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs324">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INJURY, POISONING AND PROCEDURAL</td>
+<td class="l data">FALL / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs321">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs325">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs323">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INVESTIGATIONS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs765">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs769">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs767">     6</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INVESTIGATIONS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs766">    19</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs770">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs768">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INVESTIGATIONS</td>
+<td class="l data">ELECTROCARDIOGRAM T WAVE INVERSI / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs367">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs371">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs369">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">INVESTIGATIONS</td>
+<td class="l data">ELECTROCARDIOGRAM T WAVE INVERSI / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs368">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs372">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs370">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">METABOLISM AND NUTRITION DISORDE</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs771">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs775">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs773">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">METABOLISM AND NUTRITION DISORDE</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs772">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs776">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs774">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs777">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs781">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs779">     7</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs778">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs782">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs780">    10</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">ARTHRALGIA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs399">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs403">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs401">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">ARTHRALGIA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs400">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs404">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs402">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">BACK PAIN / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs407">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs411">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs409">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">MUSCULOSKELETAL AND CONNECTIVE T</td>
+<td class="l data">BACK PAIN / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs408">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs412">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs410">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs788">    11</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs792">    40</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs790">    41</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs787">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs791">    20</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs789">    25</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">DIZZINESS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs448">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs452">    13</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs450">    15</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">DIZZINESS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs447">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs451">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs449">    11</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">HEADACHE / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs454">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs458">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs456">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">HEADACHE / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs453">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs457">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs455">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">SOMNOLENCE / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs480">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs484">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs482">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">NERVOUS SYSTEM DISORDERS</td>
+<td class="l data">SOMNOLENCE / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs479">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs483">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs481">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs794">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs798">    14</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs796">    11</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs793">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs797">    10</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs795">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">AGITATION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs497">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs501">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs499">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">AGITATION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs498">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs502">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs500">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">CONFUSIONAL STATE / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs507">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs511">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs509">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">PSYCHIATRIC DISORDERS</td>
+<td class="l data">CONFUSIONAL STATE / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs508">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs512">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs510">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RENAL AND URINARY DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs799">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs803">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs801">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RENAL AND URINARY DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs800">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs804">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs802">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RENAL AND URINARY DISORDERS</td>
+<td class="l data">MICTURITION URGENCY / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs551">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs555">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs553">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RENAL AND URINARY DISORDERS</td>
+<td class="l data">MICTURITION URGENCY / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs552">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs556">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs554">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs810">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs814">    14</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs812">    22</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs809">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs813">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs811">    10</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">COUGH / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs571">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs575">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs573">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">COUGH / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs572">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs576">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs574">     7</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">DYSPNOEA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs580">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs584">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs582">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">DYSPNOEA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs579">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs583">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs581">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">NASAL CONGESTION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs593">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs597">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs595">     3</a>
+</td>
+</tr>
+<tr>
+<td class="l data">RESPIRATORY, THORACIC AND MEDIAS</td>
+<td class="l data">NASAL CONGESTION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs594">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs598">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs596">     4</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs815">    20</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs819">    39</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs817">    40</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs816">    45</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs820">   111</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs818">   104</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">ERYTHEMA / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs631">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs635">    14</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs633">    14</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">ERYTHEMA / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs632">    12</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs636">    22</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs634">    22</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">HYPERHIDROSIS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs637">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs641">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs639">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">HYPERHIDROSIS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs638">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs642">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs640">    10</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">PRURITUS / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs643">     8</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs647">    21</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs645">    26</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">PRURITUS / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs644">    11</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs648">    31</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs646">    38</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">RASH / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs653">     5</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs657">    13</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs655">     9</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">RASH / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs654">     9</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs658">    18</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs656">    15</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">SKIN IRRITATION / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs669">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs673">     6</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs671">     5</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SKIN AND SUBCUTANEOUS TISSUE DIS</td>
+<td class="l data">SKIN IRRITATION / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs670">     4</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs674">    13</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs672">     8</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SURGICAL AND MEDICAL PROCEDURES</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs823">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs827">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs825">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">SURGICAL AND MEDICAL PROCEDURES</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs824">     2</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs828">     1</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs826">     2</a>
+</td>
+</tr>
+<tr>
+<td class="l data">VASCULAR DISORDERS</td>
+<td class="l data">_ALL_ / countdistinct</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs829">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs833">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs831">     1</a>
+</td>
+</tr>
+<tr>
+<td class="l data">VASCULAR DISORDERS</td>
+<td class="l data">_ALL_ / count</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs830">     7</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs834">     3</a>
+</td>
+<td class="r data"><a href="http://www.example.org/dc/tab5x01/ds/obs832">     1</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</div>
+</body>
+</html>

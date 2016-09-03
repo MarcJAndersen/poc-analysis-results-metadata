@@ -1,4 +1,4 @@
-TRTPN,EFFFL,ANL01FL,AVISIT,PARAMCD,procedure,factor,denominator,measure,unit
+trtpn,efffl,anl01fl,avisit,paramcd,procedure,factor,denominator,measure,unit
 0,Y,Y,Week 24,ACTOT,n,base,_ALL_,79,
 0,Y,Y,Week 24,ACTOT,mean,base,_ALL_,24.121780882,
 0,Y,Y,Week 24,ACTOT,stddev,base,_ALL_,12.186369514,

@@ -28,34 +28,23 @@ prefix adamvr-1-2: <http://rdf.cdisc.org/std/adamvr-1-2#>
 prefix qb: <http://purl.org/linked-data/cube#>
 prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
 prefix code: <http://www.example.org/dc/code/>
-prefix dccs: <http://www.example.org/dc/tab1x03/dccs/>
-prefix ds: <http://www.example.org/dc/tab1x03/ds/>
+prefix dccs: <http://www.example.org/dc/tab5x01/dccs/>
+prefix ds: <http://www.example.org/dc/tab5x01/ds/>
 prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>
 prefix crnd-measure: <http://www.example.org/dc/measure#>
+select * where { ?col1z1URI a qb:Observation  ;
+  qb:dataSet ds:dataset-TAB5X01 ;    crnd-dimension:saffl ?saffl;
+    crnd-dimension:trtemfl ?trtemfl;
+    crnd-dimension:aoccfln ?aoccfln;
+    crnd-dimension:aesoc ?aesoc;
+    crnd-dimension:aoccsfln ?aoccsfln;
+    crnd-dimension:aedecod ?aedecod;
+    crnd-dimension:aoccpfln ?aoccpfln;    crnd-dimension:procedure ?procedurez1;
+					  crnd-dimension:factor ?factorz1;     crnd-dimension:trta code:trtpn-0 ;     crnd-measure:measure ?col1z1.
 
-select * where {
-?s a qb:Observation  ;
-    qb:dataSet ds:dataset-TAB1X03 ;
-    crnd-dimension:procedure ?procedure;
-    crnd-dimension:trt01p ?trt01p;
-    crnd-dimension:factor ?factor;
-    crnd-dimension:ittfl ?ittfl;
-    crnd-dimension:efffl ?efffl;
-    crnd-dimension:comp24fl ?comp24fl;
-    crnd-dimension:sitegr1 ?sitegr1;
-    crnd-dimension:siteid ?siteid;
-    crnd-attribute:denominator ?denominator;
-    crnd-attribute:unit ?unit;
-    crnd-measure:measure ?measure .      
-optional{ ?procedure skos:prefLabel ?procedurevalue . }
-optional{ ?trt01p skos:prefLabel ?trt01pvalue . }
-optional{ ?factor skos:prefLabel ?factorvalue . }
-optional{ ?ittfl skos:prefLabel ?ittflvalue . }
-optional{ ?efffl skos:prefLabel ?effflvalue . }
-optional{ ?comp24fl skos:prefLabel ?comp24flvalue . }
-optional{ ?sitegr1 skos:prefLabel ?sitegr1value . }
-optional{ ?siteid skos:prefLabel ?siteidvalue . }
-} 
-order by ?s
-
+{ select  ?procedurez1 where {
+   code:procedure skos:hasTopConcept ?procedurez1 .
+   filter ( ?procedurez1 != code:procedure-percent )
+   } }
+ }

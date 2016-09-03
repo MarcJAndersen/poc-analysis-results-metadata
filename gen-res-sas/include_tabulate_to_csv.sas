@@ -68,15 +68,17 @@ data _null_;
     classvarfromposm1= varnum(tableid, "_Run_");
     classvartoposp1= varnum(tableid, "_type_");
     do i=classvarfromposm1+1 to classvartoposp1-1;
-        classvarlist=catx(" ", classvarlist, varname(tableid,i));
-        cltype(vartype(tableid,i)="C")=catx(" ", cltype(vartype(tableid,i)="C"), varname(tableid,i));
-        cltypeCONV(vartype(tableid,i)="C")=catx(" ", cltypeCONV(vartype(tableid,i)="C"), cats(varname(tableid,i),"CONV"));
-        renamevarlist= catx(" ", renamevarlist,cats(varname(tableid,i),"CONV","=",lowcase(varname(tableid,i))));
+        vnlowcase=lowcase(varname(tableid,i));
+        classvarlist=catx(" ", classvarlist, vnlowcase );
+        isC01= vartype(tableid,i)="C";
+        cltype(isC01)=catx(" ", cltype(isC01), vnlowcase );
+        cltypeCONV(isC01)=catx(" ", cltypeCONV(isC01), cats(vnlowcase,"CONV"));
+        renamevarlist= catx(" ", renamevarlist,cats(vnlowcase,"CONV","=",vnlowcase));
         end;
     resultfromposm1= varnum(tableid, "_TABLE_");
     resulttopos= attrn(tableid,'nvars');
     do i=resultfromposm1+1 to resulttopos /* -1 */;
-        resultvarlist=catx(" ", resultvarlist, varname(tableid,i));
+        resultvarlist=catx(" ", resultvarlist, lowcase(varname(tableid,i)));
         end;
     rc=close(tableid);
     array vput(*) classvarlist classvarlistc classvarlistn classvarlistcCONV classvarlistnCONV resultvarlist renamevarlist;
@@ -176,13 +178,20 @@ data observations;
         factor=" ";
         denominator=" ";
         select;
-        when (mn="N") do;
-            procedure="count"; /* COUNT to be compliant with R package ? */
+        when (upcase(mn) in ("N", "COUNT")) do;
+            procedure="count"; 
             factor="quantify"; /* could take the same as for PCTN */
             denominator=" ";
             measure=results(i);
             end;
-        when (upcase(scan(mn,1,"_")) in ("PCTN")) do; /* TODO: will not work for variable with _ */
+        when (upcase(mn) in ("COUNTDISTINCT")) do;
+              /* Use of countdistinct and usubjid is not defined in tech spec - but an extension */
+            procedure="countdistinct"; 
+            factor="usubjid"; 
+            denominator=" ";
+            measure=results(i);
+            end;
+        when (upcase(scan(mn,1,"_")) in ("PCTN")) do; /* TODO: check if it works with variable names containing  _ */
         putlog "!! " mn= ;
             procedure=lowcase(scan(mn,1,"_"));
             if procedure="pctn" then do;
@@ -205,14 +214,26 @@ data observations;
             measure=results(i);
             end;
         when (upcase(scan(mn,-1,"_")) in ("N")) do;
-            factor= lowcase(substr(mn, 1, length(mn)-length(procedure)-1));
-            procedure="n";
+            procedure=lowcase(scan(mn,-1,"_"));
+            if length(mn)=0 then do;
+              putlog mn= " is empty" / "================================" /;
+            end;
+            if length(mn)-length(procedure)-1<=0 then do;
+              putlog mn= procedure= / "================================" /;
+              end;
+              factor= lowcase(substr(mn, 1, length(mn)-length(procedure)-1));
             denominator=" ";
             denominatorpattern=" ";
             measure=results(i);
             end;
         otherwise do;
             procedure=lowcase(scan(mn,-1,"_"));
+            if length(mn)=0 then do;
+              putlog mn= " is empty" / "================================" /;
+            end;
+            if length(mn)-length(procedure)-1<=0 then do;
+              putlog mn= procedure= / "================================" /;
+            end;
             factor= lowcase(substr(mn, 1, length(mn)-length(procedure)-1));
             denominatorpattern=" ";
             denominator=" ";
@@ -317,22 +338,12 @@ run;
 */
 
 data forexport1;
-    set observations;    
-/*
-    keep colno rowno cellpartno;
-    format colno rowno cellpartno z5.0;
-    * assign values based on layout;
-    colno=0; rowno=0; cellpartno=0;
-    */
+    set observations(
+        drop= _TYPE_ denominatorpattern &classvarlistc. procedure factor denominator &classvarlistn.
+        );
+        
     length unit $1;
     unit=" ";
-/*    factor=lowcase(factor);
-    procedure=lowcase(procedure);
-    denominator=lowcase(denominator); */
-
-    drop _TYPE_ denominatorpattern;
-    drop &classvarlistc. procedure factor denominator &classvarlistn.;
-
     rename &renamevarlist. procedureCONV=procedure factorCONV=factor denominatorCONV=denominator;
 
     /* Instead of renaming - have a seperate step doing the recoding from the original values */

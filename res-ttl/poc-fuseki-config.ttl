@@ -77,15 +77,24 @@
 <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl-map.ttl> ];
     ja:content [ ja:externalContent
 <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl.ttl> ];
+    ja:content [ ja:externalContent
+<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae-map.ttl> ];
+    ja:content [ ja:externalContent
+<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae.ttl> ];
 
 ## CDISC Pilot01 ARM RDF data cube
     ja:content [ ja:externalContent
 <file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X01.ttl> ];
     ja:content [ ja:externalContent
 <file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X02.ttl> ];
-
+    ja:content [ ja:externalContent
+<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X03.ttl> ];
     ja:content [ ja:externalContent
 <file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB2X01.ttl> ];
+    ja:content [ ja:externalContent
+<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB3X01.ttl> ];
+    ja:content [ ja:externalContent
+<file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB5X01.ttl> ];
 
 
 ## CDISC Pilot01 poc overview of programs (not made yet)
