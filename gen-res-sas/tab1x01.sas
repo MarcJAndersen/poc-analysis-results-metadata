@@ -20,9 +20,9 @@ options pagesize=100;
 options formchar="|----|+|---+=|-/\<>*";
 options msglevel=i;
 
-filename source url "https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adsl.xpt";
+/* filename source url "https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adsl.xpt"; */
 
-/* filename source "../sample-xpt/adsl.xpt"; */
+filename source "../sample-xpt/adsl.xpt"; 
 libname source xport ;
 
 proc format;

@@ -1,0 +1,16 @@
+TAB1X01
+
+Querying for Complete Study does not work.
+
+TAB5X01
+
+Sparql query uses   ?record <http://www.example.org/datasets/vocab/ADAE_QUANTIFY> ?quantify .
+but quantify is a factor.
+
+
+AESOC truncated
+"SKIN AND SUBCUTANEOUS TISSUE DIS"
+      	  
+Check..
+
+

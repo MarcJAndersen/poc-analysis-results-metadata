@@ -73,14 +73,18 @@
 <file:../../rrdfqbcrnd0/rrdfqb/inst/extdata/cube-vocabulary-rdf/cube.ttl> ];
 
 ## CDISC Pilot01 datasets as RDF in D2RQ format
+#     ja:content [ ja:externalContent
+# <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl-map.ttl> ];
+#     ja:content [ ja:externalContent
+# <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl.ttl> ];
+#     ja:content [ ja:externalContent
+# <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae-map.ttl> ];
+#     ja:content [ ja:externalContent
+# <file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae.ttl> ];
     ja:content [ ja:externalContent
-<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl-map.ttl> ];
+<file:./cdiscpilot01-d2rq-mapping.ttl> ];
     ja:content [ ja:externalContent
-<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adsl.ttl> ];
-    ja:content [ ja:externalContent
-<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae-map.ttl> ];
-    ja:content [ ja:externalContent
-<file:../../rrdfqbcrnd0/rrdfqbcrndex/inst/extdata/sample-rdf/adae.ttl> ];
+<file:./cdiscpilot01.ttl> ];
 
 ## CDISC Pilot01 ARM RDF data cube
     ja:content [ ja:externalContent

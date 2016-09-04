@@ -76,22 +76,18 @@ function ActionData(ev) {
 		var vn="?" +rrdfqbcrnd0Rcolumnname;
 		rqquerylines.push(" ?record "+ "<"+data.results.bindings[i]["D2RQPropertyBridge"].value+">" + " " +
 				  vn + " ." );
-	    }
-	    if (rrdfqbcrnd0Rcolumnname != 'procedure' &&
-		rrdfqbcrnd0Rcolumnname != 'factor' &&
 		data.results.bindings[i]["Rselectionoperator"] &&
 		data.results.bindings[i]["Rselectionoperator"].value == '==' ) {
 		rqqueryvaluesdef.push(vn);
 		rqqueryvaluespart.push( '"'+data.results.bindings[i]["Rselectionvalue"].value+'"');
-	    }
-	    if (data.results.bindings[i]["D2RQPropertyBridgeContVar"]){
-		var vn="?" + data.results.bindings[i]["Rselectionvalue"].value;
-		rqquerylinesatend.push(" ?record "+ "<"+
-				  data.results.bindings[i]["D2RQPropertyBridgeContVar"].value+">" + " " +
-				  vn + " ." );
-		
-	    }
-	    }
+         	    if (data.results.bindings[i]["D2RQPropertyBridgeContVar"]){
+	    		var vn="?" + data.results.bindings[i]["Rselectionvalue"].value;
+			rqquerylinesatend.push(" ?record "+ "<"+
+					       data.results.bindings[i]["D2RQPropertyBridgeContVar"].value+">" + " " +
+					       vn + " ." );
+		    }
+		 }
+	}
 
 // Pattern	
 // select ?record ?TRT01A ?SEX ?AGE 
