@@ -100,6 +100,10 @@
     ja:content [ ja:externalContent
 <file:../../poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB5X01.ttl> ];
 
+## application configuration
+    ja:content [ ja:externalContent
+<file:../../poc-analysis-results-metadata/res-ttl/application.ttl> ];
+
 
 ## CDISC Pilot01 poc overview of programs (not made yet)
 #        ja:content [ ja:externalContent

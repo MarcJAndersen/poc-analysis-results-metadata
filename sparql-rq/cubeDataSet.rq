@@ -1,4 +1,11 @@
 # Which RDF data cubes exists
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 prefix qb: <http://purl.org/linked-data/cube#>
-select distinct ?cubeDataSet where { ?s qb:dataSet ?cubeDataSet  }
+prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/> 
+
+select ?cubeDataSet ?cubeDataSetLabel ?applicationhtmlfile where {
+  ?cubeDataSet a qb:DataSet .
+  optional{ ?cubeDataSet  rdfs:label ?cubeDataSetLabel . }
+  optional{ ?cubeDataSet  rrdfqbcrnd0:applicationhtmlfile ?applicationhtmlfile . }
+   }
 order by ?cubeDataSet

@@ -1,0 +1,11 @@
+@prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/> .
+
+
+	
+<http://www.example.org/dc/tab1x01/ds/dataset-TAB1X01> rrdfqbcrnd0:applicationhtmlfile "tab1x01.html" .
+<http://www.example.org/dc/tab1x02/ds/dataset-TAB1X02> rrdfqbcrnd0:applicationhtmlfile "tab1x02.html" .
+<http://www.example.org/dc/tab1x03/ds/dataset-TAB1X03> rrdfqbcrnd0:applicationhtmlfile "tab1x03.html" .
+<http://www.example.org/dc/tab2x01/ds/dataset-TAB2X01> rrdfqbcrnd0:applicationhtmlfile "tab2x01.html" .
+<http://www.example.org/dc/tab3x01/ds/dataset-TAB3X01> rrdfqbcrnd0:applicationhtmlfile "tab3x01.html" .
+<http://www.example.org/dc/tab5x01/ds/dataset-TAB5X01> rrdfqbcrnd0:applicationhtmlfile "tab5x01.html" .
+
