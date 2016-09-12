@@ -23,9 +23,9 @@ filename source "../../phuse-scripts/data/adam/cdisc/adqsadas.xpt";
 libname source xport ;
 
 %let dssource=https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adqsadas.xpt;
-%let tablename=TAB3X01;
-%let tablelabel=%str(Table 14-3.01 Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF);
-%let tableheader=%str(Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF);
+%let tablename=TAB3X01_1;
+%let tablelabel=%str(Table 14-3.01.01 Endpoint Analysis by Age Group: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF);
+%let tableheader=%str(Endpoint Analysis by Age Group);
 %let tableprogram=%lowcase(&tablename.).sas;
 
 filename expcsvda "..\res-csv\%upcase(&tablename.).csv";
@@ -172,13 +172,28 @@ proc tabulate data = ADQSADAS missing;
   where EFFFL='Y' and ANL01FL='Y' and AVISIT='Week 24' and PARAMCD="ACTOT";
   class trtpn sitegr1;
   class EFFFL ANL01FL AVISIT PARAMCD;
+  class agegr1;
   var base chg aval;    
   table
       EFFFL*ANL01FL*AVISIT*PARAMCD,
-      base chg aval, trtpn*(n*f=F3.0 mean*f=f4.1 stddev*f=F5.2 median*f=f4.1 (min max)*f=F4.0);
+      agegr1*(base chg aval), trtpn*(n*f=F3.0 mean*f=f4.1 stddev*f=F5.2 median*f=f4.1 (min max)*f=F4.0);
 run;
 
 
 %include "include_tabulate_to_csv.sas" /source;
 
+proc sort data=observations;
+    by &classvarlist. procedure factor denominator;
+run;
+
+data _null_;
+    set observations;
+    by &classvarlist. procedure factor denominator;
+    if not (first.denominator and last.denominator) then do;
+        putlog _n_= &classvarlist. procedure= factor= denominator= measure=;
+        if last.denominator then do;
+        abort cancel;
+        end;
+        end;
+run;
 

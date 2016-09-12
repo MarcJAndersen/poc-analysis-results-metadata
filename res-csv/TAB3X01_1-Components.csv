@@ -4,23 +4,24 @@ dimension,efffl,DATA,,Efficacy Population Flag,
 dimension,anl01fl,DATA,,Analysis Record Flag 01,
 dimension,avisit,DATA,,Analysis Visit,
 dimension,paramcd,DATA,,Parameter Code,
+dimension,agegr1,DATA,,Pooled Age Group 1,
 dimension,procedure,DATA,,Statistical Procedure,
 dimension,factor,DATA,,"Type of procedure (quantity, proportion...)",
 attribute,unit,,,Unit of measure,
 attribute,denominator,,,Denominator for a proportion (oskr) subset on which a statistic is based,
 measure,measure,,,Value of the statistical measure,
 metadata,obsURL,,,https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adqsadas.xpt,obsFileName
-metadata,obsFileName,,,tab3x01.csv,obsFileName
-metadata,dataCubeFileName,,,DC-TAB3X01,Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)
+metadata,obsFileName,,,tab3x01_1.csv,obsFileName
+metadata,dataCubeFileName,,,DC-TAB3X01_1,Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)
 metadata,cubeVersion,,,0.0.0,Version of cube with format n.n.n
 metadata,createdBy,,,Foo,Person who configures this spreadsheet and runs the creation script to create the cube
-metadata,description,,,Data from tab3x01.sas program,Cube description
+metadata,description,,,Data from tab3x01_1.sas program,Cube description
 metadata,providedBy,,,PhUSE Results Metadata Working Group,
-metadata,comment,,,,Table 14-3.01 Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF
-metadata,title,,,Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF,Table 14-3.01 Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF
-metadata,label,,,Table 14-3.01 Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF,
-metadata,wasDerivedFrom,,,tab3x01.csv,Data source (obsFileName). Set this programmtically based on name of input file!
-metadata,domainName,,,TAB3X01,"The domain name, also part of the spreadsheet tab name"
+metadata,comment,,,,Table 14-3.01.01 Endpoint Analysis by Age Group: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF
+metadata,title,,,Endpoint Analysis by Age Group,Table 14-3.01.01 Endpoint Analysis by Age Group: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF
+metadata,label,,,Table 14-3.01.01 Endpoint Analysis by Age Group: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF,
+metadata,wasDerivedFrom,,,tab3x01_1.csv,Data source (obsFileName). Set this programmtically based on name of input file!
+metadata,domainName,,,TAB3X01_1,"The domain name, also part of the spreadsheet tab name"
 metadata,obsFileNameDirec,,,!example,The directory containd the wasDerivedFrom file
 metadata,dataCubeOutDirec,,,!temporary,
 metadata,extension.rrdfqbcrnd0,,,TRUE,

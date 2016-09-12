@@ -1,0 +1,76 @@
+---
+title: "poc-application-overview"
+author: "mja@statgroup.dk"
+date: "12 sep 2016"
+output:
+  html_document:
+    toc: yes
+---
+
+# Setup
+
+The mermaid package included in DiagrammeR is used for drawing the flowcharts.
+See (http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html), (http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages(c("DiagrammeR","DiagrammeRsvg"))
+library("DiagrammeR")
+library("DiagrammeRsvg")
+library("htmltools")
+```
+
+Note: pdf generation does not work yet.
+
+#Application process
+
+Here is a high level overview of the proof of concept package
+
+```{r pocdiag, echo=FALSE}
+mermaid("
+graph TB
+subgraph ADAM data
+A(ADAM)
+end
+
+subgraph Analysis results to RDF
+A-->B[Analyse]
+B-->C(Analysis Results as .csv)
+C-->D[Convert to RDF datacube]
+D-->E(Analysis Resuls as .ttl)
+end
+
+subgraph Analysis results to RDF
+A-->gA[Convert using D2RQ as .ttl]
+gA-->aB(ADAM as .ttl)
+end
+
+subgraph Servering RDF
+aB-->F
+E-->F[SPARQL endpoint]
+end
+
+subgraph Presentation of results
+F-->pA[Reporting]
+pA-->pB(Tables as .html)
+end
+
+subgraph Servering HTML
+pB-->pC[Webserver]
+end
+
+subgraph PoC Application
+aF(.html and .js)-->pC
+aG(configuration as .ttl)-->F
+end
+
+subgraph Browser
+pC-->aA
+F-->aA[Application]
+end
+")
+```
+
+Note: export_svg does not work for now.
+
+
