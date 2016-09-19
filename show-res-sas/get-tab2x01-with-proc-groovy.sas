@@ -163,12 +163,10 @@ colRES1order= input( for_var, col1order. );
     format col1z2 col2z2 col3z2 col4z2 pctfmt.; 
 run;
 
-ods html file="tab2x01.html"(title= "Table 14.1.2 from ARM RDF data cube")
+ods html file="&cubestemname..html"(title= "&tabletitle.")
     style=minimal;
-* ods pdf file="tab2x01.pdf" style=minimal;
-* ods tagsets.rtf file="tab2x01.rtf";
-
-
+* ods pdf file="&cubestemname..pdf" style=minimal;
+* ods tagsets.rtf file="&cubestemname..rtf";
 
 
 title;
@@ -224,7 +222,7 @@ proc report data=tab2x01_pres missing nofs split="¤";
     define col1z1URI / noprint;
     define col1z1 / " " width=6 flow display;
     compute col1z1;
-    call define(_col_,"URL",col1z1URI);
+    call define(_col_,"URL",">"|| "<span>"||col1z1URI||"</span>"||"<");
     endcomp;
 
     define col1z2URI / noprint;

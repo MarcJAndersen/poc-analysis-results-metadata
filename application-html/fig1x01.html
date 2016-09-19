@@ -1,0 +1,3764 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="Generator" content="SAS Software Version 9.4, see www.sas.com">
+<meta http-equiv="Content-type" content="text/html; charset=windows-1252">
+<title>SAS Output</title>
+<style type="text/css">
+<!--
+.aftercaption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  padding-top: 4pt;
+}
+.batch
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  padding: 7px;
+}
+.beforecaption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.body
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.bodydate
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  text-align: right;
+  vertical-align: top;
+  width: 100%;
+}
+.bycontentfolder
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.byline
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.bylinecontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.caption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.cell
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.container
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.contentfolder
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.contentitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.contentproclabel
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.contentprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.contents
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: decimal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.contentsdate
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.contenttitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.continued
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  width: 100%;
+}
+.data
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.dataemphasis
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.dataemphasisfixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.dataempty
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.datafixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.datastrong
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.datastrongfixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.date
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.document
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+a:link {
+color:#0000FF
+}
+a:visited {
+color:#800080
+}
+a:active {
+color:#800080
+}
+.errorbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.errorcontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.errorcontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.extendedpage
+{
+  background-color: #FAFBFE;
+  border: 1pt solid #000000;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+.fatalbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.fatalcontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.fatalcontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.folderaction
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.footer
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footeremphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.footeremphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.footerempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footerfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.footerstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footerstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.frame
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.graph
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.header
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headeremphasis
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.headeremphasisfixed
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.headerempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.headersandfooters
+{
+  background-color: #EDF2F9;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerstrong
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerstrongfixed
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.index
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.indexaction
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.indexitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.indexprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.indextitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.layoutcontainer
+{
+  border: 0px solid #000000;
+  border-spacing: 30px;
+}
+.layoutregion
+{
+  border: 0px solid #000000;
+  border-spacing: 30px;
+}
+.linecontent
+{
+  background-color: #FAFBFE;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.list
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: disc;
+}
+.list10
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list2
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: circle;
+}
+.list3
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list4
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list5
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list6
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list7
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list8
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list9
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: disc;
+}
+.listitem10
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem2
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: circle;
+}
+.listitem3
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem4
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem5
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem6
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem7
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem8
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem9
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.note
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.notebanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.notecontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.notecontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.output
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.pageno
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  text-align: right;
+  vertical-align: top;
+}
+.pages
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: decimal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.pagesdate
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.pagesitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.pagesproclabel
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.pagesprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.pagestitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.paragraph
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.parskip
+{
+  border: 0px solid #000000;
+  border-spacing: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.prepage
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+}
+.proctitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.proctitlefixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooter
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooteremphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowfooteremphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowfooterempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooterfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.rowfooterstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooterstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheader
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderemphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowheaderemphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowheaderempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.rowheaderstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemfooter
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter10
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter2
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter3
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter4
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter5
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter6
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter7
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter8
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter9
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemtitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle10
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle2
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle3
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle4
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle5
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle6
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle7
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle8
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle9
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systitleandfootercontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.table
+{
+  border-bottom-width: 0px;
+  border-collapse: collapse;
+  border-color: #C1C1C1;
+  border-left-width: 1px;
+  border-right-width: 0px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-top-width: 1px;
+}
+.top_stacked_value
+{
+  padding-bottom: 1px;
+  border: 0;
+}
+.middle_stacked_value
+{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 0;
+}
+.bottom_stacked_value
+{
+  padding-top: 1px;
+  border: 0;
+}
+.titleandnotecontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.titlesandfooters
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.usertext
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.warnbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.warncontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.warncontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.l {text-align: left }
+.c {text-align: center }
+.r {text-align: right }
+.d {text-align: right }
+.j {text-align: justify }
+.t {vertical-align: top }
+.m {vertical-align: middle }
+.b {vertical-align: bottom }
+TD, TH {vertical-align: top }
+.stacked_cell{padding: 0 }
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- 
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</script>
+
+</head>
+<body onload="startup()" onunload="shutdown()" class="body">
+
+<script language="javascript" type="text/javascript">
+<!-- 
+var _info = navigator.userAgent
+var _ie = (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+var _ie64 = _info.indexOf("x64") > 0
+
+//-->
+</script>
+
+<div class="branch">
+<a name="IDX"></a>
+<table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="l systemtitle" style=" color: #000000; font-family: 'Arial Unicode MS'; font-style: normal; font-weight: normal;">Figure 14-1</td>
+</tr>
+<tr>
+<td class="l systemtitle2" style=" color: #000000; font-family: 'Arial Unicode MS'; font-style: normal; font-weight: normal;">Time to Dermatologic Event by Treatment Group</td>
+</tr>
+</table><br>
+<div>
+<map name="fig1x01">
+<Area shape="poly" alt=" time = 198  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 198  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs088 " target="_BLANK" coords="547,110,547,125,553,125,553,110,547,110,"/>
+<Area shape="poly" alt=" time = 197  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 197  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs087 " target="_BLANK" coords="544,110,544,125,550,125,550,110,544,110,"/>
+<Area shape="poly" alt=" time = 196  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 196  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs086 " target="_BLANK" coords="542,110,542,125,548,125,548,110,542,110,"/>
+<Area shape="poly" alt=" time = 195  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 195  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs085 " target="_BLANK" coords="539,110,539,125,545,125,545,110,539,110,"/>
+<Area shape="poly" alt=" time = 191  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 191  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs084 " target="_BLANK" coords="529,110,529,125,535,125,535,110,529,110,"/>
+<Area shape="poly" alt=" time = 190  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 190  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs238 " target="_BLANK" coords="527,249,527,264,533,264,533,249,527,249,"/>
+<Area shape="poly" alt=" time = 189  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 189  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs159 " target="_BLANK" coords="524,258,524,273,530,273,530,258,524,258,"/>
+<Area shape="poly" alt=" time = 189  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 189  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs083 " target="_BLANK" coords="524,110,524,125,530,125,530,110,524,110,"/>
+<Area shape="poly" alt=" time = 188  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 188  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs158 " target="_BLANK" coords="522,258,522,273,528,273,528,258,522,258,"/>
+<Area shape="poly" alt=" time = 188  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 188  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs082 " target="_BLANK" coords="522,110,522,125,528,125,528,110,522,110,"/>
+<Area shape="poly" alt=" time = 187  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 187  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs237 " target="_BLANK" coords="519,249,519,264,525,264,525,249,519,249,"/>
+<Area shape="poly" alt=" time = 185  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 185  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs081 " target="_BLANK" coords="514,110,514,125,520,125,520,110,514,110,"/>
+<Area shape="poly" alt=" time = 184  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 184  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs236 " target="_BLANK" coords="512,249,512,264,518,264,518,249,512,249,"/>
+<Area shape="poly" alt=" time = 184  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 184  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs080 " target="_BLANK" coords="512,110,512,125,518,125,518,110,512,110,"/>
+<Area shape="poly" alt=" time = 183  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 183  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs079 " target="_BLANK" coords="509,110,509,125,515,125,515,110,509,110,"/>
+<Area shape="poly" alt=" time = 182  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 182  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs078 " target="_BLANK" coords="507,110,507,125,513,125,513,110,507,110,"/>
+<Area shape="poly" alt=" time = 181  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 181  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs235 " target="_BLANK" coords="504,249,504,264,510,264,510,249,504,249,"/>
+<Area shape="poly" alt=" time = 181  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 181  
+ censor_surv = 0.6261020839  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs077 " target="_BLANK" coords="504,110,504,125,510,125,510,110,504,110,"/>
+<Area shape="poly" alt=" time = 180  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 180  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs234 " target="_BLANK" coords="502,249,502,264,508,264,508,249,502,249,"/>
+<Area shape="poly" alt=" time = 180  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 180  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs157 " target="_BLANK" coords="502,258,502,273,508,273,508,258,502,258,"/>
+<Area shape="poly" alt=" time = 177  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 177  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs076 " target="_BLANK" coords="494,105,494,120,500,120,500,105,494,105,"/>
+<Area shape="poly" alt=" time = 175  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 175  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs075 " target="_BLANK" coords="490,105,490,120,496,120,496,105,490,105,"/>
+<Area shape="poly" alt=" time = 167  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 167  
+ censor_surv = 0.1257691452  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs233 " target="_BLANK" coords="470,249,470,264,476,264,476,249,470,249,"/>
+<Area shape="poly" alt=" time = 167  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 167  
+ censor_surv = 0.0919206404  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs156 " target="_BLANK" coords="470,258,470,273,476,273,476,258,470,258,"/>
+<Area shape="poly" alt=" time = 162  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 162  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs074 " target="_BLANK" coords="457,105,457,120,463,120,463,105,457,105,"/>
+<Area shape="poly" alt=" time = 148  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 148  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs073 " target="_BLANK" coords="423,105,423,120,429,120,429,105,423,105,"/>
+<Area shape="poly" alt=" time = 142  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 142  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs072 " target="_BLANK" coords="408,105,408,120,414,120,414,105,408,105,"/>
+<Area shape="poly" alt=" time = 139  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 139  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs071 " target="_BLANK" coords="400,105,400,120,406,120,406,105,400,105,"/>
+<Area shape="poly" alt=" time = 135  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 135  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs070 " target="_BLANK" coords="390,105,390,120,396,120,396,105,390,105,"/>
+<Area shape="poly" alt=" time = 121  
+ censor_surv = 0.1467306694  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 121  
+ censor_surv = 0.1467306694  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs232 " target="_BLANK" coords="356,243,356,258,362,258,362,243,356,243,"/>
+<Area shape="poly" alt=" time = 116  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 116  
+ censor_surv = 0.6434938084  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs069 " target="_BLANK" coords="343,105,343,120,349,120,349,105,343,105,"/>
+<Area shape="poly" alt=" time = 70  
+ censor_surv = 0.7414167792  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 70  
+ censor_surv = 0.7414167792  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs068 " target="_BLANK" coords="229,78,229,93,235,93,235,78,229,78,"/>
+<Area shape="poly" alt=" time = 69  
+ censor_surv = 0.2934613388  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 69  
+ censor_surv = 0.2934613388  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs231 " target="_BLANK" coords="227,202,227,217,233,217,233,202,227,202,"/>
+<Area shape="poly" alt=" time = 69  
+ censor_surv = 0.206821441  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 69  
+ censor_surv = 0.206821441  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs155 " target="_BLANK" coords="227,226,227,241,233,241,233,226,227,226,"/>
+<Area shape="poly" alt=" time = 68  
+ censor_surv = 0.206821441  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 68  
+ censor_surv = 0.206821441  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs154 " target="_BLANK" coords="224,226,224,241,230,241,230,226,224,226,"/>
+<Area shape="poly" alt=" time = 67  
+ censor_surv = 0.7551467196  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 67  
+ censor_surv = 0.7551467196  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs067 " target="_BLANK" coords="222,74,222,89,228,89,228,74,222,74,"/>
+<Area shape="poly" alt=" time = 64  
+ censor_surv = 0.3107237705  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 64  
+ censor_surv = 0.3107237705  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs230 " target="_BLANK" coords="214,198,214,213,220,213,220,198,214,198,"/>
+<Area shape="poly" alt=" time = 64  
+ censor_surv = 0.7551467196  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 64  
+ censor_surv = 0.7551467196  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs066 " target="_BLANK" coords="214,74,214,89,220,89,220,74,214,74,"/>
+<Area shape="poly" alt=" time = 63  
+ censor_surv = 0.2256233902  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 63  
+ censor_surv = 0.2256233902  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs153 " target="_BLANK" coords="212,221,212,236,218,236,218,221,212,221,"/>
+<Area shape="poly" alt=" time = 63  
+ censor_surv = 0.7683949077  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 63  
+ censor_surv = 0.7683949077  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs065 " target="_BLANK" coords="212,71,212,86,218,86,218,71,212,71,"/>
+<Area shape="poly" alt=" time = 57  
+ censor_surv = 0.7683949077  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 57  
+ censor_surv = 0.7683949077  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs064 " target="_BLANK" coords="197,71,197,86,203,86,203,71,197,71,"/>
+<Area shape="poly" alt=" time = 55  
+ censor_surv = 0.260334681  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 55  
+ censor_surv = 0.260334681  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs152 " target="_BLANK" coords="192,211,192,226,198,226,198,211,192,211,"/>
+<Area shape="poly" alt=" time = 49  
+ censor_surv = 0.3761393011  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 49  
+ censor_surv = 0.3761393011  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs229 " target="_BLANK" coords="177,179,177,194,183,194,183,179,177,179,"/>
+<Area shape="poly" alt=" time = 46  
+ censor_surv = 0.7940080713  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 46  
+ censor_surv = 0.7940080713  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs063 " target="_BLANK" coords="170,64,170,79,176,79,176,64,170,64,"/>
+<Area shape="poly" alt=" time = 44  
+ censor_surv = 0.4230438566  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 44  
+ censor_surv = 0.4230438566  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs151 " target="_BLANK" coords="165,166,165,181,171,181,171,166,165,166,"/>
+<Area shape="poly" alt=" time = 43  
+ censor_surv = 0.4231567138  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 43  
+ censor_surv = 0.4231567138  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs228 " target="_BLANK" coords="162,166,162,181,168,181,168,166,162,166,"/>
+<Area shape="poly" alt=" time = 43  
+ censor_surv = 0.4543804385  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 43  
+ censor_surv = 0.4543804385  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs150 " target="_BLANK" coords="162,158,162,173,168,173,168,158,162,158,"/>
+<Area shape="poly" alt=" time = 41  
+ censor_surv = 0.4382694536  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 41  
+ censor_surv = 0.4382694536  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs227 " target="_BLANK" coords="157,162,157,177,163,177,163,162,157,162,"/>
+<Area shape="poly" alt=" time = 39  
+ censor_surv = 0.4528784354  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 39  
+ censor_surv = 0.4528784354  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs226 " target="_BLANK" coords="152,158,152,173,158,173,158,158,152,158,"/>
+<Area shape="poly" alt=" time = 37  
+ censor_surv = 0.4670308865  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 37  
+ censor_surv = 0.4670308865  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs225 " target="_BLANK" coords="147,154,147,169,153,169,153,154,147,154,"/>
+<Area shape="poly" alt=" time = 35  
+ censor_surv = 0.4803746261  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 35  
+ censor_surv = 0.4803746261  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs224 " target="_BLANK" coords="142,150,142,165,148,165,148,150,142,150,"/>
+<Area shape="poly" alt=" time = 32  
+ censor_surv = 0.8444212821  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 32  
+ censor_surv = 0.8444212821  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs062 " target="_BLANK" coords="135,50,135,65,141,65,141,50,135,50,"/>
+<Area shape="poly" alt=" time = 31  
+ censor_surv = 0.8444212821  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 31  
+ censor_surv = 0.8444212821  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs061 " target="_BLANK" coords="132,50,132,65,138,65,138,50,132,50,"/>
+<Area shape="poly" alt=" time = 30  
+ censor_surv = 0.5595610956  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 30  
+ censor_surv = 0.5595610956  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs149 " target="_BLANK" coords="130,129,130,144,136,144,136,129,130,129,"/>
+<Area shape="poly" alt=" time = 29  
+ censor_surv = 0.5882565364  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 29  
+ censor_surv = 0.5882565364  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs148 " target="_BLANK" coords="127,121,127,136,133,136,133,121,127,121,"/>
+<Area shape="poly" alt=" time = 28  
+ censor_surv = 0.5737808034  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 28  
+ censor_surv = 0.5737808034  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs223 " target="_BLANK" coords="125,125,125,140,131,140,131,125,125,125,"/>
+<Area shape="poly" alt=" time = 24  
+ censor_surv = 0.6520236402  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 24  
+ censor_surv = 0.6520236402  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs222 " target="_BLANK" coords="115,103,115,118,121,118,121,103,115,103,"/>
+<Area shape="poly" alt=" time = 22  
+ censor_surv = 0.6312996976  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 22  
+ censor_surv = 0.6312996976  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs147 " target="_BLANK" coords="110,109,110,124,116,124,116,109,110,109,"/>
+<Area shape="poly" alt=" time = 20  
+ censor_surv = 0.7287323037  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 20  
+ censor_surv = 0.7287323037  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs221 " target="_BLANK" coords="105,82,105,97,111,97,111,82,105,82,"/>
+<Area shape="poly" alt=" time = 18  
+ censor_surv = 0.6874152263  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 18  
+ censor_surv = 0.6874152263  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs146 " target="_BLANK" coords="100,93,100,108,106,108,106,93,100,93,"/>
+<Area shape="poly" alt=" time = 15  
+ censor_surv = 0.7286601399  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 15  
+ censor_surv = 0.7286601399  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs145 " target="_BLANK" coords="93,82,93,97,99,97,99,82,93,82,"/>
+<Area shape="poly" alt=" time = 14  
+ censor_surv = 0.8795045045  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 14  
+ censor_surv = 0.8795045045  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs220 " target="_BLANK" coords="90,40,90,55,96,55,96,40,90,40,"/>
+<Area shape="poly" alt=" time = 14  
+ censor_surv = 0.7686593407  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 14  
+ censor_surv = 0.7686593407  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs144 " target="_BLANK" coords="90,71,90,86,96,86,96,71,90,71,"/>
+<Area shape="poly" alt=" time = 14  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 14  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs060 " target="_BLANK" coords="90,26,90,41,96,41,96,26,90,26,"/>
+<Area shape="poly" alt=" time = 13  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 13  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs059 " target="_BLANK" coords="88,26,88,41,94,41,94,26,88,26,"/>
+<Area shape="poly" alt=" time = 12  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 12  
+ censor_surv = 0.9300872093  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs058 " target="_BLANK" coords="85,26,85,41,91,41,91,26,85,26,"/>
+<Area shape="poly" alt=" time = 11  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 11  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs219 " target="_BLANK" coords="83,30,83,45,89,45,89,30,83,30,"/>
+<Area shape="poly" alt=" time = 11  
+ censor_surv = 0.7951648352  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 11  
+ censor_surv = 0.7951648352  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs143 " target="_BLANK" coords="83,63,83,78,89,78,89,63,83,63,"/>
+<Area shape="poly" alt=" time = 8  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 8  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs218 " target="_BLANK" coords="75,30,75,45,81,45,81,30,75,30,"/>
+<Area shape="poly" alt=" time = 8  
+ censor_surv = 0.7951648352  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 8  
+ censor_surv = 0.7951648352  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs142 " target="_BLANK" coords="75,63,75,78,81,78,81,63,75,63,"/>
+<Area shape="poly" alt=" time = 8  
+ censor_surv = 0.9418604651  
+ trtp = Placebo  
+ censor_flag = || " title=" time = 8  
+ censor_surv = 0.9418604651  
+ trtp = Placebo  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs057 " target="_BLANK" coords="75,23,75,38,81,38,81,23,75,23,"/>
+<Area shape="poly" alt=" time = 6  
+ censor_surv = 0.8075892857  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 6  
+ censor_surv = 0.8075892857  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs141 " target="_BLANK" coords="70,60,70,75,76,75,76,60,70,60,"/>
+<Area shape="poly" alt=" time = 5  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " title=" time = 5  
+ censor_surv = 0.9166666667  
+ trtp = Xanomeline_Low_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs217 " target="_BLANK" coords="68,30,68,45,74,45,74,30,68,30,"/>
+<Area shape="poly" alt=" time = 1  
+ censor_surv = 1  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " title=" time = 1  
+ censor_surv = 1  
+ trtp = Xanomeline_High_Dose  
+ censor_flag = || " href="http://www.example.org/dc/fig1x01/ds/obs140 " target="_BLANK" coords="59,7,59,21,64,21,64,7,59,7,"/>
+<Area shape="poly" alt=" time = 187  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 187  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs215 " target="_BLANK" coords="531,258,530,258,530,256,531,256,"/>
+<Area shape="poly" alt=" time = 187  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 187  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs215 " target="_BLANK" coords="522,256,529,256,529,258,522,258,"/>
+<Area shape="poly" alt=" time = 184  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 184  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs214 " target="_BLANK" coords="523,258,522,258,522,256,523,256,"/>
+<Area shape="poly" alt=" time = 184  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 184  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs214 " target="_BLANK" coords="515,256,521,256,521,258,515,258,"/>
+<Area shape="poly" alt=" time = 181  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 181  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs213 " target="_BLANK" coords="516,258,515,258,515,256,516,256,"/>
+<Area shape="poly" alt=" time = 181  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 181  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs213 " target="_BLANK" coords="507,256,514,256,514,258,507,258,"/>
+<Area shape="poly" alt=" time = 180  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 180  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs212 " target="_BLANK" coords="508,258,507,258,507,256,508,256,"/>
+<Area shape="poly" alt=" time = 180  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 180  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs212 " target="_BLANK" coords="505,256,506,256,506,258,505,258,"/>
+<Area shape="poly" alt=" time = 167  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 167  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs211 " target="_BLANK" coords="506,258,505,258,505,256,506,256,"/>
+<Area shape="poly" alt=" time = 167  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 167  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs211 " target="_BLANK" coords="473,256,504,256,504,258,473,258,"/>
+<Area shape="poly" alt=" time = 126  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 126  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs210 " target="_BLANK" coords="474,258,473,258,473,256,474,256,"/>
+<Area shape="poly" alt=" time = 126  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " title=" time = 126  
+ SURV = 0.1257691452  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs210 " target="_BLANK" coords="371,256,472,256,472,258,371,258,"/>
+<Area shape="poly" alt=" time = 121  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " title=" time = 121  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs209 " target="_BLANK" coords="372,258,371,258,371,256,372,256,"/>
+<Area shape="poly" alt=" time = 121  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " title=" time = 121  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs209 " target="_BLANK" coords="359,250,370,250,370,252,359,252,"/>
+<Area shape="poly" alt=" time = 119  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " title=" time = 119  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs208 " target="_BLANK" coords="360,252,359,252,359,250,360,250,"/>
+<Area shape="poly" alt=" time = 119  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " title=" time = 119  
+ SURV = 0.1467306694  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs208 " target="_BLANK" coords="354,250,358,250,358,252,354,252,"/>
+<Area shape="poly" alt=" time = 112  
+ SURV = 0.1650720031  
+ trtp = Xanomeline_Low_Dose " title=" time = 112  
+ SURV = 0.1650720031  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs207 " target="_BLANK" coords="355,252,354,252,354,250,355,250,"/>
+<Area shape="poly" alt=" time = 112  
+ SURV = 0.1650720031  
+ trtp = Xanomeline_Low_Dose " title=" time = 112  
+ SURV = 0.1650720031  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs207 " target="_BLANK" coords="336,245,353,245,353,247,336,247,"/>
+<Area shape="poly" alt=" time = 107  
+ SURV = 0.1834133368  
+ trtp = Xanomeline_Low_Dose " title=" time = 107  
+ SURV = 0.1834133368  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs206 " target="_BLANK" coords="337,247,336,247,336,245,337,245,"/>
+<Area shape="poly" alt=" time = 107  
+ SURV = 0.1834133368  
+ trtp = Xanomeline_Low_Dose " title=" time = 107  
+ SURV = 0.1834133368  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs206 " target="_BLANK" coords="324,240,335,240,335,242,324,242,"/>
+<Area shape="poly" alt=" time = 100  
+ SURV = 0.2017546704  
+ trtp = Xanomeline_Low_Dose " title=" time = 100  
+ SURV = 0.2017546704  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs205 " target="_BLANK" coords="325,242,324,242,324,240,325,240,"/>
+<Area shape="poly" alt=" time = 100  
+ SURV = 0.2017546704  
+ trtp = Xanomeline_Low_Dose " title=" time = 100  
+ SURV = 0.2017546704  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs205 " target="_BLANK" coords="306,235,323,235,323,237,306,237,"/>
+<Area shape="poly" alt=" time = 97  
+ SURV = 0.2200960041  
+ trtp = Xanomeline_Low_Dose " title=" time = 97  
+ SURV = 0.2200960041  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs204 " target="_BLANK" coords="307,237,306,237,306,235,307,235,"/>
+<Area shape="poly" alt=" time = 97  
+ SURV = 0.2200960041  
+ trtp = Xanomeline_Low_Dose " title=" time = 97  
+ SURV = 0.2200960041  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs204 " target="_BLANK" coords="299,230,305,230,305,232,299,232,"/>
+<Area shape="poly" alt=" time = 80  
+ SURV = 0.2384373378  
+ trtp = Xanomeline_Low_Dose " title=" time = 80  
+ SURV = 0.2384373378  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs203 " target="_BLANK" coords="300,232,299,232,299,230,300,230,"/>
+<Area shape="poly" alt=" time = 80  
+ SURV = 0.2384373378  
+ trtp = Xanomeline_Low_Dose " title=" time = 80  
+ SURV = 0.2384373378  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs203 " target="_BLANK" coords="257,225,298,225,298,227,257,227,"/>
+<Area shape="poly" alt=" time = 77  
+ SURV = 0.2567786715  
+ trtp = Xanomeline_Low_Dose " title=" time = 77  
+ SURV = 0.2567786715  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs202 " target="_BLANK" coords="258,227,257,227,257,225,258,225,"/>
+<Area shape="poly" alt=" time = 77  
+ SURV = 0.2567786715  
+ trtp = Xanomeline_Low_Dose " title=" time = 77  
+ SURV = 0.2567786715  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs202 " target="_BLANK" coords="249,219,256,219,256,221,249,221,"/>
+<Area shape="poly" alt=" time = 71  
+ SURV = 0.2751200051  
+ trtp = Xanomeline_Low_Dose " title=" time = 71  
+ SURV = 0.2751200051  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs201 " target="_BLANK" coords="250,221,249,221,249,219,250,219,"/>
+<Area shape="poly" alt=" time = 71  
+ SURV = 0.2751200051  
+ trtp = Xanomeline_Low_Dose " title=" time = 71  
+ SURV = 0.2751200051  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs201 " target="_BLANK" coords="235,214,248,214,248,216,235,216,"/>
+<Area shape="poly" alt=" time = 69  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " title=" time = 69  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs200 " target="_BLANK" coords="236,216,235,216,235,214,236,214,"/>
+<Area shape="poly" alt=" time = 69  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " title=" time = 69  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs200 " target="_BLANK" coords="230,209,234,209,234,211,230,211,"/>
+<Area shape="poly" alt=" time = 68  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " title=" time = 68  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs199 " target="_BLANK" coords="231,211,230,211,230,209,231,209,"/>
+<Area shape="poly" alt=" time = 68  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " title=" time = 68  
+ SURV = 0.2934613388  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs199 " target="_BLANK" coords="227,209,229,209,229,211,227,211,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " title=" time = 64  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs198 " target="_BLANK" coords="228,211,227,211,227,209,228,209,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " title=" time = 64  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs198 " target="_BLANK" coords="217,205,226,205,226,207,217,207,"/>
+<Area shape="poly" alt=" time = 60  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " title=" time = 60  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs197 " target="_BLANK" coords="218,207,217,207,217,205,218,205,"/>
+<Area shape="poly" alt=" time = 60  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " title=" time = 60  
+ SURV = 0.3107237705  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs197 " target="_BLANK" coords="207,205,216,205,216,207,207,207,"/>
+<Area shape="poly" alt=" time = 57  
+ SURV = 0.3270776532  
+ trtp = Xanomeline_Low_Dose " title=" time = 57  
+ SURV = 0.3270776532  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs196 " target="_BLANK" coords="208,207,207,207,207,205,208,205,"/>
+<Area shape="poly" alt=" time = 57  
+ SURV = 0.3270776532  
+ trtp = Xanomeline_Low_Dose " title=" time = 57  
+ SURV = 0.3270776532  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs196 " target="_BLANK" coords="200,200,206,200,206,202,200,202,"/>
+<Area shape="poly" alt=" time = 51  
+ SURV = 0.3597854185  
+ trtp = Xanomeline_Low_Dose " title=" time = 51  
+ SURV = 0.3597854185  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs195 " target="_BLANK" coords="201,202,200,202,200,200,201,200,"/>
+<Area shape="poly" alt=" time = 51  
+ SURV = 0.3597854185  
+ trtp = Xanomeline_Low_Dose " title=" time = 51  
+ SURV = 0.3597854185  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs195 " target="_BLANK" coords="185,191,199,191,199,193,185,193,"/>
+<Area shape="poly" alt=" time = 49  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " title=" time = 49  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs194 " target="_BLANK" coords="186,193,185,193,185,191,186,191,"/>
+<Area shape="poly" alt=" time = 49  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " title=" time = 49  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs194 " target="_BLANK" coords="180,186,184,186,184,188,180,188,"/>
+<Area shape="poly" alt=" time = 48  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " title=" time = 48  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs193 " target="_BLANK" coords="181,188,180,188,180,186,181,186,"/>
+<Area shape="poly" alt=" time = 48  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " title=" time = 48  
+ SURV = 0.3761393011  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs193 " target="_BLANK" coords="177,186,179,186,179,188,177,188,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.391811772  
+ trtp = Xanomeline_Low_Dose " title=" time = 46  
+ SURV = 0.391811772  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs192 " target="_BLANK" coords="178,188,177,188,177,186,178,186,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.391811772  
+ trtp = Xanomeline_Low_Dose " title=" time = 46  
+ SURV = 0.391811772  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs192 " target="_BLANK" coords="173,182,176,182,176,184,173,184,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.4231567138  
+ trtp = Xanomeline_Low_Dose " title=" time = 43  
+ SURV = 0.4231567138  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs191 " target="_BLANK" coords="174,184,173,184,173,182,174,182,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.4231567138  
+ trtp = Xanomeline_Low_Dose " title=" time = 43  
+ SURV = 0.4231567138  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs191 " target="_BLANK" coords="165,173,172,173,172,175,165,175,"/>
+<Area shape="poly" alt=" time = 41  
+ SURV = 0.4382694536  
+ trtp = Xanomeline_Low_Dose " title=" time = 41  
+ SURV = 0.4382694536  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs190 " target="_BLANK" coords="166,175,165,175,165,173,166,173,"/>
+<Area shape="poly" alt=" time = 41  
+ SURV = 0.4382694536  
+ trtp = Xanomeline_Low_Dose " title=" time = 41  
+ SURV = 0.4382694536  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs190 " target="_BLANK" coords="160,169,164,169,164,171,160,171,"/>
+<Area shape="poly" alt=" time = 39  
+ SURV = 0.4528784354  
+ trtp = Xanomeline_Low_Dose " title=" time = 39  
+ SURV = 0.4528784354  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs189 " target="_BLANK" coords="161,171,160,171,160,169,161,169,"/>
+<Area shape="poly" alt=" time = 39  
+ SURV = 0.4528784354  
+ trtp = Xanomeline_Low_Dose " title=" time = 39  
+ SURV = 0.4528784354  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs189 " target="_BLANK" coords="155,165,159,165,159,167,155,167,"/>
+<Area shape="poly" alt=" time = 37  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " title=" time = 37  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs188 " target="_BLANK" coords="156,167,155,167,155,165,156,165,"/>
+<Area shape="poly" alt=" time = 37  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " title=" time = 37  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs188 " target="_BLANK" coords="150,161,154,161,154,163,150,163,"/>
+<Area shape="poly" alt=" time = 35  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " title=" time = 35  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs187 " target="_BLANK" coords="151,163,150,163,150,161,151,161,"/>
+<Area shape="poly" alt=" time = 35  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " title=" time = 35  
+ SURV = 0.4670308865  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs187 " target="_BLANK" coords="145,161,149,161,149,163,145,163,"/>
+<Area shape="poly" alt=" time = 34  
+ SURV = 0.4803746261  
+ trtp = Xanomeline_Low_Dose " title=" time = 34  
+ SURV = 0.4803746261  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs186 " target="_BLANK" coords="146,163,145,163,145,161,146,161,"/>
+<Area shape="poly" alt=" time = 34  
+ SURV = 0.4803746261  
+ trtp = Xanomeline_Low_Dose " title=" time = 34  
+ SURV = 0.4803746261  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs186 " target="_BLANK" coords="143,157,144,157,144,159,143,159,"/>
+<Area shape="poly" alt=" time = 33  
+ SURV = 0.4937183657  
+ trtp = Xanomeline_Low_Dose " title=" time = 33  
+ SURV = 0.4937183657  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs185 " target="_BLANK" coords="144,159,143,159,143,157,144,157,"/>
+<Area shape="poly" alt=" time = 33  
+ SURV = 0.4937183657  
+ trtp = Xanomeline_Low_Dose " title=" time = 33  
+ SURV = 0.4937183657  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs185 " target="_BLANK" coords="140,154,142,154,142,156,140,156,"/>
+<Area shape="poly" alt=" time = 32  
+ SURV = 0.5070621053  
+ trtp = Xanomeline_Low_Dose " title=" time = 32  
+ SURV = 0.5070621053  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs184 " target="_BLANK" coords="141,156,140,156,140,154,141,154,"/>
+<Area shape="poly" alt=" time = 32  
+ SURV = 0.5070621053  
+ trtp = Xanomeline_Low_Dose " title=" time = 32  
+ SURV = 0.5070621053  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs184 " target="_BLANK" coords="138,150,139,150,139,152,138,152,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.5204058449  
+ trtp = Xanomeline_Low_Dose " title=" time = 31  
+ SURV = 0.5204058449  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs183 " target="_BLANK" coords="139,152,138,152,138,150,139,150,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.5204058449  
+ trtp = Xanomeline_Low_Dose " title=" time = 31  
+ SURV = 0.5204058449  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs183 " target="_BLANK" coords="135,146,137,146,137,148,135,148,"/>
+<Area shape="poly" alt=" time = 30  
+ SURV = 0.5337495845  
+ trtp = Xanomeline_Low_Dose " title=" time = 30  
+ SURV = 0.5337495845  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs182 " target="_BLANK" coords="136,148,135,148,135,146,136,146,"/>
+<Area shape="poly" alt=" time = 30  
+ SURV = 0.5337495845  
+ trtp = Xanomeline_Low_Dose " title=" time = 30  
+ SURV = 0.5337495845  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs182 " target="_BLANK" coords="133,143,134,143,134,145,133,145,"/>
+<Area shape="poly" alt=" time = 29  
+ SURV = 0.5604370637  
+ trtp = Xanomeline_Low_Dose " title=" time = 29  
+ SURV = 0.5604370637  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs181 " target="_BLANK" coords="134,145,133,145,133,143,134,143,"/>
+<Area shape="poly" alt=" time = 29  
+ SURV = 0.5604370637  
+ trtp = Xanomeline_Low_Dose " title=" time = 29  
+ SURV = 0.5604370637  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs181 " target="_BLANK" coords="130,135,132,135,132,137,130,137,"/>
+<Area shape="poly" alt=" time = 28  
+ SURV = 0.5737808034  
+ trtp = Xanomeline_Low_Dose " title=" time = 28  
+ SURV = 0.5737808034  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs180 " target="_BLANK" coords="131,137,130,137,130,135,131,135,"/>
+<Area shape="poly" alt=" time = 28  
+ SURV = 0.5737808034  
+ trtp = Xanomeline_Low_Dose " title=" time = 28  
+ SURV = 0.5737808034  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs180 " target="_BLANK" coords="128,132,129,132,129,134,128,134,"/>
+<Area shape="poly" alt=" time = 27  
+ SURV = 0.599861749  
+ trtp = Xanomeline_Low_Dose " title=" time = 27  
+ SURV = 0.599861749  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs179 " target="_BLANK" coords="129,134,128,134,128,132,129,132,"/>
+<Area shape="poly" alt=" time = 27  
+ SURV = 0.599861749  
+ trtp = Xanomeline_Low_Dose " title=" time = 27  
+ SURV = 0.599861749  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs179 " target="_BLANK" coords="125,124,127,124,127,126,125,126,"/>
+<Area shape="poly" alt=" time = 25  
+ SURV = 0.6389831674  
+ trtp = Xanomeline_Low_Dose " title=" time = 25  
+ SURV = 0.6389831674  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs178 " target="_BLANK" coords="126,126,125,126,125,124,126,124,"/>
+<Area shape="poly" alt=" time = 25  
+ SURV = 0.6389831674  
+ trtp = Xanomeline_Low_Dose " title=" time = 25  
+ SURV = 0.6389831674  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs178 " target="_BLANK" coords="120,114,124,114,124,116,120,116,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.6520236402  
+ trtp = Xanomeline_Low_Dose " title=" time = 24  
+ SURV = 0.6520236402  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs177 " target="_BLANK" coords="121,116,120,116,120,114,121,114,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.6520236402  
+ trtp = Xanomeline_Low_Dose " title=" time = 24  
+ SURV = 0.6520236402  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs177 " target="_BLANK" coords="118,110,119,110,119,112,118,112,"/>
+<Area shape="poly" alt=" time = 23  
+ SURV = 0.6648084174  
+ trtp = Xanomeline_Low_Dose " title=" time = 23  
+ SURV = 0.6648084174  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs176 " target="_BLANK" coords="119,112,118,112,118,110,119,110,"/>
+<Area shape="poly" alt=" time = 23  
+ SURV = 0.6648084174  
+ trtp = Xanomeline_Low_Dose " title=" time = 23  
+ SURV = 0.6648084174  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs176 " target="_BLANK" coords="115,106,117,106,117,108,115,108,"/>
+<Area shape="poly" alt=" time = 22  
+ SURV = 0.6775931947  
+ trtp = Xanomeline_Low_Dose " title=" time = 22  
+ SURV = 0.6775931947  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs175 " target="_BLANK" coords="116,108,115,108,115,106,116,106,"/>
+<Area shape="poly" alt=" time = 22  
+ SURV = 0.6775931947  
+ trtp = Xanomeline_Low_Dose " title=" time = 22  
+ SURV = 0.6775931947  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs175 " target="_BLANK" coords="113,103,114,103,114,105,113,105,"/>
+<Area shape="poly" alt=" time = 21  
+ SURV = 0.7031627492  
+ trtp = Xanomeline_Low_Dose " title=" time = 21  
+ SURV = 0.7031627492  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs174 " target="_BLANK" coords="114,105,113,105,113,103,114,103,"/>
+<Area shape="poly" alt=" time = 21  
+ SURV = 0.7031627492  
+ trtp = Xanomeline_Low_Dose " title=" time = 21  
+ SURV = 0.7031627492  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs174 " target="_BLANK" coords="110,96,112,96,112,98,110,98,"/>
+<Area shape="poly" alt=" time = 20  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " title=" time = 20  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs173 " target="_BLANK" coords="111,98,110,98,110,96,111,96,"/>
+<Area shape="poly" alt=" time = 20  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " title=" time = 20  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs173 " target="_BLANK" coords="108,89,110,89,110,91,108,91,"/>
+<Area shape="poly" alt=" time = 19  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " title=" time = 19  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs172 " target="_BLANK" coords="109,91,108,91,108,89,109,89,"/>
+<Area shape="poly" alt=" time = 19  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " title=" time = 19  
+ SURV = 0.7287323037  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs172 " target="_BLANK" coords="106,89,107,89,107,91,106,91,"/>
+<Area shape="poly" alt=" time = 18  
+ SURV = 0.7538610039  
+ trtp = Xanomeline_Low_Dose " title=" time = 18  
+ SURV = 0.7538610039  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs171 " target="_BLANK" coords="107,91,106,91,106,89,107,89,"/>
+<Area shape="poly" alt=" time = 18  
+ SURV = 0.7538610039  
+ trtp = Xanomeline_Low_Dose " title=" time = 18  
+ SURV = 0.7538610039  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs171 " target="_BLANK" coords="103,82,105,82,105,84,103,84,"/>
+<Area shape="poly" alt=" time = 17  
+ SURV = 0.778989704  
+ trtp = Xanomeline_Low_Dose " title=" time = 17  
+ SURV = 0.778989704  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs170 " target="_BLANK" coords="104,84,103,84,103,82,104,82,"/>
+<Area shape="poly" alt=" time = 17  
+ SURV = 0.778989704  
+ trtp = Xanomeline_Low_Dose " title=" time = 17  
+ SURV = 0.778989704  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs170 " target="_BLANK" coords="101,75,102,75,102,77,101,77,"/>
+<Area shape="poly" alt=" time = 15  
+ SURV = 0.8166827542  
+ trtp = Xanomeline_Low_Dose " title=" time = 15  
+ SURV = 0.8166827542  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs169 " target="_BLANK" coords="102,77,101,77,101,75,102,75,"/>
+<Area shape="poly" alt=" time = 15  
+ SURV = 0.8166827542  
+ trtp = Xanomeline_Low_Dose " title=" time = 15  
+ SURV = 0.8166827542  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs169 " target="_BLANK" coords="96,64,100,64,100,66,96,66,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " title=" time = 14  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs168 " target="_BLANK" coords="97,66,96,66,96,64,97,64,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " title=" time = 14  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs168 " target="_BLANK" coords="93,47,95,47,95,49,93,49,"/>
+<Area shape="poly" alt=" time = 12  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " title=" time = 12  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs167 " target="_BLANK" coords="94,49,93,49,93,47,94,47,"/>
+<Area shape="poly" alt=" time = 12  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " title=" time = 12  
+ SURV = 0.8795045045  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs167 " target="_BLANK" coords="88,47,92,47,92,49,88,49,"/>
+<Area shape="poly" alt=" time = 11  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 11  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs166 " target="_BLANK" coords="89,49,88,49,88,47,89,47,"/>
+<Area shape="poly" alt=" time = 11  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 11  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs166 " target="_BLANK" coords="86,37,87,37,87,39,86,39,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 8  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs165 " target="_BLANK" coords="87,39,86,39,86,37,87,37,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 8  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs165 " target="_BLANK" coords="78,37,85,37,85,39,78,39,"/>
+<Area shape="poly" alt=" time = 5  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 5  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs164 " target="_BLANK" coords="79,39,78,39,78,37,79,37,"/>
+<Area shape="poly" alt=" time = 5  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " title=" time = 5  
+ SURV = 0.9166666667  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs164 " target="_BLANK" coords="71,37,77,37,77,39,71,39,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.9285714286  
+ trtp = Xanomeline_Low_Dose " title=" time = 3  
+ SURV = 0.9285714286  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs163 " target="_BLANK" coords="72,39,71,39,71,37,72,37,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.9285714286  
+ trtp = Xanomeline_Low_Dose " title=" time = 3  
+ SURV = 0.9285714286  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs163 " target="_BLANK" coords="66,33,70,33,70,35,66,35,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.9523809524  
+ trtp = Xanomeline_Low_Dose " title=" time = 2  
+ SURV = 0.9523809524  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs162 " target="_BLANK" coords="67,35,66,35,66,33,67,33,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.9523809524  
+ trtp = Xanomeline_Low_Dose " title=" time = 2  
+ SURV = 0.9523809524  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs162 " target="_BLANK" coords="63,27,65,27,65,29,63,29,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.9880952381  
+ trtp = Xanomeline_Low_Dose " title=" time = 1  
+ SURV = 0.9880952381  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs161 " target="_BLANK" coords="64,29,63,29,63,27,64,27,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.9880952381  
+ trtp = Xanomeline_Low_Dose " title=" time = 1  
+ SURV = 0.9880952381  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs161 " target="_BLANK" coords="61,17,62,17,62,19,61,19,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_Low_Dose " title=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs160 " target="_BLANK" coords="62,19,61,19,61,17,62,17,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_Low_Dose " title=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_Low_Dose " href="http://www.example.org/dc/fig1x01/ds/obs160 " target="_BLANK" coords="59,13,60,13,60,15,59,15,"/>
+<Area shape="poly" alt=" time = 188  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 188  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs138 " target="_BLANK" coords="528,267,527,267,527,265,528,265,"/>
+<Area shape="poly" alt=" time = 188  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 188  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs138 " target="_BLANK" coords="525,265,526,265,526,267,525,267,"/>
+<Area shape="poly" alt=" time = 180  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 180  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs137 " target="_BLANK" coords="526,267,525,267,525,265,526,265,"/>
+<Area shape="poly" alt=" time = 180  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 180  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs137 " target="_BLANK" coords="505,265,524,265,524,267,505,267,"/>
+<Area shape="poly" alt=" time = 167  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 167  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs136 " target="_BLANK" coords="506,267,505,267,505,265,506,265,"/>
+<Area shape="poly" alt=" time = 167  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 167  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs136 " target="_BLANK" coords="473,265,504,265,504,267,473,267,"/>
+<Area shape="poly" alt=" time = 96  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 96  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs135 " target="_BLANK" coords="474,267,473,267,473,265,474,265,"/>
+<Area shape="poly" alt=" time = 96  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " title=" time = 96  
+ SURV = 0.0919206404  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs135 " target="_BLANK" coords="297,265,472,265,472,267,297,267,"/>
+<Area shape="poly" alt=" time = 94  
+ SURV = 0.1149008005  
+ trtp = Xanomeline_High_Dose " title=" time = 94  
+ SURV = 0.1149008005  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs134 " target="_BLANK" coords="298,267,297,267,297,265,298,265,"/>
+<Area shape="poly" alt=" time = 94  
+ SURV = 0.1149008005  
+ trtp = Xanomeline_High_Dose " title=" time = 94  
+ SURV = 0.1149008005  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs134 " target="_BLANK" coords="292,259,296,259,296,261,292,261,"/>
+<Area shape="poly" alt=" time = 89  
+ SURV = 0.1378809607  
+ trtp = Xanomeline_High_Dose " title=" time = 89  
+ SURV = 0.1378809607  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs133 " target="_BLANK" coords="293,261,292,261,292,259,293,259,"/>
+<Area shape="poly" alt=" time = 89  
+ SURV = 0.1378809607  
+ trtp = Xanomeline_High_Dose " title=" time = 89  
+ SURV = 0.1378809607  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs133 " target="_BLANK" coords="279,252,291,252,291,254,279,254,"/>
+<Area shape="poly" alt=" time = 71  
+ SURV = 0.1608611208  
+ trtp = Xanomeline_High_Dose " title=" time = 71  
+ SURV = 0.1608611208  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs132 " target="_BLANK" coords="280,254,279,254,279,252,280,252,"/>
+<Area shape="poly" alt=" time = 71  
+ SURV = 0.1608611208  
+ trtp = Xanomeline_High_Dose " title=" time = 71  
+ SURV = 0.1608611208  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs132 " target="_BLANK" coords="235,246,278,246,278,248,235,248,"/>
+<Area shape="poly" alt=" time = 70  
+ SURV = 0.1838412809  
+ trtp = Xanomeline_High_Dose " title=" time = 70  
+ SURV = 0.1838412809  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs131 " target="_BLANK" coords="236,248,235,248,235,246,236,246,"/>
+<Area shape="poly" alt=" time = 70  
+ SURV = 0.1838412809  
+ trtp = Xanomeline_High_Dose " title=" time = 70  
+ SURV = 0.1838412809  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs131 " target="_BLANK" coords="232,240,234,240,234,242,232,242,"/>
+<Area shape="poly" alt=" time = 69  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 69  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs130 " target="_BLANK" coords="233,242,232,242,232,240,233,240,"/>
+<Area shape="poly" alt=" time = 69  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 69  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs130 " target="_BLANK" coords="230,233,231,233,231,235,230,235,"/>
+<Area shape="poly" alt=" time = 68  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 68  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs129 " target="_BLANK" coords="231,235,230,235,230,233,231,233,"/>
+<Area shape="poly" alt=" time = 68  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 68  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs129 " target="_BLANK" coords="227,233,229,233,229,235,227,235,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 64  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs128 " target="_BLANK" coords="228,235,227,235,227,233,228,233,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " title=" time = 64  
+ SURV = 0.206821441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs128 " target="_BLANK" coords="217,233,226,233,226,235,217,235,"/>
+<Area shape="poly" alt=" time = 63  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " title=" time = 63  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs127 " target="_BLANK" coords="218,235,217,235,217,233,218,233,"/>
+<Area shape="poly" alt=" time = 63  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " title=" time = 63  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs127 " target="_BLANK" coords="215,228,216,228,216,230,215,230,"/>
+<Area shape="poly" alt=" time = 61  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " title=" time = 61  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs126 " target="_BLANK" coords="216,230,215,230,215,228,216,228,"/>
+<Area shape="poly" alt=" time = 61  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " title=" time = 61  
+ SURV = 0.2256233902  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs126 " target="_BLANK" coords="210,228,214,228,214,230,210,230,"/>
+<Area shape="poly" alt=" time = 58  
+ SURV = 0.2429790356  
+ trtp = Xanomeline_High_Dose " title=" time = 58  
+ SURV = 0.2429790356  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs125 " target="_BLANK" coords="211,230,210,230,210,228,211,228,"/>
+<Area shape="poly" alt=" time = 58  
+ SURV = 0.2429790356  
+ trtp = Xanomeline_High_Dose " title=" time = 58  
+ SURV = 0.2429790356  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs125 " target="_BLANK" coords="202,223,209,223,209,225,202,225,"/>
+<Area shape="poly" alt=" time = 55  
+ SURV = 0.260334681  
+ trtp = Xanomeline_High_Dose " title=" time = 55  
+ SURV = 0.260334681  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs124 " target="_BLANK" coords="203,225,202,225,202,223,203,223,"/>
+<Area shape="poly" alt=" time = 55  
+ SURV = 0.260334681  
+ trtp = Xanomeline_High_Dose " title=" time = 55  
+ SURV = 0.260334681  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs124 " target="_BLANK" coords="195,218,201,218,201,220,195,220,"/>
+<Area shape="poly" alt=" time = 52  
+ SURV = 0.2766055985  
+ trtp = Xanomeline_High_Dose " title=" time = 52  
+ SURV = 0.2766055985  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs123 " target="_BLANK" coords="196,220,195,220,195,218,196,218,"/>
+<Area shape="poly" alt=" time = 52  
+ SURV = 0.2766055985  
+ trtp = Xanomeline_High_Dose " title=" time = 52  
+ SURV = 0.2766055985  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs123 " target="_BLANK" coords="187,214,194,214,194,216,187,216,"/>
+<Area shape="poly" alt=" time = 51  
+ SURV = 0.2928765161  
+ trtp = Xanomeline_High_Dose " title=" time = 51  
+ SURV = 0.2928765161  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs122 " target="_BLANK" coords="188,216,187,216,187,214,188,214,"/>
+<Area shape="poly" alt=" time = 51  
+ SURV = 0.2928765161  
+ trtp = Xanomeline_High_Dose " title=" time = 51  
+ SURV = 0.2928765161  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs122 " target="_BLANK" coords="185,209,186,209,186,211,185,211,"/>
+<Area shape="poly" alt=" time = 50  
+ SURV = 0.3416892688  
+ trtp = Xanomeline_High_Dose " title=" time = 50  
+ SURV = 0.3416892688  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs121 " target="_BLANK" coords="186,211,185,211,185,209,186,209,"/>
+<Area shape="poly" alt=" time = 50  
+ SURV = 0.3416892688  
+ trtp = Xanomeline_High_Dose " title=" time = 50  
+ SURV = 0.3416892688  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs121 " target="_BLANK" coords="182,196,184,196,184,198,182,198,"/>
+<Area shape="poly" alt=" time = 47  
+ SURV = 0.3579601863  
+ trtp = Xanomeline_High_Dose " title=" time = 47  
+ SURV = 0.3579601863  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs120 " target="_BLANK" coords="183,198,182,198,182,196,183,196,"/>
+<Area shape="poly" alt=" time = 47  
+ SURV = 0.3579601863  
+ trtp = Xanomeline_High_Dose " title=" time = 47  
+ SURV = 0.3579601863  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs120 " target="_BLANK" coords="175,191,181,191,181,193,175,193,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.3742311039  
+ trtp = Xanomeline_High_Dose " title=" time = 46  
+ SURV = 0.3742311039  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs119 " target="_BLANK" coords="176,193,175,193,175,191,176,191,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.3742311039  
+ trtp = Xanomeline_High_Dose " title=" time = 46  
+ SURV = 0.3742311039  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs119 " target="_BLANK" coords="173,187,174,187,174,189,173,189,"/>
+<Area shape="poly" alt=" time = 44  
+ SURV = 0.4230438566  
+ trtp = Xanomeline_High_Dose " title=" time = 44  
+ SURV = 0.4230438566  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs118 " target="_BLANK" coords="174,189,173,189,173,187,174,187,"/>
+<Area shape="poly" alt=" time = 44  
+ SURV = 0.4230438566  
+ trtp = Xanomeline_High_Dose " title=" time = 44  
+ SURV = 0.4230438566  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs118 " target="_BLANK" coords="168,173,172,173,172,175,168,175,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " title=" time = 43  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs117 " target="_BLANK" coords="169,175,168,175,168,173,169,173,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " title=" time = 43  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs117 " target="_BLANK" coords="165,165,167,165,167,167,165,167,"/>
+<Area shape="poly" alt=" time = 42  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " title=" time = 42  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs116 " target="_BLANK" coords="166,167,165,167,165,165,166,165,"/>
+<Area shape="poly" alt=" time = 42  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " title=" time = 42  
+ SURV = 0.4543804385  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs116 " target="_BLANK" coords="163,165,164,165,164,167,163,167,"/>
+<Area shape="poly" alt=" time = 39  
+ SURV = 0.4695264532  
+ trtp = Xanomeline_High_Dose " title=" time = 39  
+ SURV = 0.4695264532  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs115 " target="_BLANK" coords="164,167,163,167,163,165,164,165,"/>
+<Area shape="poly" alt=" time = 39  
+ SURV = 0.4695264532  
+ trtp = Xanomeline_High_Dose " title=" time = 39  
+ SURV = 0.4695264532  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs115 " target="_BLANK" coords="155,161,162,161,162,163,155,163,"/>
+<Area shape="poly" alt=" time = 37  
+ SURV = 0.4846724678  
+ trtp = Xanomeline_High_Dose " title=" time = 37  
+ SURV = 0.4846724678  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs114 " target="_BLANK" coords="156,163,155,163,155,161,156,161,"/>
+<Area shape="poly" alt=" time = 37  
+ SURV = 0.4846724678  
+ trtp = Xanomeline_High_Dose " title=" time = 37  
+ SURV = 0.4846724678  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs114 " target="_BLANK" coords="150,156,154,156,154,158,150,158,"/>
+<Area shape="poly" alt=" time = 36  
+ SURV = 0.4998184824  
+ trtp = Xanomeline_High_Dose " title=" time = 36  
+ SURV = 0.4998184824  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs113 " target="_BLANK" coords="151,158,150,158,150,156,151,156,"/>
+<Area shape="poly" alt=" time = 36  
+ SURV = 0.4998184824  
+ trtp = Xanomeline_High_Dose " title=" time = 36  
+ SURV = 0.4998184824  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs113 " target="_BLANK" coords="148,152,149,152,149,154,148,154,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.514964497  
+ trtp = Xanomeline_High_Dose " title=" time = 31  
+ SURV = 0.514964497  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs112 " target="_BLANK" coords="149,154,148,154,148,152,149,152,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.514964497  
+ trtp = Xanomeline_High_Dose " title=" time = 31  
+ SURV = 0.514964497  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs112 " target="_BLANK" coords="135,148,147,148,147,150,135,150,"/>
+<Area shape="poly" alt=" time = 30  
+ SURV = 0.5301105116  
+ trtp = Xanomeline_High_Dose " title=" time = 30  
+ SURV = 0.5301105116  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs111 " target="_BLANK" coords="136,150,135,150,135,148,136,148,"/>
+<Area shape="poly" alt=" time = 30  
+ SURV = 0.5301105116  
+ trtp = Xanomeline_High_Dose " title=" time = 30  
+ SURV = 0.5301105116  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs111 " target="_BLANK" coords="133,144,134,144,134,146,133,146,"/>
+<Area shape="poly" alt=" time = 29  
+ SURV = 0.5595610956  
+ trtp = Xanomeline_High_Dose " title=" time = 29  
+ SURV = 0.5595610956  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs110 " target="_BLANK" coords="134,146,133,146,133,144,134,144,"/>
+<Area shape="poly" alt=" time = 29  
+ SURV = 0.5595610956  
+ trtp = Xanomeline_High_Dose " title=" time = 29  
+ SURV = 0.5595610956  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs110 " target="_BLANK" coords="130,136,132,136,132,138,130,138,"/>
+<Area shape="poly" alt=" time = 25  
+ SURV = 0.5882565364  
+ trtp = Xanomeline_High_Dose " title=" time = 25  
+ SURV = 0.5882565364  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs109 " target="_BLANK" coords="131,138,130,138,130,136,131,136,"/>
+<Area shape="poly" alt=" time = 25  
+ SURV = 0.5882565364  
+ trtp = Xanomeline_High_Dose " title=" time = 25  
+ SURV = 0.5882565364  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs109 " target="_BLANK" coords="120,128,129,128,129,130,120,130,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.6026042568  
+ trtp = Xanomeline_High_Dose " title=" time = 24  
+ SURV = 0.6026042568  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs108 " target="_BLANK" coords="121,130,120,130,120,128,121,128,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.6026042568  
+ trtp = Xanomeline_High_Dose " title=" time = 24  
+ SURV = 0.6026042568  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs108 " target="_BLANK" coords="118,124,119,124,119,126,118,126,"/>
+<Area shape="poly" alt=" time = 23  
+ SURV = 0.6169519772  
+ trtp = Xanomeline_High_Dose " title=" time = 23  
+ SURV = 0.6169519772  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs107 " target="_BLANK" coords="119,126,118,126,118,124,119,124,"/>
+<Area shape="poly" alt=" time = 23  
+ SURV = 0.6169519772  
+ trtp = Xanomeline_High_Dose " title=" time = 23  
+ SURV = 0.6169519772  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs107 " target="_BLANK" coords="115,120,117,120,117,122,115,122,"/>
+<Area shape="poly" alt=" time = 22  
+ SURV = 0.6312996976  
+ trtp = Xanomeline_High_Dose " title=" time = 22  
+ SURV = 0.6312996976  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs106 " target="_BLANK" coords="116,122,115,122,115,120,116,120,"/>
+<Area shape="poly" alt=" time = 22  
+ SURV = 0.6312996976  
+ trtp = Xanomeline_High_Dose " title=" time = 22  
+ SURV = 0.6312996976  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs106 " target="_BLANK" coords="113,116,114,116,114,118,113,118,"/>
+<Area shape="poly" alt=" time = 20  
+ SURV = 0.6453285798  
+ trtp = Xanomeline_High_Dose " title=" time = 20  
+ SURV = 0.6453285798  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs105 " target="_BLANK" coords="114,118,113,118,113,116,114,116,"/>
+<Area shape="poly" alt=" time = 20  
+ SURV = 0.6453285798  
+ trtp = Xanomeline_High_Dose " title=" time = 20  
+ SURV = 0.6453285798  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs105 " target="_BLANK" coords="108,112,112,112,112,114,108,114,"/>
+<Area shape="poly" alt=" time = 19  
+ SURV = 0.6733863441  
+ trtp = Xanomeline_High_Dose " title=" time = 19  
+ SURV = 0.6733863441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs104 " target="_BLANK" coords="109,114,108,114,108,112,109,112,"/>
+<Area shape="poly" alt=" time = 19  
+ SURV = 0.6733863441  
+ trtp = Xanomeline_High_Dose " title=" time = 19  
+ SURV = 0.6733863441  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs104 " target="_BLANK" coords="106,104,107,104,107,106,106,106,"/>
+<Area shape="poly" alt=" time = 18  
+ SURV = 0.6874152263  
+ trtp = Xanomeline_High_Dose " title=" time = 18  
+ SURV = 0.6874152263  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs103 " target="_BLANK" coords="107,106,106,106,106,104,107,104,"/>
+<Area shape="poly" alt=" time = 18  
+ SURV = 0.6874152263  
+ trtp = Xanomeline_High_Dose " title=" time = 18  
+ SURV = 0.6874152263  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs103 " target="_BLANK" coords="103,100,105,100,105,102,103,102,"/>
+<Area shape="poly" alt=" time = 16  
+ SURV = 0.7011635308  
+ trtp = Xanomeline_High_Dose " title=" time = 16  
+ SURV = 0.7011635308  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs102 " target="_BLANK" coords="104,102,103,102,103,100,104,100,"/>
+<Area shape="poly" alt=" time = 16  
+ SURV = 0.7011635308  
+ trtp = Xanomeline_High_Dose " title=" time = 16  
+ SURV = 0.7011635308  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs102 " target="_BLANK" coords="98,96,102,96,102,98,98,98,"/>
+<Area shape="poly" alt=" time = 15  
+ SURV = 0.7286601399  
+ trtp = Xanomeline_High_Dose " title=" time = 15  
+ SURV = 0.7286601399  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs101 " target="_BLANK" coords="99,98,98,98,98,96,99,96,"/>
+<Area shape="poly" alt=" time = 15  
+ SURV = 0.7286601399  
+ trtp = Xanomeline_High_Dose " title=" time = 15  
+ SURV = 0.7286601399  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs101 " target="_BLANK" coords="96,89,97,89,97,91,96,91,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.7421538462  
+ trtp = Xanomeline_High_Dose " title=" time = 14  
+ SURV = 0.7421538462  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs100 " target="_BLANK" coords="97,91,96,91,96,89,97,89,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.7421538462  
+ trtp = Xanomeline_High_Dose " title=" time = 14  
+ SURV = 0.7421538462  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs100 " target="_BLANK" coords="93,85,95,85,95,87,93,87,"/>
+<Area shape="poly" alt=" time = 13  
+ SURV = 0.7686593407  
+ trtp = Xanomeline_High_Dose " title=" time = 13  
+ SURV = 0.7686593407  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs099 " target="_BLANK" coords="94,87,93,87,93,85,94,85,"/>
+<Area shape="poly" alt=" time = 13  
+ SURV = 0.7686593407  
+ trtp = Xanomeline_High_Dose " title=" time = 13  
+ SURV = 0.7686593407  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs099 " target="_BLANK" coords="91,78,92,78,92,80,91,80,"/>
+<Area shape="poly" alt=" time = 11  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 11  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs098 " target="_BLANK" coords="92,80,91,80,91,78,92,78,"/>
+<Area shape="poly" alt=" time = 11  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 11  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs098 " target="_BLANK" coords="86,70,90,70,90,72,86,72,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 8  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs097 " target="_BLANK" coords="87,72,86,72,86,70,87,70,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 8  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs097 " target="_BLANK" coords="78,70,85,70,85,72,78,72,"/>
+<Area shape="poly" alt=" time = 7  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 7  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs096 " target="_BLANK" coords="79,72,78,72,78,70,79,70,"/>
+<Area shape="poly" alt=" time = 7  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " title=" time = 7  
+ SURV = 0.7951648352  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs096 " target="_BLANK" coords="76,70,77,70,77,72,76,72,"/>
+<Area shape="poly" alt=" time = 6  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " title=" time = 6  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs095 " target="_BLANK" coords="77,72,76,72,76,70,77,70,"/>
+<Area shape="poly" alt=" time = 6  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " title=" time = 6  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs095 " target="_BLANK" coords="73,67,75,67,75,69,73,69,"/>
+<Area shape="poly" alt=" time = 5  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " title=" time = 5  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs094 " target="_BLANK" coords="74,69,73,69,73,67,74,67,"/>
+<Area shape="poly" alt=" time = 5  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " title=" time = 5  
+ SURV = 0.8075892857  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs094 " target="_BLANK" coords="71,67,72,67,72,69,71,69,"/>
+<Area shape="poly" alt=" time = 4  
+ SURV = 0.8316964286  
+ trtp = Xanomeline_High_Dose " title=" time = 4  
+ SURV = 0.8316964286  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs093 " target="_BLANK" coords="72,69,71,69,71,67,72,67,"/>
+<Area shape="poly" alt=" time = 4  
+ SURV = 0.8316964286  
+ trtp = Xanomeline_High_Dose " title=" time = 4  
+ SURV = 0.8316964286  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs093 " target="_BLANK" coords="68,60,70,60,70,62,68,62,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.8558035714  
+ trtp = Xanomeline_High_Dose " title=" time = 3  
+ SURV = 0.8558035714  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs092 " target="_BLANK" coords="69,62,68,62,68,60,69,60,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.8558035714  
+ trtp = Xanomeline_High_Dose " title=" time = 3  
+ SURV = 0.8558035714  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs092 " target="_BLANK" coords="66,53,67,53,67,55,66,55,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.9040178571  
+ trtp = Xanomeline_High_Dose " title=" time = 2  
+ SURV = 0.9040178571  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs091 " target="_BLANK" coords="67,55,66,55,66,53,67,53,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.9040178571  
+ trtp = Xanomeline_High_Dose " title=" time = 2  
+ SURV = 0.9040178571  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs091 " target="_BLANK" coords="63,40,65,40,65,42,63,42,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.9642857143  
+ trtp = Xanomeline_High_Dose " title=" time = 1  
+ SURV = 0.9642857143  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs090 " target="_BLANK" coords="64,42,63,42,63,40,64,40,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.9642857143  
+ trtp = Xanomeline_High_Dose " title=" time = 1  
+ SURV = 0.9642857143  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs090 " target="_BLANK" coords="61,23,62,23,62,25,61,25,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_High_Dose " title=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs089 " target="_BLANK" coords="62,25,61,25,61,23,62,23,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_High_Dose " title=" time = 0  
+ SURV = 1  
+ trtp = Xanomeline_High_Dose " href="http://www.example.org/dc/fig1x01/ds/obs089 " target="_BLANK" coords="59,13,60,13,60,15,59,15,"/>
+<Area shape="poly" alt=" time = 197  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 197  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs055 " target="_BLANK" coords="551,119,550,119,550,117,551,117,"/>
+<Area shape="poly" alt=" time = 197  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 197  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs055 " target="_BLANK" coords="547,117,549,117,549,119,547,119,"/>
+<Area shape="poly" alt=" time = 196  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 196  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs054 " target="_BLANK" coords="548,119,547,119,547,117,548,117,"/>
+<Area shape="poly" alt=" time = 196  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 196  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs054 " target="_BLANK" coords="545,117,546,117,546,119,545,119,"/>
+<Area shape="poly" alt=" time = 195  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 195  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs053 " target="_BLANK" coords="546,119,545,119,545,117,546,117,"/>
+<Area shape="poly" alt=" time = 195  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 195  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs053 " target="_BLANK" coords="542,117,544,117,544,119,542,119,"/>
+<Area shape="poly" alt=" time = 191  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 191  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs052 " target="_BLANK" coords="543,119,542,119,542,117,543,117,"/>
+<Area shape="poly" alt=" time = 191  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 191  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs052 " target="_BLANK" coords="532,117,541,117,541,119,532,119,"/>
+<Area shape="poly" alt=" time = 189  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 189  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs051 " target="_BLANK" coords="533,119,532,119,532,117,533,117,"/>
+<Area shape="poly" alt=" time = 189  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 189  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs051 " target="_BLANK" coords="527,117,531,117,531,119,527,119,"/>
+<Area shape="poly" alt=" time = 188  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 188  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs050 " target="_BLANK" coords="528,119,527,119,527,117,528,117,"/>
+<Area shape="poly" alt=" time = 188  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 188  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs050 " target="_BLANK" coords="525,117,526,117,526,119,525,119,"/>
+<Area shape="poly" alt=" time = 185  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 185  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs049 " target="_BLANK" coords="526,119,525,119,525,117,526,117,"/>
+<Area shape="poly" alt=" time = 185  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 185  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs049 " target="_BLANK" coords="517,117,524,117,524,119,517,119,"/>
+<Area shape="poly" alt=" time = 184  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 184  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs048 " target="_BLANK" coords="518,119,517,119,517,117,518,117,"/>
+<Area shape="poly" alt=" time = 184  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 184  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs048 " target="_BLANK" coords="515,117,516,117,516,119,515,119,"/>
+<Area shape="poly" alt=" time = 183  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 183  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs047 " target="_BLANK" coords="516,119,515,119,515,117,516,117,"/>
+<Area shape="poly" alt=" time = 183  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 183  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs047 " target="_BLANK" coords="512,117,514,117,514,119,512,119,"/>
+<Area shape="poly" alt=" time = 182  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 182  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs046 " target="_BLANK" coords="513,119,512,119,512,117,513,117,"/>
+<Area shape="poly" alt=" time = 182  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 182  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs046 " target="_BLANK" coords="510,117,511,117,511,119,510,119,"/>
+<Area shape="poly" alt=" time = 181  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 181  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs045 " target="_BLANK" coords="511,119,510,119,510,117,511,117,"/>
+<Area shape="poly" alt=" time = 181  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 181  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs045 " target="_BLANK" coords="507,117,509,117,509,119,507,119,"/>
+<Area shape="poly" alt=" time = 177  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 177  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs044 " target="_BLANK" coords="508,119,507,119,507,117,508,117,"/>
+<Area shape="poly" alt=" time = 177  
+ SURV = 0.6261020839  
+ trtp = Placebo " title=" time = 177  
+ SURV = 0.6261020839  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs044 " target="_BLANK" coords="497,117,506,117,506,119,497,119,"/>
+<Area shape="poly" alt=" time = 175  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 175  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs043 " target="_BLANK" coords="498,119,497,119,497,117,498,117,"/>
+<Area shape="poly" alt=" time = 175  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 175  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs043 " target="_BLANK" coords="493,112,496,112,496,114,493,114,"/>
+<Area shape="poly" alt=" time = 162  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 162  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs042 " target="_BLANK" coords="494,114,493,114,493,112,494,112,"/>
+<Area shape="poly" alt=" time = 162  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 162  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs042 " target="_BLANK" coords="460,112,492,112,492,114,460,114,"/>
+<Area shape="poly" alt=" time = 148  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 148  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs041 " target="_BLANK" coords="461,114,460,114,460,112,461,112,"/>
+<Area shape="poly" alt=" time = 148  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 148  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs041 " target="_BLANK" coords="426,112,459,112,459,114,426,114,"/>
+<Area shape="poly" alt=" time = 142  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 142  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs040 " target="_BLANK" coords="427,114,426,114,426,112,427,112,"/>
+<Area shape="poly" alt=" time = 142  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 142  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs040 " target="_BLANK" coords="411,112,425,112,425,114,411,114,"/>
+<Area shape="poly" alt=" time = 139  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 139  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs039 " target="_BLANK" coords="412,114,411,114,411,112,412,112,"/>
+<Area shape="poly" alt=" time = 139  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 139  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs039 " target="_BLANK" coords="403,112,410,112,410,114,403,114,"/>
+<Area shape="poly" alt=" time = 135  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 135  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs038 " target="_BLANK" coords="404,114,403,114,403,112,404,112,"/>
+<Area shape="poly" alt=" time = 135  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 135  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs038 " target="_BLANK" coords="393,112,402,112,402,114,393,114,"/>
+<Area shape="poly" alt=" time = 116  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 116  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs037 " target="_BLANK" coords="394,114,393,114,393,112,394,112,"/>
+<Area shape="poly" alt=" time = 116  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 116  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs037 " target="_BLANK" coords="346,112,392,112,392,114,346,114,"/>
+<Area shape="poly" alt=" time = 110  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 110  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs036 " target="_BLANK" coords="347,114,346,114,346,112,347,112,"/>
+<Area shape="poly" alt=" time = 110  
+ SURV = 0.6434938084  
+ trtp = Placebo " title=" time = 110  
+ SURV = 0.6434938084  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs036 " target="_BLANK" coords="331,112,345,112,345,114,331,114,"/>
+<Area shape="poly" alt=" time = 97  
+ SURV = 0.6574828042  
+ trtp = Placebo " title=" time = 97  
+ SURV = 0.6574828042  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs035 " target="_BLANK" coords="332,114,331,114,331,112,332,112,"/>
+<Area shape="poly" alt=" time = 97  
+ SURV = 0.6574828042  
+ trtp = Placebo " title=" time = 97  
+ SURV = 0.6574828042  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs035 " target="_BLANK" coords="299,108,330,108,330,110,299,110,"/>
+<Area shape="poly" alt=" time = 90  
+ SURV = 0.6714718001  
+ trtp = Placebo " title=" time = 90  
+ SURV = 0.6714718001  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs034 " target="_BLANK" coords="300,110,299,110,299,108,300,108,"/>
+<Area shape="poly" alt=" time = 90  
+ SURV = 0.6714718001  
+ trtp = Placebo " title=" time = 90  
+ SURV = 0.6714718001  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs034 " target="_BLANK" coords="282,105,298,105,298,107,282,107,"/>
+<Area shape="poly" alt=" time = 83  
+ SURV = 0.6854607959  
+ trtp = Placebo " title=" time = 83  
+ SURV = 0.6854607959  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs033 " target="_BLANK" coords="283,107,282,107,282,105,283,105,"/>
+<Area shape="poly" alt=" time = 83  
+ SURV = 0.6854607959  
+ trtp = Placebo " title=" time = 83  
+ SURV = 0.6854607959  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs033 " target="_BLANK" coords="264,101,281,101,281,103,264,103,"/>
+<Area shape="poly" alt=" time = 79  
+ SURV = 0.6994497917  
+ trtp = Placebo " title=" time = 79  
+ SURV = 0.6994497917  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs032 " target="_BLANK" coords="265,103,264,103,264,101,265,101,"/>
+<Area shape="poly" alt=" time = 79  
+ SURV = 0.6994497917  
+ trtp = Placebo " title=" time = 79  
+ SURV = 0.6994497917  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs032 " target="_BLANK" coords="254,97,263,97,263,99,254,99,"/>
+<Area shape="poly" alt=" time = 77  
+ SURV = 0.7134387876  
+ trtp = Placebo " title=" time = 77  
+ SURV = 0.7134387876  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs031 " target="_BLANK" coords="255,99,254,99,254,97,255,97,"/>
+<Area shape="poly" alt=" time = 77  
+ SURV = 0.7134387876  
+ trtp = Placebo " title=" time = 77  
+ SURV = 0.7134387876  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs031 " target="_BLANK" coords="249,93,253,93,253,95,249,95,"/>
+<Area shape="poly" alt=" time = 70  
+ SURV = 0.7414167792  
+ trtp = Placebo " title=" time = 70  
+ SURV = 0.7414167792  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs030 " target="_BLANK" coords="250,95,249,95,249,93,250,93,"/>
+<Area shape="poly" alt=" time = 70  
+ SURV = 0.7414167792  
+ trtp = Placebo " title=" time = 70  
+ SURV = 0.7414167792  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs030 " target="_BLANK" coords="232,85,248,85,248,87,232,87,"/>
+<Area shape="poly" alt=" time = 67  
+ SURV = 0.7551467196  
+ trtp = Placebo " title=" time = 67  
+ SURV = 0.7551467196  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs029 " target="_BLANK" coords="233,87,232,87,232,85,233,85,"/>
+<Area shape="poly" alt=" time = 67  
+ SURV = 0.7551467196  
+ trtp = Placebo " title=" time = 67  
+ SURV = 0.7551467196  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs029 " target="_BLANK" coords="225,81,231,81,231,83,225,83,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.7551467196  
+ trtp = Placebo " title=" time = 64  
+ SURV = 0.7551467196  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs028 " target="_BLANK" coords="226,83,225,83,225,81,226,81,"/>
+<Area shape="poly" alt=" time = 64  
+ SURV = 0.7551467196  
+ trtp = Placebo " title=" time = 64  
+ SURV = 0.7551467196  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs028 " target="_BLANK" coords="217,81,224,81,224,83,217,83,"/>
+<Area shape="poly" alt=" time = 63  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 63  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs027 " target="_BLANK" coords="218,83,217,83,217,81,218,81,"/>
+<Area shape="poly" alt=" time = 63  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 63  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs027 " target="_BLANK" coords="215,78,216,78,216,80,215,80,"/>
+<Area shape="poly" alt=" time = 57  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 57  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs026 " target="_BLANK" coords="216,80,215,80,215,78,216,78,"/>
+<Area shape="poly" alt=" time = 57  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 57  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs026 " target="_BLANK" coords="200,78,214,78,214,80,200,80,"/>
+<Area shape="poly" alt=" time = 56  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 56  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs025 " target="_BLANK" coords="201,80,200,80,200,78,201,78,"/>
+<Area shape="poly" alt=" time = 56  
+ SURV = 0.7683949077  
+ trtp = Placebo " title=" time = 56  
+ SURV = 0.7683949077  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs025 " target="_BLANK" coords="197,78,199,78,199,80,197,80,"/>
+<Area shape="poly" alt=" time = 48  
+ SURV = 0.7812014895  
+ trtp = Placebo " title=" time = 48  
+ SURV = 0.7812014895  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs024 " target="_BLANK" coords="198,80,197,80,197,78,198,78,"/>
+<Area shape="poly" alt=" time = 48  
+ SURV = 0.7812014895  
+ trtp = Placebo " title=" time = 48  
+ SURV = 0.7812014895  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs024 " target="_BLANK" coords="177,74,196,74,196,76,177,76,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.7940080713  
+ trtp = Placebo " title=" time = 46  
+ SURV = 0.7940080713  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs023 " target="_BLANK" coords="178,76,177,76,177,74,178,74,"/>
+<Area shape="poly" alt=" time = 46  
+ SURV = 0.7940080713  
+ trtp = Placebo " title=" time = 46  
+ SURV = 0.7940080713  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs023 " target="_BLANK" coords="173,71,176,71,176,73,173,73,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.7940080713  
+ trtp = Placebo " title=" time = 43  
+ SURV = 0.7940080713  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs022 " target="_BLANK" coords="174,73,173,73,173,71,174,71,"/>
+<Area shape="poly" alt=" time = 43  
+ SURV = 0.7940080713  
+ trtp = Placebo " title=" time = 43  
+ SURV = 0.7940080713  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs022 " target="_BLANK" coords="165,71,172,71,172,73,165,73,"/>
+<Area shape="poly" alt=" time = 42  
+ SURV = 0.806611374  
+ trtp = Placebo " title=" time = 42  
+ SURV = 0.806611374  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs021 " target="_BLANK" coords="166,73,165,73,165,71,166,71,"/>
+<Area shape="poly" alt=" time = 42  
+ SURV = 0.806611374  
+ trtp = Placebo " title=" time = 42  
+ SURV = 0.806611374  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs021 " target="_BLANK" coords="163,67,164,67,164,69,163,69,"/>
+<Area shape="poly" alt=" time = 35  
+ SURV = 0.8192146767  
+ trtp = Placebo " title=" time = 35  
+ SURV = 0.8192146767  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs020 " target="_BLANK" coords="164,69,163,69,163,67,164,67,"/>
+<Area shape="poly" alt=" time = 35  
+ SURV = 0.8192146767  
+ trtp = Placebo " title=" time = 35  
+ SURV = 0.8192146767  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs020 " target="_BLANK" coords="145,64,162,64,162,66,145,66,"/>
+<Area shape="poly" alt=" time = 33  
+ SURV = 0.8318179794  
+ trtp = Placebo " title=" time = 33  
+ SURV = 0.8318179794  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs019 " target="_BLANK" coords="146,66,145,66,145,64,146,64,"/>
+<Area shape="poly" alt=" time = 33  
+ SURV = 0.8318179794  
+ trtp = Placebo " title=" time = 33  
+ SURV = 0.8318179794  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs019 " target="_BLANK" coords="140,60,144,60,144,62,140,62,"/>
+<Area shape="poly" alt=" time = 32  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 32  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs018 " target="_BLANK" coords="141,62,140,62,140,60,141,60,"/>
+<Area shape="poly" alt=" time = 32  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 32  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs018 " target="_BLANK" coords="138,57,139,57,139,59,138,59,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 31  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs017 " target="_BLANK" coords="139,59,138,59,138,57,139,57,"/>
+<Area shape="poly" alt=" time = 31  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 31  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs017 " target="_BLANK" coords="135,57,137,57,137,59,135,59,"/>
+<Area shape="poly" alt=" time = 28  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 28  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs016 " target="_BLANK" coords="136,59,135,59,135,57,136,57,"/>
+<Area shape="poly" alt=" time = 28  
+ SURV = 0.8444212821  
+ trtp = Placebo " title=" time = 28  
+ SURV = 0.8444212821  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs016 " target="_BLANK" coords="128,57,134,57,134,59,128,59,"/>
+<Area shape="poly" alt=" time = 27  
+ SURV = 0.8566592717  
+ trtp = Placebo " title=" time = 27  
+ SURV = 0.8566592717  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs015 " target="_BLANK" coords="129,59,128,59,128,57,129,57,"/>
+<Area shape="poly" alt=" time = 27  
+ SURV = 0.8566592717  
+ trtp = Placebo " title=" time = 27  
+ SURV = 0.8566592717  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs015 " target="_BLANK" coords="125,53,127,53,127,55,125,55,"/>
+<Area shape="poly" alt=" time = 26  
+ SURV = 0.8688972613  
+ trtp = Placebo " title=" time = 26  
+ SURV = 0.8688972613  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs014 " target="_BLANK" coords="126,55,125,55,125,53,126,53,"/>
+<Area shape="poly" alt=" time = 26  
+ SURV = 0.8688972613  
+ trtp = Placebo " title=" time = 26  
+ SURV = 0.8688972613  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs014 " target="_BLANK" coords="123,50,124,50,124,52,123,52,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.8811352509  
+ trtp = Placebo " title=" time = 24  
+ SURV = 0.8811352509  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs013 " target="_BLANK" coords="124,52,123,52,123,50,124,50,"/>
+<Area shape="poly" alt=" time = 24  
+ SURV = 0.8811352509  
+ trtp = Placebo " title=" time = 24  
+ SURV = 0.8811352509  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs013 " target="_BLANK" coords="118,46,122,46,122,48,118,48,"/>
+<Area shape="poly" alt=" time = 21  
+ SURV = 0.9056112301  
+ trtp = Placebo " title=" time = 21  
+ SURV = 0.9056112301  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs012 " target="_BLANK" coords="119,48,118,48,118,46,119,46,"/>
+<Area shape="poly" alt=" time = 21  
+ SURV = 0.9056112301  
+ trtp = Placebo " title=" time = 21  
+ SURV = 0.9056112301  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs012 " target="_BLANK" coords="110,40,117,40,117,42,110,42,"/>
+<Area shape="poly" alt=" time = 16  
+ SURV = 0.9178492197  
+ trtp = Placebo " title=" time = 16  
+ SURV = 0.9178492197  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs011 " target="_BLANK" coords="111,42,110,42,110,40,111,40,"/>
+<Area shape="poly" alt=" time = 16  
+ SURV = 0.9178492197  
+ trtp = Placebo " title=" time = 16  
+ SURV = 0.9178492197  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs011 " target="_BLANK" coords="98,36,110,36,110,38,98,38,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 14  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs010 " target="_BLANK" coords="99,38,98,38,98,36,99,36,"/>
+<Area shape="poly" alt=" time = 14  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 14  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs010 " target="_BLANK" coords="93,33,97,33,97,35,93,35,"/>
+<Area shape="poly" alt=" time = 13  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 13  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs009 " target="_BLANK" coords="94,35,93,35,93,33,94,33,"/>
+<Area shape="poly" alt=" time = 13  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 13  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs009 " target="_BLANK" coords="91,33,92,33,92,35,91,35,"/>
+<Area shape="poly" alt=" time = 12  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 12  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs008 " target="_BLANK" coords="92,35,91,35,91,33,92,33,"/>
+<Area shape="poly" alt=" time = 12  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 12  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs008 " target="_BLANK" coords="88,33,90,33,90,35,88,35,"/>
+<Area shape="poly" alt=" time = 9  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 9  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs007 " target="_BLANK" coords="89,35,88,35,88,33,89,33,"/>
+<Area shape="poly" alt=" time = 9  
+ SURV = 0.9300872093  
+ trtp = Placebo " title=" time = 9  
+ SURV = 0.9300872093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs007 " target="_BLANK" coords="81,33,87,33,87,35,81,35,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.9418604651  
+ trtp = Placebo " title=" time = 8  
+ SURV = 0.9418604651  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs006 " target="_BLANK" coords="82,35,81,35,81,33,82,33,"/>
+<Area shape="poly" alt=" time = 8  
+ SURV = 0.9418604651  
+ trtp = Placebo " title=" time = 8  
+ SURV = 0.9418604651  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs006 " target="_BLANK" coords="78,30,80,30,80,32,78,32,"/>
+<Area shape="poly" alt=" time = 7  
+ SURV = 0.9418604651  
+ trtp = Placebo " title=" time = 7  
+ SURV = 0.9418604651  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs005 " target="_BLANK" coords="79,32,78,32,78,30,79,30,"/>
+<Area shape="poly" alt=" time = 7  
+ SURV = 0.9418604651  
+ trtp = Placebo " title=" time = 7  
+ SURV = 0.9418604651  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs005 " target="_BLANK" coords="76,30,77,30,77,32,76,32,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.9534883721  
+ trtp = Placebo " title=" time = 3  
+ SURV = 0.9534883721  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs004 " target="_BLANK" coords="77,32,76,32,76,30,77,30,"/>
+<Area shape="poly" alt=" time = 3  
+ SURV = 0.9534883721  
+ trtp = Placebo " title=" time = 3  
+ SURV = 0.9534883721  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs004 " target="_BLANK" coords="66,26,75,26,75,28,66,28,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.976744186  
+ trtp = Placebo " title=" time = 2  
+ SURV = 0.976744186  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs003 " target="_BLANK" coords="67,28,66,28,66,26,67,26,"/>
+<Area shape="poly" alt=" time = 2  
+ SURV = 0.976744186  
+ trtp = Placebo " title=" time = 2  
+ SURV = 0.976744186  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs003 " target="_BLANK" coords="63,20,65,20,65,22,63,22,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.988372093  
+ trtp = Placebo " title=" time = 1  
+ SURV = 0.988372093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs002 " target="_BLANK" coords="64,22,63,22,63,20,64,20,"/>
+<Area shape="poly" alt=" time = 1  
+ SURV = 0.988372093  
+ trtp = Placebo " title=" time = 1  
+ SURV = 0.988372093  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs002 " target="_BLANK" coords="61,17,62,17,62,19,61,19,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Placebo " title=" time = 0  
+ SURV = 1  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs001 " target="_BLANK" coords="62,19,61,19,61,17,62,17,"/>
+<Area shape="poly" alt=" time = 0  
+ SURV = 1  
+ trtp = Placebo " title=" time = 0  
+ SURV = 1  
+ trtp = Placebo " href="http://www.example.org/dc/fig1x01/ds/obs001 " target="_BLANK" coords="59,13,60,13,60,15,59,15,"/>
+</map>
+<div  class="l">
+<img alt="The SGRender Procedure" src="fig1x01.png" style=" height: 346px; width: 576px;" border="0" usemap="#fig1x01" class="l">
+</div>
+</div>
+<br>
+<table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="l systemfooter" style=" color: #000000; font-family: 'Arial Unicode MS'; font-style: normal; font-weight: normal;">*Generated using PROC LIFETEST</td>
+</tr>
+</table><br>
+</div>
+</body>
+</html>

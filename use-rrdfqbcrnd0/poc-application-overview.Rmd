@@ -3,6 +3,10 @@ title: "poc-application-overview"
 author: "mja@statgroup.dk"
 date: "12 sep 2016"
 output:
+  word_document:
+    toc: yes
+  pdf_document:
+    toc: yes
   html_document:
     toc: yes
 ---
@@ -12,12 +16,13 @@ output:
 The mermaid package included in DiagrammeR is used for drawing the flowcharts.
 See (http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html), (http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
-```{r setup, include=FALSE}
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 # install.packages(c("DiagrammeR","DiagrammeRsvg"))
 library("DiagrammeR")
 library("DiagrammeRsvg")
 library("htmltools")
+library("webshot")
 ```
 
 Note: pdf generation does not work yet.
@@ -27,7 +32,7 @@ Note: pdf generation does not work yet.
 Here is a high level overview of the proof of concept package
 
 ```{r pocdiag, echo=FALSE}
-mermaid("
+diagramSpec="
 graph TB
 subgraph ADAM data
 A(ADAM)
@@ -68,7 +73,13 @@ subgraph Browser
 pC-->aA
 F-->aA[Application]
 end
-")
+"
+html_print(tagList(
+  tags$h1("Structure")
+  ,tags$pre(diagramSpec)
+  ,tags$div(class="mermaid",diagramSpec)
+  ,DiagrammeR()
+))
 ```
 
 Note: export_svg does not work for now.

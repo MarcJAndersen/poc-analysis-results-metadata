@@ -18,14 +18,12 @@ libname this ".";
 %let outxmlfile=check-CDISC-pilot-%upcase(&cubestemname).xml;
 %let tabletitle=%str(Table 14.5.1 from ARM RDF data cube);
 
-/*
 %include "include-jena-groovy.sas" /source;
 
 data this.&cubestemname.;
     set &cubestemname.;
 run;
 
-*/
 proc contents data=this.&cubestemname. varnum;
 run;
 
