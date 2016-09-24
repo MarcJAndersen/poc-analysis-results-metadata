@@ -1,0 +1,9 @@
+## @knitr ADSL-records-CONSTRUCT.rq  
+prefix vocab: <http://www.example.org/datasets/vocab/>  
+prefix ADSL: <http://www.example.org/datasets/ADSL/>  
+construct { ?s ?p ?o. }  
+where { ?s ?p ?o.  
+ values(?s) {  
+( <http://www.example.org/datasets/ADSL/01-718-1254> )  
+}  
+}

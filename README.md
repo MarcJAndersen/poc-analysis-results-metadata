@@ -60,7 +60,7 @@ The use of a java based webserver is investigated, e.g. tomcat or jetty.
 
 #### Using tomcat
 
-This is the very first attempt - and is most likely not the best approach.
+This is the very first attempt - and is most likely not the best approach, as it involves copy file into the Tomcat applicaiton webapps directory.
 
 install tomcat from (http://tomcat.apache.org/download-80.cgi).
 Unpack to same level as the other packages.
@@ -85,16 +85,29 @@ Install tomcat
      dnf install tomcat
 
 
-Copy application files from default tomcat webapps directory.
+Copy application files to  default tomcat webapps directory.
+The following applies if the webappdirectory is `/usr/share/tomcat/webapps`:
 
-     webappdir=/usr/share/tomcat/webapps/TT05
-     cd application-html
-	 # as root, or other with write access to the tomcat webapps directory
-     mkdir ${webappdir}
-     chgrp -R tomcat ${webappdir}
-     chown -R tomcat 
-     cp -rv . ${webappdir}
+Change to root, or other with write access to the tomcat webapps directory
 
+     pushd /usr/share/tomcat/webapps/
+     mkdir TT05
+     chgrp -R tomcat TT05
+     chown -R tomcat TT05
+	 # optional: make yourself member of the tomcat group
+	 usermod -G tomcat $my_login_name
+     popd
+
+From the `application_html` copy the files
+
+     WEBAPPDIR=/usr/share/tomcat/webapps/TT05
+     cp -rv . ${WEBAPPDIR}
+
+Start the tomcat service
+
+     systemctl start tomcat.service
+
+	
 
 ### Apache Jena
 
@@ -163,9 +176,11 @@ For github packages clone the packages into the base directory.
 
 The following shows the results of testing the setup on Windows 10 with windows "Command Prompt" (cmd.exe) and using the directory `I:\poc-test` as base directory.
 
+### Windows
+
 Change to apache Jena Fuseki directory, and start Fuseki.
 
-o    cd/d I:\poc-test\apache-jena-fuseki-2.0.0
+    cd/d I:\poc-test\apache-jena-fuseki-2.0.0
     fuseki-server.bat --config=../poc-analysis-results-metadata/res-ttl/poc-fuseki-config.ttl
 
 This should give the following output:
@@ -199,6 +214,13 @@ Open the file (sparql-rq/CDISC-code-list-C66731.rq). This SPARQL query returns t
 Click on the start triangle (right most in the query window). The results is shown as 4 rows below the query.
 
 ![Query result](apache-fuseki-4.PNG)
+
+### Linux
+
+The approach below is tested on Fedora 24.
+
+    cd res-ttl
+    (export FUSEKI_HOME=/opt/apache-jena-fuseki-2.0.0;  ${FUSEKI_HOME}/fuseki-server --config=poc-fuseki-config.ttl)
 
 # Building RDF datacubes
 
