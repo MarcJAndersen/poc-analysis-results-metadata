@@ -24,6 +24,9 @@ library(XML)
 library(rrdflibs)
 library(rrdf)
 
+install.packages(c("DiagrammeR","DiagrammeRsvg"))
+install.packages(c("webshot"))
+
 ## packrat::extlib("devtools")
 
 ## packrat::extlib("rJava")
