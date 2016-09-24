@@ -28,9 +28,11 @@ libname source xport ;
 %let tableheader=%str(Primary Endpoint Analysis: ADAS Cog (11) - Change from Baseline to Week 24 - LOCF);
 %let tableprogram=%lowcase(&tablename.).sas;
 
-filename expcsvda "..\res-csv\%upcase(&tablename.).csv";
+filename mprint "./%upcase(&tablename.)-sas-proc-tabulate.txt";
 
-filename expcsvco "..\res-csv\%upcase(&tablename.)-Components.csv";
+filename expcsvda "../res-csv/%upcase(&tablename.).csv";
+
+filename expcsvco "../res-csv/%upcase(&tablename.)-Components.csv";
 
 proc format;
     value $trt01p(notsorted)
@@ -167,6 +169,8 @@ Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\rtf_eff1.sas 21:05 Monday, June 26, 2
 %let tabulateOutputDs=work.tab_14_3x01;
 *%let orderfmt=$orderfmt;
 
+options mprint mfile;
+
 proc tabulate data = ADQSADAS missing;
     ods output table=&tabulateOutputDs.;
   where EFFFL='Y' and ANL01FL='Y' and AVISIT='Week 24' and PARAMCD="ACTOT";
@@ -178,6 +182,9 @@ proc tabulate data = ADQSADAS missing;
       base chg aval, trtpn*(n*f=F3.0 mean*f=f4.1 stddev*f=F5.2 median*f=f4.1 (min max)*f=F4.0);
 run;
 
+options nomfile nomprint;
+
+endsas;
 
 %include "include_tabulate_to_csv.sas" /source;
 
