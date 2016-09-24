@@ -8,6 +8,7 @@ output:
   pdf_document:
     toc: yes
   html_document:
+    highlight: pygments
     toc: yes
 ---
 
@@ -16,9 +17,12 @@ output:
 The mermaid package included in DiagrammeR is used for drawing the flowcharts.
 See (http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html), (http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
+To make Word and PDF version the packages `htmltools`, `webshot` must be installed. `webshot` also needs phamtonjs, that can be installed using `webshot::install_phantomjs()`.
+
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 # install.packages(c("DiagrammeR","DiagrammeRsvg"))
+# install.packages(c("webshot"))
 library("DiagrammeR")
 library("DiagrammeRsvg")
 library("htmltools")
@@ -34,8 +38,8 @@ Here is a high level overview of the proof of concept package
 ```{r pocdiag, echo=FALSE}
 diagramSpec="
 graph TB
-subgraph ADAM data
-A(ADAM)
+subgraph ADaM data
+A(ADaM)
 end
 
 subgraph Analysis results to RDF
@@ -45,9 +49,9 @@ C-->D[Convert to RDF datacube]
 D-->E(Analysis Resuls as .ttl)
 end
 
-subgraph Analysis results to RDF
+subgraph ADaM datasets results to RDF
 A-->gA[Convert using D2RQ as .ttl]
-gA-->aB(ADAM as .ttl)
+gA-->aB(ADaM as .ttl)
 end
 
 subgraph Servering RDF
@@ -74,14 +78,43 @@ pC-->aA
 F-->aA[Application]
 end
 "
-html_print(tagList(
-  tags$h1("Structure")
-  ,tags$pre(diagramSpec)
-  ,tags$div(class="mermaid",diagramSpec)
-  ,DiagrammeR()
-))
+## html_print(tagList(
+##  tags$h1("Structure")
+##  ,tags$pre(diagramSpec)
+##  ,tags$div(class="mermaid",diagramSpec)
+##  ,DiagrammeR()
+##))
+mermaid(diagramSpec)
+
 ```
 
-Note: export_svg does not work for now.
+# Example SPARQL query
+
+```{r results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css', tidy=FALSE}
+prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>   
+prefix qb: <http://purl.org/linked-data/cube#>   
+prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>   
+select (REPLACE( str(?ds), "^[^-]+-","") as ?shortname) ?dslabel ?underlyingData  
+where {    
+?ds  a qb:DataSet ;  
+        rdfs:label                    ?dslabel ;  
+        rrdfqbcrnd0:D2RQ-DataSetName  ?underlyingData .  
+}
+```    
+
+
+
+# Testing SPARQL highlighting
+
+Install highlight from (http://www.andre-simon.de/doku/highlight/en/highlight.php).
+To avoid linebreak add two space at the end of each line (not good work around).
+Another approach is to use http://pygments.org/languages/. Try searching for `pygments sparql`.
+
+```{r results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css', tidy=FALSE}
+select * where {
+  ?s ?p ?o
+  }
+```    
+
 
 
