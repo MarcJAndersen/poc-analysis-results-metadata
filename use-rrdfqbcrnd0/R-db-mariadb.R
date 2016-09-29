@@ -32,8 +32,17 @@ dbListTables(con)
 library(SASxport)
 adae.xpt.fn<-"../../phuse-scripts/data/adam/cdisc/adae.xpt"
 ## adae<- read.xport(adae.xpt.fn,include.formats=TRUE)
+lookup.xport(adae.xpt.fn)
 adae<- read.xport(adae.xpt.fn)
-dbWriteTable(con, "ADAE", adae[,c("USUBJID", "AESEQ", "ASTDT")], field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
+## Defining varchar for all, note the apply should only be done on the character variables - use lookup.xport(adae.xpt.fn) to identify
+## setNames( as.list(paste("varchar(",apply(adae,MARGIN=2,FUN=function(x){max(nchar(x))}),")")), names(adae))
+
+## dbWriteTable(con, "ADAE", adae[,c("USUBJID", "AESEQ", "ASTDT")], field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
+## dbWriteTable(con, "ADAE", adae, field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
+dbWriteTable(con, "ADAE", adae, overwrite = TRUE,row.names=FALSE)
+names(adae)
+
+# dbWriteTable(con, "ADAE", adae, field.type=list(USUBJID="VARCHAR(20)"), overwrite = TRUE,row.names=FALSE)
 res <- dbSendQuery(con, "ALTER TABLE ADAE ADD PRIMARY KEY(USUBJID, AESEQ)")
 dbListFields(con, "ADAE")
 
@@ -63,7 +72,7 @@ dbListFields(con, "ADAE")
 ## adaey2.return<-dbFetch(res)
 ## dbClearResult(res)
 
-
+dbDataType(RMySQL::MySQL(), adae$ASTDT[1])
 
 # Disconnect from the database
 dbDisconnect(con)
@@ -71,8 +80,8 @@ dbDisconnect(con)
 
 ## d2rq conversion
 
-targetdir<- "."
-cdiscpilot01mapttlFn<- file.path(tempdir(), "cdiscpilot01-map.ttl")
+targetDir<- "../res-ttl"
+cdiscpilot01mapttlFn<- file.path(tempdir(), "cdiscpilot01-d2rq-mapping.ttl")
 cdiscpilot01ttlFn<- file.path(tempdir(), "cdiscpilot01.ttl")
 
 d2rqbaseURL<- "http://www.example.org/datasets/"
