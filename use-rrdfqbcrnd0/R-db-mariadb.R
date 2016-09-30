@@ -37,13 +37,13 @@ adae<- read.xport(adae.xpt.fn)
 ## Defining varchar for all, note the apply should only be done on the character variables - use lookup.xport(adae.xpt.fn) to identify
 ## setNames( as.list(paste("varchar(",apply(adae,MARGIN=2,FUN=function(x){max(nchar(x))}),")")), names(adae))
 
-## dbWriteTable(con, "ADAE", adae[,c("USUBJID", "AESEQ", "ASTDT")], field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
+ dbWriteTable(con, "ADAE", adae[,c("USUBJID", "AESEQ", "ASTDT")], field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
 ## dbWriteTable(con, "ADAE", adae, field.type=list(USUBJID="VARCHAR(20)", AESEQ="int", ASTDT="date"),overwrite = TRUE,row.names=FALSE)
-dbWriteTable(con, "ADAE", adae, overwrite = TRUE,row.names=FALSE)
+## dbWriteTable(con, "ADAE", adae, overwrite = TRUE,row.names=FALSE)
 names(adae)
 
 # dbWriteTable(con, "ADAE", adae, field.type=list(USUBJID="VARCHAR(20)"), overwrite = TRUE,row.names=FALSE)
-res <- dbSendQuery(con, "ALTER TABLE ADAE ADD PRIMARY KEY(USUBJID, AESEQ)")
+res <- dbSendQuery(con, "ALTER TABLE ADAE ADD PRIMARY KEY(AESEQ, USUBJID)")
 dbListFields(con, "ADAE")
 
 ## Understand dates
@@ -91,16 +91,23 @@ d2rqjdbcstring<- '"jdbc:mariadb://localhost:3306/cdiscpilot01?user=root&password
 ## /opt/d2rq-0.8.1/generate-mapping reports Unknown argument: -b
 system(
     paste("/opt/d2rq-0.8.1/generate-mapping",
-             " -o ", cdiscpilot01mapttlFn,
+          " -o ", cdiscpilot01mapttlFn,
+          " --verbose",
              " ", d2rqjdbcstring, " "
           )
 )
 
+## change the generated mapping file:
+## @prefix map: <http://www.example.org/db/map/> .
+## @prefix db: <http://www.example.org/db/> .
+## @prefix vocab: <http://www.example.org/datasets/vocab/> .
+
+## must give -b to get the d2rqbaseURL defined
 
 system(paste("/opt/d2rq-0.8.1/dump-rdf",
              " -b ", d2rqbaseURL,
              " -o ", cdiscpilot01ttlFn,
-             " ", d2rqjdbcstring, " "
+             " ", cdiscpilot01mapttlFn, " "
              ))
  
 
