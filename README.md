@@ -18,7 +18,7 @@ Several tools are used, see below for list of tools/packages.
 
 Previous versions of Apache Jena and Apache Fuseki versions are
 choosen as they can be executed with Java 7. Never versions exists,
-but they require Java 8, which is not always available.
+but they require Java 8, which is not always available in all settings.
 
 # Setup
 
@@ -88,7 +88,7 @@ Install tomcat
 Copy application files to  default tomcat webapps directory.
 The following applies if the webappdirectory is `/usr/share/tomcat/webapps`:
 
-Change to root, or other with write access to the tomcat webapps directory
+Change to root, or other user with write access to the tomcat webapps directory
 
      pushd /usr/share/tomcat/webapps/
      mkdir TT05
@@ -195,6 +195,8 @@ This should give the following output:
     [2016-05-22 16:16:07] Config     INFO  Register: /arm
     [2016-05-22 16:16:08] Server     INFO  Started 2016/05/22 16:16:08 CEST on port 3030
 
+A windows CMD script to start Jena Fuseki is stored in (res-ttl/poc-fuseki-server.cmd).
+
 To test Fuseki, open a browser window and goto (http://localhost:3030/).
 The browser should show the main screen for Fuseki.
 
@@ -217,16 +219,16 @@ Click on the start triangle (right most in the query window). The results is sho
 
 ### Linux
 
-The approach below is tested on Fedora 24.
+The approach below is tested on Fedora 24 and assumes Apache Jena is stored in /opt/apache-jena-fuseki-2.0.0 .
 
     cd res-ttl
     (export FUSEKI_HOME=/opt/apache-jena-fuseki-2.0.0;  ${FUSEKI_HOME}/fuseki-server --config=poc-fuseki-config.ttl)
-
+A windows CMD script to start Jena Fuseki is stored in (res-ttl/poc-fuseki-server.sh).
 # Building RDF datacubes
 
-The directory (./build-scripts) provides scripts for building the RDF datacubes.
+The directory (./build-scripts) provides scripts for building the RDF data cubes.
 
-Each cube is build by one script. 
+Each script build one RDF data cube.
 
 # Demo
 
@@ -255,7 +257,7 @@ for the root directory, and click on
 
 ### Linux: how to start the servers
 
-to be added
+`z-poc-start-servers.sh` from a command prompt.
 
 ## Demo start
 
