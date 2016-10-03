@@ -1,0 +1,289 @@
+---
+title: "Transfer subset of ADAM dataset and columns to RDF using D2RQ"
+author: "mja@statgroup.dk"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    theme: united
+  pdf_document:
+    toc: true
+    highlight: zenburn
+  md_document:
+    variant: markdown_github
+---
+
+# Introduction
+This script creates RDF version of a subset of ADAM datasets and columns for the RDF data cubes.
+
+# Setup
+
+```{r}
+library("rrdf")
+library("SASxport")
+library("RMySQL")
+```
+
+
+```{r}
+targetDir<- "../res-ttl"
+ttlDir<- "../res-ttl"
+cdiscpilot01mapttlFn<- "cdiscpilot01-d2rq-mapping.ttl"
+cdiscpilot01mapttlPath<- file.path(tempdir(), cdiscpilot01mapttlFn)
+cdiscpilot01ttlFn<- "cdiscpilot01.ttl"
+cdiscpilot01ttlPath<- file.path(tempdir(), cdiscpilot01ttlFn)
+rqDir<- "../sparql-rq"
+ADAMxptdir<-"../../phuse-scripts/data/adam/cdisc"
+```
+
+# Show parameters
+```{r, eval=TRUE}
+param.df<- data.frame(filepathname=apply(array(c(targetDir, ttlDir, rqDir, cdiscpilot01mapttlPath, cdiscpilot01ttlPath, ADAMxptdir)),1,normalizePath,mustWork = FALSE) )
+rownames(param.df)<-c("Target diretory", ".ttl files for data cubes", "SPARQL scripts dir", "D2RQ mapping file for cdiscpilot01 data", "D2RQ file for cdiscpilot01 data", "Directory with ADAM xpt files" )
+knitr::kable(param.df)
+```
+
+The following use of passwords in plain text is not recommeded.
+
+MariaCB and R documentation Doc suggest to connect to my-db as defined in ~/.my.cnf.
+See (https://github.com/rstats-db/RMySQL), (https://mariadb.com/kb/en/mariadb/configuring-mariadb-with-mycnf/), (http://stackoverflow.com/questions/2482234/how-to-know-mysql-my-cnf-location).
+
+Before executing the commands below, MariaDB must be started. For MariaDB on fedora see (https://fedoraproject.org/wiki/MariaDB):
+
+    systemctl start mariadb
+
+## Identifying datasets and columns used in RDF data cubes
+
+```{r, eval=TRUE}
+store <- new.rdf(ontology=FALSE)  # Initialize
+ttlFiles<- list.files( ttlDir, pattern="(TAB|FIG).+.ttl$")
+for (dataCubeFile in ttlFiles) {
+    dataCubeFn<- file.path(ttlDir, dataCubeFile )
+    cat("Loading cube from ", dataCubeFn, "\n")
+    tmp<- load.rdf(dataCubeFn, format="TURTLE", appendTo= store)
+}
+
+```
+
+```{r, eval=TRUE}
+rqFile<- file.path( rqDir, "variables-used-in-data-cubes.rq")
+rq<- paste0(readLines(rqFile),collapse="\n")
+res<- data.frame(sparql.rdf(store, rq),stringsAsFactors=FALSE)
+print(nrow(res))
+if (nrow(res)>0) {
+    print(knitr::kable(res))
+}
+```
+
+```{r, eval=TRUE}
+parts1 <- data.frame(t(apply( res, 1, function(x) {
+    m <- regexec("vocab/([^_]+)_([^_]+)$", x)
+    (regmatches( x, m))[[1]][c(2,3)]
+})), stringsAsFactors=FALSE)
+colnames(parts1)<- c("dataset", "column")
+
+
+```
+
+Next step is to add the variables for the primary key. This is
+currently done by hardcoding.  It can be automated by extracting the
+key fields from `define-xml`. However, manual tweaking or complex
+programming is needed, as some of the specified key variables have
+missing values, which is not possible for variables being part of a
+primary key in mariadb
+(https://mariadb.com/kb/en/mariadb/primary-keys-with-nullable-columns/).
+
+```{r, eval=TRUE}
+adamkeys<- data.frame(
+    matrix(c(
+               "ADSL", "USUBJID",
+               "ADAE", "USUBJID",
+               "ADAE", "AESEQ",
+               "ADQSADAS", "USUBJID",
+               "ADQSADAS", "PARAMCD",
+               "ADQSADAS", "AVISIT",
+               "ADQSADAS", "ADT"
+           ), ncol=2, nrow=7, byrow=TRUE )
+  , stringsAsFactors=FALSE)
+colnames(adamkeys)<- c("dataset", "column")
+adamkeys
+parts2<- rbind( parts1, adamkeys )
+               
+```
+
+Finally, show the variables.
+```{r, eval=TRUE}
+parts3<- parts2[order(parts2[,1],parts2[,2]),]
+parts<- parts3[!duplicated(parts3),]
+row.names(parts)<- paste(seq(nrow(parts)))
+knitr::kable(parts)
+```
+
+## Converting .xpt files to mariadb
+
+The R to mariadb conversion needs to specify data types, specifically, the length of strings and date and data time objects.
+This is done variable by variable. The approach is easier to debug than doing it per dataset (using `apply`).
+
+```{r, eval=TRUE}
+con <- dbConnect(RMySQL::MySQL(), username="root", password="mariadb")
+res <- dbSendQuery(con, paste( "DROP  DATABASE IF EXISTS cdiscpilot01;"))
+res <- dbSendQuery(con, paste( "CREATE DATABASE cdiscpilot01;"))
+dbDisconnect(con)
+con <- dbConnect(RMySQL::MySQL(), username="root", password="mariadb", dbname="cdiscpilot01" )
+dbListTables(con)
+dsname<- "."
+i<- 1
+for (i in seq(nrow(parts))) {
+    if (parts$dataset[i] != dsname ) {
+        dsname<- parts$dataset[i]
+        xpt.fn<- file.path( ADAMxptdir, paste0(tolower(dsname), ".xpt"))
+        cat("Reading ", xpt.fn, "\n")
+        adds.full<- NULL
+        adds.xfer<- NULL
+        adds.full<- SASxport::read.xport(xpt.fn, as.is=TRUE)
+        adds.def<- lookup.xport(xpt.fn)[[dsname]]
+##        adds.xfer<- adds.full
+        adds.xfer.columns<- parts[parts$dataset==dsname,"column"]
+        field.type.def<- list(  )
+        ii<- 1
+  ##      adds.xfer<- adds.full[,adds.def$name %in% adds.xfer.columns]
+      adds.xfer<- adds.full[,adds.def$name %in% adds.xfer.columns]
+    ## str(adds.full)
+    str(adds.xfer)
+    }
+    vn<- parts$column[i]
+    if (!any(adds.def$name==vn)) {
+        cat("--> ", vn, " not found in ", dsname, "\n")
+    } else {
+        vtype<- adds.def$type[adds.def$name==vn]
+        vformat<- adds.def$format[adds.def$name==vn]
+        cat(vn, vtype, vformat, "\n")
+        if (is.character(vtype) && is.character(vformat) ) {
+            if ( vtype=="numeric" ) {
+                if (vformat=="DATE") {
+                    adds.xfer[,vn]<- as.Date(adds.xfer[,vn])
+                    field.type.def[[vn]]<- "date"
+                } else  { ## add more, consider using switch
+                    field.type.def[[vn]]<- "double"                    
+                }
+            } else if ( vtype=="character" ) {
+                vlen<- max(nchar(adds.xfer[,vn]))
+                field.type.def[[vn]]<- paste0("varchar","(", vlen, ")")
+            } else {
+                cat("--> ", "Unhandled: ", vn, vtype, vformat, "\n")
+            }
+        }
+    }
+    if (i == nrow(parts) | i < nrow(parts) & parts$dataset[i+1] != dsname ) {
+        dbWriteTable(con, dsname, adds.xfer, field.type=field.type.def, overwrite=TRUE, row.names=FALSE)
+        sqlcmd<- paste0("ALTER TABLE ", dsname,
+                        " ADD PRIMARY KEY", "(",
+                        paste0(adamkeys[adamkeys$dataset==dsname,"column"],collapse=", "),
+                        ")",
+                        collapse=" " )
+        cat("sql cmd: ", sqlcmd, "\n")        
+       res <- dbSendQuery(con, sqlcmd )
+        cat("Done\n")
+    }
+}          
+dbDisconnect(con)
+
+```
+
+# Use D2RQ to transfer to .ttl files
+
+d2rq is used to convert the database.
+First a mapping file is generated and customized.
+The `d2rq:classDefinitionLabel` could also be changed to correspond to the SAS label.
+
+```{r, eval=TRUE}
+d2rqbaseURL<- "http://www.example.org/datasets/"
+d2rqjdbcstring<- '"jdbc:mariadb://localhost:3306/cdiscpilot01?user=root&password=mariadb"'
+## -b option does not work with -l
+## /opt/d2rq-0.8.1/generate-mapping reports Unknown argument: -b
+system(
+    paste("/opt/d2rq-0.8.1/generate-mapping",
+          " -o ", cdiscpilot01mapttlPath,
+          " --verbose",
+             " ", d2rqjdbcstring, " "
+          )
+)
+
+d2rqmap<- readLines(cdiscpilot01mapttlPath)
+if (d2rqmap[1]== "@prefix map: <#> .") {
+    d2rqmap[1]<- "@prefix map: <http://www.example.org/db/map/> ."
+}
+if (d2rqmap[2]== "@prefix db: <> .") {
+    d2rqmap[2]<- "@prefix db: <http://www.example.org/db/> ."
+}    
+if (d2rqmap[3]== "@prefix vocab: <vocab/> .") {
+    d2rqmap[3]<- "@prefix vocab: <http://www.example.org/datasets/vocab/> ."
+}
+fp<- file.path(targetDir, cdiscpilot01mapttlFn)
+writeLines(d2rqmap, fp )
+cat( "File ", fp, " created", "\n")
+
+```
+
+
+```{r, eval=TRUE}
+system(paste("/opt/d2rq-0.8.1/dump-rdf",
+             " -b ", d2rqbaseURL,
+             " --verbose",
+             " -o ", cdiscpilot01ttlPath,
+             " ", cdiscpilot01mapttlPath, " "
+             ))
+if (file.copy(cdiscpilot01ttlPath, targetDir, overwrite = TRUE)) {
+    cat( "File ", cdiscpilot01ttlPath, " copied to directory ", targetDir, "\n")
+}
+
+```
+
+
+# Configuration of mariadb
+
+
+## If RMySQL gives an errormessage
+
+After installation of mariadb
+
+    install.packages("RMySQL")
+
+gives error
+
+    libmariadb.so.2: cannot open shared object file: No such file or directory
+
+but the files exists as 
+
+    /usr/lib64/mariadb/libmariadb.so.2
+
+and the prerequisites in https://cran.r-project.org/web/packages/RMySQL/README.html are met.
+
+My solution was to modify '/etc/ld.so.conf.d/mariadb-x86_64.conf' by adding a reference to
+
+    /usr/lib64/mariadb
+
+
+## Installing MariaDB on fedora 
+
+Follow the instructions at (https://fedoraproject.org/wiki/MariaDB).
+
+For my setup I start mariadb for each session by
+
+    systemctl start mariadb
+
+Alternatively, could be to have mariadb running as service.
+
+## D2RQ jdbc and mariadb 
+
+For d2rq jdbc - get mariadb-java-client from (). I used
+`mariadb-java-client-1.5.2.jar` and store it in
+`/opt/d2rq-0.8.1/lib/db-drivers/`.
+
+# Final stuff
+
+Here is how to make the PDF file
+```{r, eval=FALSE}
+rmarkdown::render('ADAM-ds-as-ttl-using-d2rq.Rmd', c("html_document"), clean=TRUE)
+```
+

@@ -54,14 +54,12 @@ QUIT;
   def:DomainKeys >
     */
 
-data _null_;
-    
-    %LoadXPT(dsnprefix=adsl,keylist=%str(USUBJID));
+%LoadXPT(dsnprefix=adsl,keylist=%str(USUBJID));
 
-    /* keylist=%str(USUBJID, AETERM, ASTDT, AESEQ) */
-    %LoadXPT(dsnprefix=adae,keylist=%str(USUBJID, AESEQ) );
+/* keylist=%str(USUBJID, AETERM, ASTDT, AESEQ) */
+%LoadXPT(dsnprefix=adae,keylist=%str(USUBJID, AESEQ) );
 
-    /* keylist=%str(USUBJID, PARAMCD, AVISIT, ADT) */
+/* keylist=%str(USUBJID, PARAMCD, AVISIT, ADT) */
     
 %LoadXPT(dsnprefix=adqsadas,keylist=%str(USUBJID, PARAMCD, AVISIT, ADT) );
 
