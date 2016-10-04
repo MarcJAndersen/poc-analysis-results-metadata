@@ -180,7 +180,7 @@ data observations;
         select;
         when (upcase(mn) in ("N", "COUNT")) do;
             procedure="count"; 
-            factor="quantify"; /* could take the same as for PCTN */
+            factor="quantity"; /* could take the same as for PCTN */
             denominator=" ";
             measure=results(i);
             end;
