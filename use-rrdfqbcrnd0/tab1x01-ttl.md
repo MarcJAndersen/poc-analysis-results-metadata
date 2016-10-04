@@ -1,7 +1,7 @@
 ---
 title: "Create TAB1X01 as RDF data cube"
 author: "mja@statgroup.dk"
-date: "2016-09-03"
+date: "2016-10-04"
 output:
   html_document:
     toc: true
@@ -127,7 +127,7 @@ cat("TAB1X01 cube stored as ", normalizePath(tab1x01.cube.fn), "\n")
 ```
 
 ```
-## TAB1X01 cube stored as  C:\Users\ma\AppData\Local\Temp\RtmpqS4EMQ\DC-TAB1X01-R-V-0-0-0.ttl
+## TAB1X01 cube stored as  C:\Users\ma\AppData\Local\Temp\Rtmp2Jx0Mb\DC-TAB1X01-R-V-0-0-0.ttl
 ```
 # Copy cube to destination directory
 

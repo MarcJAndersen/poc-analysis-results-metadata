@@ -23,6 +23,7 @@ library(xlsx)
 library(XML)
 library(rrdflibs)
 library(rrdf)
+library(rmarkdown)
 
 install.packages(c("DiagrammeR","DiagrammeRsvg"))
 install.packages(c("webshot"))

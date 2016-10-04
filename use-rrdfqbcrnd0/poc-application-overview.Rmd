@@ -111,10 +111,14 @@ To avoid linebreak add two space at the end of each line (not good work around).
 Another approach is to use http://pygments.org/languages/. Try searching for `pygments sparql`.
 
 ```{r results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css', tidy=FALSE}
-select * where {
-  ?s ?p ?o
-  }
+select * where {   
+  ?s ?p ?o   
+  }   
 ```    
+# Final stuff
 
-
-
+Here is how to make the PDF file
+```{r, eval=FALSE}
+## rmarkdown::render('poc-application-overview.Rmd', c("pdf_document"), clean=TRUE)
+rmarkdown::render('poc-application-overview.Rmd', c("word_document"), clean=TRUE)
+```

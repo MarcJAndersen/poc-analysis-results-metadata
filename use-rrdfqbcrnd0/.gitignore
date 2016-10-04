@@ -4,5 +4,4 @@ packrat/src
 #*
 packrat/packrat.lock
 packrat/init.R
-packrat/packrat.lock
 packrat/packrat.opts

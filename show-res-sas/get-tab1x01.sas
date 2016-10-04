@@ -6,19 +6,30 @@
 ** Status: ok    
 \*------------------------------------------------------------------------*/
 
+options linesize=200;
+
 options mprint nocenter;
 
-%include "../../SAS-SPARQLwrapper/sparqlquery.sas";
+libname this ".";
 
-/* %let sparqlendpoint=http://192.168.1.115:3030/arm/query; */
-%let sparqlendpoint=http://localhost:3030/arm/query;
+%let cubestemname=tab1x01;
+%let cubettlfile=../res-ttl/CDISC-pilot-%upcase(&cubestemname).ttl;
+%let rqfile=../sparql-rq/&cubestemname..rq;
+%let outxmlfile=check-CDISC-pilot-%upcase(&cubestemname).xml;
+%let tabletitle=%str(Table 14.1.1 from ARM RDF data cube);
 
-%sparqlquery(
-    endpoint=&sparqlendpoint.,
-    queryfile=%str(../sparql-rq/tab1x01.rq),
-    resultdsn=tab1x01,
-    sparqlquerysxlemap=%str(../../SAS-SPARQLwrapper/sparqlquery-sxlemap.map)
-);
+%include "include-jena-groovy.sas" /source;
+
+data this.&cubestemname.;
+    set &cubestemname.;
+run;
+
+proc contents data=this.&cubestemname. varnum;
+run;
+
+data &cubestemname.;
+    set this.&cubestemname.;
+run;
 
 proc print data=tab1x01 width=min;
     var ittfl col1z1 col1z2 col2z1 col2z2 col3z1 col3z2  col4z1 col4z2;
