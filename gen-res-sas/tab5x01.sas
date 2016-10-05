@@ -122,18 +122,3 @@ run;
 
 %include "include_tabulate_to_csv.sas" /source;
 
-proc sort data=observations;
-    by &classvarlist. procedure factor denominator;
-run;
-
-data _null_;
-    set observations;
-    by &classvarlist. procedure factor denominator;
-    if not (first.denominator and last.denominator) then do;
-        putlog _n_= &classvarlist. procedure= factor= denominator= measure=;
-        if last.denominator then do;
-        abort cancel;
-        end;
-        end;
-run;
-
