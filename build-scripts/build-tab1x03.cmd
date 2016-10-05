@@ -88,5 +88,5 @@ popd
 goto :eof
 
 :alldone
-dir %targetfilecsv1% %targetfilecsv2% %targetfilettl% %targetfilehtml%
+REM dir %targetfilecsv1% %targetfilecsv2% %targetfilettl% %targetfilehtml%
 for %%f in (%targetfilecsv1% %targetfilecsv2% %targetfilettl% %targetfilehtml%) do echo %~ftzaI
