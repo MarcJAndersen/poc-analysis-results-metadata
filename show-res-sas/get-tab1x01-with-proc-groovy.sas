@@ -59,7 +59,7 @@ data tab1x01_pres;
     format col1z2 col2z2 col3z2 col4z2 pctfmt.;
 run;
 
-ods html file="tab1x01.html"(title= "Table 14.1.1 from ARM RDF data cube")
+ods html file="tab1x01.html"(title= "&tabletitle.")
     style=minimal;
 * ods pdf file="tab1x01.pdf" style=minimal;
 * ods tagsets.rtf file="tab1x01.rtf";
