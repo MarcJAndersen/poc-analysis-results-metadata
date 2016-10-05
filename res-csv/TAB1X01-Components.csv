@@ -1,10 +1,7 @@
 compType,compName,codeType,nciDomainValue,compLabel,Comment
 dimension,trt01p,DATA,,Planned Treatment for Period 01,
-dimension,ittfl,DATA,,Intent-To-Treat (ITT),
-dimension,saffl,DATA,,Safety,
-dimension,efffl,DATA,,Efficacy,
-dimension,comp24fl,DATA,,Complete Week 24,
-dimension,disconfl,DATA,,Complete Study,
+dimension,comp24fl,DATA,,Completion Status:,
+dimension,dcreascd,DATA,,Reason for Early Termination (prior to Week 24):,
 dimension,procedure,DATA,,Statistical Procedure,
 dimension,factor,DATA,,"Type of procedure (quantity, proportion...)",
 attribute,unit,,,Unit of measure,
