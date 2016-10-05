@@ -38,9 +38,6 @@ proc format;
         "Xanomeline Low Dose"="Xanomeline Low Dose"
         "Xanomeline High Dose"="Xanomeline High Dose"
         ;
-
-        
-
 run;
         
 data work.adsl ;
@@ -48,11 +45,10 @@ data work.adsl ;
     format trt01p $trt01p.;
 run;
 
-
 %let tabulateOutputDs=work.&tablename.;
 
 proc tabulate data=adsl missing;
-    ods output table=&tabulateOutputDs.X;
+    ods output table=&tabulateOutputDs.All;
     class siteid sitegr1;
     class ITTFL EFFFL COMP24FL;
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
@@ -62,25 +58,10 @@ proc tabulate data=adsl missing;
 run;
 
 data &tabulateOutputDs.;
-    set &tabulateOutputDs.X;
+    set &tabulateOutputDs.All;
     where ITTFL ne "N" and  EFFFL ne "N" and COMP24FL ne "N";
 run;
 
 
 %include "include_tabulate_to_csv.sas" /source;
-
-proc sort data=observations;
-    by &classvarlist. procedure factor denominator;
-run;
-
-data _null_;
-    set observations;
-    by &classvarlist. procedure factor denominator;
-    if not (first.denominator and last.denominator) then do;
-        putlog _n_= &classvarlist. procedure= factor= denominator= measure=;
-        if last.denominator then do;
-        abort cancel;
-        end;
-        end;
-run;
 

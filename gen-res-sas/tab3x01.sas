@@ -3,7 +3,7 @@ Display               : Table 14-3.01 Primary Endpoint Analysis: ADAS Cog (11) -
 AnalysisResult        :
 Analysis Parameter(s) :
 Analysis Variable(s)  : 
- eason                : pre-specified in protocol
+Reason                : pre-specified in protocol
 Data References (incl. Selection Criteria): A
 Documentation         : 
 Programming Statements:
@@ -169,7 +169,6 @@ Source: C:\cdisc_pilot\PROGRAMS\DRAFT\TFLs\rtf_eff1.sas 21:05 Monday, June 26, 2
 %let tabulateOutputDs=work.tab_14_3x01;
 *%let orderfmt=$orderfmt;
 
-options mprint mfile;
 
 proc tabulate data = ADQSADAS missing;
     ods output table=&tabulateOutputDs.;
@@ -181,10 +180,6 @@ proc tabulate data = ADQSADAS missing;
       EFFFL*ANL01FL*AVISIT*PARAMCD,
       base chg aval, trtpn*(n*f=F3.0 mean*f=f4.1 stddev*f=F5.2 median*f=f4.1 (min max)*f=F4.0);
 run;
-
-options nomfile nomprint;
-
-endsas;
 
 %include "include_tabulate_to_csv.sas" /source;
 

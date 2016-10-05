@@ -1,5 +1,5 @@
 /*
-Display               : Table 14-1.02 Table 14-1.02 - Summary of End of Study Data
+Display               : Table 14-1.02 - Summary of End of Study Data
 AnalysisResult        :
 Analysis Parameter(s) :
 Analysis Variable(s)  : ADSL.COMP24FL, ADSL.DCREASCD
@@ -18,10 +18,10 @@ proc freq data=adsl;
 run;
 
 Notes:
-MJA 2016-07-20     The CDISC report output 14-1.02 provides p-values. The code below attempts to reproduce the p-values.
+MJA 2016-07-20     The CDISC report output 14-1.02 provides p-values.
+    The code below shows how it can be done.
     
 */
-
 
 options linesize=200 nocenter;
 options pagesize=80;
@@ -34,9 +34,15 @@ options msglevel=i;
 filename source "../../phuse-scripts/data/adam/cdisc/adsl.xpt"; 
 libname source xport ;
 
-filename expcsvda "..\res-csv\TAB1X02.csv";
+%let dssource=https://github.com/phuse-org/phuse-scripts/raw/master/data/adam/cdisc/adsl.xpt;
+%let tablename=TAB1X02;
+%let tablelabel=%str(Table 14-1.02 - Summary of End of Study Data);
+%let tableheader=%str(Summary of End of Study Data);
+%let tableprogram=%lowcase(&tablename.).sas;
 
-filename expcsvco "..\res-csv\TAB1X02-Components.csv";
+filename expcsvda "..\res-csv\%upcase(&tablename.).csv";
+
+filename expcsvco "..\res-csv\%upcase(&tablename.)-Components.csv";
 
 proc format;
     value $trt01p(notsorted)
@@ -96,35 +102,41 @@ data work.adsl ;
     format comp24fl $comp24fl.;
     format DCREASCD $DCREASCD.;
     label DCREASCD="Reason for Early Termination (prior to Week 24):";
+run;
 
+%MACRO FindPvalues;
+
+    title "Ignore this: this is only for obtaining p-values - they are not used for the rdf data cube";
+
+    data adslx;
+        set adsl;
+        
     /* Trying to obtain p-values from report */
     length loefl aefl $1;
     LOEFL= ifc(dcreascd="Lack of Efficacy","Y","N");
     AEFL= ifc(dcreascd="Adverse Event","Y","N");
-run;
-
-%MACRO FindPvalues;
-title "Ignore this: this is only for obtaining p-values - they are not used for the rdf data cube";
-proc freq data=adsl;
+    run;
+    
+proc freq data=adslx;
   table COMP24FL*TRT01P/chisq fisher exact;
 run;
 
 title "Ignore this: this is only for obtaining p-values - they are not used for the rdf data cube";
 title2 "Overall test for difference - however, does not match output";
-proc freq data=adsl;
+proc freq data=adslx;
   where COMP24FL="N";
   table DCREASCD* TRT01P/ chisq fisher exact;
 run;
 
 title2 "Test for Lack of Efficacy and Adverse events separately - does not give a result comparable to the output";
-proc freq data=adsl;
+proc freq data=adslx;
   where COMP24FL="N";
   table LOEFL* TRT01P/ chisq fisher exact;
   table AEFL* TRT01P/ chisq fisher exact;
 run;
 title;
 
-proc tabulate data=adsl missing;
+proc tabulate data=adslx missing;
 title "Ignore this: trying proc tabulate";
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
     class comp24fl / preloadfmt order=data;
@@ -144,9 +156,10 @@ title;
    desired results.
     */
 
+%let tabulateOutputDs=work.tab_&tablename.;
 
 proc tabulate data=adsl missing;
-    ods output table=work.tab_14_1x02_tabu;
+    ods output table=&tabulateOutputDs._all;
     class trt01p / preloadfmt ORDER=DATA; /* trt01p not trt01pn */
     class comp24fl / preloadfmt order=data;
     class DCREASCD / preloadfmt order=data;
@@ -154,16 +167,10 @@ proc tabulate data=adsl missing;
         (trt01p all)*(N*f=f3.0 colpctn*f=f3.0) / printmiss;
 run;
 
-proc contents data=work.tab_14_1x02_tabu varnum;
-run;
-
-proc print data=work.tab_14_1x02_tabu width=min;
-run;
-
 /* Reduce the output to only what is required MJA 2016-07-20  */
 
-data work.tab_14_1x02;
-    set work.tab_14_1x02_tabu;
+data &tabulateOutputDs.;
+    set &tabulateOutputDs._all;
 /*    if missing(dcreascd) or vvalue(comp24fl)="Early Termination (prior to Week 24)"; */
     if missing(dcreascd) or comp24fl="N"; 
 
@@ -171,242 +178,6 @@ data work.tab_14_1x02;
         N=0;    
         end;
     
-
-    
 run;
 
-proc print data=work.tab_14_1x02 width=min;
-run;
-
-
-/*------------------------------------------------------------------------*\
-** Program : report_to_rrdf.sas
-** Purpose : Transfer dataset report to RRDFQBCRND excel workbook format
-\*------------------------------------------------------------------------*/
-
-
-data forexport;
-    length trt01p comp24fl DCREASCD $200;
-    set work.tab_14_1x02;
-    keep comp24fl dcreascd;
-    keep trt01p;
-    keep procedure factor;
-    length procedure factor $50;
-    keep unit denominator;
-    length unit denominator $50;
-    unit=" ";
-
-    keep measure;
-
-    array adim(*) trt01p comp24fl dcreascd;
-
-    do i=1 to dim(adim);
-        select;
-        when (missing(adim(i))) do;
-        adim(i)="_ALL_";
-        end;
-        otherwise do; 
-          /* no change */
-        end;
-        end;
-    end;
-
-
-    factor="quantity";
-    procedure="count";
-    denominator=" ";
-    measure=N;
-    output;
-
-    if substr(_type_,1,1)="1" then do;
-    factor="proportion";
-    procedure="percent";
-    /* assuming only one variable as denominator, excluding the first position representing TRT01P  */
-    denominator=vname(adim(index(substr(_type_,2),"1"))); 
-    measure= pctN_100;
-    output;
-    end;
-
-    if substr(_type_,1,1)="0" then do;
-    factor="proportion";
-    procedure="percent";
-    /* assuming only one variable as denominator, except the first TRT01P */
-    denominator=vname(adim(index(substr(_type_,2),"1"))); 
-    measure= pctN_000;
-    output;
-    end;
-
-run;
-
-proc sort data=forexport nodupkey;
-    by trt01p comp24fl DCREASCD procedure  factor  unit  denominator;
-run;
-
-proc print data=forexport width=min;
-run;
-
-proc contents data=forexport varnum;
-run;
-
-proc export data=forexport file=expcsvda replace dbms=csv;
-run;
-
-data skeletonSource1;
-    if 0 then do;
-        set forexport; /* To get the labels  TODO: check if there are name clashes - or implement differently */
-        end;
-        length compType compName codeType nciDomainValue compLabel Comment $512;
-        keep compType compName codeType nciDomainValue compLabel Comment;
-    Comment= " ";
-    /* change compName to label of variable */
-    compType= "dimension"; compName="comp24fl";  compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="trt01p";    compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="dcreascd";  compLabel=vlabelx(compName); codeType="DATA"; nciDomainValue= " "; output;
-    compType= "dimension"; compName="procedure"; compLabel="Statistical Procedure"; codeType="DATA"; nciDomainValue= " ";output;
-    compType= "dimension"; compName="factor";    compLabel="Type of procedure (quantity, proportion...)"; codeType="DATA"; nciDomainValue= " "; output;
-    compType= "attribute"; compName="unit";      compLabel="Unit of measure"; codeType=" "; nciDomainValue=" "; output;
-    compType= "attribute"; compName="denominator"; compLabel="Denominator for a proportion (oskr) subset on which a statistic is based"; codeType=" "; nciDomainValue=" "; output;
-    compType= "measure"; compName="measure";     compLabel="Value of the statistical measure"; codeType=" "; nciDomainValue=" "; output;
-
-    stop;
-    
-run;
-
-
-data skeletonSource2;
-
-length compType compName codeType nciDomainValue compLabel Comment $512;
-    
-compType= "metadata";
-compName= "obsURL";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "https://phuse-scripts.googlecode.com/svn/trunk/scriptathon2014/data/adsl.xpt";
-Comment= "obsFileName";
-output; 
-
-compType= "metadata";
-compName= "obsFileName";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "tab1x02.csv";
-Comment= "obsFileName";
-output; 
-
-compType= "metadata";
-compName= "dataCubeFileName";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "DC-TAB1X02";
-Comment= "Cube name prefix (will be appended with version number by script. --> No. Will be set in code based on domainName parameter)";
-output; 
-
-compType= "metadata";
-compName= "cubeVersion";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "0.0.0";
-Comment= "Version of cube with format n.n.n";
-output; 
-
-compType= "metadata";
-compName= "createdBy";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "Foo";
-Comment= "Person who configures this spreadsheet and runs the creation script to create the cube";
-output; 
-
-compType= "metadata";
-compName= "description";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "Data from adsl1.sas program";
-Comment= "Cube description";
-output; 
-
-compType= "metadata";
-compName= "providedBy";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "PhUSE Results Metadata Working Group";
-Comment= " ";
-output; 
-
-compType= "metadata";
-compName= "comment";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "";
-Comment= "Table 14-1.02 Summary of End of Study Data";
-output; 
-
-compType= "metadata";
-compName= "title";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "Demographics Analysis Results";
-Comment= "Table 14-1.02 Summary of End of Study Data";
-output; 
-
-compType= "metadata";
-compName= "label";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "Table 14-1.02 Summary of End of Study Data";
-Comment= " ";
-output; 
-
-compType= "metadata";
-compName= "wasDerivedFrom";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "tab1x02.csv";
-Comment= "Data source (obsFileName). Set this programmtically based on name of input file!";
-output; 
-
-compType= "metadata";
-compName= "domainName";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "TAB1X02";
-Comment= "The domain name, also part of the spreadsheet tab name";
-output; 
-
-compType= "metadata";
-compName= "obsFileNameDirec";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "!example";
-Comment= "The directory containd the wasDerivedFrom file";
-output; 
-
-compType= "metadata";
-compName= "dataCubeOutDirec";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "!temporary";
-Comment= " ";
-output; 
-
-/* This enables the experimental extension providing reference to the underlying data */
-compType= "metadata";
-compName= "extension.rrdfqbcrnd0";
-codeType= " ";
-nciDomainValue= " ";
-compLabel= "TRUE";
-Comment= " ";
-output; 
-    
-run;
-
-data skeletonSource;
-    set skeletonSource1 skeletonSource2;
-run;
-
-proc export data=skeletonSource file=expcsvco replace dbms=csv;
-run;
-
-
-%put expcsvda: %sysfunc(pathname(expcsvda));
-%put expcsvco: %sysfunc(pathname(expcsvco));
+%include "include_tabulate_to_csv.sas" /source;
