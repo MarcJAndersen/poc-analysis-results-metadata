@@ -1,4 +1,4 @@
-## @knitr get-obs.rq  
+## @knitr get-obs-with-data.rq  
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  
 prefix skos: <http://www.w3.org/2004/02/skos/core#>  
 prefix prov: <http://www.w3.org/ns/prov#>  
@@ -35,12 +35,25 @@ prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>  
 prefix crnd-measure: <http://www.example.org/dc/measure#>  
  prefix d2rqvocab: <http://www.example.org/datasets/vocab/>  
- SELECT ?s  
+   
+SELECT * where  
+{ ?s d2rqvocab:ADSL_AGE ?age ;   
+    d2rqvocab:ADSL_TRT01P ?trt01p .  
+   #{ ?s ?v ?o .  
+   # values (?v) {  
+   #    (d2rqvocab:ADSL_AGE)  
+   #    (d2rqvocab:ADSL_TRT01P)  
+   #  }   
+   #  
+   {  
+   #  
+    SELECT ?s  
 where {  
 ?s ?variable ?value   
   
 {  
-select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
+select   ( iri(concat('http://www.example.org/datasets/vocab/',   
+replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
  ?matchvalue  
  where {   
    ?obs ?dim ?codevalue .  
@@ -50,7 +63,7 @@ select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vno
    ?codelist rrdfqbcrnd0:R-columnname ?vn .   
    ?codelist rrdfqbcrnd0:codeType     ?vct .           
    ?codevalue skos:prefLabel ?clprefLabel .   
-   ?codevalue rrdfqbcrnd0:R-selectionoperator "==" ;
+   ?codevalue rrdfqbcrnd0:R-selectionoperator '==' .  
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.  
  values (?obs) { (ds:obs223) } }  
 }  
@@ -58,4 +71,4 @@ BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)
 }  
 group by ?s  
 having(SUM(?notequal)=0)  
-order by ?s
+order by ?s limit 2 } }

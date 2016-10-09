@@ -35,13 +35,27 @@ prefix crnd-dimension: <http://www.example.org/dc/dimension#>
 prefix crnd-attribute: <http://www.example.org/dc/attribute#>  
 prefix crnd-measure: <http://www.example.org/dc/measure#>  
  prefix d2rqvocab: <http://www.example.org/datasets/vocab/>  
- SELECT ?s  
+
+# SELECT * where
+# { ?s d2rqvocab:ADSL_AGE ?age ; 
+ #   d2rqvocab:ADSL_TRT01P ?trt01p .
+#{ ?s ?v ?o .
+# values (?v) {
+#    (d2rqvocab:ADSL_AGE)
+#    (d2rqvocab:ADSL_TRT01P)
+#  } 
+#  
+# {
+SELECT ?s ?obs
 where {  
-?s ?variable ?value   
-  
+?s ?variable ?value .
+
 {  
-select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
- ?matchvalue  
+select   
+        ( iri(concat('http://www.example.org/datasets/vocab/',   
+replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
+ ?matchvalue
+ ?obs
  where {   
    ?obs ?dim ?codevalue .  
    ?dim a qb:DimensionProperty .  
@@ -50,12 +64,17 @@ select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vno
    ?codelist rrdfqbcrnd0:R-columnname ?vn .   
    ?codelist rrdfqbcrnd0:codeType     ?vct .           
    ?codevalue skos:prefLabel ?clprefLabel .   
-   ?codevalue rrdfqbcrnd0:R-selectionoperator "==" ;
+   ?codevalue rrdfqbcrnd0:R-selectionoperator '==' .  
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.  
- values (?obs) { (ds:obs223) } }  
+      ?obs a qb:Observation .
+      # values (?obs) { (ds:obs223) } 
+    }  
 }  
 BIND(IF(?value!=?matchvalue,1,0) AS ?notequal)  
 }  
-group by ?s  
+group by ?s ?obs
 having(SUM(?notequal)=0)  
 order by ?s
+# limit 2
+# }
+# }

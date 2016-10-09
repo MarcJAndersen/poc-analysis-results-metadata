@@ -40,7 +40,8 @@ where {
 ?s ?variable ?value   
   
 {  
-select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
+select   ( iri(concat('http://www.example.org/datasets/vocab/',   
+replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)  
  ?matchvalue  
  where {   
    ?obs ?dim ?codevalue .  
@@ -50,7 +51,7 @@ select   ( iri(concat('http://www.example.org/datasets/vocab/', replace(str(?vno
    ?codelist rrdfqbcrnd0:R-columnname ?vn .   
    ?codelist rrdfqbcrnd0:codeType     ?vct .           
    ?codevalue skos:prefLabel ?clprefLabel .   
-   ?codevalue rrdfqbcrnd0:R-selectionoperator "==" ;
+   ?codevalue rrdfqbcrnd0:R-selectionoperator '==' .  
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.  
  values (?obs) { (ds:obs223) } }  
 }  

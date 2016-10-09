@@ -452,6 +452,8 @@ knitr::kable(dobs2obs)
 
 The values part of the query above can be replaced by a subquery.
 
+Also, the approach makes only sense if testing for equality, so the query only looks for the matches where `?Rselectionoperator` is `"=="`.
+
 ```{r}
 
 
@@ -469,7 +471,7 @@ paste(
    ?codelist rrdfqbcrnd0:R-columnname ?vn . 
    ?codelist rrdfqbcrnd0:codeType     ?vct .         
    ?codevalue skos:prefLabel ?clprefLabel . 
-   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator '==' . 
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
 ",
 "values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
@@ -492,7 +494,7 @@ obs.triples6.rq<-paste(
 "{",
 paste(
     "select ",
-    paste0(" ( iri(concat(", "'", d2rqvocab, "'", ", ", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)\n"),
+    paste0(" ( iri(concat(", "'", d2rqvocab, "'", ", \n", "replace(str(?vnop),'http://www.example.org/rrdfqbcrnd0/([A-Z0-9_]+)$', '$1', 'i' ))) as ?variable)\n"),
     "?matchvalue\n",
     "where {",
 "
@@ -503,7 +505,7 @@ paste(
    ?codelist rrdfqbcrnd0:R-columnname ?vn . 
    ?codelist rrdfqbcrnd0:codeType     ?vct .         
    ?codevalue skos:prefLabel ?clprefLabel . 
-   ?codevalue rrdfqbcrnd0:R-selectionoperator ?Rselectionoperator . 
+   ?codevalue rrdfqbcrnd0:R-selectionoperator '==' .
    ?codevalue rrdfqbcrnd0:R-selectionvalue ?matchvalue.
 ",
 "values (?obs) {", paste0("(", qobs, ")",collapse=const.newline), "}",
@@ -516,28 +518,81 @@ paste(
 "having(SUM(?notequal)=0)",
 "order by ?s",
 sep=const.newline, collapse=const.newline )
+
 dobs.triples6.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", const.newline, collapse=""),
                       obs.triples6.rq )
-## xx
-mdwrite( dobs.triples6.ds.rq, "get-obs.rq" )
-dobs.triples6.obs<- NULL
-dobs.triples6.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
-knitr::kable(dobs.triples6.obs)
 
+mdwrite( dobs.triples6.ds.rq, "get-obs.rq" )
 
 ```
+
+The query is shown below. Note in the HTML version some of the text is rendered incorrectly. The text in the box in the line starting with `replace` should be `$', '$`.
 
 ```{r get-obs.rq, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css'}
 
 ```
 
+The result of the query is shown below.
+
+```{r}
+dobs.triples6.obs<- NULL
+dobs.triples6.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs.triples6.obs)
+```
+
+To get the data one approach is to wrap getting the data around the query.
+
+```{r}
+dobs.triples7.ds.rq<-     paste( forsparqlprefix,
+                      paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", const.newline, collapse=""),
+"
+SELECT * where
+{ ?s d2rqvocab:ADSL_AGE ?age ; 
+    d2rqvocab:ADSL_TRT01P ?trt01p .
+   #{ ?s ?v ?o .
+   # values (?v) {
+   #    (d2rqvocab:ADSL_AGE)
+   #    (d2rqvocab:ADSL_TRT01P)
+   #  } 
+   #
+   {
+   #
+   ",
+obs.triples6.rq,
+"limit 2",
+"}",
+"}"
+)
+
+mdwrite( dobs.triples7.ds.rq, "get-obs-with-data.rq" )
+
+```
+
+The query is shown below. Note in the HTML version some of the text is rendered incorrectly. The text in the box in the line starting with `replace` should be `$', '$`.
+
+```{r get-obs-with-data.rq, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css'}
+
+```
+The result of the query is shown below.
+
+```{r}
+dobs.triples7.obs<- NULL
+dobs.triples7.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples7.ds.rq ), stringsAsFactors=FALSE)
+knitr::kable(dobs.triples7.obs)
+```
+
+
 # Final stuff
 
-Here is how to make the PDF file
+Here is how to make the HMTL file.
+THe PDF file generation does not work.
+Note, the settings above for highlight engine in `engine.path` are windows specific, and should be changed according to your setup.
+
 ```{r, eval=FALSE}
 ## rmarkdown::render('get-data-for-cube-observation.Rmd', c("pdf_document"), clean=FALSE)
 rmarkdown::render('get-data-for-cube-observation.Rmd', c("html_document"), clean=TRUE)
+rmarkdown::render('get-data-for-cube-observation.Rmd', c("word_document"), clean=TRUE)
 
 ```
 
