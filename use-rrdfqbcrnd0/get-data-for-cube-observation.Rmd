@@ -88,7 +88,7 @@ The chunk is then shown using
 
 This works for html.
 
-Here is the code for highlight with Latex for generating PDF - not working `{r ADSL-records-SELECT-query.rq, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css --out-format=latex -I'}`.
+Here is the code for highlight with Latex for generating PDF - not working `{r ADSL-records-SELECT-query.rq, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css --out-format=latex -I'}`.
 
 
 # Setup
@@ -149,14 +149,14 @@ mdwrite( readLines("ADSL-records-observation.ttl", warn = FALSE), "xADSL-records
 
 The SPARQL construct query is
 
-```{r ADSL-records-CONSTRUCT.rq, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css'}
+```{r ADSL-records-CONSTRUCT.rq, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css'}
 
 ```
    
    
 The result is xx
 
-```{r xADSL-records-observation.ttl, results='asis', engine='highlight', engine.path='/usr/bin/highlight', engine.opts='-S n3 --inline-css'}
+```{r xADSL-records-observation.ttl, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css'}
 
 ```
 
@@ -520,10 +520,15 @@ dobs.triples6.ds.rq<-     paste( forsparqlprefix,
                       paste0( "prefix d2rqvocab: ", "<", d2rqvocab, ">", const.newline, collapse=""),
                       obs.triples6.rq )
 ## xx
+mdwrite( dobs.triples6.ds.rq, "get-obs.rq" )
 dobs.triples6.obs<- NULL
 dobs.triples6.obs<- as.data.frame(sparql.rdf(storeCube, dobs.triples6.ds.rq ), stringsAsFactors=FALSE)
 knitr::kable(dobs.triples6.obs)
 
+
+```
+
+```{r get-obs.rq, results='asis', engine='highlight', engine.path='C:/Program Files/Highlight/highlight.exe', engine.opts='-S n3 --inline-css'}
 
 ```
 

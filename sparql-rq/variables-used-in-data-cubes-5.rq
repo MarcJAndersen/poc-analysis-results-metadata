@@ -1,0 +1,17 @@
+prefix qb: <http://purl.org/linked-data/cube#>
+prefix rrdfqbcrnd0: <http://www.example.org/rrdfqbcrnd0/>
+prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> 
+
+select distinct *
+where { 
+ ?ds a  qb:DataSet ;
+     (<>|!<>)*/rrdfqbcrnd0:D2RQ-PropertyBridge ?D2RQPropertyBridgeWrong .
+
+ BIND( iri(replace(str(?D2RQPropertyBridgeWrong),
+		    "^http://www.example.org/datasets/vocab/",
+		    "http://www.example.org/db/map/")) as ?D2RQPropertyBridge )  
+
+  ?D2RQPropertyBridge d2rq:column ?column .
+
+}
+order by ?ds

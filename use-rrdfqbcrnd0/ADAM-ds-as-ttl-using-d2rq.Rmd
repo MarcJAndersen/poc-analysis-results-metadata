@@ -196,13 +196,35 @@ d2rq is used to convert the database.
 First a mapping file is generated and customized.
 The `d2rq:classDefinitionLabel` could also be changed to correspond to the SAS label.
 
+## Windows specific setup
+
+If d2rq is located on a different drive, then the setting of D2RQ_ROOT in the scripts should be changed to
+
+    set D2RQ_ROOT=%~dp0
+
+to include the drive name (the `d` in `%~dp0`).
+
+## Setup
+
 ```{r, eval=TRUE}
 d2rqbaseURL<- "http://www.example.org/datasets/"
 d2rqjdbcstring<- '"jdbc:mariadb://localhost:3306/cdiscpilot01?user=root&password=mariadb"'
+if (.Platform$OS.type=="windows") {
+    d2rq.generatemapping<- "c:/opt/d2rq-0.8.1/generate-mapping.bat"
+    d2rq.dumprdf<- "c:/opt/d2rq-0.8.1/dump-rdf.bat"
+} else {
+    d2rq.generatemapping<- "/opt/d2rq-0.8.1/generate-mapping"
+    d2rq.dumprdf<- "/opt/d2rq-0.8.1/dump-rdf"
+    }
+```
+
+## Generate mapping
+
+```{r, eval=TRUE}
 ## -b option does not work with -l
 ## /opt/d2rq-0.8.1/generate-mapping reports Unknown argument: -b
 system(
-    paste("/opt/d2rq-0.8.1/generate-mapping",
+    paste( d2rq.generatemapping,
           " -o ", cdiscpilot01mapttlPath,
           " --verbose",
              " ", d2rqjdbcstring, " "
@@ -224,14 +246,14 @@ writeLines(d2rqmap, fp )
 cat( "File ", fp, " created", "\n")
 
 ```
-
+## Dump database as .ttl
 
 ```{r, eval=TRUE}
-system(paste("/opt/d2rq-0.8.1/dump-rdf",
+system(paste( d2rq.dumprdf,
              " -b ", d2rqbaseURL,
              " --verbose",
              " -o ", cdiscpilot01ttlPath,
-             " ", cdiscpilot01mapttlPath, " "
+             " ", fp, " "
              ))
 if (file.copy(cdiscpilot01ttlPath, targetDir, overwrite = TRUE)) {
     cat( "File ", cdiscpilot01ttlPath, " copied to directory ", targetDir, "\n")

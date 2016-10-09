@@ -1,0 +1,8 @@
+load <http://localhost:8000/res-ttl/cdiscpilot01-d2rq-mapping.ttl>;
+load <http://localhost:8000/res-ttl/cdiscpilot01.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB1X01.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB1X02.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB1X03.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB2X01.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB3X01.ttl>;
+load <http://localhost:8000/res-ttl/CDISC-pilot-TAB5X01.ttl>;

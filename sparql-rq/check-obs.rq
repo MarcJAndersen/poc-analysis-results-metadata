@@ -1,0 +1,109 @@
+        # crnd-dimension:comp24fl     code:comp24fl-_ALL_ ;
+        # crnd-dimension:disconfl     code:disconfl-_ALL_ ;
+        # crnd-dimension:efffl        code:efffl-_ALL_ ;
+        # crnd-dimension:ittfl        code:ittfl-_ALL_ ;
+        # crnd-dimension:saffl        code:saffl-_ALL_ ;
+        # crnd-dimension:trt01p       code:trt01p-Placebo ;
+
+
+
+select * where
+{
+  #  ?s ?p ?o .
+  ?s <http://www.example.org/datasets/vocab/ADSL_COMP24FL> ?comp24fl;
+<http://www.example.org/datasets/vocab/ADSL_DISCONFL> ?disconfl;
+<http://www.example.org/datasets/vocab/ADSL_EFFFL> ?efffl;
+<http://www.example.org/datasets/vocab/ADSL_ITTFL> ?ettfl;
+<http://www.example.org/datasets/vocab/ADSL_SAFFL> ?saffl;
+<http://www.example.org/datasets/vocab/ADSL_TRT01P> ?trt01p
+.
+
+values (?s) {
+(<http://www.example.org/datasets/ADSL/01-701-1015>)
+ (<http://www.example.org/datasets/ADSL/01-701-1023>)
+ (<http://www.example.org/datasets/ADSL/01-701-1047>)
+ (<http://www.example.org/datasets/ADSL/01-701-1118>)
+ (<http://www.example.org/datasets/ADSL/01-701-1130>)
+ (<http://www.example.org/datasets/ADSL/01-701-1153>)
+ (<http://www.example.org/datasets/ADSL/01-701-1203>)
+ (<http://www.example.org/datasets/ADSL/01-701-1234>)
+ (<http://www.example.org/datasets/ADSL/01-701-1345>)
+ (<http://www.example.org/datasets/ADSL/01-701-1363>)
+ (<http://www.example.org/datasets/ADSL/01-701-1387>)
+ (<http://www.example.org/datasets/ADSL/01-701-1392>)
+ (<http://www.example.org/datasets/ADSL/01-701-1415>)
+ (<http://www.example.org/datasets/ADSL/01-701-1440>)
+ (<http://www.example.org/datasets/ADSL/01-703-1042>)
+ (<http://www.example.org/datasets/ADSL/01-703-1096>)
+ (<http://www.example.org/datasets/ADSL/01-703-1100>)
+ (<http://www.example.org/datasets/ADSL/01-703-1175>)
+ (<http://www.example.org/datasets/ADSL/01-703-1210>)
+ (<http://www.example.org/datasets/ADSL/01-703-1299>)
+ (<http://www.example.org/datasets/ADSL/01-704-1010>)
+ (<http://www.example.org/datasets/ADSL/01-704-1127>)
+ (<http://www.example.org/datasets/ADSL/01-704-1164>)
+ (<http://www.example.org/datasets/ADSL/01-704-1233>)
+ (<http://www.example.org/datasets/ADSL/01-704-1260>)
+ (<http://www.example.org/datasets/ADSL/01-704-1351>)
+ (<http://www.example.org/datasets/ADSL/01-704-1388>)
+ (<http://www.example.org/datasets/ADSL/01-704-1435>)
+ (<http://www.example.org/datasets/ADSL/01-704-1445>)
+ (<http://www.example.org/datasets/ADSL/01-705-1018>)
+ (<http://www.example.org/datasets/ADSL/01-705-1059>)
+ (<http://www.example.org/datasets/ADSL/01-705-1186>)
+ (<http://www.example.org/datasets/ADSL/01-705-1282>)
+ (<http://www.example.org/datasets/ADSL/01-705-1349>)
+ (<http://www.example.org/datasets/ADSL/01-706-1041>)
+ (<http://www.example.org/datasets/ADSL/01-707-1206>)
+ (<http://www.example.org/datasets/ADSL/01-708-1087>)
+ (<http://www.example.org/datasets/ADSL/01-708-1158>)
+ (<http://www.example.org/datasets/ADSL/01-708-1171>)
+ (<http://www.example.org/datasets/ADSL/01-708-1253>)
+ (<http://www.example.org/datasets/ADSL/01-708-1286>)
+ (<http://www.example.org/datasets/ADSL/01-708-1296>)
+ (<http://www.example.org/datasets/ADSL/01-708-1316>)
+ (<http://www.example.org/datasets/ADSL/01-708-1342>)
+ (<http://www.example.org/datasets/ADSL/01-708-1378>)
+ (<http://www.example.org/datasets/ADSL/01-709-1001>)
+ (<http://www.example.org/datasets/ADSL/01-709-1088>)
+ (<http://www.example.org/datasets/ADSL/01-709-1259>)
+ (<http://www.example.org/datasets/ADSL/01-709-1301>)
+ (<http://www.example.org/datasets/ADSL/01-709-1306>)
+ (<http://www.example.org/datasets/ADSL/01-709-1312>)
+ (<http://www.example.org/datasets/ADSL/01-709-1339>)
+ (<http://www.example.org/datasets/ADSL/01-710-1027>)
+ (<http://www.example.org/datasets/ADSL/01-710-1060>)
+ (<http://www.example.org/datasets/ADSL/01-710-1077>)
+ (<http://www.example.org/datasets/ADSL/01-710-1078>)
+ (<http://www.example.org/datasets/ADSL/01-710-1083>)
+ (<http://www.example.org/datasets/ADSL/01-710-1183>)
+ (<http://www.example.org/datasets/ADSL/01-710-1264>)
+ (<http://www.example.org/datasets/ADSL/01-710-1271>)
+ (<http://www.example.org/datasets/ADSL/01-710-1314>)
+ (<http://www.example.org/datasets/ADSL/01-710-1315>)
+ (<http://www.example.org/datasets/ADSL/01-710-1368>)
+ (<http://www.example.org/datasets/ADSL/01-711-1036>)
+ (<http://www.example.org/datasets/ADSL/01-713-1179>)
+ (<http://www.example.org/datasets/ADSL/01-713-1256>)
+ (<http://www.example.org/datasets/ADSL/01-713-1269>)
+ (<http://www.example.org/datasets/ADSL/01-714-1035>)
+ (<http://www.example.org/datasets/ADSL/01-714-1375>)
+ (<http://www.example.org/datasets/ADSL/01-715-1155>)
+ (<http://www.example.org/datasets/ADSL/01-715-1207>)
+ (<http://www.example.org/datasets/ADSL/01-715-1397>)
+ (<http://www.example.org/datasets/ADSL/01-716-1024>)
+ (<http://www.example.org/datasets/ADSL/01-716-1026>)
+ (<http://www.example.org/datasets/ADSL/01-716-1044>)
+ (<http://www.example.org/datasets/ADSL/01-716-1108>)
+ (<http://www.example.org/datasets/ADSL/01-716-1160>)
+ (<http://www.example.org/datasets/ADSL/01-716-1177>)
+ (<http://www.example.org/datasets/ADSL/01-716-1308>)
+ (<http://www.example.org/datasets/ADSL/01-716-1441>)
+ (<http://www.example.org/datasets/ADSL/01-717-1201>)
+ (<http://www.example.org/datasets/ADSL/01-717-1344>)
+ (<http://www.example.org/datasets/ADSL/01-718-1139>)
+ (<http://www.example.org/datasets/ADSL/01-718-1150>)
+ (<http://www.example.org/datasets/ADSL/01-718-1172>)
+ (<http://www.example.org/datasets/ADSL/01-718-1355>)
+  }
+}
