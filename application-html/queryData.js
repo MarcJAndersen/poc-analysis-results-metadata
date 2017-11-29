@@ -35,11 +35,12 @@ function queryData( data ) {
 	var rrdfqbcrnd0Rcolumnname= data.results.bindings[i]["rrdfqbcrnd0Rcolumnname"].value;
 	console.log(rrdfqbcrnd0Rcolumnname );
 	console.log(data.results.bindings[i]["Rselectionoperator"] );
+	console.log(data.results.bindings[i]["D2RQPropertyBridge"]);
 	console.log(data.results.bindings[i]["D2RQPropertyBridgeContVar"]);
 	console.log(data.results.bindings[i]["Rselectionvalue"]);
 	
-	if (rrdfqbcrnd0Rcolumnname != 'procedure' &
-	    rrdfqbcrnd0Rcolumnname != 'factor' 
+	if (rrdfqbcrnd0Rcolumnname != 'procedure' /* &
+	    rrdfqbcrnd0Rcolumnname != 'factor' */
 	   ) {
 	    var vn="?" +rrdfqbcrnd0Rcolumnname;
 
@@ -52,7 +53,7 @@ function queryData( data ) {
 		rqqueryvaluesdef.push(vn);
 		
 		rqqueryvaluespart.push( '"'+data.results.bindings[i]["Rselectionvalue"].value+'"');
-
+            } else {
 		if (data.results.bindings[i]["D2RQPropertyBridgeContVar"]){
 		    var vn="?" + data.results.bindings[i]["Rselectionvalue"].value;
 		    rqquerylinesatend.push(" ?record "+ "<"+

@@ -120,5 +120,6 @@ select * where {
 Here is how to make the PDF file
 ```{r, eval=FALSE}
 ## rmarkdown::render('poc-application-overview.Rmd', c("pdf_document"), clean=TRUE)
-rmarkdown::render('poc-application-overview.Rmd', c("word_document"), clean=TRUE)
+### rmarkdown::render('poc-application-overview.Rmd', c("word_document"), clean=TRUE)
+rmarkdown::render('poc-application-overview.Rmd', c("html_document"), clean=TRUE)
 ```

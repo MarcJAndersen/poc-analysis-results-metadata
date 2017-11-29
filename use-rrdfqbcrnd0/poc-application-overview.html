@@ -183,8 +183,8 @@ $(document).ready(function () {
 <div id="application-process" class="section level1">
 <h1>Application process</h1>
 <p>Here is a high level overview of the proof of concept package</p>
-<div id="htmlwidget-7d86b746a86ed81cf4fd" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7d86b746a86ed81cf4fd">{"x":{"diagram":"\ngraph TB\nsubgraph ADaM data\nA(ADaM)\nend\n\nsubgraph Analysis results to RDF\nA-->B[Analyse]\nB-->C(Analysis Results as .csv)\nC-->D[Convert to RDF datacube]\nD-->E(Analysis Resuls as .ttl)\nend\n\nsubgraph ADaM datasets results to RDF\nA-->gA[Convert using D2RQ as .ttl]\ngA-->aB(ADaM as .ttl)\nend\n\nsubgraph Servering RDF\naB-->F\nE-->F[SPARQL endpoint]\nend\n\nsubgraph Presentation of results\nF-->pA[Reporting]\npA-->pB(Tables as .html)\nend\n\nsubgraph Servering HTML\npB-->pC[Webserver]\nend\n\nsubgraph PoC Application\naF(.html and .js)-->pC\naG(configuration as .ttl)-->F\nend\n\nsubgraph Browser\npC-->aA\nF-->aA[Application]\nend\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d6ee0476067ddd6eec91" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d6ee0476067ddd6eec91">{"x":{"diagram":"\ngraph TB\nsubgraph ADaM data\nA(ADaM)\nend\n\nsubgraph Analysis results to RDF\nA-->B[Analyse]\nB-->C(Analysis Results as .csv)\nC-->D[Convert to RDF datacube]\nD-->E(Analysis Resuls as .ttl)\nend\n\nsubgraph ADaM datasets results to RDF\nA-->gA[Convert using D2RQ as .ttl]\ngA-->aB(ADaM as .ttl)\nend\n\nsubgraph Servering RDF\naB-->F\nE-->F[SPARQL endpoint]\nend\n\nsubgraph Presentation of results\nF-->pA[Reporting]\npA-->pB(Tables as .html)\nend\n\nsubgraph Servering HTML\npB-->pC[Webserver]\nend\n\nsubgraph PoC Application\naF(.html and .js)-->pC\naG(configuration as .ttl)-->F\nend\n\nsubgraph Browser\npC-->aA\nF-->aA[Application]\nend\n"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="example-sparql-query" class="section level1">
 <h1>Example SPARQL query</h1>
@@ -201,9 +201,14 @@ $(document).ready(function () {
 <div id="testing-sparql-highlighting" class="section level1">
 <h1>Testing SPARQL highlighting</h1>
 <p>Install highlight from (<a href="http://www.andre-simon.de/doku/highlight/en/highlight.php" class="uri">http://www.andre-simon.de/doku/highlight/en/highlight.php</a>). To avoid linebreak add two space at the end of each line (not good work around). Another approach is to use <a href="http://pygments.org/languages/" class="uri">http://pygments.org/languages/</a>. Try searching for <code>pygments sparql</code>.</p>
-<pre class="sparql"><code>select * where {
-  ?s ?p ?o
-  }</code></pre>
+<p><span style="color:#010181">select</span> <span style="color:#000000">*</span> <span style="color:#010181">where</span> <span style="color:#000000">{</span><br />
+ ?s ?p ?o<br />
+ <span style="color:#000000">}</span><br />
+# Final stuff</p>
+<p>Here is how to make the PDF file</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## rmarkdown::render('poc-application-overview.Rmd', c(&quot;pdf_document&quot;), clean=TRUE)
+### rmarkdown::render('poc-application-overview.Rmd', c(&quot;word_document&quot;), clean=TRUE)
+rmarkdown::<span class="kw">render</span>(<span class="st">'poc-application-overview.Rmd'</span>, <span class="kw">c</span>(<span class="st">&quot;html_document&quot;</span>), <span class="dt">clean=</span><span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div class="footnotes">
 <hr />

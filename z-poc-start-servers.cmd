@@ -1,9 +1,9 @@
-SETLOCAL ENABLEDELAYEDEXPANSION
+@SETLOCAL ENABLEDELAYEDEXPANSION
 REM Get path for the script
-Set ScriptInvocation=%0
-Set ScriptName=%~n0
-Set ScriptFullPath=%~f0
-Set ScriptPath=%~p0
+@Set ScriptInvocation=%0
+@Set ScriptName=%~n0
+@Set ScriptFullPath=%~f0
+@Set ScriptPath=%~p0
 
 
 start cmd "poc: Fuseki server" /d "%ScriptPath%" /c "res-ttl\poc-fuseki-server.cmd"
