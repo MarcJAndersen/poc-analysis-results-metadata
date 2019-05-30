@@ -1,5 +1,9 @@
 # poc-analysis-results-metadata
 
+Updated for presentation
+
+Marc 2019-05-30
+
 This repository contains programs for proof of concept for generating
 tables from Analysis Results &amp; Metadata model
 (http://www.phusewiki.org/wiki/index.php?title=Analysis_Results_Model),
