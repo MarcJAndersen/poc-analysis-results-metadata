@@ -1,0 +1,65 @@
+---
+title: "Convert .ttl to .xml using Redland"
+author: "mja@statgroup.dk"
+date: "2020-02-29"
+output:
+  md_document:
+    variant: markdown_github
+  pdf_document:
+    toc: true
+    highlight: zenburn
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r}
+library(redland)
+# world <- new("World")
+# storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
+# model <- new("Model", world=world, storage, options="")
+# parser <- new("Parser", world)
+# parseFileIntoModel(parser, world, system.file("extdata", "dc.rdf", package="redland"), model)
+
+world <- new("World")
+storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
+model <- new("Model", world=world, storage, options="")
+parser <- new("Parser", world, mimeType="text/turtle")
+infile<- "H:/projects-s114h/GitHub/poc-analysis-results-metadata/res-ttl/CDISC-pilot-TAB1X01.ttl"
+status<- parseFileIntoModel(parser, world, infile, model)
+cat(status,sep="\n")
+
+# stmt <- new("Statement", world=world, 
+#        subject="http://www.dajobe.org/",
+#        predicate="http://purl.org/dc/elements/1.1/language",
+#        object="en")
+# addStatement(model, stmt)
+
+serializer <- new("Serializer", world, mimeType="application/rdf+xml")
+status <- setNameSpace(serializer, world, namespace="http://purl.org/dc/elements/1.1/", prefix="dc")  
+# filePath <- tempfile(pattern = "file", tmpdir = tempdir(), fileext = ".rdf")
+filePath <- "H:/projects-s114h/GitHub/poc-analysis-results-metadata/ttl2xml/CDISC-pilot-TAB1X01.xml"
+status <- serializeToFile(serializer, world, model, filePath)
+cat(status,sep="\n")
+cat(filePath,sep="\n")
+```
+
+```{r}
+library(rdflib)
+xx<-rdf_parse(
+  infile,
+  format = c("guess"), # "rdfxml", "nquads", "ntriples", "turtle", "jsonld"),
+  rdf = NULL,
+  base = getOption("rdf_base_uri", "localhost://")
+)
+
+rdf_serialize(
+  xx,
+  doc = filePath,
+  format = c("rdfxml"),
+  namespace = NULL,
+  prefix = names(namespace),
+  base = getOption("rdf_base_uri", "localhost://")
+)
+
+```
